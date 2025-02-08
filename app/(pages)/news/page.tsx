@@ -2,7 +2,7 @@
 
 export default function News() {
     return (
-      <div>
+      <div className="h-[100vh]">
         <h1>News</h1>
       </div>
     );

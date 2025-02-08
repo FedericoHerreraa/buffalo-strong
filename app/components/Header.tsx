@@ -1,17 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import logobuffalo from "@/app/images/logos/Logobuffalo.png"
-
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-  } from "@/app/components/ui/breadcrumb"
-  
-
+import { BreadCrumbs } from "@/app/components/Breadcrumbs";
 
 import { FaUser, FaUserPlus, FaCartShopping } from "react-icons/fa6";
 import { MdOutlineLogin } from "react-icons/md";
@@ -26,10 +16,10 @@ const Header = () => {
             <FaUser />
             <p>Invitado</p>
           </div>
-          <div className="flex items-center gap-2 cursor-pointer">
+          <Link href='/register' className="flex items-center gap-2 cursor-pointer">
             <FaUserPlus />
             <p>Registro Mayorista</p>
-          </div>
+          </Link>
           <div className="flex items-center gap-2 cursor-pointer">
             <MdOutlineLogin />
             <p>Acceso Comercio</p>
@@ -52,41 +42,27 @@ const Header = () => {
         </div>
       </nav>
       <div className="flex items-center justify-between px-6 py-4 border-b-2">
-        <div className="text-xl font-bold">
+        <Link href='/' className="text-xl font-bold">
             <Image
                 src={logobuffalo} 
                 alt="Logo"
                 width={150} 
                 height={150}
             />
-        </div>
+        </Link>
         <div className="relative w-1/2">
             <input 
                 type="text" 
                 placeholder="Buscá tu producto aquí..." 
-                className="w-full bg-gray-200 px-4 py-2 pl-10 rounded-xl text-zinc-500 focus:outline-none"
+                className="w-full bg-zinc-100 px-4 py-2 rounded-xl text-zinc-500 focus:outline-none"
             />
-            <TfiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer size-6" />
+            <TfiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer size-5" />
             </div>
         <FaCartShopping className="text-2xl cursor-pointer hover:text-[#8d572f]  transition" />
       </div>
 
       <div className="px-6 py-2 text-sm text-gray-500">
-      <Breadcrumb>
-        <BreadcrumbList>
-            <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-            <BreadcrumbLink href="/components">Components</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-            <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-            </BreadcrumbItem>
-        </BreadcrumbList>
-        </Breadcrumb>
+        <BreadCrumbs />
       </div>
     </header>
   );
