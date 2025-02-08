@@ -2,6 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 import logobuffalo from "@/app/images/logos/Logobuffalo.png"
 
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+  } from "@/app/components/ui/breadcrumb"
+  
+
 
 import { FaUser, FaUserPlus, FaCartShopping } from "react-icons/fa6";
 import { MdOutlineLogin } from "react-icons/md";
@@ -10,9 +20,7 @@ import { TfiSearch } from "react-icons/tfi";
 const Header = () => {
   return (
     <header className="flex flex-col border-b-2">
-      {/* Barra superior de navegación */}
       <nav className="flex items-center justify-between h-12 px-6 py-4 border-b-2">
-        {/* Sección de registro */}
         <div className="flex gap-7 text-md ">
           <div className="flex items-center gap-2 cursor-pointer">
             <FaUser />
@@ -28,7 +36,6 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Menú de navegación */}
         <div className="flex gap-6 text-md font-semibold ">
           <Link href="/" className="hover:text-[#8d572f]  transition">
             Inicio
@@ -44,15 +51,13 @@ const Header = () => {
           </Link>
         </div>
       </nav>
-
-      {/* Sección de logo, búsqueda y carrito */}
       <div className="flex items-center justify-between px-6 py-4 border-b-2">
         <div className="text-xl font-bold">
             <Image
-                src={logobuffalo} // Ruta de la imagen (puede ser local o remota)
+                src={logobuffalo} 
                 alt="Logo"
-                width={150} // Ancho en píxeles
-                height={150} // Alto en píxeles
+                width={150} 
+                height={150}
             />
         </div>
         <div className="relative w-1/2">
@@ -66,8 +71,23 @@ const Header = () => {
         <FaCartShopping className="text-2xl cursor-pointer hover:text-[#8d572f]  transition" />
       </div>
 
-      {/* Breadcrumb (Opcional) */}
-      <div className="px-6 py-2 text-sm text-gray-500">breadcrumb</div>
+      <div className="px-6 py-2 text-sm text-gray-500">
+      <Breadcrumb>
+        <BreadcrumbList>
+            <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+            <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+            <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+            </BreadcrumbItem>
+        </BreadcrumbList>
+        </Breadcrumb>
+      </div>
     </header>
   );
 };
