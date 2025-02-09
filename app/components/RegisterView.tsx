@@ -1,7 +1,6 @@
 
 
-
-export const RegisterComponent = () => {
+export const RegisterView = () => {
     return (
         <div className="w-[80%] h-[80vh] mx-auto mt-20">
             <h1 className="text-4xl">Registra tu nueva cuenta</h1>
