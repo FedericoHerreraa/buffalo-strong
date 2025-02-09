@@ -1,7 +1,29 @@
-
+'use client'
 
 
 export const RegisterComponent = () => {
+
+    const handleEmailSend = async () => {
+        console.log('entro')
+        try {
+          const res = await fetch('/api/send-email', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+    
+          const result = await res.json();
+          if (!result.success) {
+            console.error("Error enviando email:", result.error);
+          } else {
+            console.log("Correo enviado con éxito:", result.data);
+          }
+        } catch (error) {
+          console.error("Error en la solicitud:", error);
+        }
+    };
+    
     return (
         <div className="w-[80%] h-[80vh] mx-auto mt-20">
             <h1 className="text-4xl">Registra tu nueva cuenta</h1>
@@ -50,8 +72,8 @@ export const RegisterComponent = () => {
                             placeholder="Repita su Clave Fiscal / CUIT"
                         />
                     </label>
-                       
                 </div>
+                <button onClick={handleEmailSend}>Enviar mail</button>
             </form>
         </div>
     );
