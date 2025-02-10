@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
         // Email enviado a "buffalo"
         const { data, error } = await resend.emails.send({
             from: 'fede.herrera@asneeed.com',
-            to: 'fede.juan.herrera@gmail.com',
+            to: email,
             subject: 'My First Email',
             html: `
                 <h1>¡Hola Buffalo!</h1>
