@@ -49,9 +49,12 @@ export const RegisterView = () => {
                             placeholder="Repita su Clave Fiscal / CUIT"
                         />
                     </label>
-                       
                 </div>
             </form>
+            <p className="text-zinc-500 mb-2 mr-40">Una vez registrado, nuestro equipo procesara la solicitud y te enviara tus credenciales a la direccion de email ingresada previamente. Maximo estimado para el envio de credenciales de 48hs</p>
+            <button className="bg-gray-500 px-5 py-2 rounded-md w-fit flex justify-center text-zinc-200 hover:scale-105 hover:text-white transition-all duration-200">
+                <p className="">Registrarse</p>
+            </button>
         </div>
     );
 }

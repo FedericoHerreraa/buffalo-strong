@@ -3,9 +3,10 @@ import Image from "next/image";
 import logobuffalo from "@/app/images/logos/Logobuffalo.png"
 import { BreadCrumbs } from "@/app/components/Breadcrumbs";
 
-import { FaUser, FaUserPlus, FaCartShopping } from "react-icons/fa6";
+import { FaUser, FaUserPlus,  } from "react-icons/fa6";
 import { TfiSearch } from "react-icons/tfi";
 import { Login } from "./Login";
+import { Cart } from "./Cart";
 
 
 export const Header = () => {
@@ -60,7 +61,7 @@ export const Header = () => {
               <TfiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer size-5" />
           </div>
           <div className="w-1/2 flex justify-end pr-5">
-            <FaCartShopping className="text-2xl cursor-pointer hover:text-[#8d572f] transition-all" />
+            <Cart />
           </div>
         </section>
 
