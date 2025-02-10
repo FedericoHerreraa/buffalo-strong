@@ -1,6 +1,24 @@
 
+interface RegisterViewProps {
+    formData: {
+        name: string;
+        lastName: string;
+        email: string;
+        fiscalKey: string;
+        fiscalKeyRepeat: string;
+    };
+    loading: boolean;
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleSubmit: (e: React.FormEvent) => void;
+}
 
-export const RegisterView = () => {
+
+export const RegisterView: React.FC<RegisterViewProps> = ({
+    formData,
+    loading,
+    handleChange,
+    handleSubmit,
+}) => {
     return (
         <div className="w-[80%] h-[80vh] mx-auto mt-20">
             <h1 className="text-4xl">Registra tu nueva cuenta</h1>
@@ -11,6 +29,9 @@ export const RegisterView = () => {
                         Ingrese su nombre
                         <input 
                             type="text" 
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
                             className="border border-zinc-300 px-5 py-2 rounded-xl"
                             placeholder="Nombre"
                         />
@@ -19,6 +40,9 @@ export const RegisterView = () => {
                         Ingrese su apellido
                         <input 
                             type="text" 
+                            name="lastName"
+                            value={formData.lastName}
+                            onChange={handleChange}
                             className="border border-zinc-300 px-5 py-2 rounded-xl"
                             placeholder="Apellido"
                         />
@@ -27,6 +51,9 @@ export const RegisterView = () => {
                         Ingrese su correo electronico
                         <input 
                             type="email" 
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
                             className="border border-zinc-300 px-5 py-2 rounded-xl"
                             placeholder="Correo Electronico"
                         />
@@ -37,6 +64,9 @@ export const RegisterView = () => {
                         Ingrese su clave fiscal / CUIT
                         <input 
                             type="number" 
+                            name="fiscalKey"
+                            value={formData.fiscalKey}
+                            onChange={handleChange}
                             className="border border-zinc-300 px-5 py-2 rounded-xl"
                             placeholder="Clave Fiscal / CUIT"
                         />
@@ -45,6 +75,9 @@ export const RegisterView = () => {
                         Ingrese de nuevo su clave fiscal / CUIT
                         <input 
                             type="number" 
+                            name="fiscalKeyRepeat"
+                            value={formData.fiscalKeyRepeat}
+                            onChange={handleChange}
                             className="border border-zinc-300 px-5 py-2 rounded-xl"
                             placeholder="Repita su Clave Fiscal / CUIT"
                         />
@@ -52,8 +85,8 @@ export const RegisterView = () => {
                 </div>
             </form>
             <p className="text-zinc-500 mb-2 mr-40">Una vez registrado, nuestro equipo procesara la solicitud y te enviara tus credenciales a la direccion de email ingresada previamente. Maximo estimado para el envio de credenciales de 48hs</p>
-            <button className="bg-gray-500 px-5 py-2 rounded-md w-fit flex justify-center text-zinc-200 hover:scale-105 hover:text-white transition-all duration-200">
-                <p className="">Registrarse</p>
+            <button onClick={handleSubmit} className="bg-gray-500 px-5 py-2 rounded-md w-fit flex justify-center text-zinc-200 hover:scale-105 hover:text-white transition-all duration-200">
+                <p className="">{loading ? 'Registrando...' : 'Registrarse'}</p>
             </button>
         </div>
     );
