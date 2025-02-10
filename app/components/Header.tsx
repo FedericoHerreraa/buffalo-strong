@@ -4,19 +4,8 @@ import logobuffalo from "@/app/images/logos/Logobuffalo.png"
 import { BreadCrumbs } from "@/app/components/Breadcrumbs";
 
 import { FaUser, FaUserPlus, FaCartShopping } from "react-icons/fa6";
-import { MdOutlineLogin } from "react-icons/md";
 import { TfiSearch } from "react-icons/tfi";
-
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/app/components/ui/drawer"
+import { Login } from "./Login";
 
 
 export const Header = () => {
@@ -33,28 +22,9 @@ export const Header = () => {
             <p>Registro Comercio</p>
           </Link>
           
-          <Drawer>
-            <DrawerTrigger>
-              <div className="flex items-center gap-2 cursor-pointer">
-                <MdOutlineLogin />
-                <p>Ingresa a tu cuenta</p>
-              </div>
-            </DrawerTrigger>
-            <DrawerContent className="border-t border-t-zinc-600 rounded-none border-x-zinc-800 border-b-zinc-800 h-[90vh] bg-zinc-900 opacity-100">
-              <DrawerHeader>
-                <DrawerTitle className="text-zinc-300 text-center text-3xl">Ingresa a tu cuenta</DrawerTitle>
-                <DrawerDescription className="text-zinc-400 text-center">Ingresa a tu cuenta ya creada.</DrawerDescription>
-              </DrawerHeader>
-              <DrawerFooter className="flex items-center">
-                <span className="text-zinc-300">Ingresar</span>
-                <DrawerClose className="bg-zinc-600 rounded-xl px-3 py-1 w-fit mx-auto">
-                  <span className="text-zinc-300">Cerrar</span>
-                </DrawerClose>
-              </DrawerFooter>
-            </DrawerContent>
-          </Drawer>
-
+          <Login />
         </div>
+
         <div className="flex gap-6 text-md font-semibold ">
           <Link href="/" className="hover:text-[#8d572f]  transition">
             Inicio

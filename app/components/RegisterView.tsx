@@ -11,7 +11,7 @@ export const RegisterView = () => {
                         Ingrese su nombre
                         <input 
                             type="text" 
-                            className="border border-zinc-400 px-5 py-2 rounded-xl"
+                            className="border border-zinc-300 px-5 py-2 rounded-xl"
                             placeholder="Nombre"
                         />
                     </label>
@@ -19,7 +19,7 @@ export const RegisterView = () => {
                         Ingrese su apellido
                         <input 
                             type="text" 
-                            className="border border-zinc-400 px-5 py-2 rounded-xl"
+                            className="border border-zinc-300 px-5 py-2 rounded-xl"
                             placeholder="Apellido"
                         />
                     </label>
@@ -27,7 +27,7 @@ export const RegisterView = () => {
                         Ingrese su correo electronico
                         <input 
                             type="email" 
-                            className="border border-zinc-400 px-5 py-2 rounded-xl"
+                            className="border border-zinc-300 px-5 py-2 rounded-xl"
                             placeholder="Correo Electronico"
                         />
                     </label>
@@ -37,7 +37,7 @@ export const RegisterView = () => {
                         Ingrese su clave fiscal / CUIT
                         <input 
                             type="number" 
-                            className="border border-zinc-400 px-5 py-2 rounded-xl"
+                            className="border border-zinc-300 px-5 py-2 rounded-xl"
                             placeholder="Clave Fiscal / CUIT"
                         />
                     </label>
@@ -45,7 +45,7 @@ export const RegisterView = () => {
                         Ingrese de nuevo su clave fiscal / CUIT
                         <input 
                             type="number" 
-                            className="border border-zinc-400 px-5 py-2 rounded-xl"
+                            className="border border-zinc-300 px-5 py-2 rounded-xl"
                             placeholder="Repita su Clave Fiscal / CUIT"
                         />
                     </label>
