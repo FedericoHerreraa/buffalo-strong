@@ -50,6 +50,14 @@ export const BreadCrumbs = () => {
                         </BreadcrumbItem>
                     </>
                 )}
+                {pahtname === "/register" && (
+                    <>
+                        <BreadcrumbSeparator />
+                        <BreadcrumbItem>
+                            <BreadcrumbLink href="/register">Registro</BreadcrumbLink>
+                        </BreadcrumbItem>
+                    </>
+                )}
           </BreadcrumbList>
         </Breadcrumb>
     )
