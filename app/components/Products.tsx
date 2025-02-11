@@ -1,5 +1,6 @@
 
 import Image from "next/image"
+import Link from "next/link"
 import { supabase } from "@/lib/supabaseClient"
 
 export const Products = async () => {
@@ -12,7 +13,11 @@ export const Products = async () => {
 
             <section className="flex justify-center gap-5 mt-20">
                 {prods?.map((prod, index) => (
-                    <div key={index} className="w-[350px] shadow-md p-5 rounded-md hover:scale-105 transition-all duration-200 cursor-pointer">
+                    <Link 
+                        href={`/products/${prod.id}`}
+                        key={index} 
+                        className="w-[350px] shadow-md p-5 rounded-md hover:scale-105 transition-all duration-200 cursor-pointer"
+                    >
                         <h2 className="text-2xl">{prod.title}</h2>
                         {prod.img.length > 0 && (
                             <Image 
@@ -21,7 +26,6 @@ export const Products = async () => {
                                 alt="Alt de la imagen"
                                 width={300}
                                 height={300}
-                                unoptimized={true}
                             />
                         )}
                         <p className="text-zinc-600">{prod.description}</p>
@@ -30,7 +34,7 @@ export const Products = async () => {
                             <p className="text-md text-zinc-800 font-semibold">Publico: ${prod.sugestedPrice}</p>
                             <p className={`text-md text-zinc-800 w-fit px-4 py-1 rounded-full ${prod.stock > 10 ? 'bg-green-600' : prod.stock > 0 ? 'bg-yellow-600' : 'bg-red-700'}`}>Stock: {prod.stock}</p>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </section>
         </div>

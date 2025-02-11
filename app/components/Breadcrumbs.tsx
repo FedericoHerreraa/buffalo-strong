@@ -1,6 +1,8 @@
 'use client'
 
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation"
+import { supabase } from "@/lib/supabaseClient";
 
 import {
     Breadcrumb,
@@ -12,7 +14,27 @@ import {
 } from "@/app/components/ui/breadcrumb"
 
 export const BreadCrumbs = () => {
-    const pahtname = usePathname()
+    const pathname = usePathname()
+    const [productTitle, setProductTitle] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchProductTitle = async () => {
+            if (pathname.startsWith("/products/")) {
+                const id = pathname.split("/").pop();
+                const { data: prod } = await supabase
+                    .from("products")
+                    .select("title")
+                    .eq("id", id)
+                    .single();
+                
+                if (prod) {
+                    setProductTitle(prod.title);
+                }
+            }
+        };
+
+        fetchProductTitle();
+    }, [pathname])
     
     return (
         <Breadcrumb>
@@ -20,13 +42,13 @@ export const BreadCrumbs = () => {
               <BreadcrumbItem>
                 <BreadcrumbLink href="/">Home</BreadcrumbLink>
               </BreadcrumbItem>
-              {pahtname === "/" && (
+              {pathname === "/" && (
                 <>
                     <BreadcrumbSeparator />
                     <BreadcrumbEllipsis />
                 </>
               )}
-              {pahtname === "/about-us" && (
+              {pathname === "/about-us" && (
                 <>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
@@ -34,7 +56,7 @@ export const BreadCrumbs = () => {
                     </BreadcrumbItem>
                 </>
               )}
-                {pahtname === "/contact-us" && (
+                {pathname === "/contact-us" && (
                     <>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
@@ -42,7 +64,7 @@ export const BreadCrumbs = () => {
                         </BreadcrumbItem>
                     </>
                 )}
-                {pahtname === "/news" && (
+                {pathname === "/news" && (
                     <>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
@@ -50,11 +72,19 @@ export const BreadCrumbs = () => {
                         </BreadcrumbItem>
                     </>
                 )}
-                {pahtname === "/register" && (
+                {pathname === "/register" && (
                     <>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
                             <BreadcrumbLink href="/register">Registro</BreadcrumbLink>
+                        </BreadcrumbItem>
+                    </>
+                )}
+                {pathname.startsWith("/products/") && productTitle && (
+                    <>
+                        <BreadcrumbSeparator />
+                        <BreadcrumbItem>
+                            <BreadcrumbLink href={pathname}>{productTitle}</BreadcrumbLink>
                         </BreadcrumbItem>
                     </>
                 )}
