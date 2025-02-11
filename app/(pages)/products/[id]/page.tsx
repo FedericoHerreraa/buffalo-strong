@@ -2,8 +2,9 @@ import { supabase } from "@/lib/supabaseClient";
 import Image from "next/image";
 
 
-export default async function Page({ params } : { params: { id: string } }) {
-    const { data: product } = await supabase.from("products").select("*").eq("id", params.id).single();
+export default async function Page({ params } : { params: Promise<{ id: string }> }) {
+    const parameters = await params;
+    const { data: product } = await supabase.from("products").select("*").eq("id", parameters.id).single();
 
     if (!product) {
         return <p className="text-center text-red-500">Producto no encontrado</p>;
