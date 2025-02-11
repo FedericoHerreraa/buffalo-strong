@@ -1,4 +1,7 @@
+'use client'
 
+import { useCart } from "@/app/context/CartContext"
+import Image from "next/image";
 import {
     Sheet,
     SheetContent,
@@ -8,14 +11,22 @@ import {
     SheetTrigger,
 } from "@/app/components/ui/sheet"
 
-import { FaCartShopping } from "react-icons/fa6"
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Badge } from '@mui/material';
+
   
 
 export const Cart = () => {
+    const { cart } = useCart()
+
+    console.log(cart.length)
+
     return (
         <Sheet>
             <SheetTrigger>
-                <FaCartShopping className="text-2xl cursor-pointer hover:text-[#8d572f] transition-all" />
+                <Badge badgeContent={cart.length} color="success">
+                    <ShoppingCartIcon fontSize="large"/>
+                </Badge>
             </SheetTrigger>
             <SheetContent className="bg-white">
                 <SheetHeader>
@@ -26,16 +37,21 @@ export const Cart = () => {
                     </SheetDescription>
                 </SheetHeader>
                 <section className="mt-10 flex flex-col gap-5">
-                    <div className="h-16 w-full rounded-md border border-zinc-400">
-                    </div>
-                    <div className="h-16 w-full rounded-md border border-zinc-400">
-                    </div>
-                    <div className="h-16 w-full rounded-md border border-zinc-400">
-                    </div>
-                    <div className="h-16 w-full rounded-md border border-zinc-400">
-                    </div>
-                    <div className="h-16 w-full rounded-md border border-zinc-400">
-                    </div>
+                    {cart.map((item, index) => (
+                        <div key={index} className="flex items-center gap-5 p-2 border border-zinc-300 rounded-xl">
+                            <Image 
+                                src={item.img[0]}
+                                alt={item.title}
+                                width={100}
+                                height={100}
+                            />
+                            <div className="flex flex-col gap-1">
+                                <p className="text-lg font-semibold">{item.title}</p>
+                                <p className="text-sm text-zinc-600">Cantidad: {item.quantity}</p>
+                                <p className="text-sm text-zinc-600">Precio: ${item.sugestedPrice}</p>
+                            </div>
+                        </div>
+                    ))}
                 </section>
                 <div className="flex justify-center">
                     <button className="mt-10 bg-gray-400 rounded-md px-5 py-2">

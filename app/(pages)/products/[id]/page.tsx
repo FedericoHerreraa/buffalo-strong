@@ -1,3 +1,4 @@
+import { AddToCart } from "@/app/components/AddToCart";
 import { supabase } from "@/lib/supabaseClient";
 import Image from "next/image";
 
@@ -7,7 +8,7 @@ export default async function Page({ params } : { params: Promise<{ id: string }
     const { data: product } = await supabase.from("products").select("*").eq("id", parameters.id).single();
 
     if (!product) {
-        return <p className="text-center text-red-500">Producto no encontrado</p>;
+        return <p className="h-[50vh] text-center text-red-500">Producto no encontrado</p>;
     }
 
     return (
@@ -36,6 +37,8 @@ export default async function Page({ params } : { params: Promise<{ id: string }
                 <p className={`mt-2 text-white py-1 px-4 w-fit rounded-full ${product.stock > 10 ? 'bg-green-600' : product.stock > 0 ? 'bg-yellow-600' : 'bg-red-700'}`}>
                     Stock: {product.stock}
                 </p>
+                
+                <AddToCart prod={product}/>
             </div>
         </div>
     )
