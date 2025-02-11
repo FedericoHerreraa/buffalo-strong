@@ -12,7 +12,21 @@ import {
 
 import { MdOutlineLogin } from "react-icons/md";
 
-export const Login = () => {
+export const LoginView = ({
+    email,
+    setEmail,
+    password,
+    setPassword,
+    registerNewUser,
+    loading
+}: {
+    email: string
+    setEmail: (email: string) => void
+    password: string
+    setPassword: (password: string) => void
+    registerNewUser: () => void
+    loading: boolean
+}) => {
     return (
         <Drawer>
             <DrawerTrigger>
@@ -30,6 +44,8 @@ export const Login = () => {
                 <div>
                     <label htmlFor="email" className="text-zinc-300 ml-1">Ingrese su correo electrónico</label>
                     <input 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="tu@servicio.com"
                         type="email" 
                         className="w-full mt-2 bg-zinc-800 px-4 py-2 rounded-xl text-zinc-300 focus:outline-none" 
@@ -39,14 +55,20 @@ export const Login = () => {
                     <label htmlFor="password" className="text-zinc-300 ml-1">Ingrese su contraseña</label>
                     <input 
                         placeholder="clave"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         type="password" 
                         className="w-full mt-2 bg-zinc-800 px-4 py-2 rounded-xl text-zinc-300 focus:outline-none" 
                     />
                 </div>
-                <button className="bg-zinc-600 hover:bg-zinc-500 w-fit px-4 py-1 rounded-md">
-                    <span className="text-zinc-300">Ingresar</span>
-                </button>
               </form>
+              <div className="flex justify-center mt-10">
+                <button 
+                  onClick={registerNewUser}
+                  className="bg-zinc-600 hover:bg-zinc-500 w-fit px-4 py-1 rounded-md">
+                    <span className="text-zinc-300">{loading ? 'Ingresando...' : 'Ingresar'}</span>
+                </button>
+              </div>
               <DrawerFooter className="flex items-center">
                 <DrawerClose className="bg-gray-800 hover:scale-105 transition rounded-md px-4 py-2 w-fit mx-auto">
                   <span className="text-zinc-300">Cerrar</span>

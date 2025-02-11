@@ -5,8 +5,8 @@ import { BreadCrumbs } from "@/app/components/Breadcrumbs";
 
 import { FaUser, FaUserPlus,  } from "react-icons/fa6";
 import { TfiSearch } from "react-icons/tfi";
-import { Login } from "./Login";
 import { Cart } from "./Cart";
+import { LoginController } from "./LoginController";
 
 
 export const Header = () => {
@@ -23,7 +23,7 @@ export const Header = () => {
             <p>Registro Comercio</p>
           </Link>
           
-          <Login />
+          <LoginController />
         </div>
 
         <div className="flex gap-6 text-md font-semibold ">
@@ -52,7 +52,7 @@ export const Header = () => {
                   height={150}
               />
           </Link>
-          <div className="relative w-1/2">
+          <div className="relative w-1/2 border border-zinc-300 rounded-xl">
               <input 
                   type="text" 
                   placeholder="Buscá tu producto aquí..." 
