@@ -45,7 +45,7 @@ export const BreadCrumbs = () => {
               {pathname === "/" && (
                 <>
                     <BreadcrumbSeparator />
-                    <BreadcrumbEllipsis />
+                    <BreadcrumbEllipsis className="h-5 w-5"/>
                 </>
               )}
               {pathname === "/about-us" && (

@@ -11,10 +11,10 @@ import { Cart } from "./Cart";
 
 export const Header = () => {
   return (
-    <header className="flex flex-col border-b-2">
-      <nav className="flex items-center justify-between h-12 px-6 py-4 border-b-2 bg-zinc-100">
+    <header className="sticky top-0 z-50 flex flex-col border-b-2">
+      <nav className="flex items-center justify-between h-12 px-6 py-4 border-b-2 bg-zinc-800 text-zinc-300">
         <div className="flex gap-7 text-md ">
-          <div className="flex items-center gap-2 bg-zinc-700 rounded-full px-3 py-1 text-zinc-300">
+          <div className="flex items-center gap-2 bg-zinc-600 rounded-full px-3 py-1 text-zinc-300">
             <FaUser size={13}/>
             <p>Invitado</p>
           </div>
@@ -42,7 +42,7 @@ export const Header = () => {
         </div>
       </nav>
 
-      <div className="sticky top-0 bg-white z-50">
+      <div className="bg-white">
         <section className="flex items-center justify-between px-6 py-4 border-b-2">
           <Link href='/' className="text-xl font-bold w-1/2">
               <Image
@@ -65,7 +65,7 @@ export const Header = () => {
           </div>
         </section>
 
-        <section className="px-6 py-2 text-sm text-gray-500">
+        <section className="px-6 p-1 text-sm text-gray-500 bg-zinc-100">
           <BreadCrumbs />
         </section>
       </div>
