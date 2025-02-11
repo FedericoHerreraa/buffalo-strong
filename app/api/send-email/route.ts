@@ -19,9 +19,9 @@ export async function POST(req: NextRequest) {
     try {
         // Email enviado a "buffalo"
         const { data, error } = await resend.emails.send({
-            from: 'fede.herrera@asneeed.com',
+            from: 'federicoherrera@asneeed.com',
             to: email,
-            subject: 'My First Email',
+            subject: 'Registro en Buffalo Strong',
             html: `
                 <h1>¡Hola Buffalo!</h1>
                 <p>Este es un email de prueba enviado desde el servidor.</p>

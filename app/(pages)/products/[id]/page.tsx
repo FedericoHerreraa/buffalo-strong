@@ -33,9 +33,9 @@ export default async function Page({ params } : { params: Promise<{ id: string }
             <div className="w-1/2">
                 <p className="text-zinc-600">{product.description}</p>
                 <p className="mt-4 font-semibold">Marca: {product.brand}</p>
-                <p className="mt-2 text-lg font-bold text-green-700">Precio: ${product.sugestedPrice}</p>
+                <p className="mt-2 text-lg font-bold">Precio: ${product.sugestedPrice}</p>
                 <p className={`mt-2 text-white py-1 px-4 w-fit rounded-full ${product.stock > 10 ? 'bg-green-600' : product.stock > 0 ? 'bg-yellow-600' : 'bg-red-700'}`}>
-                    Stock: {product.stock}
+                    {product.stock} {product.stock > 1 ? 'Unidades' : 'Unidad'}
                 </p>
                 
                 <AddToCart prod={product}/>

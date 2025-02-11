@@ -30,7 +30,7 @@ export const AddToCart = ({ prod } : { prod: ProductDB }) => {
                     addToCart({...prod, quantity: count})
                     setCount(1)
                 }}
-                className="bg-zinc-800 px-4 py-2 rounded-lg text-zinc-300 hover:bg-zinc-200 hover:text-white transition-all duration-150"
+                className="bg-zinc-800 px-4 py-2 rounded-lg text-zinc-300 hover:bg-zinc-600 hover:text-white transition-all duration-150"
             >
                 Agregar al carrito
             </button>
