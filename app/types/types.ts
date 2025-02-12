@@ -33,4 +33,7 @@ export interface CartContextType {
     addToCart: (product: ProductCart) => void;
     removeFromCart: (product: ProductCart) => void;
     deleteOne: (id: number) => void;
+    incrementOne: (id: number) => void;
+    decrementOne: (id: number) => void;
+    totalPurchase: () => number;
 }
