@@ -22,7 +22,7 @@ export const Cart = () => {
         <Sheet>
             <SheetTrigger>
                 <Badge badgeContent={cart.length} color="success">
-                    <ShoppingCartIcon fontSize="large"/>
+                    <ShoppingCartIcon fontSize="large" className="text-zinc-800"/>
                 </Badge>
             </SheetTrigger>
             <SheetContent className="bg-white">
