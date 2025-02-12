@@ -29,6 +29,8 @@ export interface ProductDB {
 
 export interface CartContextType {
     cart: ProductCart[];
+    setCart: (cart: ProductCart[]) => void;
     addToCart: (product: ProductCart) => void;
     removeFromCart: (product: ProductCart) => void;
+    deleteOne: (id: number) => void;
 }

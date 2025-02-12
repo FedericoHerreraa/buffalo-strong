@@ -13,14 +13,14 @@ export const AddToCart = ({ prod } : { prod: ProductDB }) => {
             <div className="flex items-center justify-between mx-2">
                 <p 
                     onClick={() => setCount(count + 1)}
-                    className="text-xl cursor-pointer"
+                    className="text-xl cursor-pointer px-2 border rounded-md border-white hover:border-zinc-400 transition-all duration-100"
                 >
                     +
                 </p>
-                <p>{count}</p>
+                <p className="font-bold">{count}</p>
                 <p 
                     onClick={count > 0 ? () => setCount(count - 1) : () => {}}
-                    className="text-xl cursor-pointer"
+                    className="text-xl cursor-pointer px-2 border rounded-md border-white hover:border-zinc-400 transition-all duration-100"
                 >
                     -
                 </p>

@@ -37,7 +37,7 @@ export const BreadCrumbs = () => {
     }, [pathname])
     
     return (
-        <Breadcrumb>
+        <Breadcrumb >
           <BreadcrumbList>
               <BreadcrumbItem>
                 <Link href='/'>Home</Link>

@@ -5,8 +5,10 @@ import { CartContextType, ProductCart } from "@/app/types/types";
 
 const CartContext = createContext<CartContextType>({
     cart: [] as ProductCart[],
+    setCart: () => {},
     addToCart: () => {},
-    removeFromCart: () => {}
+    removeFromCart: () => {},
+    deleteOne: () => {},
 });
 
 export const CartProvider = ({ children } : { children: React.ReactNode }) => {
@@ -20,8 +22,12 @@ export const CartProvider = ({ children } : { children: React.ReactNode }) => {
         setCart(cart.filter((item: ProductCart) => item.id !== product.id));
     }
 
+    const deleteOne = (id: number) => {
+        setCart(cart.filter((product) => product.id !== id))
+    }
+
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, deleteOne }}>
             {children}
         </CartContext.Provider>
     );

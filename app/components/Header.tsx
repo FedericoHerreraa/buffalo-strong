@@ -28,7 +28,7 @@ export const Header = () => {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 flex flex-col border-b-2">
+    <header className="sticky top-0 z-50 flex flex-col">
       <nav className="flex items-center justify-between h-12 px-6 py-4 bg-zinc-800 text-zinc-300">
         <div className="flex gap-7 text-md ">
           <div className="flex items-center gap-1 bg-zinc-600 text-sm rounded-full px-2 py-1 text-zinc-300">
@@ -59,18 +59,18 @@ export const Header = () => {
         </div>
       </nav>
 
-      <div className="bg-white">
-        <section className="flex items-center justify-between px-6 py-4 bg-gradient-to-b from-zinc-700 to-white border-b-2">
+      <div>
+        <section className="flex items-center justify-between px-6 py-2 bg-[#654c38] bg-opacity-90">
           <Link href='/' className="text-xl font-bold w-1/2">
               <Image
                   src={logobuffalo} 
                   alt="Logo"
                   width={150} 
                   height={150}
-                  className={`w-[180px] h-[100px] ${isScrolled ? 'h-0 w-0' : ''} transition-all duration-150 ease-in-out`}
+                  className={`${isScrolled ? 'w-[100px] h-[55px]' : 'w-[180px] h-[100px]'} transition-all duration-250 ease-in-out`}
               />
           </Link>
-          <div className="relative w-1/2 border border-zinc-400 rounded-lg">
+          <div className="relative w-1/2 border-2 border-zinc-700 rounded-lg">
               <input 
                   type="text" 
                   placeholder="Buscá tu producto aquí..." 
@@ -83,7 +83,7 @@ export const Header = () => {
           </div>
         </section>
 
-        <section className="px-6 p-1 text-sm text-gray-500 bg-zinc-100">
+        <section className="px-6 py-2 text-sm text-gray-700 bg-zinc-400">
           <BreadCrumbs />
         </section>
       </div>

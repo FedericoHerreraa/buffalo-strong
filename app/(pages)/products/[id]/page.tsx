@@ -13,15 +13,15 @@ export default async function Page({ params } : { params: Promise<{ id: string }
 
     return (
         <div className="min-h-[100vh] w-[80%] mx-auto p-10 mt-20 flex gap-10">
-            <div className="w-1/2 border-r border-r-zinc-200">
-                <h1 className="text-4xl font-bold">{product.title}</h1>
+            <div className="w-1/2 border-r h-fit border-r-zinc-200">
+                <h1 className="text-4xl font-bold border-l-4 border-l-zinc-800 pl-5">{product.title}</h1>
                 {product.img.length > 0 && (
                     <Image 
                         src={product.img[0]} 
                         alt={product.title} 
                         width={400}
                         height={400}
-                        className="w-[400px] h-[400px] object-cover mt-5"
+                        className="w-[400px] h-[400px] object-cover my-10"
                     />
                 )}
                 <div className="flex items-center gap-5 ">

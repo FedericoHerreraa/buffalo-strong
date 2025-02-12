@@ -8,14 +8,14 @@ export const Products = async () => {
         
     return (
         <div className="min-h-[100vh]">
-            <section className="flex justify-center gap-5 mt-20 mb-20 w-[95%] mx-auto flex-wrap">
+            <section className="flex gap-5 mt-20 mb-20 w-[95%] mx-auto flex-wrap">
                 {categories.map(cat => {
                     const filteredProducts = prods?.filter(prod => prod.category === cat.keyValue);
                     return (
-                        <div key={cat.keyValue} className="mb-6">
+                        <div key={cat.keyValue} className="mb-6 w-full">
                             <div className="flex gap-5 items-center mb-10">
                                 <h1 className="text-4xl font-bold whitespace-nowrap text-[#472913]">{cat.title}</h1>
-                                <div className="flex-1 h-[1px] bg-zinc-300"></div>
+                                <div className="w-full h-[1px] bg-zinc-300"></div>
                             </div>
                             <div className="flex flex-wrap gap-4 min-h-[50px]">
                                 {filteredProducts && filteredProducts.length > 0 ? (
@@ -26,12 +26,12 @@ export const Products = async () => {
                                             className="w-[350px] shadow-md p-5 border border-zinc-200 hover:border-zinc-300 rounded-md hover:scale-105 transition-all duration-200 cursor-pointer"
                                         >
                                             <div className="flex justify-between items-center">
-                                                <h3 className="text-xl">{prod.title}</h3>
+                                                <h3 className="text-xl font-semibold">{prod.title}</h3>
                                                 <p className={`text-md text-zinc-800 w-fit px-3 py-1 rounded-full 
                                                     ${prod.stock > 10 
-                                                        ? 'bg-green-600' 
+                                                        ? 'bg-green-500' 
                                                         : prod.stock > 0 
-                                                            ? 'bg-yellow-500' 
+                                                            ? 'bg-yellow-400' 
                                                             : 'bg-red-700'}`
                                                 }>
                                                     {prod.stock} {prod.stock > 1 ? 'Unidades' : 'Unidad'}
@@ -54,7 +54,7 @@ export const Products = async () => {
                                         </Link>
                                     ))
                                 ) : (
-                                    <p className="text-gray-500 text-xl">No hay productos en esta categoría.</p>
+                                    <p className="text-gray-700 text-xl font-semibold">No hay productos en esta categoría.</p>
                                 )}
                             </div>
                         </div>
@@ -71,12 +71,15 @@ const categories = [
         id: 1,
         keyValue: 'GuitarraCriolla',
         title: 'Guitarra Criolla',
-        description: 'Guitarra criolla de calidad',
     },
     {
         id: 2,
-        keyValue: 'GuitarraElectrica',
-        title: 'Guitarra Electrica',
-        description: 'Guitarra electrica de calidad',
+        keyValue: 'AcusticasElectroacusticas',
+        title: 'Acusticas Electroacusticas',
+    },
+    {
+        id: 3,
+        keyValue: 'test',
+        title: 'Baterias',
     },
 ]
