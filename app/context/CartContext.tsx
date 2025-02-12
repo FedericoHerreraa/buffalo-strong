@@ -13,7 +13,6 @@ export const CartProvider = ({ children } : { children: React.ReactNode }) => {
     const [cart, setCart] = useState<ProductCart[]>([]);
 
     const addToCart = (product: ProductCart) => {
-        console.log(product)
         setCart([...cart, product]);
     }
 

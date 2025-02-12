@@ -26,6 +26,7 @@ export const AddToCart = ({ prod } : { prod: ProductDB }) => {
                 </p>
             </div>
             <button 
+                disabled={count === 0}
                 onClick={() => {
                     addToCart({...prod, quantity: count})
                     setCount(1)

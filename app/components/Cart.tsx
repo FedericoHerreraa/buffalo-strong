@@ -15,11 +15,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Badge } from '@mui/material';
 
   
-
 export const Cart = () => {
     const { cart } = useCart()
-
-    console.log(cart.length)
 
     return (
         <Sheet>

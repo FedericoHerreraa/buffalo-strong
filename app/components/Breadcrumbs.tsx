@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation"
 import { supabase } from "@/lib/supabaseClient";
+import Link from "next/link";
 
 import {
     Breadcrumb,
     BreadcrumbItem,
-    BreadcrumbLink,
     BreadcrumbList,
     BreadcrumbSeparator,
     BreadcrumbEllipsis
@@ -40,7 +40,7 @@ export const BreadCrumbs = () => {
         <Breadcrumb>
           <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                <Link href='/'>Home</Link>
               </BreadcrumbItem>
               {pathname === "/" && (
                 <>
@@ -52,7 +52,7 @@ export const BreadCrumbs = () => {
                 <>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                        <BreadcrumbLink href="/about-us">Sobre Nosotros</BreadcrumbLink>
+                        <Link href="/about-us">Sobre Nosotros</Link>
                     </BreadcrumbItem>
                 </>
               )}
@@ -60,7 +60,7 @@ export const BreadCrumbs = () => {
                     <>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbLink href="/contact-us">Contacto</BreadcrumbLink>
+                            <Link href="/contact-us">Contacto</Link>
                         </BreadcrumbItem>
                     </>
                 )}
@@ -68,7 +68,7 @@ export const BreadCrumbs = () => {
                     <>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbLink href="/news">Novedades</BreadcrumbLink>
+                            <Link href="/news">Novedades</Link>
                         </BreadcrumbItem>
                     </>
                 )}
@@ -76,7 +76,7 @@ export const BreadCrumbs = () => {
                     <>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbLink href="/register">Registro</BreadcrumbLink>
+                            <Link href="/register">Registro</Link>
                         </BreadcrumbItem>
                     </>
                 )}
@@ -84,7 +84,7 @@ export const BreadCrumbs = () => {
                     <>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbLink href={pathname}>{productTitle}</BreadcrumbLink>
+                            <Link href={pathname}>{productTitle}</Link>
                         </BreadcrumbItem>
                     </>
                 )}
