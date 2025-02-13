@@ -13,7 +13,7 @@ export const AdminDashboardComponent = () => {
     const { register, user } = useAuth()
     const router = useRouter()
 
-    if (!user || user.role !== 'admin') router.back()
+    if (!user || user.role !== 'admin') router.push('/')
 
     const addUser = async () => {
         const user = await register(email, password, parseInt(cuit), address)
