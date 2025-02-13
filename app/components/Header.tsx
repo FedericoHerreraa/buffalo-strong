@@ -9,16 +9,17 @@ import { BreadCrumbs } from "@/app/components/Breadcrumbs";
 
 import { FaUser, FaUserPlus,  } from "react-icons/fa6";
 import { TfiSearch } from "react-icons/tfi";
+import { CiLogout } from "react-icons/ci";
+
 import { Cart } from "./Cart";
 import { LoginController } from "./LoginController";
 
 import { merriweather } from "@/app/fonts/fonts";
 import { useAuth } from "@/app/context/AuthContext";
 
-
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { user } = useAuth()
+  const { user, logOut } = useAuth()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,14 +38,27 @@ export const Header = () => {
         <div className="flex gap-7 text-md ">
           <div className="flex items-center gap-1 bg-[#1f1106] bg-opacity-90 text-sm rounded-full px-2 py-1 text-zinc-300">
             <FaUser size={10}/>
-            <p>{user?.role}</p>
+            <p>{user ? user?.role : 'Invitado'}</p>
           </div>
-          <Link href='/register' className="flex items-center gap-2 cursor-pointer text-[#1f1106]">
-            <FaUserPlus />
-            <p>Registro Comercio</p>
-          </Link>
-          
-          <LoginController />
+          {!user ? (
+            <>
+              <Link href='/register' className="flex items-center gap-2 cursor-pointer text-[#1f1106]">
+                <FaUserPlus />
+                <p>Registro Comercio</p>
+              </Link>
+              
+              <LoginController />
+            </>
+          ) : (
+            <div className="flex items-center gap-5">
+              <p className="">Bienvenido <span className="font-semibold">{user.email}</span></p>
+              <CiLogout 
+                onClick={() => logOut()}
+                size={25} 
+                className="cursor-pointer"
+              />
+            </div>
+          )}
         </div>
 
         <div className={`flex gap-6 text-md text-[#1f1106]  transition`}>
@@ -60,9 +74,11 @@ export const Header = () => {
           <Link href="/news" className="hover:text-[#8d572f]">
             Novedades
           </Link>
-          <Link href="/admin-dashboard" className="hover:text-[#8d572f]">
-            Dashboard
-          </Link>
+          {user?.role === 'Admin' && (
+            <Link href="/admin-dashboard" className="hover:text-[#8d572f]">
+              Dashboard
+            </Link>
+          )}
         </div>
       </nav>
 

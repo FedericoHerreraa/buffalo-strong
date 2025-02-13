@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react"
+import { useRouter } from "next/navigation";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useAuth } from "@/app/context/AuthContext";
 
@@ -9,7 +10,10 @@ export const AdminDashboardComponent = () => {
     const [password, setPassword] = useState('')
     const [cuit, setCuit] = useState('')
     const [address, setAddress] = useState('')
-    const { register } = useAuth()
+    const { register, user } = useAuth()
+    const router = useRouter()
+
+    if (!user || user.role !== 'admin') router.back()
 
     const addUser = async () => {
         const user = await register(email, password, parseInt(cuit), address)

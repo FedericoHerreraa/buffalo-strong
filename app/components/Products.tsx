@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { supabase } from "@/lib/supabaseClient"
 import { merriweather } from "@/app/fonts/fonts";
+import { ProdPrice } from "./ProdPrice";
 
 export const Products = async () => {
     const { data: prods } = await supabase.from('products').select('*')
@@ -35,7 +36,7 @@ export const Products = async () => {
                                                             ? 'bg-yellow-400' 
                                                             : 'bg-red-700'}`
                                                 }>
-                                                    {prod.stock} {prod.stock > 1 ? 'Unidades' : 'Unidad'}
+                                                    {prod.stock} 
                                                 </p>
                                             </div>
                                             {prod.img.length > 0 && (
@@ -49,7 +50,7 @@ export const Products = async () => {
                                             )}
                                             <p className="text-zinc-600">{prod.description}</p>
                                             <div className="mt-6 flex justify-between items-center">
-                                                <p className="text-md text-zinc-800">Precio público: <span className="font-semibold">${prod.sugestedPrice}</span></p>
+                                                <ProdPrice prod={prod}/>
                                                 <p>Marca: {prod.brand}</p>
                                             </div>
                                         </Link>
