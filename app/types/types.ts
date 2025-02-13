@@ -1,5 +1,4 @@
 
-
 export interface ProductCart {
     id: number;
     title: string;
@@ -36,4 +35,21 @@ export interface CartContextType {
     incrementOne: (id: number) => void;
     decrementOne: (id: number) => void;
     totalPurchase: () => number;
+}
+
+export interface User {
+    id: string,
+    created_at: string,
+    email: string,
+    role: string,
+    cuit: number,
+    address: string,
+}
+
+export interface AuthContextType {
+    user: User | null | undefined;
+    login: (email: string, password: string) => void;
+    register: (email: string, password: string, cuit: number, address: string) => void;
+    logOut: () => void;
+    loadProfile: () => void;
 }

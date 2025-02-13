@@ -56,11 +56,14 @@ export const Header = () => {
           <Link href="/news" className="hover:text-[#8d572f]  transition">
             Novedades
           </Link>
+          <Link href="/admin-dashboard" className="hover:text-[#8d572f]  transition">
+            Dashboard
+          </Link>
         </div>
       </nav>
 
       <div>
-        <section className="flex items-center justify-between px-6 py-2 bg-[#654c38] bg-opacity-90">
+        <section className="flex items-center justify-between px-6 py-2 bg-zinc-800 bg-opacity-90">
           <Link href='/' className="text-xl font-bold w-1/2">
               <Image
                   src={logobuffalo} 
@@ -83,7 +86,7 @@ export const Header = () => {
           </div>
         </section>
 
-        <section className="px-6 py-2 text-sm text-gray-700 bg-zinc-400">
+        <section className="px-6 py-2 text-sm text-gray-700 bg-zinc-100">
           <BreadCrumbs />
         </section>
       </div>

@@ -31,7 +31,7 @@ export const Cart = () => {
         <Sheet>
             <SheetTrigger>
                 <Badge badgeContent={cart.length} color="success">
-                    <ShoppingCartIcon fontSize="large" className="text-zinc-900"/>
+                    <ShoppingCartIcon fontSize="large" className="text-zinc-200"/>
                 </Badge>
             </SheetTrigger>
             <SheetContent className="bg-white">

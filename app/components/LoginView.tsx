@@ -17,14 +17,14 @@ export const LoginView = ({
     setEmail,
     password,
     setPassword,
-    registerNewUser,
+    loginUser,
     loading
 }: {
     email: string
     setEmail: (email: string) => void
     password: string
     setPassword: (password: string) => void
-    registerNewUser: () => void
+    loginUser: () => void
     loading: boolean
 }) => {
     return (
@@ -64,7 +64,7 @@ export const LoginView = ({
               </form>
               <div className="flex justify-center mt-10">
                 <button 
-                  onClick={registerNewUser}
+                  onClick={loginUser}
                   className="bg-zinc-600 hover:bg-zinc-500 w-fit px-4 py-1 rounded-md">
                     <span className="text-zinc-300">{loading ? 'Ingresando...' : 'Ingresar'}</span>
                 </button>
