@@ -8,13 +8,12 @@ export const LoginController = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [loading, setLoading] = useState(false)
-    const { login, user } = useAuth()
+    const { login } = useAuth()
     
     const loginUser = async () => {
         setLoading(true)
 
         await login(email, password)
-        console.log(user)
 
         setLoading(false)
     }

@@ -1,16 +1,4 @@
-
-interface RegisterViewProps {
-    formData: {
-        name: string;
-        lastName: string;
-        email: string;
-        fiscalKey: string;
-        fiscalKeyRepeat: string;
-    };
-    loading: boolean;
-    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    handleSubmit: (e: React.FormEvent) => void;
-}
+import { RegisterViewProps } from "@/app/types/types";
 
 
 export const RegisterView: React.FC<RegisterViewProps> = ({
@@ -60,6 +48,17 @@ export const RegisterView: React.FC<RegisterViewProps> = ({
                     </label>
                 </div>
                 <div className="flex flex-col gap-5 w-[350px]">
+                    <label className="flex flex-col gap-1 text-zinc-600">
+                        Ingrese la direccion
+                        <input 
+                            type="text" 
+                            name="address"
+                            value={formData.address}
+                            onChange={handleChange}
+                            className="border border-zinc-300 px-5 py-2 rounded-xl"
+                            placeholder="Direccion"
+                        />
+                    </label>
                     <label className="flex flex-col gap-1 text-zinc-600">
                         Ingrese su clave fiscal / CUIT
                         <input 

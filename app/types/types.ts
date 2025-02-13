@@ -53,3 +53,17 @@ export interface AuthContextType {
     logOut: () => void;
     loadProfile: () => void;
 }
+
+export interface RegisterViewProps {
+    formData: {
+        name: string;
+        lastName: string;
+        email: string;
+        address: string;
+        fiscalKey: string;
+        fiscalKeyRepeat: string;
+    };
+    loading: boolean;
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleSubmit: (e: React.FormEvent) => void;
+}

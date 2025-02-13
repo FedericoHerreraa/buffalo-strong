@@ -40,6 +40,7 @@ export const AuthProvider = ({ children } : { children: React.ReactNode }) => {
             return
         }
 
+        console.log(fullUser)
         setUser(fullUser)
     }
 

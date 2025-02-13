@@ -12,7 +12,7 @@ import {
     SheetTrigger,
 } from "@/app/components/ui/sheet"
 
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { Badge } from '@mui/material';
 
 export const Cart = () => {
@@ -31,7 +31,7 @@ export const Cart = () => {
         <Sheet>
             <SheetTrigger>
                 <Badge badgeContent={cart.length} color="success">
-                    <ShoppingCartIcon fontSize="large" className="text-zinc-200"/>
+                    <LocalMallOutlinedIcon fontSize="large" className="text-zinc-200"/>
                 </Badge>
             </SheetTrigger>
             <SheetContent className="bg-white">

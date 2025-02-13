@@ -2,6 +2,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { supabase } from "@/lib/supabaseClient"
+import { merriweather } from "@/app/fonts/fonts";
 
 export const Products = async () => {
     const { data: prods } = await supabase.from('products').select('*')
@@ -14,7 +15,7 @@ export const Products = async () => {
                     return (
                         <div key={cat.keyValue} className="mb-6 w-full">
                             <div className="flex gap-5 items-center mb-10">
-                                <h1 className="text-4xl font-bold whitespace-nowrap text-[#472913]">{cat.title}</h1>
+                                <h1 className={`text-4xl font-bold whitespace-nowrap text-[#472913] ${merriweather.className}`}>{cat.title}</h1>
                                 <div className="w-full h-[1px] bg-zinc-300"></div>
                             </div>
                             <div className="flex flex-wrap gap-4 min-h-[50px]">
@@ -23,7 +24,7 @@ export const Products = async () => {
                                         <Link 
                                             href={`/products/${prod.id}`}
                                             key={index} 
-                                            className="w-[350px] shadow-md p-5 border border-zinc-200 hover:border-zinc-300 rounded-md hover:scale-105 transition-all duration-200 cursor-pointer"
+                                            className="w-[350px] shadow-md p-5 border border-zinc-200 hover:border-zinc-300 bg-white rounded-md hover:scale-105 transition-all duration-200 cursor-pointer"
                                         >
                                             <div className="flex justify-between items-center">
                                                 <h3 className="text-xl font-semibold">{prod.title}</h3>

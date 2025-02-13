@@ -12,6 +12,8 @@ import { TfiSearch } from "react-icons/tfi";
 import { Cart } from "./Cart";
 import { LoginController } from "./LoginController";
 
+import { merriweather } from "@/app/fonts/fonts";
+
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,13 +31,13 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 flex flex-col">
-      <nav className="flex items-center justify-between h-12 px-6 py-4 bg-zinc-800 text-zinc-300">
+      <nav className={`flex items-center justify-between h-12 px-6 py-4 bg-zinc-100 text-zinc-800 ${merriweather.className}`}>
         <div className="flex gap-7 text-md ">
-          <div className="flex items-center gap-1 bg-zinc-600 text-sm rounded-full px-2 py-1 text-zinc-300">
-            <FaUser size={13}/>
+          <div className="flex items-center gap-1 bg-[#1f1106] bg-opacity-90 text-sm rounded-full px-2 py-1 text-zinc-300">
+            <FaUser size={10}/>
             <p>Invitado</p>
           </div>
-          <Link href='/register' className="flex items-center gap-2 cursor-pointer">
+          <Link href='/register' className="flex items-center gap-2 cursor-pointer text-[#1f1106]">
             <FaUserPlus />
             <p>Registro Comercio</p>
           </Link>
@@ -43,27 +45,27 @@ export const Header = () => {
           <LoginController />
         </div>
 
-        <div className="flex gap-6 text-md">
-          <Link href="/" className="hover:text-[#8d572f]  transition">
+        <div className={`flex gap-6 text-md text-[#1f1106]  transition`}>
+          <Link href="/" className="hover:text-[#8d572f]">
             Inicio
           </Link>
-          <Link href="/about-us" className="hover:text-[#8d572f] transition">
+          <Link href="/about-us" className="hover:text-[#8d572f]">
             Nosotros
           </Link>
-          <Link href="/contact-us" className="hover:text-[#8d572f]  transition">
+          <Link href="/contact-us" className="hover:text-[#8d572f]">
             Contáctanos
           </Link>
-          <Link href="/news" className="hover:text-[#8d572f]  transition">
+          <Link href="/news" className="hover:text-[#8d572f]">
             Novedades
           </Link>
-          <Link href="/admin-dashboard" className="hover:text-[#8d572f]  transition">
+          <Link href="/admin-dashboard" className="hover:text-[#8d572f]">
             Dashboard
           </Link>
         </div>
       </nav>
 
       <div>
-        <section className="flex items-center justify-between px-6 py-2 bg-zinc-800 bg-opacity-90">
+        <section className="flex items-center justify-between px-6 py-2 bg-[#1f1106] bg-opacity-90">
           <Link href='/' className="text-xl font-bold w-1/2">
               <Image
                   src={logobuffalo} 
@@ -73,7 +75,7 @@ export const Header = () => {
                   className={`${isScrolled ? 'w-[100px] h-[55px]' : 'w-[180px] h-[100px]'} transition-all duration-250 ease-in-out`}
               />
           </Link>
-          <div className="relative w-1/2 border-2 border-zinc-700 rounded-lg">
+          <div className="relative w-1/2 rounded-lg">
               <input 
                   type="text" 
                   placeholder="Buscá tu producto aquí..." 
@@ -86,7 +88,7 @@ export const Header = () => {
           </div>
         </section>
 
-        <section className="px-6 py-2 text-sm text-gray-700 bg-zinc-100">
+        <section className="px-6 py-2 text-sm text-[#1f1106] font-semibold bg-[#ffdbbf] bg-opacity-90">
           <BreadCrumbs />
         </section>
       </div>

@@ -18,7 +18,9 @@ export const AdminDashboardComponent = () => {
 
     return (
         <div className="min-h-[100vh]">
-            <h1 className="text-3xl m-5">Dashboard de Administrador</h1>
+            <div className="flex justify-center mt-10">
+                <h1 className="text-4xl mb-3">Dashboard de Administrador</h1>
+            </div>
             <div className="flex justify-between items-center w-[80%] mx-auto mt-20">
                 <form className="w-1/3 flex flex-col gap-5">
                     <h2 className="text-2xl font-semibold">Agregar usuario a la Base de Datos</h2>

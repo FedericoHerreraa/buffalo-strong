@@ -8,6 +8,7 @@ export const RegisterController = () => {
         name: "",
         lastName: "",
         email: "",
+        address: "",
         fiscalKey: "",
         fiscalKeyRepeat: ""
     })
@@ -22,6 +23,7 @@ export const RegisterController = () => {
             name: "",
             lastName: "",
             email: "",
+            address: "",
             fiscalKey: "",
             fiscalKeyRepeat: ""
         });
