@@ -8,12 +8,12 @@ export const LoginController = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [loading, setLoading] = useState(false)
-    const { register } = useAuth()
+    const { login } = useAuth()
     
     const loginUser = async () => {
         setLoading(true)
 
-        await register(email, password, 112233, 'ramon falcon')
+        await login(email, password)
 
         setLoading(false)
     }

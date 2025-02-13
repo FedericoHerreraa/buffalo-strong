@@ -13,10 +13,12 @@ import { Cart } from "./Cart";
 import { LoginController } from "./LoginController";
 
 import { merriweather } from "@/app/fonts/fonts";
+import { useAuth } from "@/app/context/AuthContext";
 
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { user } = useAuth()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +37,7 @@ export const Header = () => {
         <div className="flex gap-7 text-md ">
           <div className="flex items-center gap-1 bg-[#1f1106] bg-opacity-90 text-sm rounded-full px-2 py-1 text-zinc-300">
             <FaUser size={10}/>
-            <p>Invitado</p>
+            <p>{user?.role}</p>
           </div>
           <Link href='/register' className="flex items-center gap-2 cursor-pointer text-[#1f1106]">
             <FaUserPlus />
