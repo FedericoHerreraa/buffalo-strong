@@ -1,7 +1,5 @@
 'use client'
 
-
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logobuffalo from "@/app/images/logos/Logobuffalo.png"
@@ -18,19 +16,7 @@ import { merriweather } from "@/app/fonts/fonts";
 import { useAuth } from "@/app/context/AuthContext";
 
 export const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const { user, logOut } = useAuth()
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <header className="sticky top-0 z-50 flex flex-col">
@@ -84,24 +70,23 @@ export const Header = () => {
 
       <div>
         <section className="flex items-center justify-between px-6 py-2 bg-[#1f1106] bg-opacity-90">
-          <Link href='/' className="text-xl font-bold w-1/2">
+          <Link href='/' className="text-xl font-bold w-1/5">
               <Image
                   src={logobuffalo} 
                   alt="Logo"
-                  width={150} 
-                  height={150}
-                  className={`${isScrolled ? 'w-[100px] h-[55px]' : 'w-[180px] h-[100px]'} transition-all duration-250 ease-in-out`}
+                  width={120} 
+                  className={`transition-all duration-250 ease-in-out`}
               />
           </Link>
-          <div className="relative w-1/2 rounded-lg">
+          <div className="relative w-3/5 rounded-lg">
               <input 
                   type="text" 
                   placeholder="Buscá tu producto aquí..." 
-                  className="w-full bg-zinc-100 px-4 py-2 rounded-md text-zinc-500 focus:outline-none"
+                  className="w-full bg-zinc-100 px-4 py-2 rounded-lg text-zinc-500 focus:outline-none"
               />
               <TfiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer size-5" />
           </div>
-          <div className="w-1/2 flex justify-end pr-5">
+          <div className="w-1/5 flex justify-end pr-5">
             <Cart />
           </div>
         </section>
