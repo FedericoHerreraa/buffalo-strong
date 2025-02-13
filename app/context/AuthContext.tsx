@@ -1,7 +1,7 @@
 
 'use client'
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContextType, User } from "@/app/types/types";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -10,11 +10,44 @@ const AuthContext = createContext<AuthContextType>({
     login: () => {},
     register: () => {},
     logOut: () => {},
-    loadProfile: () => {},
+    loading: true
 });
 
 export const AuthProvider = ({ children } : { children: React.ReactNode }) => {
     const [user, setUser] = useState<User | null>();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchSession = async () => {
+            const { data, error } = await supabase.auth.getSession();
+
+            if (error) {
+                console.error('Error:', error)
+                return
+            }
+
+            if (data.session) {
+                const idUser = data.session.user.id
+
+                const { data: fullUser, error: fetchError } = await supabase
+                    .from('profiles')
+                    .select('*')  
+                    .eq('id', idUser)  
+                    .single()
+
+                if (fetchError) {
+                    console.error("Error al obtener el perfil completo:", fetchError)
+                    return
+                }
+
+                setUser(fullUser)
+            }
+
+            setLoading(false);
+        };
+
+        fetchSession()
+    }, []);
 
     const login = async (email: string, password: string) => {
         const { data, error } = await supabase.auth.signInWithPassword({
@@ -47,7 +80,10 @@ export const AuthProvider = ({ children } : { children: React.ReactNode }) => {
     const register = async (email: string, password: string, cuit: number, address: string) => {
         const { data, error } = await supabase.auth.signUp({
             email,
-            password
+            password,
+            options: {
+                emailRedirectTo: 'http://localhost:3000/auth/confirm'
+            }
         })
 
         if (error) {
@@ -61,7 +97,7 @@ export const AuthProvider = ({ children } : { children: React.ReactNode }) => {
         const { error: profileError } = await supabase.from('profiles').insert({
             id: user.id,
             email: user.email,
-            role: 'user',
+            role: 'Cliente',
             cuit,
             address
         })
@@ -88,14 +124,11 @@ export const AuthProvider = ({ children } : { children: React.ReactNode }) => {
 
     const logOut = async () => {
         await supabase.auth.signOut()
-    }
-
-    const loadProfile = async () => {
-        // Logica aca
+        setUser(null)
     }
 
     return (
-        <AuthContext.Provider value={{ login, user, register, logOut, loadProfile }}>
+        <AuthContext.Provider value={{ login, user, register, logOut, loading }}>
             {children}
         </AuthContext.Provider>
     );

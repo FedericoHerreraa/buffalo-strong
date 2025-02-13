@@ -51,7 +51,7 @@ export interface AuthContextType {
     login: (email: string, password: string) => void;
     register: (email: string, password: string, cuit: number, address: string) => void;
     logOut: () => void;
-    loadProfile: () => void;
+    loading: boolean;
 }
 
 export interface RegisterViewProps {
