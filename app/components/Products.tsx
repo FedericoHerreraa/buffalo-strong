@@ -48,7 +48,7 @@ export const Products = async () => {
                                                     className="p-4"
                                                 />
                                             )}
-                                            <p className="text-zinc-600">{prod.description}</p>
+                                            
                                             <div className="mt-6 flex justify-between items-center">
                                                 <ProdPrice prod={prod}/>
                                                 <p>Marca: {prod.brand}</p>
