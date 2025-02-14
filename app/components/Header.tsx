@@ -22,7 +22,7 @@ export const Header = () => {
     <header className="sticky top-0 z-50 flex flex-col">
       <nav className={`flex items-center justify-between h-12 px-6 py-4 bg-zinc-300 text-zinc-800 ${merriweather.className}`}>
         <div className="flex gap-7 text-md ">
-          <div className="flex items-center gap-1 bg-[#583214] bg-opacity-90 text-sm rounded-full px-2 py-1 text-zinc-300">
+          <div className="flex items-center gap-1 bg-[#1f1106] bg-opacity-90 text-sm rounded-full px-2 py-1 text-zinc-300">
             <FaUser size={10}/>
             <p>{user ? user?.role : 'Invitado'}</p>
           </div>
