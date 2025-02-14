@@ -11,7 +11,7 @@ export const Products = async () => {
         
     return (
         <div className={`min-h-[100vh] ${merriweather_sans.className}`}>
-            <section className="flex gap-5 mt-20 mb-20 w-[95%] mx-auto flex-wrap">
+            <section className="flex gap-5 mt-20 mb-20 w-[90%] mx-auto flex-wrap">
                 <StockReference />
                 {categories.map(cat => {
                     const filteredProducts = prods?.filter(prod => prod.category === cat.keyValue);
@@ -82,11 +82,16 @@ const categories = [
     {
         id: 2,
         keyValue: 'AcusticasElectroacusticas',
-        title: 'Acusticas Electroacusticas',
+        title: 'Acústicas y Electroacústicas',
     },
     {
         id: 3,
         keyValue: 'test',
         title: 'Baterias',
     },
+    {
+        id: 4,
+        keyValue: 'Electricas',
+        title: 'Eléctricas'
+    }
 ]
