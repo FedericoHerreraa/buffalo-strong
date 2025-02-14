@@ -83,11 +83,16 @@ const categories = [
     {
         id: 2,
         keyValue: 'AcusticasElectroacusticas',
-        title: 'Acusticas Electroacusticas',
+        title: 'Acústicas y Electroacústicas',
     },
     {
         id: 3,
         keyValue: 'test',
         title: 'Baterias',
     },
+    {
+        id: 4,
+        keyValue: 'Electricas',
+        title: 'Eléctricas'
+    }
 ]
