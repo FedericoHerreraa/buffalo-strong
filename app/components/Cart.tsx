@@ -1,6 +1,7 @@
 'use client'
 
 import { useCart } from "@/app/context/CartContext"
+import { useAuth } from "@/app/context/AuthContext";
 import { useMemo } from "react";
 import Image from "next/image";
 import {
@@ -26,6 +27,7 @@ export const Cart = () => {
         totalPurchase
     } = useCart()
 
+    const { user } = useAuth()
     const total = useMemo(() => totalPurchase(), [totalPurchase]);
 
     return (
@@ -56,7 +58,7 @@ export const Cart = () => {
                                     <div className="flex flex-col gap-1">
                                         <p className="text-lg font-semibold">{item.title}</p>
                                         <p className="text-sm text-zinc-600">Cantidad: {item.quantity}</p>
-                                        <p className="text-sm text-zinc-600">Precio: ${item.sugestedPrice * item.quantity}</p>
+                                        <p className="text-sm text-zinc-600">Precio: ${(user?.role === 'Invitado' ? item.sugestedPrice : item.listPrice) * item.quantity}</p>
                                     </div>
                                     <div className="flex gap-7 items-center">
                                         <button 
