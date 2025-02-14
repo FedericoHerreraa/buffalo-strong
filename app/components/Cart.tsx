@@ -11,6 +11,7 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/app/components/ui/sheet"
+import { merriweather_sans } from "@/app/fonts/fonts";
 
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { Badge } from '@mui/material';
@@ -29,12 +30,12 @@ export const Cart = () => {
 
     return (
         <Sheet>
-            <SheetTrigger>
+            <SheetTrigger className={merriweather_sans.className}>
                 <Badge badgeContent={cart.length} color="success">
                     <LocalMallOutlinedIcon style={{ fontSize: "32px" }} className="text-zinc-200"/>
                 </Badge>
             </SheetTrigger>
-            <SheetContent className="bg-white">
+            <SheetContent className={`bg-white ${merriweather_sans.className}`}>
                 <SheetHeader>
                     <SheetTitle>Carrito de compras</SheetTitle>
                     <SheetDescription>

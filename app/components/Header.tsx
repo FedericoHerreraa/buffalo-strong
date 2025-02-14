@@ -12,7 +12,7 @@ import { CiLogout } from "react-icons/ci";
 import { Cart } from "./Cart";
 import { LoginController } from "./LoginController";
 
-import { merriweather } from "@/app/fonts/fonts";
+import { merriweather, merriweather_sans } from "@/app/fonts/fonts";
 import { useAuth } from "@/app/context/AuthContext";
 
 export const Header = () => {
@@ -69,7 +69,7 @@ export const Header = () => {
       </nav>
 
       <div>
-        <section className="flex items-center justify-between px-6 py-2 bg-[#1f1106] bg-opacity-90">
+        <section className={`flex items-center justify-between px-6 py-2 bg-[#1f1106] bg-opacity-90 ${merriweather_sans.className}`}>
           <Link href='/' className="text-xl font-bold w-1/5">
               <Image
                   src={logobuffalo} 
