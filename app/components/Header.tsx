@@ -69,7 +69,7 @@ export const Header = () => {
       </nav>
 
       <div>
-        <section className={`flex items-center justify-between px-6 py-2 bg-[#1f1106] bg-opacity-90 ${merriweather_sans.className}`}>
+        <section className={`flex items-center justify-between px-6 py-2 bg-[#1f1106] bg-opacity-95 ${merriweather_sans.className}`}>
           <Link href='/' className="text-xl font-bold w-1/5">
               <Image
                   src={logobuffalo} 
@@ -90,7 +90,7 @@ export const Header = () => {
             <Cart />
           </div>
         </section>
-        <section className="px-6 py-2 text-sm text-zinc-200 border-t border-t-zinc-500 font-semibold bg-[#1f1106] bg-opacity-90">
+        <section className="px-6 py-2 text-sm text-zinc-200 border-t border-t-zinc-500 font-semibold bg-[#1f1106] bg-opacity-95">
           <BreadCrumbs />
         </section>
       </div>
