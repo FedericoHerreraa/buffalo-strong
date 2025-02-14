@@ -37,7 +37,7 @@ export const Header = () => {
             </>
           ) : (
             <div className="flex items-center gap-5">
-              <p className="">Bienvenido <span className="font-semibold">{user.email}</span></p>
+              <p className="">Bienvenido  <span className="font-semibold">{' '}{user.name}</span></p>
               <CiLogout 
                 onClick={() => logOut()}
                 size={25} 

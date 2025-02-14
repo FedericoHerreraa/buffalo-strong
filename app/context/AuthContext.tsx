@@ -77,13 +77,16 @@ export const AuthProvider = ({ children } : { children: React.ReactNode }) => {
         setUser(fullUser)
     }
 
-    const register = async (email: string, password: string, cuit: number, address: string) => {
+    const register = async (
+        email: string, 
+        name: string,
+        password: string, 
+        cuit: number, 
+        address: string,
+    ) => {
         const { data, error } = await supabase.auth.signUp({
             email,
             password,
-            options: {
-                emailRedirectTo: 'http://localhost:3000/auth/confirm'
-            }
         })
 
         if (error) {
@@ -99,6 +102,7 @@ export const AuthProvider = ({ children } : { children: React.ReactNode }) => {
             email: user.email,
             role: 'Cliente',
             cuit,
+            name,
             address
         })
 

@@ -80,6 +80,14 @@ export const BreadCrumbs = () => {
                         </BreadcrumbItem>
                     </>
                 )}
+                {pathname === "/admin-dashboard" && (
+                    <>
+                        <BreadcrumbSeparator />
+                        <BreadcrumbItem>
+                            <Link href="/admin-dashboard">Dashboard</Link>
+                        </BreadcrumbItem>
+                    </>
+                )}
                 {pathname.startsWith("/products/") && productTitle && (
                     <>
                         <BreadcrumbSeparator />

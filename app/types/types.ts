@@ -41,6 +41,7 @@ export interface User {
     id: string,
     created_at: string,
     email: string,
+    name: string,
     role: string,
     cuit: number,
     address: string,
@@ -49,7 +50,7 @@ export interface User {
 export interface AuthContextType {
     user: User | null | undefined;
     login: (email: string, password: string) => void;
-    register: (email: string, password: string, cuit: number, address: string) => void;
+    register: (email: string, name: string, password: string, cuit: number, address: string) => void;
     logOut: () => void;
     loading: boolean;
 }
