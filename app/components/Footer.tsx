@@ -2,10 +2,11 @@
 import Link from "next/link"
 import { FaInstagram } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
+import { merriweather_sans } from "@/app/fonts/fonts";
 
 export const Footer = () => {
     return (
-        <div className="bg-zinc-100 h-[50vh]">
+        <div className={`bg-zinc-100 h-[50vh] ${merriweather_sans.className}`}>
             <footer className="flex gap-24 w-[90%] mx-auto pt-20">
                 <div className="w-1/3">
                     <p className="text-2xl mb-4">Buffalo Strong</p>

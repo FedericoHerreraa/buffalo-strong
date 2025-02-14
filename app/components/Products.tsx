@@ -2,7 +2,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { supabase } from "@/lib/supabaseClient"
-import { merriweather } from "@/app/fonts/fonts";
+import { merriweather_sans } from "@/app/fonts/fonts";
 import { ProdPrice } from "./ProdPrice";
 import { StockReference } from "./StockReference";
 
@@ -10,7 +10,7 @@ export const Products = async () => {
     const { data: prods } = await supabase.from('products').select('*')
         
     return (
-        <div className="min-h-[100vh]">
+        <div className={`min-h-[100vh] ${merriweather_sans.className}`}>
             <section className="flex gap-5 mt-20 mb-20 w-[90%] mx-auto flex-wrap">
                 <StockReference />
                 {categories.map(cat => {
@@ -19,7 +19,7 @@ export const Products = async () => {
                         <div key={cat.keyValue} className="mb-6 w-full">
                             <div className="flex gap-5 items-center mb-10">
                                 <h1
-                                    className={`text-4xl font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent ${merriweather.className}`}
+                                    className={`text-4xl font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent`}
                                     >
                                     {cat.title}
                                 </h1>
@@ -42,7 +42,6 @@ export const Products = async () => {
                                                             ? 'from-yellow-300 to-yellow-600' 
                                                             : 'from-red-300 to-red-600'}`
                                                 }>
-                                                    {/* {prod.stock}  */}
                                                 </p>
                                             </div>
                                             {prod.img.length > 0 && (
@@ -57,7 +56,7 @@ export const Products = async () => {
                                             <p className="text-zinc-600 line-clamp-3 p-5">{prod.description.slice(0, 100)}...</p>
                                             <div className="h-[20px] px-5 py-10 bg-black text-zinc-300 flex justify-between items-center">
                                                 <ProdPrice prod={prod}/>
-                                                <p>Marca: {prod.brand}</p>
+                                                <p className="text-sm">Marca: <span className="text-base font-semibold">{prod.brand}</span></p>
                                             </div>
                                         </Link>
                                     ))
