@@ -8,7 +8,7 @@ export const ProdPrice = ({ prod } : { prod: ProductDB }) => {
     const { user } = useAuth()
 
     return (
-        <p className="text-md text-zinc-800">
+        <p className="text-md text-zinc-300">
             {user ? 'Precio comerciante: ' : 'Precio público: ' } 
             <span className="font-semibold">
                 ${user ? prod.listPrice : prod.sugestedPrice}

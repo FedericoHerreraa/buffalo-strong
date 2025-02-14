@@ -20,7 +20,7 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 flex flex-col">
-      <nav className={`flex items-center justify-between h-12 px-6 py-4 bg-zinc-100 text-zinc-800 ${merriweather.className}`}>
+      <nav className={`flex items-center justify-between h-12 px-6 py-4 bg-zinc-300 text-zinc-800 ${merriweather.className}`}>
         <div className="flex gap-7 text-md ">
           <div className="flex items-center gap-1 bg-[#583214] bg-opacity-90 text-sm rounded-full px-2 py-1 text-zinc-300">
             <FaUser size={10}/>
@@ -47,21 +47,21 @@ export const Header = () => {
           )}
         </div>
 
-        <div className={`flex gap-6 text-md text-[#1f1106]  transition`}>
-          <Link href="/" className="hover:text-[#8d572f]">
+        <div className={`flex gap-6 text-md text-[#1f1106]`}>
+          <Link href="/" className="hover:text-[#8d572f] hover:scale-110 transition-all duration-150 cursor-pointer">
             Inicio
           </Link>
-          <Link href="/about-us" className="hover:text-[#8d572f]">
+          <Link href="/about-us" className="hover:text-[#8d572f] hover:scale-110 transition-all duration-150 cursor-pointer">
             Nosotros
           </Link>
-          <Link href="/contact-us" className="hover:text-[#8d572f]">
+          <Link href="/contact-us" className="hover:text-[#8d572f] hover:scale-110 transition-all duration-150 cursor-pointer">
             Contáctanos
           </Link>
-          <Link href="/news" className="hover:text-[#8d572f]">
+          <Link href="/news" className="hover:text-[#8d572f] hover:scale-110 transition-all duration-150 cursor-pointer">
             Novedades
           </Link>
           {user?.role === 'Admin' && (
-            <Link href="/admin-dashboard" className="hover:text-[#8d572f]">
+            <Link href="/admin-dashboard" className="hover:text-[#8d572f] hover:scale-110 transition-all duration-150 cursor-pointer">
               Dashboard
             </Link>
           )}
@@ -90,8 +90,7 @@ export const Header = () => {
             <Cart />
           </div>
         </section>
-
-        <section className="px-6 py-2 text-sm text-[#1f1106] font-semibold shadow-lg bg-opacity-90">
+        <section className="px-6 py-2 text-sm text-zinc-200 border-t border-t-zinc-500 font-semibold bg-[#1f1106] bg-opacity-90">
           <BreadCrumbs />
         </section>
       </div>
