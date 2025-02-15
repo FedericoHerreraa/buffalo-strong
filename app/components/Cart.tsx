@@ -4,6 +4,7 @@ import { useCart } from "@/app/context/CartContext"
 import { useAuth } from "@/app/context/AuthContext";
 import { useMemo } from "react";
 import Image from "next/image";
+
 import {
     Sheet,
     SheetContent,
@@ -12,10 +13,12 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/app/components/ui/sheet"
+
 import { merriweather_sans } from "@/app/fonts/fonts";
 
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { Badge } from '@mui/material';
+import { useMobileView } from "@/app/context/MobileContext";
 
 export const Cart = () => {
     const { 
@@ -27,6 +30,7 @@ export const Cart = () => {
         totalPurchase
     } = useCart()
 
+    const { isMobile } = useMobileView()
     const { user } = useAuth()
     const total = useMemo(() => totalPurchase(), [totalPurchase]);
 
@@ -34,7 +38,7 @@ export const Cart = () => {
         <Sheet>
             <SheetTrigger className={merriweather_sans.className}>
                 <Badge badgeContent={cart.length} color="success">
-                    <LocalMallOutlinedIcon style={{ fontSize: "32px" }} className="text-zinc-200"/>
+                    <LocalMallOutlinedIcon style={{ fontSize: isMobile ? "25px" : "32px" }} className="text-zinc-200"/>
                 </Badge>
             </SheetTrigger>
             <SheetContent className={`bg-white ${merriweather_sans.className}`}>
