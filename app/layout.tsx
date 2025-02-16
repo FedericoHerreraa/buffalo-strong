@@ -4,6 +4,7 @@ import { Footer } from "./components/Footer";
 import "./globals.css";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
+import { BackToTop } from "./components/BackToTop";
 
 export const metadata: Metadata = {
   title: "Buffalo Strong",
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <Header />
             {children}
             <Footer />
+            <BackToTop />
           </AuthProvider>
         </CartProvider>
       </body>

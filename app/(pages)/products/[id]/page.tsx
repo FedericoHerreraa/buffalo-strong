@@ -1,4 +1,5 @@
 import { AddToCart } from "@/app/components/AddToCart";
+import { ProductDetails } from "@/app/components/ProductDetails";
 import { supabase } from "@/lib/supabaseClient";
 import Image from "next/image";
 
@@ -31,13 +32,7 @@ export default async function Page({ params } : { params: Promise<{ id: string }
                 </div>
             </div>
             <div className="w-1/2">
-                <p className="text-zinc-600">{product.description}</p>
-                <p className="mt-4 font-semibold">Marca: {product.brand}</p>
-                <p className="mt-2 text-lg font-bold">Precio: ${product.sugestedPrice}</p>
-                <p className={`mt-2 text-white py-1 px-4 w-fit rounded-full ${product.stock > 10 ? 'bg-green-600' : product.stock > 0 ? 'bg-yellow-600' : 'bg-red-700'}`}>
-                    {product.stock} {product.stock > 1 ? 'Unidades' : 'Unidad'}
-                </p>
-                
+                <ProductDetails product={product}/>
                 <AddToCart prod={product}/>
             </div>
         </div>
