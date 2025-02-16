@@ -93,5 +93,10 @@ const categories = [
         id: 4,
         keyValue: 'Electricas',
         title: 'Eléctricas'
+    },
+    {
+        id: 5,
+        keyValue: 'ElectroacusticasAltaGama',
+        title: 'Electroacústicas alta gama'
     }
 ]
