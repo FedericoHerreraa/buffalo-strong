@@ -5,6 +5,7 @@ import "./globals.css";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
 import { BackToTop } from "./components/BackToTop";
+import { MobileViewProvider } from "./context/MobileContext";
 
 export const metadata: Metadata = {
   title: "Buffalo Strong",
@@ -17,10 +18,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <CartProvider>
           <AuthProvider>
-            <Header />
-            {children}
-            <Footer />
-            <BackToTop />
+            <MobileViewProvider>
+              <Header />
+              {children}
+              <Footer />
+              <BackToTop />
+            </MobileViewProvider>
           </AuthProvider>
         </CartProvider>
       </body>
