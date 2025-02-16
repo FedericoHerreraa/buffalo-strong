@@ -86,11 +86,6 @@ const categories = [
     },
     {
         id: 3,
-        keyValue: 'test',
-        title: 'Baterias',
-    },
-    {
-        id: 4,
         keyValue: 'Electricas',
         title: 'Eléctricas'
     },
