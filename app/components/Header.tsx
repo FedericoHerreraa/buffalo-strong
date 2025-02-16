@@ -30,7 +30,7 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 flex flex-col">
-      <nav className={`flex items-center justify-between w-full md:px-6 px-3 md:py-4 py-2 bg-zinc-300 text-zinc-800 ${merriweather.className}`}>
+      <nav className={`flex items-center justify-between w-full md:px-6 px-3 py-2 bg-zinc-300 text-zinc-800 ${merriweather.className}`}>
         <div className="flex justify-between gap-7 text-md w-full ">
           <div className="flex items-center gap-1 bg-black bg-opacity-90 text-sm rounded-full h-fit px-2 py-1 text-zinc-300">
             <FaUser size={10}/>

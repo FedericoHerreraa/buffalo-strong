@@ -11,10 +11,10 @@ export const Products = async () => {
         
     return (
         <div className={`min-h-[100vh] ${merriweather_sans.className}`}>
-            <section className="flex gap-5 mt-20 mb-20 w-[90%] mx-auto flex-wrap">
+            <section className="flex gap-20 mt-20 mb-20 w-[90%] mx-auto flex-wrap">
                 <StockReference />
                 {categories.map(cat => {
-                    const filteredProducts = prods?.filter(prod => prod.category === cat.keyValue);
+                    const filteredProducts = prods?.filter(prod => prod.category === cat.keyValue).slice(0, 6);
                     return (
                         <div key={cat.keyValue} className="mb-6 w-full">
                             <div className="flex gap-5 items-center mb-10">
@@ -23,18 +23,24 @@ export const Products = async () => {
                                     >
                                     {cat.title}
                                 </h1>
+                                <Link 
+                                    href={`/products/${cat.keyValue}`}
+                                    className="w-fit whitespace-nowrap flex-shrink-0 min-w-max text-zinc-400 cursor-pointer hover:text-zinc-600 transition-all duration-150"
+                                >
+                                        Ver mas sobre esta categoria
+                                </Link>
                                 <div className="w-full h-[1px] bg-zinc-300"></div>
                             </div>
-                            <div className="flex flex-wrap gap-4 min-h-[50px]">
+                            <div className="flex gap-4 overflow-x-auto overflow-y-hidden whitespace-nowrap pb-5">
                                 {filteredProducts && filteredProducts.length > 0 ? (
                                     filteredProducts.map((prod, index) => (
                                         <Link 
-                                            href={`/products/${prod.id}`}
+                                            href={`/products/detail/${prod.id}`}
                                             key={index} 
-                                            className="w-[350px] shadow-xl border border-zinc-200 hover:border-zinc-300 bg-white rounded-md hover:scale-105 transition-all duration-200 cursor-pointer"
+                                            className="min-w-[250px] border border-zinc-200 hover:border-zinc-300 bg-white rounded-md hover:scale-105 transition-all duration-200 cursor-pointer"
                                         >
                                             <div className="flex justify-between items-center p-5">
-                                                <h3 className="text-xl font-semibold">{prod.title}</h3>
+                                                <h3 className="text-xl font-semibold whitespace-normal">{prod.title}</h3>
                                                 <p className={`text-md bg-gradient-to-br text-zinc-800 w-fit px-3 py-3 rounded-full shadow-md 
                                                     ${prod.stock > 30 
                                                         ? 'from-green-300 to-green-600' 
@@ -48,15 +54,14 @@ export const Products = async () => {
                                                 <Image 
                                                     src={prod.img[0]} 
                                                     alt="Alt de la imagen"
-                                                    width={300}
-                                                    height={300}
+                                                    width={250}
+                                                    height={250}
                                                     className="p-4"
                                                 />
                                             )}
-                                            <p className="text-zinc-600 line-clamp-3 p-5">{prod.description.slice(0, 100)}...</p>
-                                            <div className="h-[20px] px-5 py-10 bg-black text-zinc-300 flex justify-between items-center">
+                                            <p className="text-zinc-600 text-sm p-3 pb-10 whitespace-normal">{prod.description.slice(0, 100)}...</p>
+                                            <div className="h-[20px] px-2 py-7 bg-black text-zinc-300 flex justify-between items-center">
                                                 <ProdPrice prod={prod}/>
-                                                <p className="text-sm">Marca: <span className="text-base font-semibold">{prod.brand}</span></p>
                                             </div>
                                         </Link>
                                     ))
