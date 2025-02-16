@@ -16,7 +16,7 @@ export const Products = async () => {
                 {categories.map(cat => {
                     const filteredProducts = prods?.filter(prod => prod.category === cat.keyValue).slice(0, 6);
                     return (
-                        <div key={cat.keyValue} className="mb-6 w-full">
+                        <div key={cat.keyValue} id={cat.keyValue} className="mb-6 w-full">
                             <div className="flex gap-5 items-center mb-10">
                                 <h1
                                     className={`text-4xl font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent`}
@@ -95,7 +95,7 @@ const categories = [
         title: 'Eléctricas'
     },
     {
-        id: 5,
+        id: 4,
         keyValue: 'ElectroacusticasAltaGama',
         title: 'Electroacústicas alta gama'
     }
