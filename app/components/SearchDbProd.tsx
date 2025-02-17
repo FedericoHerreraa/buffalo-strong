@@ -5,7 +5,7 @@ import { supabase } from "@/lib/supabaseClient"
 import { ProductDB } from "../types/types"
 
 export const SearchDbProd = () => {
-    const [id, setId] = useState<string | null>(null)
+    const [listCode, setListCode] = useState<string | null>(null)
     const [prod, setProd] = useState<ProductDB>()
     const [stock, setStock] = useState<number | null>(null)
 
@@ -13,7 +13,7 @@ export const SearchDbProd = () => {
         const { data, error } = await supabase
             .from('products')
             .select('*')
-            .eq('id', id)
+            .eq('listCode', listCode)
             .single()
 
         if (error) {
@@ -28,7 +28,7 @@ export const SearchDbProd = () => {
         const { error } = await supabase
             .from('products')
             .update({ stock: stock })
-            .eq('id', id)
+            .eq('listCode', listCode)
 
         if (error) {
             console.log('error', error)
@@ -37,7 +37,7 @@ export const SearchDbProd = () => {
 
         alert('Stock actualizado')
         setProd(undefined)
-        setId(null)
+        setListCode(null)
         setStock(null)
     }
 
@@ -50,8 +50,8 @@ export const SearchDbProd = () => {
                         Ingresar ID de producto
                         <input 
                             placeholder="ID de producto"
-                            value={id || ''}
-                            onChange={(e) => setId(e.target.value)}
+                            value={listCode || ''}
+                            onChange={(e) => setListCode(e.target.value)}
                             className="border border-zinc-300 p-2 rounded-lg w-[350px]"
                             type="text" 
                         />
