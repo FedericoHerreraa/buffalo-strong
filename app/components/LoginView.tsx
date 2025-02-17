@@ -30,7 +30,7 @@ export const LoginView = ({
     return (
         <Drawer>
             <DrawerTrigger>
-              <div className="flex items-center gap-2 cursor-pointer text-[#1f1106]">
+              <div className="flex items-center gap-2 cursor-pointer text-zinc-300">
                 <MdOutlineLogin />
                 <p>Ingresa a tu cuenta</p>
               </div>
