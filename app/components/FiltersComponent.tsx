@@ -29,12 +29,12 @@ export const FIltersComponent = () => {
                 <CarouselContent className="flex items-center text-center">
                 {Filters.map((item, index) => (
                     <CarouselItem key={index} className="basis-1/4 flex justify-center flex-col">
-                    <div className="flex flex-col items-center gap-2 p-2" onClick={()=> scrollToSection(item.key)}>
-                        <div className="w-24 h-24 rounded-full bg-white  overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
-                        <Image alt={item.name} src={item.img} className="w-full h-full object-cover" />
+                        <div className="flex flex-col items-center gap-2 p-2" onClick={()=> scrollToSection(item.key)}>
+                            <div className="w-24 h-24 rounded-full bg-white p-2 overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
+                                <Image alt={item.name} src={item.img} className="w-full h-full object-cover" />
+                            </div>
+                            <p className="text-sm font-semibold text-gray-700">{item.name}</p>
                         </div>
-                        <p className="text-sm font-semibold text-gray-700">{item.name}</p>
-                    </div>
                     </CarouselItem>
                 ))}
                 </CarouselContent>
@@ -42,8 +42,6 @@ export const FIltersComponent = () => {
                 <CarouselNext />
             </Carousel>
         </div>
-
-
     )
 }
 

@@ -1,4 +1,5 @@
 import { AddToCart } from "@/app/components/AddToCart";
+import { CustomSeparator } from "@/app/components/CustomSeparator";
 import { ProductDetails } from "@/app/components/ProductDetails";
 import { RelatedProducts } from "@/app/components/RelatedProducts";
 import { merriweather_sans } from "@/app/fonts/fonts";
@@ -40,7 +41,9 @@ export default async function Page({ params } : { params: Promise<{ id: string }
                 </div>
             </section>
 
-            <section>
+            <CustomSeparator />
+
+            <section className="mt-10">
                 <RelatedProducts categoryKey={product.category}/>
             </section>
         </div>
