@@ -29,8 +29,8 @@ export const Header = () => {
   const { isMobile } = useMobileView()
 
   return (
-    <header className="sticky top-0 z-50 flex flex-col">
-      <nav className={`flex items-center justify-between w-full md:px-6 px-3 py-2 bg-zinc-300 text-zinc-800 ${merriweather.className}`}>
+    <header className="sticky top-0 z-50 flex flex-col bg-white bg-opacity-70">
+      <nav className={`flex items-center justify-between w-full md:px-6 px-3 py-2 bg-zinc-400 text-zinc-800 ${merriweather.className}`}>
         <div className="flex justify-between gap-7 text-md w-full ">
           <div className="flex items-center gap-1 bg-black bg-opacity-90 text-sm rounded-full h-fit px-2 py-1 text-zinc-300">
             <FaUser size={10}/>
@@ -66,7 +66,7 @@ export const Header = () => {
             <Cart />
           </div>
         </section>
-        <section className="px-6 py-2 text-sm  text-zinc-200 border-t border-t-zinc-500 font-semibold bg-[#1f1106] bg-opacity-95">
+        <section className="px-6 py-2 text-sm  text-zinc-200 border-t border-t-zinc-700 font-semibold bg-[#1f1106] bg-opacity-95">
           <BreadCrumbs />
         </section>
       </div>

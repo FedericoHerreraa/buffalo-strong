@@ -38,9 +38,9 @@ export const Products = async () => {
                                         <Link 
                                             href={`/products/detail/${prod.id}`}
                                             key={index} 
-                                            className="min-w-[250px] border border-zinc-200 hover:border-zinc-300 bg-white rounded-md hover:scale-105 transition-all duration-200 cursor-pointer"
+                                            className="min-w-[250px] h-full border border-zinc-200 hover:border-zinc-300 bg-white rounded-md hover:scale-105 transition-all duration-200 cursor-pointer"
                                         >
-                                            <div className="flex justify-between items-center p-5">
+                                            <div className="flex justify-between gap-3 items-center p-5">
                                                 <h3 className="text-xl font-semibold whitespace-normal">{prod.title}</h3>
                                                 <p className={`text-md bg-gradient-to-br text-zinc-800 w-fit px-3 py-3 rounded-full shadow-md 
                                                     ${prod.stock > 30 
@@ -61,7 +61,7 @@ export const Products = async () => {
                                                 />
                                             )}
                                             <p className="text-zinc-600 text-sm p-3 pb-10 whitespace-normal">{prod.description.slice(0, 100)}...</p>
-                                            <div className="h-[20px] px-2 py-7 bg-black text-zinc-300 flex justify-between items-center">
+                                            <div className="h-fit px-2 py-7 bg-black text-zinc-300 flex justify-between items-center">
                                                 <ProdPrice prod={prod}/>
                                             </div>
                                         </Link>

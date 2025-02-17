@@ -1,11 +1,13 @@
+import { CiCircleInfo } from "react-icons/ci";
 
 
 export const StockReference = () => {
     const classname = 'text-md bg-gradient-to-br text-zinc-800 w-fit px-3 py-3 rounded-full shadow-md'
     return (
-        <div className="flex items-center gap-5 text-zinc-500 font-semibold">
+        <div className="flex items-center gap-5 text-zinc-500 font-semibold shadow-md p-5 rounded-lg bg-zinc-100">
             <div className="flex items-center gap-3">
-                <h1 className="text-xl text-zinc-900">Stock</h1>
+                <CiCircleInfo className="text-zinc-700" size={25}/>
+                <h1 className="text-xl text-zinc-700">Stock</h1>
                 <div className="w-12 h-[1px] bg-zinc-300"></div>
             </div>
             <div className="flex items-center gap-3">

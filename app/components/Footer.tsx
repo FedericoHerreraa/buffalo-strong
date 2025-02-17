@@ -10,7 +10,7 @@ export const Footer = () => {
             <footer className="flex gap-24 w-[90%] mx-auto pt-20">
                 <div className="w-1/3">
                     <p className="text-2xl mb-4">Buffalo Strong</p>
-                    <p className="text-zinc-600">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil nisi eaque reiciendis consectetur quae aspernatur voluptas dicta quam sapiente incidunt quibusdam, fugiat, unde sit autem repellat voluptates blanditiis, aliquid sed.</p>
+                    <p className="text-zinc-600">🎵 Tu pasión, nuestra música. En Buffalo{"'"}s Strong, vivimos y respiramos música. Ofrecemos instrumentos, accesorios y equipos de sonido de las mejores marcas para que des rienda suelta a tu creatividad. Ya seas un músico profesional o estés dando tus primeros acordes, aquí encontrarás todo lo que necesitas. Visítanos y deja que la música hable por ti. 🎸🥁🎹</p>
                 </div>
                 <div className="w-1/3">
                     <p className="text-2xl mb-4">Segui Navegando</p>

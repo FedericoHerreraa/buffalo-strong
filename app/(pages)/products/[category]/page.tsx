@@ -13,8 +13,8 @@ export default async function CategoryDetail({ params } : { params: Promise<{ ca
 
     return (
         <div className="w-[80%] mx-auto my-10">
-            <h1 className="text-3xl font-semibold mb-10">{categoryTitle}</h1>
-            <div className="flex flex-wrap gap-10">
+            <h1 className="text-4xl font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent mb-20 text-center">{categoryTitle}</h1>
+            <div className="flex flex-wrap justify-center gap-10">
                 {products?.map((prod, index) => (
                     <Link 
                         href={`/products/detail/${prod.id}`}
