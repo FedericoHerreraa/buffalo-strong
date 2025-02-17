@@ -12,14 +12,32 @@ import {
     BreadcrumbSeparator,
     BreadcrumbEllipsis
 } from "@/app/components/ui/breadcrumb"
+import { categories } from "../info/info";
 
 export const BreadCrumbs = () => {
     const pathname = usePathname()
     const [productTitle, setProductTitle] = useState<string | null>(null);
+    const [categoryTitle, setCategoryTitle] = useState<string | null>(null);
+
+    const isProductDetail = pathname.startsWith("/products/detail");
+    
+    useEffect(() => {
+        let categoryId: string | undefined;
+        
+        if (isProductDetail) {
+            const pathParts = pathname.split("/");
+            categoryId = pathParts[pathParts.length - 2];
+        } else {
+            categoryId = pathname.split("/").pop();
+        }
+
+        const cat = categories.find(cat => cat.keyValue === categoryId)?.title;
+        setCategoryTitle(cat ?? null);
+    }, [pathname, isProductDetail]);
 
     useEffect(() => {
         const fetchProductTitle = async () => {
-            if (pathname.startsWith("/products/")) {
+            if (isProductDetail) {
                 const id = pathname.split("/").pop();
                 const { data: prod } = await supabase
                     .from("products")
@@ -30,72 +48,62 @@ export const BreadCrumbs = () => {
                 if (prod) {
                     setProductTitle(prod.title);
                 }
+            } else {
+                setProductTitle(null);
             }
         };
 
         fetchProductTitle();
-    }, [pathname])
+    }, [pathname, isProductDetail]);
     
     return (
-        <Breadcrumb >
+        <Breadcrumb>
           <BreadcrumbList>
               <BreadcrumbItem>
                 <Link href='/'>Home</Link>
               </BreadcrumbItem>
+
               {pathname === "/" && (
                 <>
                     <BreadcrumbSeparator />
                     <BreadcrumbEllipsis className="h-5 w-5"/>
                 </>
               )}
-              {pathname === "/about-us" && (
+
+              {["/about-us", "/contact-us", "/news", "/register", "/admin-dashboard"].includes(pathname) && (
                 <>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                        <Link href="/about-us">Sobre Nosotros</Link>
+                        <Link href={pathname}>
+                            {pathname === "/about-us" && "Sobre Nosotros"}
+                            {pathname === "/contact-us" && "Contacto"}
+                            {pathname === "/news" && "Novedades"}
+                            {pathname === "/register" && "Registro"}
+                            {pathname === "/admin-dashboard" && "Dashboard"}
+                        </Link>
                     </BreadcrumbItem>
                 </>
               )}
-                {pathname === "/contact-us" && (
-                    <>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <Link href="/contact-us">Contacto</Link>
-                        </BreadcrumbItem>
-                    </>
-                )}
-                {pathname === "/news" && (
-                    <>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <Link href="/news">Novedades</Link>
-                        </BreadcrumbItem>
-                    </>
-                )}
-                {pathname === "/register" && (
-                    <>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <Link href="/register">Registro</Link>
-                        </BreadcrumbItem>
-                    </>
-                )}
-                {pathname === "/admin-dashboard" && (
-                    <>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <Link href="/admin-dashboard">Dashboard</Link>
-                        </BreadcrumbItem>
-                    </>
-                )}
-                {pathname.startsWith("/products/") && productTitle && (
-                    <>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <Link href={pathname}>{productTitle}</Link>
-                        </BreadcrumbItem>
-                    </>
-                )}
+
+              {/* Categoría */}
+              {categoryTitle && (
+                <>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                        <Link href={`/products/${categoryTitle}`}>{categoryTitle}</Link>
+                    </BreadcrumbItem>
+                </>
+              )}
+
+              {/* Producto */}
+              {isProductDetail && productTitle && (
+                <>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                        <Link href={pathname}>{productTitle}</Link>
+                    </BreadcrumbItem>
+                </>
+              )}
           </BreadcrumbList>
         </Breadcrumb>
     )

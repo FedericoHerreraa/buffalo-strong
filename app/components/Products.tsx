@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabaseClient"
 import { merriweather_sans } from "@/app/fonts/fonts";
 import { ProdPrice } from "./ProdPrice";
 import { StockReference } from "./StockReference";
+import { categories } from "@/app/info/info";
 
 export const Products = async () => {
     const { data: prods } = await supabase.from('products').select('*')
@@ -31,7 +32,7 @@ export const Products = async () => {
                                 </Link>
                                 <div className="w-full h-[1px] bg-zinc-300"></div>
                             </div>
-                            <div className="flex gap-4 overflow-x-auto overflow-y-hidden whitespace-nowrap pb-5">
+                            <div className="flex gap-4 overflow-x-auto whitespace-nowrap pb-5">
                                 {filteredProducts && filteredProducts.length > 0 ? (
                                     filteredProducts.map((prod, index) => (
                                         <Link 
@@ -78,25 +79,3 @@ export const Products = async () => {
 }
 
 
-const categories = [
-    {
-        id: 1,
-        keyValue: 'GuitarraCriolla',
-        title: 'Guitarra Criolla',
-    },
-    {
-        id: 2,
-        keyValue: 'AcusticasElectroacusticas',
-        title: 'Acústicas y Electroacústicas',
-    },
-    {
-        id: 3,
-        keyValue: 'Electricas',
-        title: 'Eléctricas'
-    },
-    {
-        id: 4,
-        keyValue: 'ElectroacusticasAltaGama',
-        title: 'Electroacústicas alta gama'
-    }
-]

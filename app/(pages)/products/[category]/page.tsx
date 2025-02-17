@@ -3,6 +3,7 @@ import { supabase } from "@/lib/supabaseClient";
 import Link from "next/link";
 import Image from "next/image";
 import { ProdPrice } from "@/app/components/ProdPrice";
+import { categories } from "@/app/info/info";
 
 export default async function CategoryDetail({ params } : { params: Promise<{ category: string }> }) {
     const parameters = await params;
@@ -50,26 +51,3 @@ export default async function CategoryDetail({ params } : { params: Promise<{ ca
         </div>
     )
 }
-
-const categories = [
-    {
-        id: 1,
-        keyValue: 'GuitarraCriolla',
-        title: 'Guitarra Criolla',
-    },
-    {
-        id: 2,
-        keyValue: 'AcusticasElectroacusticas',
-        title: 'Acústicas y Electroacústicas',
-    },
-    {
-        id: 3,
-        keyValue: 'Electricas',
-        title: 'Eléctricas'
-    },
-    {
-        id: 5,
-        keyValue: 'ElectroacusticasAltaGama',
-        title: 'Electroacústicas alta gama'
-    }
-]
