@@ -1,8 +1,9 @@
 
-
+import Image from "next/image"
 import { useState } from "react"
 import { supabase } from "@/lib/supabaseClient"
 import { ProductDB } from "../types/types"
+import { merriweather_sans } from "../fonts/fonts"
 
 export const SearchDbProd = () => {
     const [listCode, setListCode] = useState<string | null>(null)
@@ -42,9 +43,9 @@ export const SearchDbProd = () => {
     }
 
     return (
-        <div className="w-[80%] mx-auto h-[50vh]">
-            <h1 className="text-center text-4xl">Modificar stock de producto</h1>
-            <section className="flex gap-24 mt-20 justify-center text-zinc-500">    
+        <div className="w-[80%] mx-auto h-[80vh]">
+            <h1 className={`text-center text-4xl ${merriweather_sans.className}`}>Modificar stock de producto</h1>
+            <section className="flex gap-24 mt-20 justify-center text-zinc-700">    
                 <div>
                     <label className="flex flex-col gap-3 text-xl">
                         Ingresar ID de producto
@@ -63,14 +64,19 @@ export const SearchDbProd = () => {
                     </button>
                 </div>
                 {prod && (
-                    <div className="flex flex-col gap-5">
+                    <div className="flex flex-col gap-5 bg-slate-200 p-6">
+                        <div className="flex gap-5 w-full justify-between">
+                            <h3 className="w-40" >Producto: <span className="font-bold"> {prod.title}</span></h3> 
+                            <Image alt="img" src={prod.img[0]} width={200} height={200}/>
+                        </div>
+
                         <p>Stock actual: <span className="text-lg text-zinc-800">{prod?.stock}</span></p>
                         <p className="flex items-center gap-4">Nuevo Stock: 
                             <input 
                                 value={stock || ''}
                                 onChange={(e) => setStock(parseInt(e.target.value))}
-                                placeholder="Nuevo stock"
-                                className="text-lg text-zinc-800 border border-zinc-200 bg-zinc-100 px-2 py-1 rounded-lg w-[200px]"
+                                placeholder="Ingrese Nuevo Stock"
+                                className="text-lg placeholder:text-zinc-600 border border-zinc-200 bg-zinc-100 px-2 py-1 rounded-lg w-[200px]"
                             ></input>
                         </p>
                         <button
