@@ -38,7 +38,7 @@ export const Cart = () => {
         <Sheet>
             <SheetTrigger className={merriweather_sans.className}>
                 <Badge badgeContent={cart.length} color="success">
-                    <LocalMallOutlinedIcon style={{ fontSize: isMobile ? "25px" : "32px" }} className="text-zinc-200"/>
+                    <LocalMallOutlinedIcon style={{ fontSize: isMobile ? "25px" : "32px" }} className="text-zinc-800"/>
                 </Badge>
             </SheetTrigger>
             <SheetContent className={`bg-white ${merriweather_sans.className}`}>

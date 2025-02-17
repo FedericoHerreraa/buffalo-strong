@@ -30,9 +30,9 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 flex flex-col bg-white bg-opacity-70">
-      <nav className={`flex items-center justify-between w-full md:px-6 px-3 py-2 bg-zinc-400 text-zinc-800 ${merriweather.className}`}>
+      <nav className={`flex items-center justify-between w-full md:px-6 px-3 py-2 bg-zinc-900 text-zinc-300 ${merriweather.className}`}>
         <div className="flex justify-between gap-7 text-md w-full ">
-          <div className="flex items-center gap-1 bg-black bg-opacity-90 text-sm rounded-full h-fit px-2 py-1 text-zinc-300">
+          <div className="flex items-center gap-1 bg-zinc-200 bg-opacity-90 text-sm rounded-full h-fit px-2 py-1 text-zinc-900">
             <FaUser size={10}/>
             <p>{user ? user?.role : 'Invitado'}</p>
           </div>
@@ -45,7 +45,7 @@ export const Header = () => {
       </nav>
 
       <div>
-        <section className={`flex items-center justify-between md:px-6 py-2 bg-[#1f1106] bg-opacity-95 ${merriweather_sans.className}`}>
+        <section className={`flex items-center justify-between md:px-6 py-2 bg-zinc-200 bg-opacity-95 ${merriweather_sans.className}`}>
           <Link href='/' className="text-xl font-bold w-1/5">
               <Image
                   src={logobuffalo} 
@@ -66,7 +66,7 @@ export const Header = () => {
             <Cart />
           </div>
         </section>
-        <section className="px-6 py-2 text-sm  text-zinc-200 border-t border-t-zinc-700 font-semibold bg-[#1f1106] bg-opacity-95">
+        <section className="px-6 py-2 text-sm  text-[#5d3a1f] border-t border-t-zinc-300 font-semibold bg-zinc-200 bg-opacity-95">
           <BreadCrumbs />
         </section>
       </div>
@@ -148,7 +148,7 @@ const desktopTabs = ({
     <div className="flex justify-between w-full items-center">
       {!user ? (
         <div className="flex items-center gap-5">
-          <Link href='/register' className="flex items-center gap-2 cursor-pointer text-[#1f1106]">
+          <Link href='/register' className="flex items-center gap-2 cursor-pointer text-zinc-300">
             <FaUserPlus />
             <p>Registro Comercio</p>
           </Link>
@@ -165,7 +165,7 @@ const desktopTabs = ({
           />
         </div>
       )}
-        <div className={`flex gap-6 text-md text-[#1f1106]`}>
+        <div className={`flex gap-6 text-md text-zinc-300`}>
           <Link href="/" className="hover:text-[#8d572f] hover:scale-110 transition-all duration-150 cursor-pointer">
             Inicio
           </Link>
