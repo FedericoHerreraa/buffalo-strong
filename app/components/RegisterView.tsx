@@ -1,5 +1,5 @@
 import { RegisterViewProps } from "@/app/types/types";
-
+import { merriweather_sans } from "@/app/fonts/fonts";
 
 export const RegisterView: React.FC<RegisterViewProps> = ({
     formData,
@@ -8,7 +8,7 @@ export const RegisterView: React.FC<RegisterViewProps> = ({
     handleSubmit,
 }) => {
     return (
-        <div className="w-[80%] h-[80vh] mx-auto mt-20">
+        <div className={`w-[80%] h-[80vh] mx-auto mt-20 ${merriweather_sans.className}`}>
             <h1 className="text-4xl">Registra tu nueva cuenta</h1>
             <p className="text-zinc-400">En esta seccion va poder registrar su nueva cuenta como mayorista, ingresando los siguientes datos:</p>
             <form onSubmit={handleSubmit} className="flex flex-col gap-20 w-full mt-10 py-10">

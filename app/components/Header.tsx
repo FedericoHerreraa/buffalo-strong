@@ -2,21 +2,20 @@
 
 import Link from "next/link";
 import Image from "next/image";
+
 import logobuffalo from "@/app/images/logos/Logobuffalo.png"
 import { BreadCrumbs } from "@/app/components/Breadcrumbs";
+import { merriweather, merriweather_sans } from "@/app/fonts/fonts";
+import { useAuth } from "@/app/context/AuthContext";
+import { useMobileView } from "@/app/context/MobileContext";
+import { User } from "@/app/types/types";
+import { Cart } from "./Cart";
+import { LoginController } from "./LoginController";
 
 import { FaUser, FaUserPlus,  } from "react-icons/fa6";
 import { VscListSelection } from "react-icons/vsc";
 import { TfiSearch } from "react-icons/tfi";
 import { CiLogout } from "react-icons/ci";
-
-import { Cart } from "./Cart";
-import { LoginController } from "./LoginController";
-
-import { merriweather, merriweather_sans } from "@/app/fonts/fonts";
-import { useAuth } from "@/app/context/AuthContext";
-import { useMobileView } from "@/app/context/MobileContext";
-import { User } from "@/app/types/types";
 
 import {
   Sheet,
@@ -58,7 +57,7 @@ export const Header = () => {
               <input 
                   type="text" 
                   placeholder="Buscá tu producto aquí..." 
-                  className="w-full bg-zinc-100 md:px-4 px-2 md:py-2 py-1 md:text-base text-sm md:rounded-lg rounded-md placeholder:text-[#5d3a1f] focus:outline-none shadow-lg "
+                  className="w-full bg-zinc-100 md:px-4 px-2 md:py-2 py-1 md:text-base text-sm md:rounded-lg rounded-md placeholder:text-[#5d3a1f] focus:outline-none shadow-md "
               />
               <TfiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#8d572f] cursor-pointer md:size-5 size-3" />
           </div>
