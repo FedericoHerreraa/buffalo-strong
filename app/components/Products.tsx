@@ -20,9 +20,9 @@ export const Products = async () => {
                     const filteredProducts = prods?.filter(prod => prod.category === cat.keyValue).slice(0, 6);
                     return (
                         <div key={cat.keyValue} id={cat.keyValue} className="mb-6 w-full">
-                            <div className="flex gap-5 items-center mb-10">
+                            <div className="flex md:flex-row flex-col md:gap-5 gap-3 md:items-center mb-10">
                                 <h1
-                                    className={`text-4xl font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent`}
+                                    className={`md:text-4xl text-3xl font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent`}
                                     >
                                     {cat.title}
                                 </h1>
@@ -35,7 +35,7 @@ export const Products = async () => {
                                     </Link>
                                     <IoIosArrowRoundForward size={25}/>
                                 </div>
-                                <div className="w-full h-[1px] bg-zinc-300"></div>
+                                <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
                             </div>
                             <div className="flex gap-4 overflow-x-auto whitespace-nowrap pb-5">
                                 {filteredProducts && filteredProducts.length > 0 ? ( 
@@ -43,7 +43,7 @@ export const Products = async () => {
                                         <Link 
                                             href={`/products/detail/${prod.id}`}
                                             key={index} 
-                                            className="min-w-[250px] h-full border border-zinc-200 hover:border-zinc-300 bg-white rounded-md hover:scale-105 transition-all duration-200 cursor-pointer"
+                                            className="min-w-[250px] h-full border border-zinc-200 hover:border-zinc-300 bg-white rounded-md md:hover:scale-105 transition-all duration-200 cursor-pointer"
                                         >
                                             <div className="flex justify-between gap-3 items-center p-5">
                                                 <h3 className="text-xl font-semibold whitespace-normal">{prod.title}</h3>

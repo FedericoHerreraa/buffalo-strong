@@ -2,19 +2,19 @@
 
 import { useState } from "react"
 import { LoginView } from "./LoginView"
-import { useAuth } from "../context/AuthContext"
+import { useAuth } from "@/app/context/AuthContext"
+import { useMobileView } from "@/app/context/MobileContext"
 
 export const LoginController = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [loading, setLoading] = useState(false)
     const { login } = useAuth()
+    const { isMobile } = useMobileView()
     
     const loginUser = async () => {
         setLoading(true)
-
         await login(email, password)
-
         setLoading(false)
     }
 
@@ -26,6 +26,7 @@ export const LoginController = () => {
             setPassword={setPassword}
             loginUser={loginUser}
             loading={loading}
+            isMobile={isMobile}
         />
     )
 }

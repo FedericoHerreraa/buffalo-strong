@@ -18,7 +18,8 @@ export const LoginView = ({
     password,
     setPassword,
     loginUser,
-    loading
+    loading,
+    isMobile
 }: {
     email: string
     setEmail: (email: string) => void
@@ -26,11 +27,12 @@ export const LoginView = ({
     setPassword: (password: string) => void
     loginUser: () => void
     loading: boolean
+    isMobile: boolean
 }) => {
     return (
         <Drawer>
             <DrawerTrigger>
-              <div className="flex items-center gap-2 cursor-pointer text-zinc-300">
+              <div className={`flex items-center gap-2 cursor-pointer ${isMobile ? 'text-zinc-900' : 'text-zinc-300'}`}>
                 <MdOutlineLogin />
                 <p>Ingresa a tu cuenta</p>
               </div>
@@ -40,7 +42,7 @@ export const LoginView = ({
                 <DrawerTitle className="text-zinc-300 text-center text-3xl">Ingresa a tu cuenta</DrawerTitle>
                 <DrawerDescription className="text-zinc-400 text-center">Ingresa a tu cuenta ya creada.</DrawerDescription>
               </DrawerHeader>
-              <form className="w-[20%] mx-auto mt-20 flex flex-col gap-10 items-center">
+              <form className="md:w-[20%] w-[60%] mx-auto mt-20 flex flex-col gap-10 items-center">
                 <div>
                     <label htmlFor="email" className="text-zinc-300 ml-1">Ingrese su correo electrónico</label>
                     <input 

@@ -64,7 +64,7 @@ export const Cart = () => {
                                         <p className="text-sm text-zinc-600">Cantidad: {item.quantity}</p>
                                         <p className="text-sm text-zinc-600">Precio: ${(user?.role === 'Invitado' ? item.sugestedPrice : item.listPrice) * item.quantity}</p>
                                     </div>
-                                    <div className="flex gap-7 items-center">
+                                    <div className="flex md:flex-row flex-col md:gap-7 gap-2 items-center">
                                         <button 
                                             onClick={() => deleteOne(item.id)}
                                             className="bg-red-700 text-zinc-200 px-2 py-1 rounded-md"
