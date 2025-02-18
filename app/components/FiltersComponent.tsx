@@ -16,7 +16,6 @@ import Image from "next/image"
   
 
 export const FIltersComponent = () => {
-    
     const scrollToSection = (sectionId: string) => {
         const element = document.getElementById(sectionId);
         if (element) element.scrollIntoView({ behavior: "smooth" });
@@ -25,7 +24,7 @@ export const FIltersComponent = () => {
 
     return (
         <div className={`w-full mx-auto h-48 flex items-center justify-center ${merriweather_sans.className}`}>
-            <Carousel className="w-[70%] mx-auto" opts={{
+            <Carousel className="md:w-[70%] w-fit md:mx-auto" opts={{
                 loop: true
             }}>
                 <CarouselContent className=" flex items-center text-center">
