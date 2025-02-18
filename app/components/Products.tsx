@@ -6,6 +6,8 @@ import { merriweather_sans } from "@/app/fonts/fonts";
 import { ProdPrice } from "./ProdPrice";
 import { StockReference } from "./StockReference";
 import { categories } from "@/app/info/info";
+import { IoIosArrowRoundForward } from "react-icons/io";
+
 
 export const Products = async () => {
     const { data: prods } = await supabase.from('products').select('*')
@@ -24,16 +26,19 @@ export const Products = async () => {
                                     >
                                     {cat.title}
                                 </h1>
-                                <Link 
-                                    href={`/products/${cat.keyValue}`}
-                                    className="w-fit whitespace-nowrap flex-shrink-0 min-w-max text-zinc-400 cursor-pointer hover:text-zinc-600 transition-all duration-150"
-                                >
-                                        Ver mas sobre esta categoria
-                                </Link>
+                                <div className="flex items-center gap-2">
+                                    <Link 
+                                        href={`/products/${cat.keyValue}`}
+                                        className="w-fit whitespace-nowrap flex-shrink-0 min-w-max text-zinc-400 cursor-pointer hover:text-zinc-600 transition-all duration-150"
+                                    >
+                                            Ver mas sobre esta categoria
+                                    </Link>
+                                    <IoIosArrowRoundForward size={25}/>
+                                </div>
                                 <div className="w-full h-[1px] bg-zinc-300"></div>
                             </div>
                             <div className="flex gap-4 overflow-x-auto whitespace-nowrap pb-5">
-                                {filteredProducts && filteredProducts.length > 0 ? (
+                                {filteredProducts && filteredProducts.length > 0 ? ( 
                                     filteredProducts.map((prod, index) => (
                                         <Link 
                                             href={`/products/detail/${prod.id}`}

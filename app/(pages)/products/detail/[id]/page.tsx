@@ -17,9 +17,14 @@ export default async function Page({ params } : { params: Promise<{ id: string }
 
     return (
         <div className={merriweather_sans.className}>
+            <div className="flex items-center gap-4 mt-10">
+                <div className="w-full h-[1px] bg-zinc-300"></div>
+                <h1 className="text-4xl font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent text-center">Detalle de producto</h1>
+                <div className="w-full h-[1px] bg-zinc-300"></div>
+            </div>
             <section className="min-h-[80vh] w-[80%] mx-auto p-10 mt-20 flex gap-10">
                 <div className="w-1/2 border-r h-fit border-r-zinc-200">
-                    <h1 className="text-4xl font-bold border-l-4 border-l-zinc-800 pl-5">{product.title}</h1>
+                    <h1 className="text-4xl text-zinc-600 font-bold border-l-4 border-l-zinc-800 pl-5">{product.title}</h1>
                     {product.img.length > 0 && (
                         <Image 
                             src={product.img[0]} 
