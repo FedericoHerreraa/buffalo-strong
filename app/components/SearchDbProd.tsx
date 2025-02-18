@@ -48,9 +48,9 @@ export const SearchDbProd = () => {
             <section className="flex gap-24 mt-20 justify-center text-[#301803]">    
                 <div>
                     <label className="flex flex-col gap-3 text-xl text-[#301803]">
-                        Ingresar ID de producto
+                        Ingresar codigo de producto
                         <input 
-                            placeholder="ID de producto"
+                            placeholder="Codigo de producto"
                             value={listCode || ''}
                             onChange={(e) => setListCode(e.target.value)}
                             className="border border-zinc-300 p-2 rounded-lg w-[350px]"

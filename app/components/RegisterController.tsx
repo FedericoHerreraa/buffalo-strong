@@ -34,7 +34,7 @@ export const RegisterController = () => {
         setLoading(true);
 
         try {
-            const res = await fetch('/api/send-email', {
+            const res = await fetch('/api/send-register-email', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'

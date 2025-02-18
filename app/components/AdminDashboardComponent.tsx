@@ -6,6 +6,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { useAuth } from "@/app/context/AuthContext";
 import { CustomSeparator } from "./CustomSeparator";
 import { SearchDbProd } from "./SearchDbProd";
+import { SendUserCredentials } from "./SendUserCredentials";
 
 export const AdminDashboardComponent = () => {
     const [form, setForm] = useState({
@@ -15,12 +16,6 @@ export const AdminDashboardComponent = () => {
         cuit: "",
         address: ""
     })
-    const [email, setEmail] = useState({
-        to: "",
-        subject: "",
-        body: ""
-    })
-
 
     const [showNext, setShowNext] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -29,11 +24,7 @@ export const AdminDashboardComponent = () => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setEmail({ ...email, [e.target.name]: e.target.value });
-    };
-
-    const { register } = useAuth()
+    const { register, logOut } = useAuth()
     // const router = useRouter()
 
     // if (!user || user.role !== 'admin') router.push('/')
@@ -41,13 +32,10 @@ export const AdminDashboardComponent = () => {
     const addUser = async () => {
         setLoading(true)
         await register(form.email, form.name, form.password, parseInt(form.cuit), form.address)
+        await logOut()
         setShowNext(true)
         setLoading(false)
     }
-
-    // const sendEmail = () => {
-    //     // send email logic
-    // }
 
     return (
         <div className="min-h-[100vh]">
@@ -117,58 +105,19 @@ export const AdminDashboardComponent = () => {
                         onClick={addUser} 
                         className="bg-zinc-700 w-[200px] hover:text-white py-2 rounded-lg text-zinc-200"
                     >
-                        {loading ? 'Agregando' : 'Agregar usuario'}
+                        {loading ? 'Agregando...' : 'Agregar usuario'}
                     </button>
                 </form>
-                {showNext && (
+                <FaArrowRightLong size={30} className="w-1/3"/>
+                {showNext ? (
                     <>
-                        <FaArrowRightLong size={30} className="w-1/3"/>
-                        <div className="w-1/3">
-                            <h2 className="text-2xl font-semibold mb-5">Enviar credenciales por email al usuario</h2>
-                            <div className="flex flex-col gap-5">
-                                <div>
-                                    <label htmlFor="email" className="text-zinc-700 ml-1">Para</label>
-                                    <input 
-                                        value={email.to}
-                                        onChange={handleEmailChange}
-                                        placeholder="nombre@servicio.com"
-                                        type="email" 
-                                        name="to"
-                                        className="w-full mt-2 bg-zinc-100 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none" 
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="email" className="text-zinc-700 ml-1">Asunto</label>
-                                    <input 
-                                        value={email.subject}
-                                        onChange={handleEmailChange}
-                                        placeholder="Mensaje de bienvenida"
-                                        type="email" 
-                                        name="subject"
-                                        className="w-full mt-2 bg-zinc-100 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none" 
-                                    />
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <label htmlFor="email" className="text-zinc-700 ml-1">Cuerpo del mensaje</label>
-                                    <textarea 
-                                        value={email.body}
-                                        onChange={handleEmailChange}
-                                        className="bg-zinc-100 rounded-lg"
-                                        name="body"
-                                        rows={5}
-                                        cols={30}
-                                    />                    
-                                </div>
-                                <button 
-                                    type="button"
-                                    className="bg-zinc-700 w-[200px] hover:text-white py-2 rounded-lg text-zinc-200">
-                                    Enviar email
-                                </button>
-                            </div>
-                        </div>
+                        <SendUserCredentials form={form} setForm={setForm} setShowNext={setShowNext}/>
                     </>
+                ) : (
+                    <div className="w-1/3"></div>
                 )}
             </section>
+
             <CustomSeparator />
 
             <section>
