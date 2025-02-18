@@ -22,7 +22,7 @@ export const Products = async () => {
                         <div key={cat.keyValue} id={cat.keyValue} className="mb-6 w-full">
                             <div className="flex md:flex-row flex-col md:gap-5 gap-3 md:items-center mb-10">
                                 <h1
-                                    className={`md:text-4xl text-3xl font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent`}
+                                    className={`md:text-4xl text-3xl font-bold md:whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent`}
                                     >
                                     {cat.title}
                                 </h1>
