@@ -9,7 +9,7 @@ export const StockReference = () => {
 
     const classname = 'text-md bg-gradient-to-br text-zinc-800 w-fit px-3 py-3 rounded-full shadow-md'
     return (
-        <div className="flex md:flex-row flex-col items-center gap-5 text-zinc-500 font-semibold md:shadow-md p-5 md:rounded-lg rounded-md bg-zinc-100">
+        <div className="flex md:flex-row flex-col items-center gap-5 text-zinc-500 font-semibold  p-5 md:rounded-lg rounded-md bg-zinc-100">
             <div className="flex items-center gap-3">
                 <CiCircleInfo className="text-zinc-700" size={25}/>
                 <h1 className="text-xl text-zinc-700">Stock</h1>
