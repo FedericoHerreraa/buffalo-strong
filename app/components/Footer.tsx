@@ -7,7 +7,7 @@ import { merriweather_sans } from "@/app/fonts/fonts";
 export const Footer = () => {
     return (
         <div className={`bg-zinc-100 min-h-[50vh] ${merriweather_sans.className}`}>
-            <footer className="flex md:flex-row flex-col gap-24 w-[90%] mx-auto pt-20">
+            <footer className="flex md:flex-row flex-col gap-24 w-[90%] mx-auto py-20">
                 <div className="md:w-1/3">
                     <p className="text-2xl mb-4">Buffalo Strong</p>
                     <p className="text-zinc-600">🎵 Tu pasión, nuestra música. En Buffalo{"'"}s Strong, vivimos y respiramos música. Ofrecemos instrumentos, accesorios y equipos de sonido de las mejores marcas para que des rienda suelta a tu creatividad. Ya seas un músico profesional o estés dando tus primeros acordes, aquí encontrarás todo lo que necesitas. Visítanos y deja que la música hable por ti. 🎸🥁🎹</p>

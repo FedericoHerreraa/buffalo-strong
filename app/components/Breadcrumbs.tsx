@@ -70,7 +70,7 @@ export const BreadCrumbs = () => {
                 </>
               )}
 
-              {["/about-us", "/contact-us", "/news", "/register", "/admin-dashboard"].includes(pathname) && (
+              {["/about-us", "/contact-us", "/news", "/register", "/admin-dashboard", "/confirm-purchase"].includes(pathname) && (
                 <>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
@@ -80,12 +80,12 @@ export const BreadCrumbs = () => {
                             {pathname === "/news" && "Novedades"}
                             {pathname === "/register" && "Registro"}
                             {pathname === "/admin-dashboard" && "Dashboard"}
+                            {pathname === "/confirm-purchase" && "Finalizar Compra"}
                         </Link>
                     </BreadcrumbItem>
                 </>
               )}
 
-              {/* Categoría */}
               {categoryTitle && (
                 <>
                     <BreadcrumbSeparator />
@@ -95,7 +95,6 @@ export const BreadCrumbs = () => {
                 </>
               )}
 
-              {/* Producto */}
               {isProductDetail && productTitle && (
                 <>
                     <BreadcrumbSeparator />
