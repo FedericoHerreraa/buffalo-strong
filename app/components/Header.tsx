@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import logobuffalo from "@/app/images/logos/Logobuffalo.png"
 import { BreadCrumbs } from "@/app/components/Breadcrumbs";
@@ -23,9 +25,17 @@ import {
   SheetTrigger,
 } from "@/app/components/ui/sheet"
 
+
 export const Header = () => {
   const { user, logOut } = useAuth()
   const { isMobile } = useMobileView()
+
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 flex flex-col bg-white bg-opacity-70">
@@ -36,7 +46,7 @@ export const Header = () => {
             <p>{user ? user?.role : 'Invitado'}</p>
           </div>
           {isMobile ? (
-            mobileTabs({ user, logOut })
+            mobileTabs({ user, logOut, open, setOpen })
           ) : (
             desktopTabs({ user, logOut })
           )}
@@ -79,13 +89,17 @@ export const Header = () => {
 const mobileTabs = ({
   user,
   logOut,
+  open,
+  setOpen,
 } : {
   user: User | null | undefined,
   logOut: () => void
+  open: boolean,
+  setOpen: (open: boolean) => void
 }) => {
   return (
     <>
-      <Sheet>
+      <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger>
           <VscListSelection size={25} className="cursor-pointer" />
         </SheetTrigger>

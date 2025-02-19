@@ -2,9 +2,10 @@
 
 import { useCart } from "@/app/context/CartContext"
 import { useAuth } from "@/app/context/AuthContext";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import {
     Sheet,
@@ -35,8 +36,15 @@ export const Cart = () => {
     const { user } = useAuth()
     const total = useMemo(() => totalPurchase(), [totalPurchase]);
 
+    const pathname = usePathname();
+    const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        setOpen(false);
+    }, [pathname]);
+
     return (
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger className={merriweather_sans.className}>
                 <Badge badgeContent={cart.length} color="success">
                     <LocalMallOutlinedIcon style={{ fontSize: isMobile ? "25px" : "32px" }} className="text-zinc-800"/>
