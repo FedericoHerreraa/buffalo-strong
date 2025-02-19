@@ -54,7 +54,7 @@ export const Header = () => {
       </nav>
 
       <div>
-        <section className={`flex items-center justify-between md:px-6 py-2 bg-zinc-200 bg-opacity-95 ${merriweather_sans.className}`}>
+        <section className={`flex items-center justify-between md:px-6 py-2 bg-zinc-100 bg-opacity-95 ${merriweather_sans.className}`}>
           <Link href='/' className="text-xl font-bold w-1/5">
               <Image
                   src={logobuffalo} 
@@ -67,7 +67,7 @@ export const Header = () => {
               <input 
                   type="text" 
                   placeholder="Buscá tu producto aquí..." 
-                  className="w-full bg-zinc-100 md:px-4 px-2 md:py-2 py-1 md:text-base text-sm md:rounded-lg rounded-md placeholder:text-[#5d3a1f] focus:outline-none shadow-md "
+                  className="w-full bg-zinc-100 md:px-4 px-2 md:py-2 py-1 md:text-base text-sm md:rounded-lg rounded-md placeholder:text-[#5d3a1f] focus:outline-none border border-zinc-300"
               />
               <TfiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#8d572f] cursor-pointer md:size-5 size-3" />
           </div>

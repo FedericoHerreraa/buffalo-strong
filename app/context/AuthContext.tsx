@@ -8,7 +8,7 @@ import { supabase } from "@/lib/supabaseClient";
 const AuthContext = createContext<AuthContextType>({
     user: null,
     login: () => {},
-    register: () => {},
+    registerUser: () => {},
     logOut: () => {},
     loading: true
 });
@@ -77,7 +77,7 @@ export const AuthProvider = ({ children } : { children: React.ReactNode }) => {
         setUser(fullUser)
     }
 
-    const register = async (
+    const registerUser = async (
         email: string, 
         name: string,
         password: string, 
@@ -132,7 +132,7 @@ export const AuthProvider = ({ children } : { children: React.ReactNode }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ login, user, register, logOut, loading }}>
+        <AuthContext.Provider value={{ login, user, registerUser, logOut, loading }}>
             {children}
         </AuthContext.Provider>
     );

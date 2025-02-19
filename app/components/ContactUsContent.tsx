@@ -2,21 +2,12 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 
 import Image from "next/image";
 import imagen from '@/app/images/carousel/carouselImage2.webp'
 
 import { merriweather } from "../fonts/fonts";
-
-const contactSchema = z.object({
-  name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
-  email: z.string().email("Debe ser un email válido"),
-  subject: z.string().min(3, "El asunto debe tener al menos 3 caracteres"),
-  message: z.string().min(10, "El mensaje debe tener al menos 10 caracteres"),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
+import { ContactFormData, contactSchema } from "@/app/schemas/schemas";
 
 export const ContactUsContent = () => {
   const {

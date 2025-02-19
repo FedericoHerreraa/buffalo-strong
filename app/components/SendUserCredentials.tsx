@@ -2,35 +2,25 @@
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { IoMdCheckmark } from "react-icons/io";
+import { RegisterAdminFormData, SendRegisterEmailData, sendRegisterEmailSchema } from "@/app/schemas/schemas";
+
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export const SendUserCredentials = ({
-    form,
-    setForm,
+    formInfo,
     setShowNext
 }: {
-    form: { 
-        name: string;
-        email: string;
-        password: string;
-        cuit: string;
-        address: string; 
-    };
-    setForm: React.Dispatch<React.SetStateAction<{
-        name: string;
-        email: string;
-        password: string;
-        cuit: string;
-        address: string;
-    }>>;
+    formInfo: RegisterAdminFormData;
     setShowNext: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-    const [email, setEmail] = useState({
-        to: "",
-        subject: "",
-        body: ""
-    })
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+        reset,
+    } = useForm<SendRegisterEmailData>({ resolver: zodResolver(sendRegisterEmailSchema) });
 
-    const [loading, setLoading] = useState(false);
     const [emailCopied, setEmailCopied] = useState(false);
     const [passwordCopied, setPasswordCopied] = useState(false);
 
@@ -45,42 +35,23 @@ export const SendUserCredentials = ({
         }, 3000); 
     };
 
-    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setEmail({ ...email, [e.target.name]: e.target.value });
-    };
-
-    const sendEmail = async () => {
-        setLoading(true);
+    const sendEmail = async (data: SendRegisterEmailData) => {
         const res = await fetch('/api/send-credentials-email', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify(email)
+            body: JSON.stringify(data)
         });
     
         const result = await res.json();
         if (result.success) {
-            setLoading(false);
             console.log("Correo enviado con éxito:", result.data);
         }
 
 
         setShowNext(false);
-        setEmail({
-            to: "",
-            subject: "",
-            body: ""
-        });
-        setForm({
-            name: "",
-            email: "",
-            password: "",
-            cuit: "",
-            address: ""
-        });
-
-        setLoading(false);
+        reset();
     }
 
     return (
@@ -88,57 +59,55 @@ export const SendUserCredentials = ({
             <h2 className="text-2xl font-semibold mb-5">
                 Enviar credenciales por email al usuario
             </h2>
-            <div className="flex flex-col gap-5">
+            <form onSubmit={handleSubmit(sendEmail)} className="flex flex-col gap-5">
                 <div>
                     <label htmlFor="email" className="text-zinc-700 ml-1">
                         Para
                     </label>
                     <input
-                        value={email.to}
-                        onChange={handleEmailChange}
+                        {...register("to")}
                         placeholder="nombre@servicio.com"
                         type="email"
-                        name="to"
                         className="w-full mt-2 bg-zinc-100 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none"
                     />
                 </div>
+                {errors.to && <p className="text-red-500 text-sm mt-1">{errors.to.message}</p>}
                 <div>
                     <label htmlFor="email" className="text-zinc-700 ml-1">
                         Asunto
                     </label>
                     <input
-                        value={email.subject}
-                        onChange={handleEmailChange}
+                        {...register("subject")}
                         placeholder="Mensaje de bienvenida"
-                        type="email"
-                        name="subject"
+                        type="text"
                         className="w-full mt-2 bg-zinc-100 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none"
                     />
                 </div>
+                {errors.subject && <p className="text-red-500 text-sm mt-1">{errors.subject.message}</p>}
                 <div className="flex flex-col gap-5">
                     <div className="flex items-center gap-3">
                         <p className="bg-zinc-100 p-2 rounded-lg text-zinc-700 w-fit">
-                            {form.email}
+                            {formInfo.email}
                         </p>
                             {emailCopied ? (
                                 <IoMdCheckmark className="text-green-500 text-xl" />
                             ) : (
                                 <IoCopyOutline
                                     className="cursor-pointer text-xl"
-                                    onClick={() => handleCopy(form.email)}
+                                    onClick={() => handleCopy(formInfo.email)}
                                 />
                             )}
                     </div>
                     <div className="flex items-center gap-3">
                         <p className="bg-zinc-100 p-2 rounded-lg text-zinc-700 w-fit">
-                            {form.password}
+                            {formInfo.password}
                         </p>
                         {passwordCopied ? (
                             <IoMdCheckmark className="text-green-500 text-xl" />
                         ) : (
                             <IoCopyOutline
                                 className="cursor-pointer text-xl"
-                                onClick={() => handleCopy(form.password)}
+                                onClick={() => handleCopy(formInfo.password)}
                             />
                         )}
                     </div>
@@ -148,22 +117,20 @@ export const SendUserCredentials = ({
                         Cuerpo del mensaje
                     </label>
                     <textarea
-                        value={email.body}
-                        onChange={handleEmailChange}
+                        {...register("body")}
                         className="bg-zinc-100 rounded-lg"
-                        name="body"
                         rows={5}
                         cols={30}
                     />
                 </div>
+                {errors.body && <p className="text-red-500 text-sm mt-1">{errors.body.message}</p>}
                 <button
-                    onClick={sendEmail}
-                    type="button"
+                    type="submit"
                     className="bg-zinc-700 w-[200px] hover:text-white py-2 rounded-lg text-zinc-200"
                 >
-                    {loading ? 'Enviando...' : 'Enviar email'}
+                    {isSubmitting ? 'Enviando...' : 'Enviar email'}
                 </button>
-            </div>
+            </form>
         </div>
     );
 };

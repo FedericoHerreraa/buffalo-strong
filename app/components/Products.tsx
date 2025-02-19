@@ -19,7 +19,7 @@ export const Products = async () => {
                 {categories.map(cat => {
                     const filteredProducts = prods?.filter(prod => prod.category === cat.keyValue).slice(0, 6);
                     return (
-                        <div key={cat.keyValue} id={cat.keyValue} className="mb-6 w-full">
+                        <div key={cat.keyValue} id={cat.keyValue} className="mb-6 w-full bg-gradient-to-b from-white via-zinc-100 to-white">
                             <div className="flex md:flex-row flex-col md:gap-5 gap-3 md:items-center mb-10">
                                 <h1
                                     className={`md:text-4xl text-3xl font-bold md:whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent`}
@@ -66,7 +66,7 @@ export const Products = async () => {
                                                 />
                                             )}
                                             <p className="text-zinc-600 text-sm p-3 pb-10 whitespace-normal">{prod.description.slice(0, 100)}...</p>
-                                            <div className="h-fit px-2 py-7 bg-black text-zinc-300 flex justify-between items-center">
+                                            <div className="h-fit px-2 py-7 bg-black text-zinc-300 flex justify-between rounded-b-md items-center">
                                                 <ProdPrice prod={prod}/>
                                             </div>
                                         </Link>
