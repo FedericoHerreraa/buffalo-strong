@@ -1,16 +1,9 @@
 'use client'
 
-import { useAuth } from "@/app/context/AuthContext"
-import { useRouter } from "next/navigation"
 import { merriweather_sans } from "@/app/fonts/fonts"
 
 
 export const ConfirmPurchaseComponent = () => {
-    const { user } = useAuth()
-    const router = useRouter()
-
-    if (!user) router.push('/register')
-
     return (
         <div className={`h-[80vh] ${merriweather_sans.className}`}>
             <div className="flex md:justify-start justify-center items-center gap-4 mt-10">

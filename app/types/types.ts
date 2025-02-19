@@ -52,7 +52,7 @@ export interface User {
 export interface AuthContextType {
     user: User | null | undefined;
     login: (email: string, password: string) => void;
-    register: (email: string, name: string, password: string, cuit: number, address: string) => void;
+    registerUser: (email: string, name: string, password: string, cuit: number, address: string) => void;
     logOut: () => void;
     loading: boolean;
 }
