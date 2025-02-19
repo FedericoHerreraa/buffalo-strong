@@ -1,31 +1,38 @@
 'use client'
 
-import { useState } from "react"
 import { LoginView } from "./LoginView"
 import { useAuth } from "@/app/context/AuthContext"
 import { useMobileView } from "@/app/context/MobileContext"
 
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { LoginFormData, loginSchema } from "@/app/schemas/schemas"
+
 export const LoginController = () => {
-    const [email, setEmail] = useState<string>('')
-    const [password, setPassword] = useState<string>('')
-    const [loading, setLoading] = useState(false)
     const { login } = useAuth()
     const { isMobile } = useMobileView()
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+        reset,
+    } = useForm<LoginFormData>({ resolver: zodResolver(loginSchema) });
     
-    const loginUser = async () => {
-        setLoading(true)
+    const loginUser = async (data: LoginFormData) => {
+        const { email, password } = data
         await login(email, password)
-        setLoading(false)
+        reset()
+        
     }
 
     return (
         <LoginView 
-            email={email}
-            setEmail={setEmail}
-            password={password}
-            setPassword={setPassword}
+            register={register}
+            handleSubmit={handleSubmit}
+            errors={errors}
+            isSubmitting={isSubmitting}
             loginUser={loginUser}
-            loading={loading}
             isMobile={isMobile}
         />
     )

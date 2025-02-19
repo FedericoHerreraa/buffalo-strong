@@ -1,5 +1,5 @@
 import { FieldErrors, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
-import { RegisterFormData } from "@/app/schemas/schemas";
+import { LoginFormData, RegisterFormData } from "@/app/schemas/schemas";
 
 export interface ProductCart {
     id: number;
@@ -81,4 +81,23 @@ export interface RegisterViewProps {
         cuit: string;
     }>
     isSubmitting: boolean;
+}
+
+
+export interface LoginViewProps {
+    register: UseFormRegister<{
+        email: string;
+        password: string;
+    }>
+    handleSubmit: UseFormHandleSubmit<{
+        email: string;
+        password: string;
+    }, undefined>
+    errors: FieldErrors<{
+        email: string;
+        password: string;
+    }>
+    isSubmitting: boolean;
+    loginUser: (data: LoginFormData) => void;
+    isMobile: boolean;
 }
