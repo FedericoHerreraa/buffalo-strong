@@ -7,9 +7,9 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
     const body = await req.json();
-    const { name, lastName, email, address, fiscalKey } = body;
+    const { name, lastName, email, address, cuit } = body;
 
-    if (!name || !lastName || !email || !fiscalKey || !address) {
+    if (!name || !lastName || !email || !cuit || !address) {
         return NextResponse.json({
             message: "Faltan parámetros requeridos",
             status: 400
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
                 <p>Apellido: ${lastName}</p>
                 <p>Email: ${email}</p>
                 <p>Dirección: ${address}</p>
-                <p>Clave Fiscal: ${fiscalKey}</p>
+                <p>Clave Fiscal: ${cuit}</p>
             `,
         });
 

@@ -1,3 +1,5 @@
+import { FieldErrors, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
+import { RegisterFormData } from "@/app/schemas/schemas";
 
 export interface ProductCart {
     id: number;
@@ -56,15 +58,27 @@ export interface AuthContextType {
 }
 
 export interface RegisterViewProps {
-    formData: {
+    register: UseFormRegister<{
+        name: string;
+        email: string;
+        address: string;
+        lastName: string;
+        cuit: string;
+    }>
+    handleSubmit: UseFormHandleSubmit<{
+        name: string;
+        email: string;
+        address: string;
+        lastName: string;
+        cuit: string;
+    }, undefined>
+    onSubmit: (data: RegisterFormData) => Promise<void>
+    errors: FieldErrors<{
         name: string;
         lastName: string;
         email: string;
         address: string;
-        fiscalKey: string;
-        fiscalKeyRepeat: string;
-    };
-    loading: boolean;
-    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    handleSubmit: (e: React.FormEvent) => void;
+        cuit: string;
+    }>
+    isSubmitting: boolean;
 }
