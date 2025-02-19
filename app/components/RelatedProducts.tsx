@@ -5,12 +5,18 @@ import Link from "next/link"
 import Image from "next/image"
 import { ProdPrice } from "./ProdPrice"
 
+import { TbCirclesRelation } from "react-icons/tb";
+
+
 export const RelatedProducts = async ({ categoryKey } : { categoryKey: string }) => {
     const { data: prods } = await supabase.from('products').select('*').eq('category', categoryKey).limit(5)
 
     return (
         <div className="w-[90%] mx-auto min-h-[50vh]">
-            <h1 className="text-3xl font-bold  bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent whitespace-nowrap">Productos relacionados</h1>
+            <div className="flex items-center gap-3">
+                <h1 className="inline-block text-3xl font-bold bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#371f0f] bg-clip-text text-transparent">Productos relacionados</h1>
+                <TbCirclesRelation size={25}/>
+            </div>
             <div className="flex gap-10 mt-10 mb-10 overflow-x-auto whitespace-nowrap pb-5">
                 {prods?.map((prod: ProductDB, index) => (
                     <Link 
@@ -39,7 +45,7 @@ export const RelatedProducts = async ({ categoryKey } : { categoryKey: string })
                             />
                         )}
                         <p className="text-zinc-600 text-sm p-3 pb-10 whitespace-normal">{prod.description.slice(0, 100)}...</p>
-                        <div className="h-[20px] px-2 py-7 bg-black text-zinc-300 flex justify-between items-center">
+                        <div className="h-[20px] px-2 py-7 rounded-b-md bg-black text-zinc-300 flex justify-between items-center">
                             <ProdPrice prod={prod}/>
                         </div>
                     </Link>
