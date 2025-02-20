@@ -11,6 +11,7 @@ export interface ProductCart {
     brand: string;
     img: [string];
     quantity: number;
+    listCode: number;
 }
 
 export interface ProductDB {
@@ -24,6 +25,7 @@ export interface ProductDB {
     stock: number;
     brand: string;
     img: [string];
+    listCode: number;
 }
 
 export interface CartContextType {
