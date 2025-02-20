@@ -26,21 +26,23 @@ export const ContactUsContent = () => {
   };
 
   return (
-    <section className="flex h-screen w-full">
-
-      <div className="w-2/5 h-full relative">
+    <section className="flex flex-col md:flex-row h-auto md:h-screen w-full">
+ 
+      <div className="w-full md:w-2/5 h-64 md:h-full relative">
         <Image 
-            src={imagen}
-            alt="Imagen Eko"
-            fill
-            objectFit="cover"
+          src={imagen}
+          alt="Imagen Eko"
+          fill
+          className="object-cover"
         />
       </div>
-
-      <div className="w-3/5 flex flex-col py-8 px-12 ">
+      <div className="w-full md:w-3/5 flex flex-col py-8 px-6 md:px-12">
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+          <h1 className={`text-3xl md:text-4xl mb-3 text-[#5a4632] ${merriweather.className}`}>
+            Contactanos Ahora Mismo
+          </h1>
+
           <div>
-          <h1 className={`text-4xl mb-3 text-[#5a4632] ${merriweather.className}`}>Contactanos Ahora Mismo</h1>
             <label className="block text-sm font-medium text-[#5a4632]">Nombre</label>
             <input
               type="text"
@@ -49,6 +51,7 @@ export const ContactUsContent = () => {
             />
             {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
           </div>
+
           <div>
             <label className="block text-sm font-medium text-[#5a4632]">Email</label>
             <input
@@ -58,6 +61,7 @@ export const ContactUsContent = () => {
             />
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
           </div>
+
           <div>
             <label className="block text-sm font-medium text-[#5a4632]">Asunto</label>
             <input
@@ -67,6 +71,7 @@ export const ContactUsContent = () => {
             />
             {errors.subject && <p className="text-red-500 text-sm mt-1">{errors.subject.message}</p>}
           </div>
+
           <div>
             <label className="block text-sm font-medium text-[#5a4632]">Mensaje</label>
             <textarea
@@ -76,6 +81,7 @@ export const ContactUsContent = () => {
             />
             {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
           </div>
+
           <button
             type="submit"
             disabled={isSubmitting}
@@ -84,8 +90,9 @@ export const ContactUsContent = () => {
             {isSubmitting ? "Enviando..." : "Enviar"}
           </button>
         </form>
-        <p className="text-zinc-600">** Este mensaje se enviará al Mail de Buffalo Strong. Atención al cliente</p>
+        <p className="text-zinc-600 mt-4">** Este mensaje se enviará al Mail de Buffalo Strong. Atención al cliente</p>
       </div>
     </section>
+
   );
 };
