@@ -13,12 +13,12 @@ export const Products = async () => {
         
     return (
         <div className={`min-h-[100vh] ${merriweather_sans.className}`}>
-            <section className="flex gap-20 mt-20 mb-20 w-[95%] mx-auto flex-wrap shadow-lg p-10 border border-zinc-200 rounded-lg bg-zinc-50">
+            <section className="flex gap-20 mt-20 mb-20 w-[90%] mx-auto flex-wrap shadow-lg p-10 border border-zinc-200 rounded-lg ">
                 <StockReference />
                 {categories.map(cat => {
                     const filteredProducts = prods?.filter(prod => prod.category === cat.keyValue).slice(0, 6);
                     return (
-                        <div key={cat.keyValue} id={cat.keyValue} className="mb-6 w-full bg-gradient-to-b ">
+                        <div key={cat.keyValue} id={cat.keyValue} className="mb-6 w-full bg-gradient-to-b from-white via-zinc-100 to-white">
                             <div className="flex md:flex-row flex-col md:gap-5 gap-3 md:items-center mb-10">
                                 <h1
                                     className={`md:text-4xl text-3xl font-bold md:whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent`}

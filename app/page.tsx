@@ -3,6 +3,7 @@ import { Products } from "@/app/components/Products";
 import { FIltersComponent } from "@/app/components/FiltersComponent";
 import { CustomSeparator } from "./components/CustomSeparator";
 import { WaysOfPayment } from "./components/WaysOfPayment";
+import { ContactPreview } from "./components/ContactPreview";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Products />
       <CustomSeparator />
       <WaysOfPayment />
+      <ContactPreview />
     </>
   );
 }
