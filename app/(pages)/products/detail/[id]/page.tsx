@@ -4,7 +4,7 @@ import { ProductDetails } from "@/app/components/ProductDetails";
 import { RelatedProducts } from "@/app/components/RelatedProducts";
 import { merriweather_sans } from "@/app/fonts/fonts";
 import { supabase } from "@/lib/supabaseClient";
-import Image from "next/image";
+// import { ProductImage } from "./ProductImage";
 
 
 export default async function Page({ params } : { params: Promise<{ id: string }> }) {
@@ -14,6 +14,8 @@ export default async function Page({ params } : { params: Promise<{ id: string }
     if (!product) {
         return <p className="h-[50vh] text-center text-red-500">Producto no encontrado</p>;
     }
+
+    console.log(product)
     
     return (
         <div className={merriweather_sans.className}>
@@ -25,26 +27,7 @@ export default async function Page({ params } : { params: Promise<{ id: string }
             <section className="min-h-[80vh] md:w-[80%] w-[97%] mx-auto p-10 mt-20 flex md:flex-row flex-col gap-10">
                 <div className="md:w-1/2 md:border-r h-fit border-r-zinc-200">
                     <h1 className="md:text-4xl text-3xl text-zinc-600 font-bold border-l-4 border-l-zinc-800 pl-5">{product.title}</h1>
-                    {product.imgByColor.length > 0 && (
-                        <Image 
-                            src={product.img[0]} 
-                            alt={product.title} 
-                            width={400}
-                            height={400}
-                            className="w-[400px] h-[400px] object-cover my-10"
-                        />
-                    )}
-                    <div className="flex items-center gap-5">
-                        <select 
-                            className="p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#a67c52] focus:border-[#a67c52] hover:border-[#a67c52] transition duration-200"
-                        >
-                            {product.colors.map((color: string, index: number) => (
-                                <option key={index} value={color} className="text-gray-700">
-                                {color}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                    {/* <ProductImage product={product}/> */}
                 </div>
                 <div className="md:w-1/2">
                     <ProductDetails product={product}/>
