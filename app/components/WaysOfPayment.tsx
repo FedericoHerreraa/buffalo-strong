@@ -13,7 +13,7 @@ import { BsMusicNoteBeamed } from "react-icons/bs";
 
 export const WaysOfPayment = () => {
     return (
-        <div className={`min-h-[80vh] md:h-[60vh] mt-20 ${merriweather_sans.className}`}>
+        <div className={`min-h-[50vh] mt-20 ${merriweather_sans.className}`}>
             <div className="flex justify-center items-center flex-col gap-3">
                 <div className="flex items-center gap-3">
                     <BsMusicNoteList size={20}/>

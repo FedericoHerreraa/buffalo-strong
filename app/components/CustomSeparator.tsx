@@ -7,7 +7,7 @@ export const CustomSeparator = () => {
             {[...Array(4)].map((_, i) => (
                 <div
                     key={i}
-                    className="relative w-full h-[2px] bg-zinc-400"
+                    className="relative w-full h-[2px] bg-zinc-300"
                     style={{
                         backgroundImage: "radial-gradient(circle, black 10%, transparent 20%)",
                         backgroundSize: "10px 10px",
