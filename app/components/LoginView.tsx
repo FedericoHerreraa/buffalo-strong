@@ -11,26 +11,20 @@ import {
 } from "@/app/components/ui/drawer"
 
 import { MdOutlineLogin } from "react-icons/md";
+import { LoginViewProps } from "../types/types";
 
 export const LoginView = ({
-    email,
-    setEmail,
-    password,
-    setPassword,
-    loginUser,
-    loading
-}: {
-    email: string
-    setEmail: (email: string) => void
-    password: string
-    setPassword: (password: string) => void
-    loginUser: () => void
-    loading: boolean
-}) => {
+  register,
+  handleSubmit,
+  errors,
+  isSubmitting,
+  loginUser,
+  isMobile
+}: LoginViewProps) => {
     return (
         <Drawer>
             <DrawerTrigger>
-              <div className="flex items-center gap-2 cursor-pointer text-zinc-300">
+              <div className={`flex items-center gap-2 cursor-pointer ${isMobile ? 'text-zinc-900' : 'text-zinc-300'}`}>
                 <MdOutlineLogin />
                 <p>Ingresa a tu cuenta</p>
               </div>
@@ -40,35 +34,34 @@ export const LoginView = ({
                 <DrawerTitle className="text-zinc-300 text-center text-3xl">Ingresa a tu cuenta</DrawerTitle>
                 <DrawerDescription className="text-zinc-400 text-center">Ingresa a tu cuenta ya creada.</DrawerDescription>
               </DrawerHeader>
-              <form className="w-[20%] mx-auto mt-20 flex flex-col gap-10 items-center">
+              <form onSubmit={handleSubmit(loginUser)} className="md:w-[20%] w-[60%] mx-auto mt-20 flex flex-col gap-10 items-center">
                 <div>
                     <label htmlFor="email" className="text-zinc-300 ml-1">Ingrese su correo electrónico</label>
                     <input 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        {...register("email")}
                         placeholder="tu@servicio.com"
                         type="email" 
                         className="w-full mt-2 bg-zinc-800 px-4 py-2 rounded-xl text-zinc-300 focus:outline-none" 
                     />
                 </div>
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
                 <div>
                     <label htmlFor="password" className="text-zinc-300 ml-1">Ingrese su contraseña</label>
                     <input 
                         placeholder="clave"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        {...register("password")}
                         type="password" 
                         className="w-full mt-2 bg-zinc-800 px-4 py-2 rounded-xl text-zinc-300 focus:outline-none" 
                     />
                 </div>
+                {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
+                <div className="flex justify-center mt-10">
+                  <button 
+                    className="bg-zinc-600 hover:bg-zinc-500 w-fit px-4 py-1 rounded-md">
+                      <span className="text-zinc-300">{isSubmitting ? 'Ingresando...' : 'Ingresar'}</span>
+                  </button>
+                </div>
               </form>
-              <div className="flex justify-center mt-10">
-                <button 
-                  onClick={loginUser}
-                  className="bg-zinc-600 hover:bg-zinc-500 w-fit px-4 py-1 rounded-md">
-                    <span className="text-zinc-300">{loading ? 'Ingresando...' : 'Ingresar'}</span>
-                </button>
-              </div>
               <DrawerFooter className="flex items-center">
                 <DrawerClose className="bg-gray-800 hover:scale-105 transition rounded-md px-4 py-2 w-fit mx-auto">
                   <span className="text-zinc-300">Cerrar</span>

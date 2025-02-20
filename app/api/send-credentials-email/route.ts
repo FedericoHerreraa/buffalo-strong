@@ -6,10 +6,10 @@ import { NextRequest, NextResponse } from 'next/server';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
-    const body = await req.json();
-    const { name, lastName, email, address, fiscalKey } = body;
+    const bodyEmail = await req.json();
+    const { to, subject, body } = bodyEmail;
 
-    if (!name || !lastName || !email || !fiscalKey || !address) {
+    if (!to || !subject || !body) {
         return NextResponse.json({
             message: "Faltan parámetros requeridos",
             status: 400
@@ -20,16 +20,12 @@ export async function POST(req: NextRequest) {
         // Email enviado a "buffalo"
         const { data, error } = await resend.emails.send({
             from: 'federicoherrera@asneeed.com',
-            to: email,
-            subject: 'Registro en Buffalo Strong',
+            to: to,
+            subject: subject,
             html: `
                 <h1>¡Hola Buffalo!</h1>
                 <p>Este es un email de prueba enviado desde el servidor.</p>
-                <p>Nombre: ${name}</p>
-                <p>Apellido: ${lastName}</p>
-                <p>Email: ${email}</p>
-                <p>Dirección: ${address}</p>
-                <p>Clave Fiscal: ${fiscalKey}</p>
+                <div>${body}</div>
             `,
         });
 

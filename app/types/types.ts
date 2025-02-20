@@ -1,3 +1,5 @@
+import { FieldErrors, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
+import { LoginFormData, RegisterFormData } from "@/app/schemas/schemas";
 
 export interface ProductCart {
     id: number;
@@ -52,21 +54,52 @@ export interface User {
 export interface AuthContextType {
     user: User | null | undefined;
     login: (email: string, password: string) => void;
-    register: (email: string, name: string, password: string, cuit: number, address: string) => void;
+    registerUser: (email: string, name: string, password: string, cuit: number, address: string) => void;
     logOut: () => void;
     loading: boolean;
 }
 
 export interface RegisterViewProps {
-    formData: {
+    register: UseFormRegister<{
+        name: string;
+        email: string;
+        address: string;
+        lastName: string;
+        cuit: string;
+    }>
+    handleSubmit: UseFormHandleSubmit<{
+        name: string;
+        email: string;
+        address: string;
+        lastName: string;
+        cuit: string;
+    }, undefined>
+    onSubmit: (data: RegisterFormData) => Promise<void>
+    errors: FieldErrors<{
         name: string;
         lastName: string;
         email: string;
         address: string;
-        fiscalKey: string;
-        fiscalKeyRepeat: string;
-    };
-    loading: boolean;
-    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    handleSubmit: (e: React.FormEvent) => void;
+        cuit: string;
+    }>
+    isSubmitting: boolean;
+}
+
+
+export interface LoginViewProps {
+    register: UseFormRegister<{
+        email: string;
+        password: string;
+    }>
+    handleSubmit: UseFormHandleSubmit<{
+        email: string;
+        password: string;
+    }, undefined>
+    errors: FieldErrors<{
+        email: string;
+        password: string;
+    }>
+    isSubmitting: boolean;
+    loginUser: (data: LoginFormData) => void;
+    isMobile: boolean;
 }

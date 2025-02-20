@@ -1,45 +1,27 @@
 'use client'
 
-import { useState } from "react"
 import { RegisterView } from "./RegisterView";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { RegisterFormData, registerSchema } from "@/app/schemas/schemas";
+
 
 export const RegisterController = () => {
-    const [formData, setFormData] = useState({
-        name: "",
-        lastName: "",
-        email: "",
-        address: "",
-        fiscalKey: "",
-        fiscalKeyRepeat: ""
-    })
-    const [loading, setLoading] = useState<boolean>(false);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+        reset,
+    } = useForm<RegisterFormData>({ resolver: zodResolver(registerSchema) });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const cleanForm = () => {
-        setFormData({
-            name: "",
-            lastName: "",
-            email: "",
-            address: "",
-            fiscalKey: "",
-            fiscalKeyRepeat: ""
-        });
-    }
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setLoading(true);
-
+    const onSubmit = async (data: RegisterFormData) => {
         try {
-            const res = await fetch('/api/send-email', {
+            const res = await fetch('/api/send-register-email', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
               },
-              body: JSON.stringify(formData)
+              body: JSON.stringify(data)
             });
       
             const result = await res.json();
@@ -48,11 +30,9 @@ export const RegisterController = () => {
             } else {
               console.log("Correo enviado con éxito:", result.data);
             }
-            setLoading(false)
-            cleanForm()
+            reset()
         } catch (error) {
-            setLoading(false)
-            cleanForm()
+            reset()
             console.error("Error en la solicitud:", error);
         }
     };
@@ -60,10 +40,11 @@ export const RegisterController = () => {
 
     return (
         <RegisterView 
-            formData={formData}
-            loading={loading}
-            handleChange={handleChange}
+            register={register}
             handleSubmit={handleSubmit}
+            onSubmit={onSubmit}
+            errors={errors}
+            isSubmitting={isSubmitting}
         />
     )
 }

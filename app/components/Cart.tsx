@@ -2,8 +2,10 @@
 
 import { useCart } from "@/app/context/CartContext"
 import { useAuth } from "@/app/context/AuthContext";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import {
     Sheet,
@@ -16,7 +18,7 @@ import {
 
 import { merriweather_sans } from "@/app/fonts/fonts";
 
-import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import { FiShoppingCart } from "react-icons/fi";
 import { Badge } from '@mui/material';
 import { useMobileView } from "@/app/context/MobileContext";
 
@@ -34,11 +36,18 @@ export const Cart = () => {
     const { user } = useAuth()
     const total = useMemo(() => totalPurchase(), [totalPurchase]);
 
+    const pathname = usePathname();
+    const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        setOpen(false);
+    }, [pathname]);
+
     return (
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger className={merriweather_sans.className}>
                 <Badge badgeContent={cart.length} color="success">
-                    <LocalMallOutlinedIcon style={{ fontSize: isMobile ? "25px" : "32px" }} className="text-zinc-800"/>
+                    <FiShoppingCart style={{ fontSize: isMobile ? "25px" : "32px" }} className="text-zinc-800"/>
                 </Badge>
             </SheetTrigger>
             <SheetContent className={`bg-white ${merriweather_sans.className}`}>
@@ -64,7 +73,7 @@ export const Cart = () => {
                                         <p className="text-sm text-zinc-600">Cantidad: {item.quantity}</p>
                                         <p className="text-sm text-zinc-600">Precio: ${(user?.role === 'Invitado' ? item.sugestedPrice : item.listPrice) * item.quantity}</p>
                                     </div>
-                                    <div className="flex gap-7 items-center">
+                                    <div className="flex md:flex-row flex-col md:gap-7 gap-2 items-center">
                                         <button 
                                             onClick={() => deleteOne(item.id)}
                                             className="bg-red-700 text-zinc-200 px-2 py-1 rounded-md"
@@ -89,16 +98,16 @@ export const Cart = () => {
                     )}
                 </section>
                 {cart.length !== 0 && <p className="mt-5 text-zinc-700">Total de la compra: <span className="font-semibold">${total}</span></p>}
-                <div className="flex gap-5 justify-center">
+                <div className="flex md:gap-5 gap-2 justify-center">
                     <button 
                         onClick={() => setCart([])}
-                        className="mt-10 border border-zinc-700 hover:bg-zinc-100 rounded-md px-5 py-2"
+                        className="mt-10 border border-zinc-700 md:text-base text-sm hover:bg-zinc-100 rounded-md md:px-5 px-3 md:py-2 py-1"
                     >
                         Vaciar carrito
                     </button>
-                    <button className="mt-10 bg-gray-600 border border-zinc-700 text-zinc-200 rounded-md px-5 py-2">
+                    <Link href='/confirm-purchase' className="mt-10 bg-gray-600 border md:text-base text-sm border-zinc-700 text-zinc-200 rounded-md md:px-5 px-3 md:py-2 py-1">
                         Finalizar compra
-                    </button>
+                    </Link>
                 </div>
             </SheetContent>
         </Sheet>
