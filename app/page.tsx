@@ -4,6 +4,7 @@ import { FIltersComponent } from "@/app/components/FiltersComponent";
 import { CustomSeparator } from "./components/CustomSeparator";
 import { WaysOfPayment } from "./components/WaysOfPayment";
 import { ContactPreview } from "./components/ContactPreview";
+import { ImagesSection } from "./components/ImagesSection";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <FIltersComponent /> 
       <Products />
       <CustomSeparator />
+      <ImagesSection />
       <WaysOfPayment />
       <ContactPreview />
     </>
