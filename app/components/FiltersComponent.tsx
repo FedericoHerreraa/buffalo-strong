@@ -1,4 +1,5 @@
 'use client'
+
 import { merriweather_sans } from "@/app/fonts/fonts"
 import {
     Carousel,
@@ -21,9 +22,8 @@ export const FIltersComponent = () => {
         if (element) element.scrollIntoView({ behavior: "smooth" });
     };
 
-
     return (
-        <div className={`w-full mx-auto h-48 flex items-center justify-center bg-gradient-to-b from-white via-zinc-100 to-white ${merriweather_sans.className}`}>
+        <div className={`w-full mx-auto h-48 flex items-center justify-center bg-gradient-to-b from-white via-zinc-50 to-white ${merriweather_sans.className}`}>
             <Carousel className="md:w-[70%] w-fit md:mx-auto" opts={{
                 loop: true
             }}>
