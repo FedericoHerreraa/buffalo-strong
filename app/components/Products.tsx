@@ -13,7 +13,7 @@ export const Products = async () => {
         
     return (
         <div className={`min-h-[100vh] ${merriweather_sans.className}`}>
-            <section className="flex gap-20 mt-20 mb-20 w-[90%] mx-auto flex-wrap shadow-lg p-10 border border-zinc-200 rounded-lg ">
+            <section className="flex gap-20 mt-20 mb-20 w-[90%] mx-auto flex-wrap shadow-lg p-10 border-x border-x-zinc-200 rounded-b-lg ">
                 <StockReference />
                 {categories.map(cat => {
                     const filteredProducts = prods?.filter(prod => prod.category === cat.keyValue).slice(0, 6);
