@@ -25,7 +25,7 @@ export default async function Page({ params } : { params: Promise<{ id: string }
             <section className="min-h-[80vh] md:w-[80%] w-[97%] mx-auto p-10 mt-20 flex md:flex-row flex-col gap-10">
                 <div className="md:w-1/2 md:border-r h-fit border-r-zinc-200">
                     <h1 className="md:text-4xl text-3xl text-zinc-600 font-bold border-l-4 border-l-zinc-800 pl-5">{product.title}</h1>
-                    {product.img.length > 0 && (
+                    {product.imgByColor.length > 0 && (
                         <Image 
                             src={product.img[0]} 
                             alt={product.title} 
@@ -35,11 +35,13 @@ export default async function Page({ params } : { params: Promise<{ id: string }
                         />
                     )}
                     <div className="flex items-center gap-5">
-                        <select className="p-2 border border-gray-300 rounded-md">
+                        <select 
+                            className="p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#a67c52] focus:border-[#a67c52] hover:border-[#a67c52] transition duration-200"
+                        >
                             {product.colors.map((color: string, index: number) => (
-                            <option key={index} value={color}>
+                                <option key={index} value={color} className="text-gray-700">
                                 {color}
-                            </option>
+                                </option>
                             ))}
                         </select>
                     </div>
