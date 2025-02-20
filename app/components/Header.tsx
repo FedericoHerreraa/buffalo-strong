@@ -61,7 +61,7 @@ export const Header = () => {
               <Image
                   src={logobuffalo} 
                   alt="Logo"
-                  width={120} 
+                  width={80} 
                   className={`transition-all duration-250 ease-in-out`}
               />
               {/* <h1>Buffalo{"'"} Strong</h1> */}
