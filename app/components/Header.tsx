@@ -14,10 +14,12 @@ import { User } from "@/app/types/types";
 import { Cart } from "./Cart";
 import { LoginController } from "./LoginController";
 
-import { FaUser, FaUserPlus,  } from "react-icons/fa6";
+import { FaUserPlus,  } from "react-icons/fa6";
 import { VscListSelection } from "react-icons/vsc";
 import { TfiSearch } from "react-icons/tfi";
 import { CiLogout } from "react-icons/ci";
+import { FaIdBadge } from "react-icons/fa";
+
 
 import {
   Sheet,
@@ -42,7 +44,7 @@ export const Header = () => {
       <nav className={`flex items-center justify-between w-full md:px-6 px-3 py-2 bg-zinc-900 text-zinc-300 ${merriweather.className}`}>
         <div className="flex justify-between gap-7 text-md w-full ">
           <div className="flex items-center gap-1 bg-zinc-200 bg-opacity-90 text-sm rounded-full h-fit px-2 py-1 text-zinc-900">
-            <FaUser size={10}/>
+            <FaIdBadge size={18}/>
             <p>{user ? user?.role : 'Invitado'}</p>
           </div>
           {isMobile ? (
@@ -55,19 +57,20 @@ export const Header = () => {
 
       <div>
         <section className={`flex items-center justify-between md:px-6 py-2 bg-zinc-100 bg-opacity-95 ${merriweather_sans.className}`}>
-          <Link href='/' className="text-xl font-bold w-1/5">
+          <Link href='/' className="text-xl font-bold w-1/5 flex items-center">
               <Image
                   src={logobuffalo} 
                   alt="Logo"
                   width={120} 
                   className={`transition-all duration-250 ease-in-out`}
               />
+              {/* <h1>Buffalo{"'"} Strong</h1> */}
           </Link>
           <div className="relative w-3/5 rounded-lg">
               <input 
                   type="text" 
                   placeholder="Buscá tu producto aquí..." 
-                  className="w-full bg-zinc-100 md:px-4 px-2 md:py-2 py-1 md:text-base text-sm md:rounded-lg rounded-md placeholder:text-[#5d3a1f] focus:outline-none border border-zinc-300"
+                  className="w-full bg-white md:px-4 px-2 md:py-2 py-1 md:text-base text-sm md:rounded-lg rounded-md placeholder:text-[#5d3a1f] focus:outline-none border border-zinc-300"
               />
               <TfiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#8d572f] cursor-pointer md:size-5 size-3" />
           </div>

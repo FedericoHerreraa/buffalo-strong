@@ -18,7 +18,7 @@ import {
 
 import { merriweather_sans } from "@/app/fonts/fonts";
 
-import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import { FiShoppingCart } from "react-icons/fi";
 import { Badge } from '@mui/material';
 import { useMobileView } from "@/app/context/MobileContext";
 
@@ -47,7 +47,7 @@ export const Cart = () => {
         <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger className={merriweather_sans.className}>
                 <Badge badgeContent={cart.length} color="success">
-                    <LocalMallOutlinedIcon style={{ fontSize: isMobile ? "25px" : "32px" }} className="text-zinc-800"/>
+                    <FiShoppingCart style={{ fontSize: isMobile ? "25px" : "32px" }} className="text-zinc-800"/>
                 </Badge>
             </SheetTrigger>
             <SheetContent className={`bg-white ${merriweather_sans.className}`}>

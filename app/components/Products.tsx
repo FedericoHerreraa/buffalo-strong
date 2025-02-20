@@ -43,11 +43,21 @@ export const Products = async () => {
                                         <Link 
                                             href={`/products/detail/${prod.id}`}
                                             key={index} 
-                                            className="min-w-[250px] h-full border border-zinc-200 hover:border-zinc-300 bg-white rounded-md md:hover:scale-105 transition-all duration-200 cursor-pointer"
+                                            className="min-w-[250px] h-full border border-zinc-200 bg-white rounded-md md:hover:shadow-2xl transition-all duration-200 cursor-pointer"
                                         >
-                                            <div className="flex justify-between gap-3 items-center p-5">
-                                                <h3 className="text-xl font-semibold whitespace-normal">{prod.title}</h3>
-                                                <p className={`text-md bg-gradient-to-br text-zinc-800 w-fit px-3 py-3 rounded-full shadow-md 
+                                            {prod.img.length > 0 && (
+                                                <Image 
+                                                    src={prod.img[0]} 
+                                                    alt="Alt de la imagen"
+                                                    width={250}
+                                                    height={250}
+                                                    className="p-4 border-b border-b-zinc-200 w-full"
+                                                />
+                                            )}
+                                            <ProdPrice prod={prod}/>
+                                            <div className="flex justify-between gap-3 items-center p-3">
+                                                <h3 className="text-lg whitespace-normal">{prod.title}</h3>
+                                                <p className={`text-md bg-gradient-to-br text-zinc-800 w-fit px-2 py-2 rounded-full shadow-md 
                                                     ${prod.stock > 30 
                                                         ? 'from-green-300 to-green-600' 
                                                         : prod.stock > 0 
@@ -56,19 +66,7 @@ export const Products = async () => {
                                                 }>
                                                 </p>
                                             </div>
-                                            {prod.img.length > 0 && (
-                                                <Image 
-                                                    src={prod.img[0]} 
-                                                    alt="Alt de la imagen"
-                                                    width={250}
-                                                    height={250}
-                                                    className="p-4"
-                                                />
-                                            )}
                                             <p className="text-zinc-600 text-sm p-3 pb-10 whitespace-normal">{prod.description.slice(0, 100)}...</p>
-                                            <div className="h-fit px-2 py-7 bg-black text-zinc-300 flex justify-between rounded-b-md items-center">
-                                                <ProdPrice prod={prod}/>
-                                            </div>
                                         </Link>
                                     ))
                                 ) : (
