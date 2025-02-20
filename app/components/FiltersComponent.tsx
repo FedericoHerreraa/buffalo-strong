@@ -5,8 +5,6 @@ import {
     Carousel,
     CarouselContent,
     CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
   } from "@/app/components/ui/carousel"
 
 import criolla from '@/app/images/products/CS10STDPACK.jpg'
