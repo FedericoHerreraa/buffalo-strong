@@ -46,8 +46,7 @@ export const FIltersComponent = () => {
                     </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext  />
+            
         </Carousel>
         </div>
     )
