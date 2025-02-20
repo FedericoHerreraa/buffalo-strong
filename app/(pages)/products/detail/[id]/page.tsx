@@ -14,7 +14,7 @@ export default async function Page({ params } : { params: Promise<{ id: string }
     if (!product) {
         return <p className="h-[50vh] text-center text-red-500">Producto no encontrado</p>;
     }
-
+    
     return (
         <div className={merriweather_sans.className}>
             <div className="flex md:justify-start justify-center items-center gap-4 mt-10">
@@ -35,9 +35,13 @@ export default async function Page({ params } : { params: Promise<{ id: string }
                         />
                     )}
                     <div className="flex items-center gap-5">
-                        <div className="rounded-full w-8 h-8 bg-gradient-to-br from-violet-500 to-violet-800" />
-                        <div className="rounded-full w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-700" />
-                        <div className="rounded-full w-8 h-8 bg-gradient-to-br from-green-600 to-green-900" />
+                        <select className="p-2 border border-gray-300 rounded-md">
+                            {product.colors.map((color: string, index: number) => (
+                            <option key={index} value={color}>
+                                {color}
+                            </option>
+                            ))}
+                        </select>
                     </div>
                 </div>
                 <div className="md:w-1/2">
