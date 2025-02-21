@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import logobuffalo from "@/app/images/logos/Logobuffalo.png";
 import { BreadCrumbs } from "@/app/components/Breadcrumbs";
@@ -61,8 +61,10 @@ export const Header = () => {
               className={`transition-all duration-250 ease-in-out`}
             />
           </Link>
-
-          <SearchBar />
+          
+          <Suspense>
+            <SearchBar />
+          </Suspense>
 
           <div className="w-1/5 flex justify-end pr-5">
             <Cart />
