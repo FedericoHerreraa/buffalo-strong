@@ -5,10 +5,10 @@ import otherImage from '@/app/images/carousel/carouselImage2.webp'
 
 export const ImagesSection = () => {
     return (
-        <div className='bg-gradient-to-b from-white via-zinc-200 to-white'>
+        <div className='bg-zinc-900 py-10'>
             <div className="w-[90%] mx-auto">
                 <div className="flex gap-3">
-                    <div className="w-1/2 h-[300px] rounded-md shadow-lg border border-zinc-100 overflow-hidden">
+                    <div className="w-1/2 h-[300px] rounded-md shadow-lg border overflow-hidden">
                         <Image
                             src={ekoImage}
                             alt="Imagen 1"
@@ -17,7 +17,7 @@ export const ImagesSection = () => {
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <div className="w-1/2 h-[300px] rounded-md shadow-lg border border-zinc-100 overflow-hidden">
+                    <div className="w-1/2 h-[300px] rounded-md shadow-lg border overflow-hidden">
                         <Image
                             src={otherImage}
                             alt="Imagen 2"
@@ -28,7 +28,7 @@ export const ImagesSection = () => {
                     </div>
                 </div>
 
-                <div className="w-full h-[400px] mt-3 rounded-md shadow-lg border border-zinc-100 overflow-hidden">
+                <div className="w-full h-[400px] mt-3 rounded-md shadow-lg border overflow-hidden">
                     <Image
                         src={ekoImage}
                         alt="Imagen 3"
