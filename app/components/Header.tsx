@@ -22,6 +22,7 @@ import { FaIdBadge } from "react-icons/fa";
 import { Sheet, SheetContent, SheetTrigger } from "@/app/components/ui/sheet";
 import { SearchBar } from "./SearchBar";
 
+
 export const Header = () => {
   const { user, logOut } = useAuth();
   const { isMobile } = useMobileView();
