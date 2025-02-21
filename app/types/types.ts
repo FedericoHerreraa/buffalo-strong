@@ -9,6 +9,7 @@ export interface ProductCart {
     listPrice: number;
     image: string;
     created_at: string;
+    category: string;
     stock: number;
     brand: string;
     img: string[];
@@ -24,6 +25,7 @@ export interface ProductDB {
     listPrice: number;
     image: string;
     created_at: string;
+    category: string;
     stock: number;
     brand: string;
     img: string[];
