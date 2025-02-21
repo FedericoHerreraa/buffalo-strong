@@ -71,6 +71,7 @@ export const Cart = () => {
                                     <div className="flex flex-col gap-1">
                                         <p className="text-lg font-semibold">{item.title}</p>
                                         <p className="text-sm text-zinc-600">Cantidad: {item.quantity}</p>
+                                        <p className="text-sm text-zinc-600">Color: {item.color}</p>
                                         <p className="text-sm text-zinc-600">Precio: ${(user ? item.listPrice : item.sugestedPrice) * item.quantity}</p>
                                     </div>
                                     <div className="flex md:flex-row flex-col md:gap-7 gap-2 items-center">

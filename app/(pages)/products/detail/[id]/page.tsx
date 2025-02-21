@@ -1,6 +1,4 @@
-import { AddToCart } from "@/app/components/AddToCart";
 import { CustomSeparator } from "@/app/components/CustomSeparator";
-import { ProductDetails } from "@/app/components/ProductDetails";
 import { RelatedProducts } from "@/app/components/RelatedProducts";
 import { merriweather_sans } from "@/app/fonts/fonts";
 import { supabase } from "@/lib/supabaseClient";
@@ -23,13 +21,7 @@ export default async function Page({ params } : { params: Promise<{ id: string }
                 <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
             </div>
             <section className="min-h-[80vh] md:w-[80%] w-[97%] mx-auto p-10 mt-20 flex md:flex-row flex-col gap-10">
-                <div className="md:w-1/2 md:border-r h-fit border-r-zinc-200">
-                    <ProductImage product={product}/>
-                </div>
-                <div className="md:w-1/2">
-                    <ProductDetails product={product}/>
-                    <AddToCart prod={product}/>
-                </div>
+                <ProductImage product={product}/>
             </section>
 
             <CustomSeparator />

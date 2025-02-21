@@ -18,6 +18,7 @@ export default function Home() {
       </Suspense>
       <CustomSeparator />
       <ImagesSection />
+      <CustomSeparator />
       <WaysOfPayment />
       <ContactPreview />
     </>

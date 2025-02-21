@@ -13,6 +13,7 @@ export interface ProductCart {
     stock: number;
     brand: string;
     img: string[];
+    color: string;
     quantity: number;
     listCode: number;
 }
