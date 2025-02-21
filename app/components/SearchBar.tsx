@@ -1,3 +1,5 @@
+'use client'
+
 import { TfiSearch } from "react-icons/tfi";
 import { useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
