@@ -11,7 +11,7 @@ export interface ProductCart {
     created_at: string;
     stock: number;
     brand: string;
-    img: [string];
+    img: string[];
     quantity: number;
     listCode: number;
 }
@@ -26,9 +26,15 @@ export interface ProductDB {
     created_at: string;
     stock: number;
     brand: string;
-    img: [string];
+    img: string[];
     listCode: number;
+    imgByColor: ImageColor[];
+    colors: string[];
 }
+
+type ImageColor = {
+    images: string[];
+};
 
 export interface CartContextType {
     cart: ProductCart[];

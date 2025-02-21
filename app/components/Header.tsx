@@ -20,7 +20,6 @@ import { TfiSearch } from "react-icons/tfi";
 import { CiLogout } from "react-icons/ci";
 import { FaIdBadge } from "react-icons/fa";
 
-
 import {
   Sheet,
   SheetContent,
@@ -61,10 +60,9 @@ export const Header = () => {
               <Image
                   src={logobuffalo} 
                   alt="Logo"
-                  width={120} 
+                  width={80} 
                   className={`transition-all duration-250 ease-in-out`}
               />
-              {/* <h1>Buffalo{"'"} Strong</h1> */}
           </Link>
           <div className="relative w-3/5 rounded-lg">
               <input 
