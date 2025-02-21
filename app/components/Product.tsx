@@ -10,7 +10,7 @@ export const Product = ({ prod, index }: { prod: ProductDB, index: number }) => 
     <Link
       href={`/products/detail/${prod.id}`}
       key={index}
-      className="min-w-[250px] h-full border border-zinc-200 bg-white rounded-md md:hover:shadow-lg transition-all duration-200 cursor-pointer"
+      className="min-w-[250px] max-w-[250px] h-full border border-zinc-200 bg-white rounded-md md:hover:shadow-lg transition-all duration-200 cursor-pointer"
     >
       {prod.img.length > 0 && (
         <Image
