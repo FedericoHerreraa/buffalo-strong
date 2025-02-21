@@ -4,7 +4,7 @@ import { ProductDetails } from "@/app/components/ProductDetails";
 import { RelatedProducts } from "@/app/components/RelatedProducts";
 import { merriweather_sans } from "@/app/fonts/fonts";
 import { supabase } from "@/lib/supabaseClient";
-// import { ProductImage } from "./ProductImage";
+import { ProductImage } from "./ProductImage";
 
 
 export default async function Page({ params } : { params: Promise<{ id: string }> }) {
@@ -14,8 +14,6 @@ export default async function Page({ params } : { params: Promise<{ id: string }
     if (!product) {
         return <p className="h-[50vh] text-center text-red-500">Producto no encontrado</p>;
     }
-
-    console.log(product)
     
     return (
         <div className={merriweather_sans.className}>
@@ -26,8 +24,7 @@ export default async function Page({ params } : { params: Promise<{ id: string }
             </div>
             <section className="min-h-[80vh] md:w-[80%] w-[97%] mx-auto p-10 mt-20 flex md:flex-row flex-col gap-10">
                 <div className="md:w-1/2 md:border-r h-fit border-r-zinc-200">
-                    <h1 className="md:text-4xl text-3xl text-zinc-600 font-bold border-l-4 border-l-zinc-800 pl-5">{product.title}</h1>
-                    {/* <ProductImage product={product}/> */}
+                    <ProductImage product={product}/>
                 </div>
                 <div className="md:w-1/2">
                     <ProductDetails product={product}/>

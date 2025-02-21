@@ -33,8 +33,7 @@ export interface ProductDB {
 }
 
 type ImageColor = {
-    img1: string;
-    img2: string;
+    images: string[];
 };
 
 export interface CartContextType {
