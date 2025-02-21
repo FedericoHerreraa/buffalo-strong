@@ -3,7 +3,7 @@
 
 export const CustomSeparator = () => {
     return (
-        <div className="flex flex-col gap-3 my-10">
+        <div className="flex flex-col gap-3 py-10">
             {[...Array(4)].map((_, i) => (
                 <div
                     key={i}

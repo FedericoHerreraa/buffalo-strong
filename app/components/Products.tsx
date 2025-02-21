@@ -39,7 +39,7 @@ export const Products = () => {
         
     return (
         <div className={`min-h-[100vh] ${merriweather_sans.className} bg-gradient-to-b from-white via-zinc-200 to-white`}>
-            <section className="flex gap-20 mt-20 mb-20 md:w-[90%] w-[93%] mx-auto flex-wrap md:shadow-lg md:p-10 md:border-x bg-white md:border-x-zinc-200 md:rounded-b-lg ">
+            <section className="flex gap-20 pt-20 pb-20 mb-5 md:w-[85%] w-[93%] mx-auto flex-wrap md:shadow-lg md:p-10 md:border-x bg-white md:border-x-zinc-200 md:rounded-b-lg ">
                 <StockReference />
                 {categories.map(cat => {
                     const filteredProducts = prods?.filter(prod => prod.category === cat.keyValue).slice(0, 6);

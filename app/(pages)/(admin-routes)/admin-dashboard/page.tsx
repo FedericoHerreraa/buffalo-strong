@@ -1,5 +1,5 @@
 
-import { AdminDashboardComponent } from "@/app/components/AdminDashboardComponent";
+import { AdminDashboardComponent } from "./AdminDashboardComponent";
 
 export default function AdminDashboard() {
     return (

@@ -1,5 +1,5 @@
 
-import { RegisterController } from "@/app/components/RegisterController";
+import { RegisterController } from "./RegisterController";
 
 export default function Register() {
     return (

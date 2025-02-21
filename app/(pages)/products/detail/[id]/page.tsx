@@ -3,6 +3,8 @@ import { RelatedProducts } from "@/app/components/RelatedProducts";
 import { merriweather_sans } from "@/app/fonts/fonts";
 import { supabase } from "@/lib/supabaseClient";
 import { ProductImage } from "./ProductImage";
+import { WaysOfPayment } from "@/app/components/WaysOfPayment";
+import { ContactPreview } from "@/app/components/ContactPreview";
 
 
 export default async function Page({ params } : { params: Promise<{ id: string }> }) {
@@ -29,6 +31,10 @@ export default async function Page({ params } : { params: Promise<{ id: string }
             <section className="mt-10">
                 <RelatedProducts categoryKey={product.category}/>
             </section>
+            
+            <CustomSeparator />
+            <WaysOfPayment />
+            <ContactPreview />
         </div>
     )
 }

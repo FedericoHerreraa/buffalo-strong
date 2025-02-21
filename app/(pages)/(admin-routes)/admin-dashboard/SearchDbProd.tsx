@@ -2,8 +2,8 @@
 import Image from "next/image"
 import { useState } from "react"
 import { supabase } from "@/lib/supabaseClient"
-import { ProductDB } from "../types/types"
-import { merriweather_sans } from "../fonts/fonts"
+import { ProductDB } from "@/app/types/types"
+import { merriweather_sans } from "@/app/fonts/fonts"
 
 export const SearchDbProd = () => {
     const [listCode, setListCode] = useState<string | null>(null)

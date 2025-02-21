@@ -2,6 +2,9 @@
 import { supabase } from "@/lib/supabaseClient";
 import { categories } from "@/app/info/info";
 import { Product } from "@/app/components/Product";
+import { WaysOfPayment } from "@/app/components/WaysOfPayment";
+import { ContactPreview } from "@/app/components/ContactPreview";
+import { CustomSeparator } from "@/app/components/CustomSeparator";
 
 export default async function CategoryDetail({ params } : { params: Promise<{ category: string }> }) {
     const parameters = await params;
@@ -21,6 +24,9 @@ export default async function CategoryDetail({ params } : { params: Promise<{ ca
                     <Product key={index} prod={prod} index={index}/>
                 ))}
             </div>
+            <CustomSeparator />
+            <WaysOfPayment />
+            <ContactPreview />
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import { NewsComponent } from "@/app/components/News";
+import { NewsComponent } from "./News";
 
 
 export default function News() {

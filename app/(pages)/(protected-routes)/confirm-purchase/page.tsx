@@ -1,5 +1,5 @@
 
-import { ConfirmPurchaseComponent } from "@/app/components/ConfirmPurchaseComponent";
+import { ConfirmPurchaseComponent } from "./ConfirmPurchaseComponent";
 
 export default function ConfirmPurchase() {
     return (

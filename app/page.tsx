@@ -16,7 +16,6 @@ export default function Home() {
       <Suspense>
         <Products />
       </Suspense>
-      <CustomSeparator />
       <ImagesSection />
       <CustomSeparator />
       <WaysOfPayment />

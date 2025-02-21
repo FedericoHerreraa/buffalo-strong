@@ -3,9 +3,9 @@
 import { useState } from "react"
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useAuth } from "@/app/context/AuthContext";
-import { CustomSeparator } from "./CustomSeparator";
+import { CustomSeparator } from "@/app/components/CustomSeparator";
 import { SearchDbProd } from "./SearchDbProd";
-import { SendUserCredentials } from "./SendUserCredentials";
+import { SendUserCredentials } from "@/app/components/SendUserCredentials";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
