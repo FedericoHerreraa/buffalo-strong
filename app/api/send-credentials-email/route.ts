@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     try {
         // Email enviado a "buffalo"
         const { data, error } = await resend.emails.send({
-            from: 'federicoherrera@asneeed.com',
+            from: 'website@sbmusic.ar',
             to: to,
             subject: subject,
             html: `

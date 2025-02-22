@@ -84,7 +84,7 @@ export const AuthProvider = ({ children } : { children: React.ReactNode }) => {
         cuit: number, 
         address: string,
     ) => {
-        const { data, error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.admin.createUser({
             email,
             password,
         })

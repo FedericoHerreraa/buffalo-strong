@@ -21,12 +21,12 @@ export const AdminDashboardComponent = () => {
 
     const [showNext, setShowNext] = useState(false)
     const [formInfo, setFormInfo] = useState<RegisterAdminFormData>()
-    const { registerUser, logOut } = useAuth()
+    const { registerUser } = useAuth()
 
     const addUser = async (data: RegisterAdminFormData) => {
         setFormInfo(data)
         await registerUser(data.email, data.name, data.password, parseInt(data.cuit), data.address)
-        await logOut()
+        // await logOut()
         setShowNext(true)
         reset()
     }
