@@ -6,7 +6,7 @@ import { useAuth } from '@/app/context/AuthContext';
 export default function Layout({ children }: { children: React.ReactNode }) {
     const { user } = useAuth()
 
-    if (!user) {
+    if (user?.role.toLowerCase() !== 'admin') {
         redirect('/register'); 
     }
 
