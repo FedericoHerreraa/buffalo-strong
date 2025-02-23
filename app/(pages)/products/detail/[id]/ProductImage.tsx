@@ -33,10 +33,10 @@ export const ProductImage = ({ product }: { product: ProductDB }) => {
                 <div className="flex justify-around gap-10 ">
                     <h1 className="md:text-4xl text-3xl text-zinc-600 font-bold border-l-4 border-l-zinc-800 pl-5">{product.title}</h1>
                     <Select onValueChange={setColorSelected}>
-                        <SelectTrigger className="w-fit p-4 gap-3 border-zinc-500">
+                        <SelectTrigger className="w-fit p-2 gap-3 border-zinc-300 text-zinc-500">
                             <SelectValue placeholder="Selecciona un color" />
                         </SelectTrigger>
-                        <SelectContent className="p-2 border-zinc-300 bg-white">
+                        <SelectContent className="p-2 border-zinc-300 bg-white text-zinc-600">
                             {product.colors.map((color: string, index: number) => (
                                 <SelectItem className="border-none cursor-pointer" key={index} value={color}>
                                     {color}
