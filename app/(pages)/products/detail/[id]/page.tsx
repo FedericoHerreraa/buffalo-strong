@@ -1,11 +1,16 @@
-import { AddToCart } from "@/app/components/AddToCart";
 import { CustomSeparator } from "@/app/components/CustomSeparator";
-import { ProductDetails } from "@/app/components/ProductDetails";
 import { RelatedProducts } from "@/app/components/RelatedProducts";
 import { merriweather_sans } from "@/app/fonts/fonts";
 import { supabase } from "@/lib/supabaseClient";
-import Image from "next/image";
+import { ProductImage } from "./ProductImage";
+import { WaysOfPayment } from "@/app/components/WaysOfPayment";
+import { ContactPreview } from "@/app/components/ContactPreview";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: `Detalle de Producto | Buffalo's Strong`,
+    description: `Explora las características y detalles de este increíble instrumento en Buffalo's Strong. Encuentra el equipo perfecto para tu música.`,
+  };
 
 export default async function Page({ params } : { params: Promise<{ id: string }> }) {
     const parameters = await params;
@@ -14,7 +19,7 @@ export default async function Page({ params } : { params: Promise<{ id: string }
     if (!product) {
         return <p className="h-[50vh] text-center text-red-500">Producto no encontrado</p>;
     }
-
+    
     return (
         <div className={merriweather_sans.className}>
             <div className="flex md:justify-start justify-center items-center gap-4 mt-10">
@@ -23,27 +28,7 @@ export default async function Page({ params } : { params: Promise<{ id: string }
                 <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
             </div>
             <section className="min-h-[80vh] md:w-[80%] w-[97%] mx-auto p-10 mt-20 flex md:flex-row flex-col gap-10">
-                <div className="md:w-1/2 md:border-r h-fit border-r-zinc-200">
-                    <h1 className="md:text-4xl text-3xl text-zinc-600 font-bold border-l-4 border-l-zinc-800 pl-5">{product.title}</h1>
-                    {product.img.length > 0 && (
-                        <Image 
-                            src={product.img[0]} 
-                            alt={product.title} 
-                            width={400}
-                            height={400}
-                            className="w-[400px] h-[400px] object-cover my-10"
-                        />
-                    )}
-                    <div className="flex items-center gap-5">
-                        <div className="rounded-full w-8 h-8 bg-gradient-to-br from-violet-500 to-violet-800" />
-                        <div className="rounded-full w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-700" />
-                        <div className="rounded-full w-8 h-8 bg-gradient-to-br from-green-600 to-green-900" />
-                    </div>
-                </div>
-                <div className="md:w-1/2">
-                    <ProductDetails product={product}/>
-                    <AddToCart prod={product}/>
-                </div>
+                <ProductImage product={product}/>
             </section>
 
             <CustomSeparator />
@@ -51,6 +36,10 @@ export default async function Page({ params } : { params: Promise<{ id: string }
             <section className="mt-10">
                 <RelatedProducts categoryKey={product.category}/>
             </section>
+            
+            <CustomSeparator />
+            <WaysOfPayment />
+            <ContactPreview />
         </div>
     )
 }

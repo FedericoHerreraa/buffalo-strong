@@ -7,13 +7,13 @@ import { supabase } from "@/lib/supabaseClient";
 
 const AuthContext = createContext<AuthContextType>({
     user: null,
-    login: () => {},
-    registerUser: () => {},
-    logOut: () => {},
+    login: () => { },
+    registerUser: () => { },
+    logOut: () => { },
     loading: true
 });
 
-export const AuthProvider = ({ children } : { children: React.ReactNode }) => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<User | null>();
     const [loading, setLoading] = useState(true);
 
@@ -31,8 +31,8 @@ export const AuthProvider = ({ children } : { children: React.ReactNode }) => {
 
                 const { data: fullUser, error: fetchError } = await supabase
                     .from('profiles')
-                    .select('*')  
-                    .eq('id', idUser)  
+                    .select('*')
+                    .eq('id', idUser)
                     .single()
 
                 if (fetchError) {
@@ -64,8 +64,8 @@ export const AuthProvider = ({ children } : { children: React.ReactNode }) => {
 
         const { data: fullUser, error: fetchError } = await supabase
             .from('profiles')
-            .select('*')  
-            .eq('id', user.id)  
+            .select('*')
+            .eq('id', user.id)
             .single()
 
         if (fetchError) {
@@ -78,53 +78,31 @@ export const AuthProvider = ({ children } : { children: React.ReactNode }) => {
     }
 
     const registerUser = async (
-        email: string, 
+        email: string,
         name: string,
-        password: string, 
-        cuit: number, 
-        address: string,
+        password: string,
+        cuit: number,
+        address: string
     ) => {
-        const { data, error } = await supabase.auth.signUp({
-            email,
-            password,
-        })
+        try {
+            const response = await fetch('/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, name, password, cuit, address }),
+            });
 
-        if (error) {
-            console.error('Error:', error)
-            return
+            const result = await response.json();
+
+            if (!result.success) {
+                console.error('Error al registrar usuario:', result.error);
+                return;
+            }
+
+            console.log('Usuario creado:', result.user);
+        } catch (error) {
+            console.error('Error en el registro:', error);
         }
-
-        const user = data.user
-        if (!user) return { error: 'No se pudo acceder al usuario' }
-
-        const { error: profileError } = await supabase.from('profiles').insert({
-            id: user.id,
-            email: user.email,
-            role: 'Cliente',
-            cuit,
-            name,
-            address
-        })
-
-        if (profileError) {
-            console.log(profileError)
-            return
-        }
-
-        const { data: fullUser, error: fetchError } = await supabase
-            .from('profiles')
-            .select('*')  
-            .eq('id', user.id)  
-            .single()
-
-        if (fetchError) {
-            console.error("Error al obtener el perfil completo:", fetchError)
-            return
-        }
-
-        console.log(fullUser)
-        setUser(fullUser)
-    }
+    };
 
     const logOut = async () => {
         await supabase.auth.signOut()

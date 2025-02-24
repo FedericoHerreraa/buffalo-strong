@@ -7,9 +7,9 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
     const body = await req.json();
-    const { name, lastName, email, address, cuit } = body;
+    const { name, email, subject, message } = body;
 
-    if (!name || !lastName || !email || !cuit || !address) {
+    if (!name || !email || !subject || !message) {
         return NextResponse.json({
             message: "Faltan parámetros requeridos",
             status: 400
@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
         const sendEmail = async (to: string, subject: string, html: string) => {
             try {
                 const { data, error } = await resend.emails.send({
-                    from: 'autenticacion@sbmusic.ar',
+                    from: 'contacto@sbmusic.ar',
                     to,
                     subject,
                     html,
@@ -38,31 +38,26 @@ export async function POST(req: NextRequest) {
             }
         };
         
-        // Enviar email a Buffalo
         const emailBuffalo = await sendEmail(
             'fede.juan.herrera@gmail.com',
-            'Registro en Buffalo Strong',
+            subject,
             `
-                <p>Un nuevo usuario quiere ingresar a Buffalo's.</p>
+                <p>Un usuario quiere contactarse con Buffalo's.</p>
                 <p>Nombre: ${name}</p>
-                <p>Apellido: ${lastName}</p>
                 <p>Email: ${email}</p>
-                <p>Dirección: ${address}</p>
-                <p>Clave Fiscal: ${cuit}</p>
+                <p>"${message}"</p>
             `
         );
         
-        // Enviar email al cliente
         const emailCliente = await sendEmail(
             email,
-            'Registro en Buffalo Strong',
+            'Contacto con Buffalo Strong',
             `
                 <h1>¡Hola ${name}!</h1>
-                <p>Te registraste en Buffalo's Strong, nuestro equipo procesará la solicitud y te enviará las credenciales a la brevedad.</p>
+                <p>Enviase un mensaje a Buffalo's Strong, nuestro equipo te contestara a la brevedad.</p>
             `
         );
         
-        // Verificar si hubo errores en los envíos
         if (!emailBuffalo.success) {
             console.error("Error al enviar el email a Buffalo:", emailBuffalo.error);
         }

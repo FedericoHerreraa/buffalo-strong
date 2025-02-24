@@ -5,8 +5,17 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "res.cloudinary.com",
+        hostname: "source.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "zbixbwkzoftoplldzjya.supabase.co",
+        pathname: "/storage/v1/object/sign/**"
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com"
+      }
     ],
   },
 };

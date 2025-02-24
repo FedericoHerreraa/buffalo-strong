@@ -9,7 +9,7 @@ export const ProdPrice = ({ prod } : { prod: ProductDB }) => {
 
     return (
         <p className="text-lg text-zinc-800 p-3">
-            $ {user ? prod.listPrice : prod.sugestedPrice}
+            $ {(user ? prod.listPrice : prod.sugestedPrice).toLocaleString('es-AR')}
         </p>
     )
 

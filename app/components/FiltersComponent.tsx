@@ -27,9 +27,9 @@ export const FIltersComponent = () => {
 
     return (
         <div
-            className={`w-full mx-auto h-48 md:h-56 flex items-center justify-center bg-gradient-to-b from-white via-zinc-50 to-white ${merriweather_sans.className}`}
+            className={`w-full mx-auto h-48 md:h-56 flex items-center justify-center ${merriweather_sans.className}`}
         >                
-            <Carousel className="md:w-[40%] w-[90%] mx-auto" opts={{ loop: true }}>
+            <Carousel className="md:w-[50%] w-[90%] mx-auto" opts={{ loop: true }}>
                 <CarouselContent className="flex items-center gap-3 text-center">
                     {Filters.map((item, index) => (
                         <CarouselItem

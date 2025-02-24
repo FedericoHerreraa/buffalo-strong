@@ -7,11 +7,12 @@ export interface ProductCart {
     description: string;
     sugestedPrice: number;
     listPrice: number;
-    image: string;
     created_at: string;
+    category: string;
     stock: number;
     brand: string;
-    img: [string];
+    img: string[];
+    color: string;
     quantity: number;
     listCode: number;
 }
@@ -24,11 +25,18 @@ export interface ProductDB {
     listPrice: number;
     image: string;
     created_at: string;
+    category: string;
     stock: number;
     brand: string;
-    img: [string];
+    img: string[];
     listCode: number;
+    imgByColor: ImageColor[];
+    colors: string[];
 }
+
+type ImageColor = {
+    images: string[];
+};
 
 export interface CartContextType {
     cart: ProductCart[];

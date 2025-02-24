@@ -17,19 +17,15 @@ export async function POST(req: NextRequest) {
     }
     
     try {
-        // Email enviado a "buffalo"
         const { data, error } = await resend.emails.send({
-            from: 'federicoherrera@asneeed.com',
+            from: 'autenticacion@sbmusic.ar',
             to: to,
             subject: subject,
             html: `
-                <h1>¡Hola Buffalo!</h1>
-                <p>Este es un email de prueba enviado desde el servidor.</p>
+                <p>Buffalo's ya proceso tu solicitud y te envia las credenciales.</p>
                 <div>${body}</div>
             `,
         });
-
-        // Enviar otro email al cliente avisandlo la recepcion
 
         if (error) {
             return NextResponse.json({ success: false, error }, { status: 500 });
