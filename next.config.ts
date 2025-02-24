@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "source.unsplash.com",
+      },
+      {
+        protocol: "https",
         hostname: "zbixbwkzoftoplldzjya.supabase.co",
         pathname: "/storage/v1/object/sign/**"
       },

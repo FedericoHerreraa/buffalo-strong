@@ -5,22 +5,26 @@ import { BsMusicNoteBeamed } from "react-icons/bs";
 
 export const TitleSection = ({
     title,
-    description
+    description,
+    color,
+    colorDescription
 } : {
     title: string,
-    description: string
+    description: string,
+    color: string,
+    colorDescription: string
 }) => {
     return (
-        <div className="flex justify-center items-center flex-col gap-3">
-            <div className="flex items-center gap-3">
+        <div className="flex justify-center items-center flex-col gap-3 pb-6">
+            <div className={`flex items-center gap-3 ${colorDescription}`} >
                 <BsMusicNoteList size={20} />
                 <BsMusicPlayerFill size={20} />
                 <BsMusicNoteBeamed size={20} />
             </div>
-            <h1 className="text-4xl font-semibold bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent">
+            <h1 className={`text-4xl font-semibold bg-gradient-to-r ${color} bg-clip-text text-transparent`}>
                 {title}
             </h1>
-            <p className="text-zinc-600">{description}.</p>
+            <p className={`${colorDescription}`}>{description}.</p>
         </div>
     )
 }
