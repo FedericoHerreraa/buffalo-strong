@@ -65,9 +65,9 @@ export const ProductImage = ({ product }: { product: ProductDB }) => {
                                             <Image
                                                 src={imgToShow}
                                                 alt={"product img"}
-                                                width={50}
-                                                height={50}
-                                                className="w-[50px] h-[50px] object-cover"
+                                                width={80}
+                                                height={80}
+                                                className="w-[80px] h-[80px] object-cover"
                                             />
                                         </div>
                                     )}
