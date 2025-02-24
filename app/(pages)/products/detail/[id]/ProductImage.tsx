@@ -52,15 +52,15 @@ export const ProductImage = ({ product }: { product: ProductDB }) => {
                     height={400}
                     className="w-[400px] h-[400px] object-cover my-10"
                 />
-                <div className="flex items-center gap-20">
-                    <div className="flex items-center gap-3">
+                <div className="">
+                    <div className="flex items-center">
                         {product.imgByColor[index].images.map((imgToShow, index) => {
                             return (
                                 <div key={index}>
                                     {imgToShow !== img && (
                                         <div 
                                             onClick={() => setImg(imgToShow)}
-                                            className="flex gap-2 border border-zinc-300 rounded-lg cursor-pointer hover:border-zinc-700 hover:scale-105 transition-all duration-150 p-2"
+                                            className="border mx-2 border-zinc-300 rounded-md cursor-pointer hover:border-zinc-700 hover:scale-105 transition-all duration-150 p-2"
                                         >
                                             <Image
                                                 src={imgToShow}
