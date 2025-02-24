@@ -7,7 +7,6 @@ export interface ProductCart {
     description: string;
     sugestedPrice: number;
     listPrice: number;
-    image: string;
     created_at: string;
     category: string;
     stock: number;
