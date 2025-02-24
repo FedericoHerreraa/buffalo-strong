@@ -16,7 +16,7 @@ export const AddToCart = ({ prod, color } : { prod: ProductDB, color: string }) 
                 <p className="text-zinc-600">{prod.description}</p>
                 <p className="mt-6">Código: {prod.listCode}</p>
                 <p className="mt-4 font-semibold">Marca: {prod.brand}</p>
-                <p className="mt-2 text-lg font-bold">Precio: ${user ? prod.listPrice : prod.sugestedPrice}</p>
+                <p className="mt-2 text-lg font-bold">Precio: ${(user ? prod.listPrice : prod.sugestedPrice).toLocaleString('es-AR')}</p>
                 <p className={`mt-2 text-white py-1 px-4 w-fit rounded-full ${prod.stock > 10 ? 'bg-green-600' : prod.stock > 0 ? 'bg-yellow-600' : 'bg-red-700'}`}>
                     {prod.stock} {prod.stock > 1 ? 'Unidades' : 'Unidad'}
                 </p> 

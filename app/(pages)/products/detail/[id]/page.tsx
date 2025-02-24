@@ -5,7 +5,12 @@ import { supabase } from "@/lib/supabaseClient";
 import { ProductImage } from "./ProductImage";
 import { WaysOfPayment } from "@/app/components/WaysOfPayment";
 import { ContactPreview } from "@/app/components/ContactPreview";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: `Detalle de Producto | Buffalo's Strong`,
+    description: `Explora las características y detalles de este increíble instrumento en Buffalo's Strong. Encuentra el equipo perfecto para tu música.`,
+  };
 
 export default async function Page({ params } : { params: Promise<{ id: string }> }) {
     const parameters = await params;

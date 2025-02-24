@@ -60,7 +60,7 @@ export const ProductImage = ({ product }: { product: ProductDB }) => {
                                     {imgToShow !== img && (
                                         <div 
                                             onClick={() => setImg(imgToShow)}
-                                            className="border mx-2 border-zinc-300 rounded-md cursor-pointer hover:border-zinc-700 hover:scale-105 transition-all duration-150 p-2"
+                                            className="border mx-2 border-zinc-300 rounded-md cursor-pointer hover:border-zinc-700 hover:scale-105 transition-all duration-150 p-1"
                                         >
                                             <Image
                                                 src={imgToShow}

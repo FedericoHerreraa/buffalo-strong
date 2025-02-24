@@ -72,7 +72,7 @@ export const Cart = () => {
                                         <p className="text-lg font-semibold">{item.title}</p>
                                         <p className="text-sm text-zinc-600">Cantidad: {item.quantity}</p>
                                         <p className="text-sm text-zinc-600">Color: {item.color}</p>
-                                        <p className="text-sm text-zinc-600">Precio: ${(user ? item.listPrice : item.sugestedPrice) * item.quantity}</p>
+                                        <p className="text-sm text-zinc-600">Precio: ${((user ? item.listPrice : item.sugestedPrice) * item.quantity).toLocaleString('es-AR')}</p>
                                     </div>
                                     <div className="flex md:flex-row flex-col md:gap-7 gap-2 items-center">
                                         <button 
@@ -98,7 +98,7 @@ export const Cart = () => {
                         <p className="text-gray-700 text-xl font-semibold text-center">No hay productos en el carrito.</p>
                     )}
                 </section>
-                {cart.length !== 0 && <p className="mt-5 text-zinc-700">Total de la compra: <span className="font-semibold">${total}</span></p>}
+                {cart.length !== 0 && <p className="mt-5 text-zinc-700">Total de la compra: <span className="font-semibold">${(total).toLocaleString('es-AR')}</span></p>}
                 <div className="flex md:gap-5 gap-2 justify-center">
                     <button 
                         onClick={() => setCart([])}
