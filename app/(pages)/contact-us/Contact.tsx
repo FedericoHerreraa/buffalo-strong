@@ -21,10 +21,27 @@ export const Contact = () => {
     });
 
     const onSubmit = async (data: ContactFormData) => {
-        console.log("Datos enviados:", data);
-        alert("Mensaje enviado con éxito");
+        try {
+            const res = await fetch('/api/send-contact-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await res.json();
+            if (!result.success) {
+                console.error("Error enviando email:", result.error);
+            } else {
+                console.log("Correo enviado con éxito:", result.data);
+            }
+        } catch {
+
+        }
         reset();
     };
+
     return (
         <div className="flex flex-col h-[100vh] items-center ">
             <section className="flex flex-col md:flex-row h-auto md:h-screen w-full">
