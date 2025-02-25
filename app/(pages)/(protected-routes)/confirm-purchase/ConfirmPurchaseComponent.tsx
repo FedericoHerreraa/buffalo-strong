@@ -18,7 +18,7 @@ export const ConfirmPurchaseComponent = () => {
                 <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
             </div>
 
-            <section className="w-[80%] mx-auto mt-20 p-6 shadow-lg rounded-lg">
+            <section className="md:w-[80%] w-[95%] border border-zinc-100 mx-auto mt-20 p-6 shadow-lg rounded-lg">
                 <div className="w-full pb-4">
                     {cart.map((product, index) => (
                         <div key={index} className="flex items-center justify-between border-b border-b-zinc-300 py-4">
@@ -49,7 +49,7 @@ export const ConfirmPurchaseComponent = () => {
                 </div>
             </section>
 
-            <div className="flex justify-center my-10 items-center gap-10">
+            <div className="flex justify-center my-10 items-center md:gap-10 gap-3">
                 <Link href='/'>
                     <div className="border border-zinc-300 px-5 py-2 rounded-md">
                         <p>Seguir comprando</p>

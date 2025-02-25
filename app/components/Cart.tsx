@@ -50,7 +50,7 @@ export const Cart = () => {
                     <FiShoppingCart style={{ fontSize: isMobile ? "25px" : "32px" }} className="text-zinc-800"/>
                 </Badge>
             </SheetTrigger>
-            <SheetContent className={`bg-white ${merriweather_sans.className}`}>
+            <SheetContent className={`bg-white overflow-y-auto md:p-6 p-4 ${merriweather_sans.className}`}>
                 <SheetHeader>
                     <SheetTitle>Carrito de compras</SheetTitle>
                     <SheetDescription>
