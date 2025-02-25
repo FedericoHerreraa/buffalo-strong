@@ -30,7 +30,7 @@ export const ProductImage = ({ product }: { product: ProductDB }) => {
     return (
         <>
             <div className="md:w-1/2 md:border-r h-fit border-r-zinc-200">
-                <div className="flex justify-around gap-10 ">
+                <div className="flex justify-around md:gap-10 gap-3">
                     <h1 className="md:text-4xl text-3xl text-zinc-600 font-bold border-l-4 border-l-zinc-800 pl-5">{product.title}</h1>
                     <Select onValueChange={setColorSelected}>
                         <SelectTrigger className="w-fit p-2 gap-3 border-zinc-300 text-zinc-500">
@@ -44,7 +44,7 @@ export const ProductImage = ({ product }: { product: ProductDB }) => {
                             ))}
                         </SelectContent>
                     </Select>
-                </div>
+                </div> 
                 <Image
                     src={img}
                     alt={"product img"}
@@ -60,7 +60,7 @@ export const ProductImage = ({ product }: { product: ProductDB }) => {
                                     {imgToShow !== img && (
                                         <div 
                                             onClick={() => setImg(imgToShow)}
-                                            className="border mx-2 border-zinc-300 rounded-md cursor-pointer hover:border-zinc-700 hover:scale-105 transition-all duration-150 p-1"
+                                            className="border mx-1 border-zinc-300 rounded-md cursor-pointer hover:border-zinc-700 hover:scale-105 transition-all duration-150 p-1"
                                         >
                                             <Image
                                                 src={imgToShow}
@@ -77,7 +77,7 @@ export const ProductImage = ({ product }: { product: ProductDB }) => {
                     </div>
                 </div>
             </div>
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 md:p-0 p-5">
                 <AddToCart prod={product} color={colorSelected}/>
             </div>
         </>

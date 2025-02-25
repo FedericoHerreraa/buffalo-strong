@@ -7,7 +7,7 @@ import { BsMusicNoteBeamed } from "react-icons/bs";
 
 export const ContactPreview = () => {
     return (
-        <section className="md:w-[70%] w-[85%] mx-auto min-h-[40vh]">
+        <section className="md:w-[70%] w-[85%] mx-auto md:my-0 my-20 min-h-[40vh]">
             <div className="border-l-4 border-l-[#6F4E37] px-5 flex md:flex-row flex-col justify-between md:gap-0 gap-10 items-center">
                 <div className="md:w-1/2">
                     <div className="flex items-center gap-3 mb-2">

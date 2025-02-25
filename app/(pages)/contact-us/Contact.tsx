@@ -47,9 +47,8 @@ export const Contact = () => {
     };
 
     return (
-        <div className="flex flex-col h-[100vh] items-center ">
+        <div className="flex flex-col min-h-[100vh] items-center ">
             <section className="flex flex-col md:flex-row h-auto md:h-screen w-full">
-
                 <div className="w-full md:w-2/5 h-64 md:h-full relative">
                     <Image
                         src={imagen}

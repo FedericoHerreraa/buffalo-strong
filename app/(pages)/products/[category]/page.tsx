@@ -22,7 +22,7 @@ export default async function CategoryDetail({ params } : { params: Promise<{ ca
         <div className="my-10">
             <div className="flex items-center gap-4 mb-20">
                 <div className="w-full h-[1px] bg-zinc-300"></div>
-                <h1 className="text-4xl font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent text-center">{categoryTitle}</h1>
+                <h1 className="text-4xl font-bold bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent text-center">{categoryTitle}</h1>
                 <div className="w-full h-[1px] bg-zinc-300"></div>
             </div>
             <div className="flex flex-wrap justify-center gap-10">

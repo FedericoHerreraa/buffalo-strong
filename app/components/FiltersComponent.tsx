@@ -34,10 +34,10 @@ export const FIltersComponent = () => {
                     {Filters.map((item, index) => (
                         <CarouselItem
                             key={index}
-                            className="basis-1/2 md:basis-1/4 flex justify-center flex-col"
+                            className="basis-1/3 md:basis-1/4 flex justify-center flex-col"
                         >
                             <div className="flex flex-col items-center gap-2 p-2" onClick={() => scrollToSection(item.key)}>
-                                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white p-2 overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
+                                <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-white p-2 overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
                                     <Image
                                         alt={item.name}
                                         src={item.img}
