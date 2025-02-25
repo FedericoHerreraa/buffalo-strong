@@ -41,12 +41,12 @@ export const AdminDashboardComponent = () => {
     return (
         <div className="min-h-[100vh]">
             <div className="flex justify-center mt-10">
-                <h1 className="text-4xl mb-3">Administrador de Buffalo{"'"}s</h1>
+                <h1 className="md:text-4xl text-3xl mb-3">Administrador de Buffalo{"'"}s</h1>
             </div>
-            <section className="flex justify-between items-center w-[80%] mx-auto mt-20">
-                <form onSubmit={handleSubmit(addUser)} className="w-1/3 flex flex-col gap-5">
+            <section className="flex md:flex-row flex-col justify-between items-center md:w-[80%] w-[95%] mx-auto md:gap-0 gap-20 mt-20">
+                <form onSubmit={handleSubmit(addUser)} className="md:w-1/3 w-[95%] flex flex-col gap-5">
                     <h2 className="text-2xl font-semibold">Agregar usuario a la Base de Datos</h2>
-                    <div className="w-[400px]">
+                    <div className="md:w-[400px]">
                         <label htmlFor="email" className="text-zinc-700 ml-1">Ingrese el nombre completo</label>
                         <input
                             {...register("name")}
@@ -56,7 +56,7 @@ export const AdminDashboardComponent = () => {
                         />
                     </div>
                     {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
-                    <div className="w-[400px]">
+                    <div className="md:w-[400px]">
                         <label htmlFor="email" className="text-zinc-700 ml-1">Ingrese el correo electrónico</label>
                         <input
                             {...register("email")}
@@ -66,7 +66,7 @@ export const AdminDashboardComponent = () => {
                         />
                     </div>
                     {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
-                    <div className="w-[400px]">
+                    <div className="md:w-[400px]">
                         <label htmlFor="password" className="text-zinc-700 ml-1">Ingrese la contraseña</label>
                         <input
                             placeholder="clave"
@@ -76,7 +76,7 @@ export const AdminDashboardComponent = () => {
                         />
                     </div>
                     {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
-                    <div className="w-[400px]">
+                    <div className="md:w-[400px]">
                         <label className="text-zinc-700 ml-1">Ingrese la Clave Fiscal</label>
                         <input
                             placeholder="CUIT"
@@ -86,7 +86,7 @@ export const AdminDashboardComponent = () => {
                         />
                     </div>
                     {errors.cuit && <p className="text-red-500 text-sm mt-1">{errors.cuit.message}</p>}
-                    <div className="w-[400px]">
+                    <div className="md:w-[400px]">
                         <label className="text-zinc-700 ml-1">Ingrese la direccion</label>
                         <input
                             placeholder="direccion"
@@ -104,7 +104,7 @@ export const AdminDashboardComponent = () => {
                         {isSubmitting ? 'Agregando...' : 'Agregar usuario'}
                     </button>
                 </form>
-                <FaArrowRightLong size={30} className="w-1/3" />
+                <FaArrowRightLong size={30} className="w-1/3 md:rotate-0 rotate-90" />
                 {showNext ? (
                     <>
                         {formInfo && <SendUserCredentials formInfo={formInfo} setShowNext={setShowNext} />}
