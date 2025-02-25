@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useCart } from "@/app/context/CartContext";
 import { useAuth } from "@/app/context/AuthContext"
 import { ProductDB } from "@/app/types/types";
+import { redirect } from "next/navigation";
 
 export const AddToCart = ({ prod, color } : { prod: ProductDB, color: string }) => {
     const [count, setCount] = useState<number>(1);
@@ -40,6 +41,8 @@ export const AddToCart = ({ prod, color } : { prod: ProductDB, color: string }) 
                 <button 
                     disabled={count === 0}
                     onClick={() => {
+                        if (!user) redirect('/register')
+                            
                         addToCart({...prod, quantity: count, color })
                         setCount(1)
                     }}

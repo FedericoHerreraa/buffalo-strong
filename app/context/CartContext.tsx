@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useState } from "react";
 import { CartContextType, ProductCart } from "@/app/types/types";
-import { useAuth } from "./AuthContext";
 
 const CartContext = createContext<CartContextType>({
     cart: [] as ProductCart[],
@@ -16,7 +15,6 @@ const CartContext = createContext<CartContextType>({
 });
 
 export const CartProvider = ({ children } : { children: React.ReactNode }) => {
-    const { user } = useAuth()
     const [cart, setCart] = useState<ProductCart[]>([]);
 
     const addToCart = (product: ProductCart) => {
@@ -52,7 +50,7 @@ export const CartProvider = ({ children } : { children: React.ReactNode }) => {
 
     const totalPurchase = () => {
         let total = 0;
-        cart.map(prod => total += (user ? prod.listPrice : prod.sugestedPrice) * prod.quantity);
+        cart.map(prod => total += prod.listPrice * prod.quantity);
         return total;
     }
 
