@@ -24,6 +24,7 @@ export const LoginController = () => {
     
     const loginUser = async (data: LoginFormData) => {
         const { email, password } = data
+        
         const res = await login(email, password)
         if (res == "Invalid login credentials") {
             setError("El usuario o la contraseña son incorrectos")

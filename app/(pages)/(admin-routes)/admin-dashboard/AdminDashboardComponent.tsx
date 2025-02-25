@@ -26,8 +26,9 @@ export const AdminDashboardComponent = () => {
 
     const addUser = async (data: RegisterAdminFormData) => {
         setFormInfo(data)
+
         const res = await createUser(data.email, data.name, data.password, parseInt(data.cuit), data.address)
-        if (res == 'A user with this email address has already been registered') {
+        if (res === 'A user with this email address has already been registered') {
             setError('Ya existe un usuario con este correo electrónico')
             setTimeout(() => setError(null), 4000)
             return;

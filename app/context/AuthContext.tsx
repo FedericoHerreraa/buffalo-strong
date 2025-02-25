@@ -7,8 +7,8 @@ import { supabase } from "@/lib/supabaseClient";
 
 const AuthContext = createContext<AuthContextType>({
     user: null,
-    login: () => { },
-    createUser: () => { },
+    login: async (): Promise<string | undefined> => { return undefined },
+    createUser: async (): Promise<string | undefined> => { return undefined; },
     logOut: () => { },
     loading: true
 });
@@ -83,7 +83,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         password: string,
         cuit: number,
         address: string
-    ) => {
+    ): Promise<string | undefined> => {
         try {
             const response = await fetch('/api/register', {
                 method: 'POST',
@@ -101,7 +101,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             console.log('Usuario creado:', result.user);
         } catch (error) {
             console.error('Error en el registro:', error);
-            return error;
+            return `${error}`;
         }
     };
 

@@ -61,8 +61,8 @@ export interface User {
 
 export interface AuthContextType {
     user: User | null | undefined;
-    login: (email: string, password: string) => void;
-    createUser: (email: string, name: string, password: string, cuit: number, address: string) => void;
+    login: (email: string, password: string) => Promise<string | undefined>;
+    createUser: (email: string, name: string, password: string, cuit: number, address: string) => Promise<string | undefined>;
     logOut: () => void;
     loading: boolean;
 }
