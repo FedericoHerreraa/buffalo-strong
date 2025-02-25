@@ -38,7 +38,7 @@ export const Products = () => {
     if (loading) return <p className="text-center text-gray-500">Cargando productos...</p>;
         
     return (
-        <div className={`min-h-[100vh] ${merriweather_sans.className} bg-gradient-to-b from-white via-zinc-200 to-white`}>
+        <div id="products" className={`min-h-[100vh] ${merriweather_sans.className} bg-gradient-to-b from-white via-zinc-200 to-white`}>
             <section className="flex gap-20 pt-20 pb-20 mb-5 md:w-[85%] w-[93%] mx-auto flex-wrap md:shadow-lg md:p-10 md:border-x bg-white md:border-x-zinc-200 md:rounded-b-lg ">
                 <StockReference />
                 {categories.map(cat => {
