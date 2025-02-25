@@ -1,6 +1,7 @@
 
 'use client'
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -20,6 +21,8 @@ export const Contact = () => {
         resolver: zodResolver(contactSchema),
     });
 
+    const [error, setError] = useState<string | null>(null);
+
     const onSubmit = async (data: ContactFormData) => {
         try {
             const res = await fetch('/api/send-contact-email', {
@@ -32,7 +35,8 @@ export const Contact = () => {
 
             const result = await res.json();
             if (!result.success) {
-                console.error("Error enviando email:", result.error);
+                setError(`Error enviando email: ${result.error}`);
+                setTimeout(() => setError(null), 4000)
             } else {
                 console.log("Correo enviado con éxito:", result.data);
             }
@@ -99,7 +103,7 @@ export const Contact = () => {
                             />
                             {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
                         </div>
-
+                        {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
                         <button
                             type="submit"
                             disabled={isSubmitting}
