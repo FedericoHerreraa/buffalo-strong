@@ -10,6 +10,13 @@ export const SearchBar = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
 
+    const scrollToSection = () => {
+        const element = document.getElementById('products');
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    }
+
     const debouncedSetSearch = useDebouncedCallback((input: string) => {
         const params = new URLSearchParams(searchParams);
         if (input) {
@@ -21,6 +28,7 @@ export const SearchBar = () => {
     }, 300); 
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        scrollToSection()
         setInput(e.target.value);
         debouncedSetSearch(e.target.value);
     };

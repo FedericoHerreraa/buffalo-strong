@@ -7,8 +7,8 @@ import { supabase } from "@/lib/supabaseClient";
 
 const AuthContext = createContext<AuthContextType>({
     user: null,
-    login: () => { },
-    registerUser: () => { },
+    login: async (): Promise<string | undefined> => { return undefined },
+    createUser: async (): Promise<string | undefined> => { return undefined; },
     logOut: () => { },
     loading: true
 });
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
         if (error) {
             console.error('Error:', error)
-            return
+            return error.message;
         }
 
         const user = data.user
@@ -70,20 +70,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
         if (fetchError) {
             console.error("Error al obtener el perfil completo:", fetchError)
-            return
+            return fetchError.message;
         }
 
         console.log(fullUser)
         setUser(fullUser)
     }
 
-    const registerUser = async (
+    const createUser = async (
         email: string,
         name: string,
         password: string,
         cuit: number,
         address: string
-    ) => {
+    ): Promise<string | undefined> => {
         try {
             const response = await fetch('/api/register', {
                 method: 'POST',
@@ -95,12 +95,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
             if (!result.success) {
                 console.error('Error al registrar usuario:', result.error);
-                return;
+                return result.error;
             }
 
             console.log('Usuario creado:', result.user);
         } catch (error) {
             console.error('Error en el registro:', error);
+            return `${error}`;
         }
     };
 
@@ -110,7 +111,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ login, user, registerUser, logOut, loading }}>
+        <AuthContext.Provider value={{ login, user, createUser, logOut, loading }}>
             {children}
         </AuthContext.Provider>
     );
