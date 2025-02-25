@@ -27,7 +27,7 @@ export default async function Page({ params } : { params: Promise<{ id: string }
                 <h1 className="md:text-4xl text-3xl font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent text-center">Detalle de producto</h1>
                 <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
             </div>
-            <section className="min-h-[80vh] md:w-[80%] w-[97%] mx-auto md:p-10 mt-20 flex md:flex-row flex-col gap-10">
+            <section className="min-h-[80vh] md:w-[80%] w-[92%] mx-auto md:p-10 mt-20 flex md:flex-row flex-col gap-10">
                 <ProductImage product={product}/>
             </section>
 
