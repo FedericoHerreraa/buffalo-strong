@@ -16,7 +16,8 @@ export const registerSchema = z.object({
     lastName: z.string().min(2, "El apellido debe tener al menos 2 caracteres"),
     email: z.string().email("Debe ser un email válido"),
     address: z.string().min(5, "La direccion debe tener al menos 5 caracteres"),
-    cuit: z.string().min(11, "El mensaje debe tener al menos 11 caracteres"),
+    cuit: z.string().min(11, "El cuit debe tener al menos 11 caracteres"),
+    cuit2: z.string().min(11, "El cuit debe tener al menos 11 caracteres"),
 });
   
 export type RegisterFormData = z.infer<typeof registerSchema>;

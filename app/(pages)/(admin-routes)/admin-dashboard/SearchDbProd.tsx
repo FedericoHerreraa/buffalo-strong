@@ -9,6 +9,7 @@ export const SearchDbProd = () => {
     const [listCode, setListCode] = useState<string | null>(null)
     const [prod, setProd] = useState<ProductDB>()
     const [stock, setStock] = useState<number | null>(null)
+    const [error, setError] = useState<string | null>(null)
 
     const searchProd = async () => {
         const { data, error } = await supabase
@@ -18,7 +19,8 @@ export const SearchDbProd = () => {
             .single()
 
         if (error) {
-            console.log('error', error)
+            setError('Error al buscar producto (puede ser que el id no sea correcto)')
+            setTimeout(() => setError(null), 4000)
             return
         }
         
@@ -32,7 +34,8 @@ export const SearchDbProd = () => {
             .eq('listCode', listCode)
 
         if (error) {
-            console.log('error', error)
+            setError('Error al actualizar stock')
+            setTimeout(() => setError(null), 4000)
             return
         }
 
@@ -57,6 +60,7 @@ export const SearchDbProd = () => {
                             type="text" 
                         />
                     </label>
+                    {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
                     <button
                         onClick={searchProd} 
                         className="bg-[#301803] w-[200px] hover:bg-[#59381b] hover:text-white py-2 rounded-lg text-zinc-200 mt-10">
@@ -64,10 +68,10 @@ export const SearchDbProd = () => {
                     </button>
                 </div>
                 {prod && (
-                    <div className="flex flex-col gap-5 bg-[#dddddd] p-6">
+                    <div className="flex flex-col gap-5 bg-[#dddddd] rounded-md p-6">
                         <div className="flex gap-5 w-full justify-between">
                             <h3 className="w-40" >Producto: <span className="font-bold text-[#2e1702f7]"> {prod.title}</span></h3> 
-                            <Image alt="img" src={prod.img[0]} width={200} height={200}/>
+                            <Image alt="img" className="rounded-md" src={prod.img[0]} width={200} height={200}/>
                         </div>
 
                         <p>Stock actual: <span className="text-lg font-bold text-[#2e1702f7]">{prod?.stock}</span></p>

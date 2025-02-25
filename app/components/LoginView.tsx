@@ -17,6 +17,7 @@ export const LoginView = ({
   register,
   handleSubmit,
   errors,
+  error,
   isSubmitting,
   loginUser,
   isMobile
@@ -61,6 +62,7 @@ export const LoginView = ({
                       <span className="text-zinc-300">{isSubmitting ? 'Ingresando...' : 'Ingresar'}</span>
                   </button>
                 </div>
+                {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
               </form>
               <DrawerFooter className="flex items-center">
                 <DrawerClose className="bg-gray-800 hover:scale-105 transition rounded-md px-4 py-2 w-fit mx-auto">

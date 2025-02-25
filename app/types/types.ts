@@ -61,8 +61,8 @@ export interface User {
 
 export interface AuthContextType {
     user: User | null | undefined;
-    login: (email: string, password: string) => void;
-    registerUser: (email: string, name: string, password: string, cuit: number, address: string) => void;
+    login: (email: string, password: string) => Promise<string | undefined>;
+    createUser: (email: string, name: string, password: string, cuit: number, address: string) => Promise<string | undefined>;
     logOut: () => void;
     loading: boolean;
 }
@@ -74,6 +74,7 @@ export interface RegisterViewProps {
         address: string;
         lastName: string;
         cuit: string;
+        cuit2: string;
     }>
     handleSubmit: UseFormHandleSubmit<{
         name: string;
@@ -81,6 +82,7 @@ export interface RegisterViewProps {
         address: string;
         lastName: string;
         cuit: string;
+        cuit2: string;
     }, undefined>
     onSubmit: (data: RegisterFormData) => Promise<void>
     errors: FieldErrors<{
@@ -89,8 +91,10 @@ export interface RegisterViewProps {
         email: string;
         address: string;
         cuit: string;
+        cuit2: string;
     }>
     isSubmitting: boolean;
+    error: string | null;
 }
 
 
@@ -107,6 +111,7 @@ export interface LoginViewProps {
         email: string;
         password: string;
     }>
+    error: string | null;
     isSubmitting: boolean;
     loginUser: (data: LoginFormData) => void;
     isMobile: boolean;
