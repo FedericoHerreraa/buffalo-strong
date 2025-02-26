@@ -30,14 +30,9 @@ export interface ProductDB {
     brand: string;
     img: string[];
     listCode: number;
-    imgByColor: ImageColor[];
     colors: string[];
     subcategory: string;
 }
-
-type ImageColor = {
-    images: string[];
-};
 
 export interface CartContextType {
     cart: ProductCart[];

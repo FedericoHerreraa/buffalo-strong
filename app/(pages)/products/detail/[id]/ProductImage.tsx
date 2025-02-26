@@ -16,16 +16,14 @@ import {
 
 export const ProductImage = ({ product }: { product: ProductDB }) => {
     const [colorSelected, setColorSelected] = useState<string>(product.colors[0]);
-    const [index, setIndex] = useState<number>(0);
-    const [img, setImg] = useState<string>(product.imgByColor[0]?.images[0]);
+    const [img, setImg] = useState<string>(product.img[0]);
 
     useEffect(() => {
         if (colorSelected) {
             const index = product.colors.indexOf(colorSelected);
-            setIndex(index);
-            setImg(product.imgByColor[index]?.images[0]);
+            setImg(product.img[index]);
         }
-    }, [colorSelected, product.colors, product.imgByColor]);
+    }, [colorSelected, product.colors, product.img]);
 
     return (
         <>
@@ -54,7 +52,7 @@ export const ProductImage = ({ product }: { product: ProductDB }) => {
                 />
                 <div className="">
                     <div className="flex items-center">
-                        {product.imgByColor[index].images.map((imgToShow, index) => {
+                        {product.img.map((imgToShow, index) => {
                             return (
                                 <div key={index}>
                                     {imgToShow !== img && (
