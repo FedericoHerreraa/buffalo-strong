@@ -1,7 +1,7 @@
 'use client'
 
 import { TfiSearch } from "react-icons/tfi";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import { useMobileView } from "../context/MobileContext";
@@ -18,6 +18,11 @@ export const SearchBar = () => {
             element.scrollIntoView({ behavior: "smooth" });
         }
     }
+
+    useEffect(() => {
+        const searchQuery = searchParams.get("search") || "";
+        setInput(searchQuery);
+    }, [searchParams])
 
     const debouncedSetSearch = useDebouncedCallback((input: string) => {
         const params = new URLSearchParams(searchParams);
