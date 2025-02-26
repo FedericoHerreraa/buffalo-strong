@@ -32,6 +32,7 @@ export interface ProductDB {
     listCode: number;
     imgByColor: ImageColor[];
     colors: string[];
+    subcategory: string;
 }
 
 type ImageColor = {
