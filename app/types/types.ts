@@ -43,6 +43,7 @@ export interface CartContextType {
     incrementOne: (id: number) => void;
     decrementOne: (id: number) => void;
     totalPurchase: () => number;
+    cleanCart: () => void;
 }
 
 export interface User {

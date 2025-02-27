@@ -12,6 +12,7 @@ import {
 
 import { MdOutlineLogin } from "react-icons/md";
 import { LoginViewProps } from "../types/types";
+import { Spinner } from "@/app/images/icons/Spinner";
 
 export const LoginView = ({
   register,
@@ -59,7 +60,7 @@ export const LoginView = ({
                 <div className="flex justify-center mt-10">
                   <button 
                     className="bg-zinc-600 hover:bg-zinc-500 w-fit px-4 py-1 rounded-md">
-                      <span className="text-zinc-300">{isSubmitting ? 'Ingresando...' : 'Ingresar'}</span>
+                      <span className="text-zinc-300">{isSubmitting ? <Spinner /> : 'Ingresar'}</span>
                   </button>
                 </div>
                 {error && <p className="text-red-500 text-sm mt-1">{error}</p>}

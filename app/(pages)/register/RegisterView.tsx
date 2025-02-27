@@ -1,5 +1,6 @@
 import { RegisterViewProps } from "@/app/types/types";
 import { merriweather_sans } from "@/app/fonts/fonts";
+import { Spinner } from "@/app/images/icons/Spinner";
 
 export const RegisterView: React.FC<RegisterViewProps> = ({
     register,
@@ -90,7 +91,7 @@ export const RegisterView: React.FC<RegisterViewProps> = ({
                 <div>
                     <p className="text-zinc-500 mb-2 md:mr-40">Una vez registrado, nuestro equipo procesara la solicitud y te enviara tus credenciales a la direccion de email ingresada previamente. Maximo estimado para el envio de credenciales de 48hs</p>
                     <button type="submit" className="bg-gray-500 px-5 py-2 rounded-md w-fit flex justify-center text-zinc-200 hover:scale-105 hover:text-white transition-all duration-200">
-                        <p className="">{isSubmitting ? 'Registrando...' : 'Registrarse'}</p>
+                        <p className="">{isSubmitting ? <Spinner /> : 'Registrarse'}</p>
                     </button>
                 </div>
             </form>

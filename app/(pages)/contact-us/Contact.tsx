@@ -10,6 +10,7 @@ import imagen from '@/app/images/carousel/carouselImage2.webp'
 
 import { merriweather } from "@/app/fonts/fonts";
 import { ContactFormData, contactSchema } from "@/app/schemas/schemas";
+import { Spinner } from "@/app/images/icons/Spinner";
 
 export const Contact = () => {
     const {
@@ -108,7 +109,7 @@ export const Contact = () => {
                             disabled={isSubmitting}
                             className="bg-[#5a4632] text-white py-3 px-6 rounded-md hover:bg-[#4a3928] disabled:bg-gray-400 transition-all"
                         >
-                            {isSubmitting ? "Enviando..." : "Enviar"}
+                            {isSubmitting ? <Spinner /> : "Enviar"}
                         </button>
                     </form>
                     <p className="text-zinc-600 mt-4">** Este mensaje se enviará al Mail de Buffalo Strong. Atención al cliente</p>
