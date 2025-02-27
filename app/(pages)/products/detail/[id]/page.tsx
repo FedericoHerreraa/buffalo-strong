@@ -8,17 +8,29 @@ import { ContactPreview } from "@/app/components/ContactPreview";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: `Detalle de Producto | Buffalo's Strong`,
-    description: `Explora las características y detalles de este increíble instrumento en Buffalo's Strong. Encuentra el equipo perfecto para tu música.`,
-  };
+  title: `Detalle de Producto | Buffalo's Strong`,
+  description: `Explora las características y detalles de este increíble instrumento en Buffalo's Strong. Encuentra el equipo perfecto para tu música.`,
+};
 
-export default async function Page({ params } : { params: Promise<{ id: string }> }) {
-    const parameters = await params;
-    const { data: product } = await supabase.from("products").select("*").eq("id", parameters.id).single();
+export default async function Page({ params }: { params: { id: string } | Promise<{ id: string }> }) {
 
-    if (!product) {
-        return <p className="h-[50vh] text-center text-red-500">Producto no encontrado</p>;
-    }
+  const resolvedParams = await params;
+  const { id } = resolvedParams;
+
+  const { data: product, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error || !product) {
+    return <p className="h-[50vh] text-center text-red-500">Producto no encontrado</p>;
+  }
+
+  const { data: relatedProducts } = await supabase
+    .from("products")
+    .select("*")
+    .eq("subcategory", product.subcategory);
     
     return (
         <div className={merriweather_sans.className}>
@@ -28,13 +40,13 @@ export default async function Page({ params } : { params: Promise<{ id: string }
                 <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
             </div>
             <section className="min-h-[80vh] md:w-[80%] w-[92%] mx-auto md:p-10 mt-20 flex md:flex-row flex-col gap-10">
-                <ProductImage product={product}/>
+                <ProductImage product={product} relatedProducts={relatedProducts || []} />
             </section>
 
             <CustomSeparator />
 
             <section className="mt-10">
-                <RelatedProducts categoryKey={product.category}/>
+                <RelatedProducts categoryKey={product.category} />
             </section>
             
             <CustomSeparator />

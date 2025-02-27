@@ -3,7 +3,8 @@
 import { ProductDB } from "@/app/types/types";
 import { AddToCart } from "@/app/components/AddToCart";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation"; 
 
 import {
     Select,
@@ -14,31 +15,36 @@ import {
 } from "@/app/components/ui/select";
 
 
-export const ProductImage = ({ product }: { product: ProductDB }) => {
-    const [colorSelected, setColorSelected] = useState<string>(product.color);
+export const ProductImage = ({ product, relatedProducts }: { product: ProductDB, relatedProducts: ProductDB[] }) => {
+    const router = useRouter();
     const [img, setImg] = useState<string>(product.img[0]);
 
-    useEffect(() => {
-        if (colorSelected) {
-            const index = product.color.indexOf(colorSelected);
-            setImg(product.img[index]);
-        }
-    }, [colorSelected, product.color, product.img]);
+    const colorOptions = relatedProducts.map(prod => ({
+        color: prod.color,
+        id: prod.id
+    }));
+
+    
+
+    const handleColorChange = (selectedId: string) => {
+        router.push(`/products/detail/${selectedId}`); 
+    };
 
     return (
         <>
             <div className="md:w-1/2 md:border-r h-fit border-r-zinc-200">
                 <div className="flex justify-around md:gap-10 gap-3">
                     <h1 className="md:text-4xl text-3xl text-zinc-600 font-bold border-l-4 border-l-zinc-800 pl-5">{product.title}</h1>
-                    <Select onValueChange={setColorSelected}>
+                    <Select onValueChange={handleColorChange}>
                         <SelectTrigger className="w-fit p-2 gap-3 border-zinc-300 text-zinc-500">
                             <SelectValue placeholder="Selecciona un color" />
                         </SelectTrigger>
                         <SelectContent className="p-2 border-zinc-300 bg-white text-zinc-600">
-                                <SelectItem className="border-none cursor-pointer" value={product.color}>
-                                    {product.color}
+                            {colorOptions.map(({ color, id }) => (
+                                <SelectItem key={id} value={id.toString()} className="border-none cursor-pointer">
+                                    {color}
                                 </SelectItem>
-                            
+                            ))}
                         </SelectContent>
                     </Select>
                 </div> 
@@ -75,7 +81,7 @@ export const ProductImage = ({ product }: { product: ProductDB }) => {
                 </div>
             </div>
             <div className="md:w-1/2 md:p-0 p-5">
-                <AddToCart prod={product} color={colorSelected}/>
+                <AddToCart prod={product} color={product.color}/>
             </div>
         </>
     );
