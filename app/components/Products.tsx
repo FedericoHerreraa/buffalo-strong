@@ -10,6 +10,7 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import { Product } from "./Product";
 import { ProductDB } from "@/app/types/types";
 import { useSearchParams } from "next/navigation";
+import { Spinner } from "../images/icons/Spinner";
 
 
 export const Products = () => {
@@ -35,7 +36,7 @@ export const Products = () => {
         fetchProducts()
     }, [searchParams]);
 
-    if (loading) return <p className="text-center text-gray-500">Cargando productos...</p>;
+    if (loading) return <Spinner />
         
     return (
         <div id="products" className={`min-h-[100vh] ${merriweather_sans.className} md:bg-gradient-to-b from-white via-zinc-200 to-white`}>
