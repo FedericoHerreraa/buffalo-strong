@@ -30,57 +30,63 @@ export const ProductImage = ({ product, relatedProducts }: { product: ProductDB,
 
     return (
         <>
-            <div className="md:w-1/2 md:border-r h-fit border-r-zinc-200">
-                <div className="flex justify-around md:gap-10 gap-3 md:mr-3 mr-1">
-                    <h1 className="md:text-3xl text-2xl text-zinc-600 font-bold border-l-4 border-l-zinc-800 pl-5">{product.title}</h1>
+            <div className="flex">
+                <div className="md:w-1/2 md:border-r border-r-zinc-200 flex flex-col justify-center p-5">
+                <div className="flex justify-around md:gap-6 gap-3 md:mr-3 mr-1">
+                    <h1 className="md:text-3xl text-2xl text-zinc-600 font-bold border-l-4 border-l-zinc-800 pl-5">
+                        {product.title}
+                    </h1>
                     <Select onValueChange={handleColorChange}>
-                        <SelectTrigger className="w-fit p-2 gap-3 border-zinc-300 text-zinc-500">
-                            <SelectValue placeholder="Selecciona un color" />
-                        </SelectTrigger>
-                        <SelectContent className="p-2 border-zinc-300 bg-white text-zinc-600">
-                            {colorOptions.map(({ color, id }) => (
-                                <SelectItem key={id} value={id.toString()} className="border-none cursor-pointer">
-                                    {color}
-                                </SelectItem>
-                            ))}
-                        </SelectContent>
+                    <SelectTrigger className="w-fit p-2 gap-3 border-zinc-300 text-zinc-500">
+                        <SelectValue placeholder="Selecciona un color" />
+                    </SelectTrigger>
+                    <SelectContent className="p-2 border-zinc-300 bg-white text-zinc-600">
+                        {colorOptions.map(({ color, id }) => (
+                        <SelectItem key={id} value={id.toString()} className="border-none cursor-pointer">
+                            {color}
+                        </SelectItem>
+                        ))}
+                    </SelectContent>
                     </Select>
                 </div> 
-                <Image
+
+                <div className="flex justify-center items-center flex-1">
+                    <Image
                     src={img}
-                    alt={"product img"}
-                    width={400}
-                    height={400}
-                    className="w-[400px] h-[400px] object-cover my-10"
-                />
-                <div className="">
-                    <div className="flex items-center">
-                        {product.img.map((imgToShow, index) => {
-                            return (
-                                <div key={index}>
-                                    {imgToShow !== img && (
-                                        <div 
-                                            onClick={() => setImg(imgToShow)}
-                                            className="border mx-1 border-zinc-300 rounded-md cursor-pointer hover:border-zinc-700 hover:scale-105 transition-all duration-150 p-1"
-                                        >
-                                            <Image
-                                                src={imgToShow}
-                                                alt={"product img"}
-                                                width={80}
-                                                height={80}
-                                                className="w-[80px] h-[80px] object-cover"
-                                            />
-                                        </div>
-                                    )}
-                                </div>
-                            )
-                        })}
+                    alt="product img"
+                    width={300}
+                    height={300}
+                    className="w-[300px] h-[300px] object-contain my-2"
+                    />
+                </div>
+
+                <div className="flex justify-center">
+                    {product.img.map((imgToShow, index) => (
+                    <div key={index}>
+                        {imgToShow !== img && (
+                        <div 
+                            onClick={() => setImg(imgToShow)}
+                            className="border mx-1 border-zinc-300 rounded-md cursor-pointer hover:border-zinc-700 hover:scale-105 transition-all duration-150 p-1"
+                        >
+                            <Image
+                            src={imgToShow}
+                            alt="product img"
+                            width={60}
+                            height={60}
+                            className="w-[60px] h-[60px] object-contain"
+                            />
+                        </div>
+                        )}
                     </div>
+                    ))}
+                </div>
+                </div>
+
+                <div className="md:w-1/2 flex flex-col justify-center items-center p-5">
+                <AddToCart prod={product} color={product.color} />
                 </div>
             </div>
-            <div className="md:w-1/2 md:p-0 p-5">
-                <AddToCart prod={product} color={product.color}/>
-            </div>
-        </>
+            </>
+
     );
 };
