@@ -30,7 +30,7 @@ export interface ProductDB {
     brand: string;
     img: string[];
     listCode: number;
-    colors: string[];
+    color: string;
     subcategory: string;
 }
 
