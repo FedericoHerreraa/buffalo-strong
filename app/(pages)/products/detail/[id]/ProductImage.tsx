@@ -24,8 +24,6 @@ export const ProductImage = ({ product, relatedProducts }: { product: ProductDB,
         id: prod.id
     }));
 
-    
-
     const handleColorChange = (selectedId: string) => {
         router.push(`/products/detail/${selectedId}`); 
     };
@@ -33,8 +31,8 @@ export const ProductImage = ({ product, relatedProducts }: { product: ProductDB,
     return (
         <>
             <div className="md:w-1/2 md:border-r h-fit border-r-zinc-200">
-                <div className="flex justify-around md:gap-10 gap-3">
-                    <h1 className="md:text-4xl text-3xl text-zinc-600 font-bold border-l-4 border-l-zinc-800 pl-5">{product.title}</h1>
+                <div className="flex justify-around md:gap-10 gap-3 md:mr-3 mr-1">
+                    <h1 className="md:text-3xl text-2xl text-zinc-600 font-bold border-l-4 border-l-zinc-800 pl-5">{product.title}</h1>
                     <Select onValueChange={handleColorChange}>
                         <SelectTrigger className="w-fit p-2 gap-3 border-zinc-300 text-zinc-500">
                             <SelectValue placeholder="Selecciona un color" />
