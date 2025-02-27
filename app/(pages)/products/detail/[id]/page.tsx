@@ -1,3 +1,4 @@
+'use server'
 import { CustomSeparator } from "@/app/components/CustomSeparator";
 import { RelatedProducts } from "@/app/components/RelatedProducts";
 import { merriweather_sans } from "@/app/fonts/fonts";
@@ -12,9 +13,12 @@ export const metadata: Metadata = {
   description: `Explora las características y detalles de este increíble instrumento en Buffalo's Strong. Encuentra el equipo perfecto para tu música.`,
 };
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params?: { id?: string } }) {
+    if (!params?.id) {
+        return <p className="h-[50vh] text-center text-red-500">ID de producto inválido</p>;
+      }
+      const id = String(params.id);
 
-  const { id } = params;
 
   const { data: product, error } = await supabase
     .from("products")
@@ -25,7 +29,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   if (error || !product) {
     return <p className="h-[50vh] text-center text-red-500">Producto no encontrado</p>;
   }
-  
+
   const { data: relatedProducts } = await supabase
     .from("products")
     .select("*")
