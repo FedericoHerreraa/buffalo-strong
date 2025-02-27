@@ -12,10 +12,9 @@ export const metadata: Metadata = {
   description: `Explora las características y detalles de este increíble instrumento en Buffalo's Strong. Encuentra el equipo perfecto para tu música.`,
 };
 
-export default async function Page({ params }: { params: { id: string } | Promise<{ id: string }> }) {
+export default async function Page({ params }: { params: { id: string } }) {
 
-  const resolvedParams = await params;
-  const { id } = resolvedParams;
+  const { id } = params;
 
   const { data: product, error } = await supabase
     .from("products")
@@ -26,7 +25,7 @@ export default async function Page({ params }: { params: { id: string } | Promis
   if (error || !product) {
     return <p className="h-[50vh] text-center text-red-500">Producto no encontrado</p>;
   }
-
+  
   const { data: relatedProducts } = await supabase
     .from("products")
     .select("*")
