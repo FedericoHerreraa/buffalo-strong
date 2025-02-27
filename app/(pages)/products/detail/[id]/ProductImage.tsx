@@ -15,15 +15,15 @@ import {
 
 
 export const ProductImage = ({ product }: { product: ProductDB }) => {
-    const [colorSelected, setColorSelected] = useState<string>(product.colors[0]);
+    const [colorSelected, setColorSelected] = useState<string>(product.color);
     const [img, setImg] = useState<string>(product.img[0]);
 
     useEffect(() => {
         if (colorSelected) {
-            const index = product.colors.indexOf(colorSelected);
+            const index = product.color.indexOf(colorSelected);
             setImg(product.img[index]);
         }
-    }, [colorSelected, product.colors, product.img]);
+    }, [colorSelected, product.color, product.img]);
 
     return (
         <>
@@ -35,11 +35,10 @@ export const ProductImage = ({ product }: { product: ProductDB }) => {
                             <SelectValue placeholder="Selecciona un color" />
                         </SelectTrigger>
                         <SelectContent className="p-2 border-zinc-300 bg-white text-zinc-600">
-                            {product.colors.map((color: string, index: number) => (
-                                <SelectItem className="border-none cursor-pointer" key={index} value={color}>
-                                    {color}
+                                <SelectItem className="border-none cursor-pointer" value={product.color}>
+                                    {product.color}
                                 </SelectItem>
-                            ))}
+                            
                         </SelectContent>
                     </Select>
                 </div> 
