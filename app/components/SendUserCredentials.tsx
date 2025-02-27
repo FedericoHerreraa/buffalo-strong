@@ -6,6 +6,7 @@ import { RegisterAdminFormData, SendRegisterEmailData, sendRegisterEmailSchema }
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Spinner } from "@/app/images/icons/Spinner";
 
 export const SendUserCredentials = ({
     formInfo,
@@ -128,7 +129,7 @@ export const SendUserCredentials = ({
                     type="submit"
                     className="bg-zinc-700 w-[200px] hover:text-white py-2 rounded-lg text-zinc-200"
                 >
-                    {isSubmitting ? 'Enviando...' : 'Enviar email'}
+                    {isSubmitting ? <Spinner /> : 'Enviar email'}
                 </button>
             </form>
         </div>

@@ -1,15 +1,41 @@
 'use client'
 
-import { useMemo } from "react"
+import { useMemo, useState } from "react"
+import { redirect } from "next/navigation"
 import { useCart } from "@/app/context/CartContext"
 import { merriweather_sans } from "@/app/fonts/fonts"
 import Image from "next/image"
 import Link from "next/link"
+import { useAuth } from "@/app/context/AuthContext"
+import { Spinner } from "@/app/images/icons/Spinner"
 
 export const ConfirmPurchaseComponent = () => {
-    const { cart, totalPurchase } = useCart()
+    const { cart, totalPurchase, cleanCart } = useCart()
+    const { user } = useAuth()
+    const [loading, setLoading] = useState(false)
 
     const total = useMemo(() => totalPurchase(), [totalPurchase]);
+
+    const confirmPurchase = async () => {
+        setLoading(true)
+        try { 
+            await fetch('/api/confirm-purchase', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ cart, user })
+            })
+            setLoading(false)
+            cleanCart()
+            redirect('/')
+        } catch (error) {
+            console.error('Error al confirmar la compra:', error)
+            setLoading(false)
+            cleanCart()
+            redirect('/')
+        }
+    }
 
     return (
         <div className={`min-h-[80vh] ${merriweather_sans.className}`}>
@@ -55,9 +81,15 @@ export const ConfirmPurchaseComponent = () => {
                         <p>Seguir comprando</p>
                     </div>
                 </Link>
-                <button>
-                    <div className="bg-zinc-300 border border-zinc-400 px-5 py-2 rounded-md">
-                        <p>Confirmar pedido</p>
+                <button onClick={confirmPurchase}>
+                    <div className="bg-zinc-100 border w-[180px] text-center flex justify-center border-zinc-400 px-5 py-2 rounded-md">
+                        <span>
+                            {loading ? (
+                                <Spinner />
+                            ) : ( 
+                                <p>Confirmar pedido</p> 
+                            )}
+                        </span>
                     </div>
                 </button>
             </div>

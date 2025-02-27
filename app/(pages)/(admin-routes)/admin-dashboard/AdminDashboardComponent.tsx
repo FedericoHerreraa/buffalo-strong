@@ -10,6 +10,7 @@ import { SendUserCredentials } from "@/app/components/SendUserCredentials";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterAdminFormData, registerAdminSchema } from "@/app/schemas/schemas";
+import { Spinner } from "@/app/images/icons/Spinner";
 
 export const AdminDashboardComponent = () => {
     const {
@@ -101,7 +102,7 @@ export const AdminDashboardComponent = () => {
                         type="submit"
                         className="bg-zinc-700 w-[200px] hover:text-white py-2 rounded-lg text-zinc-200"
                     >
-                        {isSubmitting ? 'Agregando...' : 'Agregar usuario'}
+                        {isSubmitting ? <Spinner /> : 'Agregar usuario'}
                     </button>
                 </form>
                 <FaArrowRightLong size={30} className="w-1/3 md:rotate-0 rotate-90" />

@@ -12,6 +12,7 @@ const CartContext = createContext<CartContextType>({
     incrementOne: () => {},
     decrementOne: () => {},
     totalPurchase: () => 0,
+    cleanCart: () => {}
 });
 
 export const CartProvider = ({ children } : { children: React.ReactNode }) => {
@@ -48,6 +49,10 @@ export const CartProvider = ({ children } : { children: React.ReactNode }) => {
         );
     }
 
+    const cleanCart = () => {
+        setCart([]);
+    }
+
     const totalPurchase = () => {
         let total = 0;
         cart.map(prod => total += prod.listPrice * prod.quantity);
@@ -55,7 +60,7 @@ export const CartProvider = ({ children } : { children: React.ReactNode }) => {
     }
 
     return (
-        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, deleteOne, incrementOne, decrementOne, totalPurchase }}>
+        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, deleteOne, incrementOne, decrementOne, totalPurchase, cleanCart }}>
             {children}
         </CartContext.Provider>
     );
