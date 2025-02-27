@@ -60,7 +60,7 @@ export const Cart = () => {
                 <section className="mt-10 flex flex-col gap-5">
                     {cart.length !== 0 ? (
                         cart.map((item, index) => (
-                           <div key={index} className="flex items-center gap-5 p-2 border-2 border-zinc-300 rounded-xl">
+                           <div key={index} className="flex items-center gap-5 p-2 border-2 border-zinc-300 rounded-md">
                                 <Image 
                                    src={item.img[0]}
                                    alt={item.title}
@@ -95,7 +95,7 @@ export const Cart = () => {
                            </div>
                        ))
                     ) : (
-                        <p className="text-gray-700 text-xl font-semibold text-center">No hay productos en el carrito.</p>
+                        <p className="text-gray-700 md:text-xl text-base font-semibold text-center">No hay productos en el carrito.</p>
                     )}
                 </section>
                 {cart.length !== 0 && <p className="mt-5 text-zinc-700">Total de la compra: <span className="font-semibold">${(total).toLocaleString('es-AR')}</span></p>}
@@ -106,7 +106,7 @@ export const Cart = () => {
                     >
                         Vaciar carrito
                     </button>
-                    <Link href='/confirm-purchase' className="mt-10 bg-gray-600 border md:text-base text-sm border-zinc-700 text-zinc-200 rounded-md md:px-5 px-3 md:py-2 py-1">
+                    <Link href='/confirm-purchase' className="mt-10 bg-zinc-300 border md:text-base text-sm border-zinc-700 text-zinc-800 rounded-md md:px-5 px-3 md:py-2 py-1">
                         Finalizar compra
                     </Link>
                 </div>
