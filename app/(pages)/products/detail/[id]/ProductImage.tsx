@@ -54,9 +54,9 @@ export const ProductImage = ({ product, relatedProducts }: { product: ProductDB,
                         <Image
                             src={img}
                             alt="product img"
-                            width={300}
-                            height={300}
-                            className="w-[300px] h-[300px] object-contain my-2"
+                            width={400}
+                            height={400}
+                            className="w-[400px] h-[400px] object-contain my-2"
                         />
                     </div>
 

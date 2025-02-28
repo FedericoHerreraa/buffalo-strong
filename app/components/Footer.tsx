@@ -6,7 +6,7 @@ import { merriweather_sans } from "@/app/fonts/fonts";
 
 export const Footer = () => {
     return (
-        <div className={`bg-gradient-to-b from-white to-zinc-400 min-h-[50vh] ${merriweather_sans.className}`}>
+        <div className={`bg-gradient-to-b from-white to-zinc-300 min-h-[50vh] ${merriweather_sans.className}`}>
             <footer className="flex md:flex-row flex-col gap-24 w-[90%] mx-auto py-20">
                 <div className="md:w-1/3">
                     <p className="text-2xl mb-4">Buffalo Strong</p>

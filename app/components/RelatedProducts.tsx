@@ -10,7 +10,7 @@ export const RelatedProducts = async ({ categoryKey } : { categoryKey: string })
     const { data: prods } = await supabase.from('products').select('*').eq('category', categoryKey).limit(5)
 
     return (
-        <div className="md:w-[90%] w-[95%] mx-auto min-h-[50vh]">
+        <div className="md:w-[90%] w-[95%] mx-auto min-h-[50vh] bg-gradient-to-b from-white via-zinc-100 to-white">
             <div className="flex items-center md:gap-3 gap-2">
                 <h1 className="inline-block text-3xl font-bold bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#371f0f] bg-clip-text text-transparent">Productos relacionados</h1>
                 <TbCirclesRelation size={25}/>

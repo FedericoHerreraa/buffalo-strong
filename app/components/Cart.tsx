@@ -60,7 +60,7 @@ export const Cart = () => {
                 <section className="mt-10 flex flex-col gap-5">
                     {cart.length !== 0 ? (
                         cart.map((item, index) => (
-                            <div key={index} className="flex flex-col gap-4 p-4 border border-zinc-200 rounded-lg shadow-lg bg-white">
+                            <div key={index} className="flex flex-col gap-4 p-4 border border-zinc-200 rounded-lg shadow-md bg-white">
                                 <div className="flex items-center gap-5">
                                     <Image
                                         src={item.img[0]}
@@ -72,7 +72,7 @@ export const Cart = () => {
 
                                     <div className="flex flex-col gap-1 flex-1">
                                         <p className="font-semibold text-lg">{item.title}</p>
-                                        <p className="text-sm text-zinc-600">Cantidad: <span className="font-semibold">{item.quantity}</span></p>
+                                        <p className="text-sm text-zinc-600">Cantidad: <span className="font-semibold">x{item.quantity}</span></p>
                                         <p className="text-sm text-zinc-600">Color: <span className="font-semibold">{item.color}</span></p>
                                         <p className="text-sm font-semibold text-amber-600">
                                             ${((user ? item.listPrice : item.sugestedPrice) * item.quantity).toLocaleString('es-AR')}
@@ -111,14 +111,14 @@ export const Cart = () => {
                     )}
                 </section>
                 {cart.length !== 0 && <p className="mt-5 text-zinc-700">Total de la compra: <span className="font-semibold">${(total).toLocaleString('es-AR')}</span></p>}
-                <div className="flex md:gap-5 gap-2 justify-center">
+                <div className="flex md:gap-5 gap-2 justify-center transition-all duration-150">
                     <button
                         onClick={() => setCart([])}
-                        className="mt-10 border border-zinc-700 md:text-base text-sm hover:bg-zinc-100 rounded-md md:px-5 px-3 md:py-2 py-1"
+                        className="mt-10 border border-zinc-400 md:text-base text-sm hover:border-zinc-500 rounded-md md:px-5 px-3 md:py-2 py-1"
                     >
                         Vaciar carrito
                     </button>
-                    <Link href='/confirm-purchase' className="mt-10 bg-zinc-300 border md:text-base text-sm border-zinc-700 text-zinc-800 rounded-md md:px-5 px-3 md:py-2 py-1">
+                    <Link href='/confirm-purchase' className="mt-10 bg-zinc-200 hover:bg-zinc-300 border md:text-base text-sm border-zinc-700 text-zinc-800 rounded-md md:px-5 px-3 md:py-2 py-1">
                         Finalizar compra
                     </Link>
                 </div>

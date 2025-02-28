@@ -21,7 +21,7 @@ export const CartProvider = ({ children } : { children: React.ReactNode }) => {
     const addToCart = (product: ProductCart) => {
         const productInCart = cart.find((item: ProductCart) => item.id === product.id);
         if (productInCart) {
-            setCart(cart.map((item: ProductCart) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item));
+            setCart(cart.map((item: ProductCart) => item.id === product.id ? { ...item, quantity: item.quantity + product.quantity } : item));
             return;
         }
         setCart([...cart, product]);
