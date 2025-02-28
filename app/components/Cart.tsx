@@ -23,12 +23,12 @@ import { Badge } from '@mui/material';
 import { useMobileView } from "@/app/context/MobileContext";
 
 export const Cart = () => {
-    const { 
-        cart, 
-        setCart, 
-        deleteOne, 
-        incrementOne, 
-        decrementOne, 
+    const {
+        cart,
+        setCart,
+        deleteOne,
+        incrementOne,
+        decrementOne,
         totalPurchase
     } = useCart()
 
@@ -47,7 +47,7 @@ export const Cart = () => {
         <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger className={merriweather_sans.className}>
                 <Badge badgeContent={cart.length} color="success">
-                    <FiShoppingCart style={{ fontSize: isMobile ? "25px" : "32px" }} className="text-zinc-800"/>
+                    <FiShoppingCart style={{ fontSize: isMobile ? "25px" : "32px" }} className="text-zinc-800" />
                 </Badge>
             </SheetTrigger>
             <SheetContent className={`bg-white overflow-y-auto md:p-6 p-4 ${merriweather_sans.className}`}>
@@ -60,47 +60,59 @@ export const Cart = () => {
                 <section className="mt-10 flex flex-col gap-5">
                     {cart.length !== 0 ? (
                         cart.map((item, index) => (
-                           <div key={index} className="flex items-center gap-5 p-2 border-2 border-zinc-300 rounded-md">
-                                <Image 
-                                   src={item.img[0]}
-                                   alt={item.title}
-                                   width={100}
-                                   height={100}
-                                />
-                                <div className="flex flex-col gap-2">
-                                    <div className="flex flex-col gap-1">
-                                        <p className="text-lg font-semibold">{item.title}</p>
-                                        <p className="text-sm text-zinc-600">Cantidad: {item.quantity}</p>
-                                        <p className="text-sm text-zinc-600">Color: {item.color}</p>
-                                        <p className="text-sm text-zinc-600">Precio: ${((user ? item.listPrice : item.sugestedPrice) * item.quantity).toLocaleString('es-AR')}</p>
-                                    </div>
-                                    <div className="flex md:flex-row flex-col md:gap-7 gap-2 items-center">
-                                        <button 
-                                            onClick={() => deleteOne(item.id)}
-                                            className="bg-red-700 text-zinc-200 px-2 py-1 rounded-md"
-                                        >
-                                            Eliminar
-                                        </button>
-                                        <div className="flex gap-3 items-center transition-all duration-150">
-                                            <p 
-                                                onClick={() => incrementOne(item.id)}
-                                                className="text-lg border border-zinc-400 rounded-lg px-2 cursor-pointer bg-zinc-100 hover:bg-zinc-300">+</p>
-                                            <p 
-                                                onClick={() => decrementOne(item.id)}
-                                                className="text-lg border border-zinc-400 rounded-lg px-2 cursor-pointer bg-zinc-100 hover:bg-zinc-300">-</p>
-                                        </div>
+                            <div key={index} className="flex flex-col gap-4 p-4 border border-zinc-200 rounded-lg shadow-lg bg-white">
+                                <div className="flex items-center gap-5">
+                                    <Image
+                                        src={item.img[0]}
+                                        alt={item.title}
+                                        width={80}
+                                        height={80}
+                                        className="rounded-lg p-1 border border-zinc-200"
+                                    />
+
+                                    <div className="flex flex-col gap-1 flex-1">
+                                        <p className="font-semibold text-lg">{item.title}</p>
+                                        <p className="text-sm text-zinc-600">Cantidad: <span className="font-semibold">{item.quantity}</span></p>
+                                        <p className="text-sm text-zinc-600">Color: <span className="font-semibold">{item.color}</span></p>
+                                        <p className="text-sm font-semibold text-amber-600">
+                                            ${((user ? item.listPrice : item.sugestedPrice) * item.quantity).toLocaleString('es-AR')}
+                                        </p>
                                     </div>
                                 </div>
-                                
-                           </div>
-                       ))
+
+                                <div className="flex justify-between items-center">
+                                    <button
+                                        onClick={() => deleteOne(item.id)}
+                                        className="flex items-center gap-2 bg-red-600 text-white px-3 py-1.5 text-sm rounded-md hover:bg-red-700 transition">
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                        Eliminar
+                                    </button>
+
+                                    <div className="flex items-center gap-3">
+                                        <button
+                                            onClick={() => incrementOne(item.id)}
+                                            className="w-7 h-7 flex items-center justify-center md:text-base text-sm font-semibold border border-zinc-400 rounded-md bg-zinc-100 hover:bg-zinc-300 transition">
+                                            +
+                                        </button>
+                                        <span className="md:text-base text-sm font-medium">{item.quantity}</span>
+                                        <button
+                                            onClick={() => decrementOne(item.id)}
+                                            className="w-7 h-7 flex items-center justify-center md:text-base text-sm font-semibold border border-zinc-400 rounded-md bg-zinc-100 hover:bg-zinc-300 transition">
+                                            -
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
                     ) : (
                         <p className="text-gray-700 md:text-xl text-base font-semibold text-center">No hay productos en el carrito.</p>
                     )}
                 </section>
                 {cart.length !== 0 && <p className="mt-5 text-zinc-700">Total de la compra: <span className="font-semibold">${(total).toLocaleString('es-AR')}</span></p>}
                 <div className="flex md:gap-5 gap-2 justify-center">
-                    <button 
+                    <button
                         onClick={() => setCart([])}
                         className="mt-10 border border-zinc-700 md:text-base text-sm hover:bg-zinc-100 rounded-md md:px-5 px-3 md:py-2 py-1"
                     >

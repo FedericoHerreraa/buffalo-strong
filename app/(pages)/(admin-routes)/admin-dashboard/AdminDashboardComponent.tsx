@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useAuth } from "@/app/context/AuthContext";
-import { CustomSeparator } from "@/app/components/CustomSeparator";
 import { SearchDbProd } from "./SearchDbProd";
 import { SendUserCredentials } from "@/app/components/SendUserCredentials";
 
@@ -42,9 +41,11 @@ export const AdminDashboardComponent = () => {
     return (
         <div className="min-h-[100vh]">
             <div className="flex justify-center mt-10">
-                <h1 className="md:text-4xl text-3xl mb-3">Administrador de Buffalo{"'"}s</h1>
+                <h1 className="md:text-4xl text-3xl font-bold mb-3 bg-gradient-to-r from-amber-700 to-zinc-700 text-transparent bg-clip-text drop-shadow-md">
+                    Administrador de Buffalo&apos;s
+                </h1>
             </div>
-            <section className="flex md:flex-row flex-col justify-between items-center md:w-[80%] w-[95%] mx-auto md:gap-0 gap-20 mt-20">
+            <section className="flex md:flex-row flex-col justify-between shadow-lg border border-zinc-200 p-10 rounded-md items-center md:w-[80%] w-[95%] mx-auto md:gap-0 gap-20 mt-20">
                 <form onSubmit={handleSubmit(addUser)} className="md:w-1/3 w-[95%] flex flex-col gap-5">
                     <h2 className="text-2xl font-semibold">Agregar usuario a la Base de Datos</h2>
                     <div className="md:w-[400px]">
@@ -115,9 +116,9 @@ export const AdminDashboardComponent = () => {
                 )}
             </section>
 
-            <CustomSeparator />
+            {/* <CustomSeparator /> */}
 
-            <section>
+            <section className="my-20">
                 <SearchDbProd />
             </section>
         </div>
