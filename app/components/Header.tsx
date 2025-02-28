@@ -52,13 +52,13 @@ export const Header = () => {
 
       <div>
         <section
-          className={`flex items-center justify-between md:px-6 py-2 bg-zinc-100 bg-opacity-95 ${merriweather_sans.className}`}
+          className={`flex items-center justify-between md:px-6 md:py-1 py-2 bg-zinc-100 bg-opacity-95 ${merriweather_sans.className}`}
         >
           <Link href="/" className="text-xl font-bold w-1/5 flex items-center md:ml-0 ml-5">
             <Image
               src={logobuffalo}
               alt="Logo"
-              width={isMobile ? 50 : 80}
+              width={isMobile ? 50 : 70}
               className={`transition-all duration-250 ease-in-out`}
             />
           </Link>
