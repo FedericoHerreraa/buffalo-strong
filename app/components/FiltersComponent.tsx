@@ -51,8 +51,8 @@ export const FIltersComponent = () => {
                 </CarouselContent>
                 {!isMobile && (
                     <>
-                        <CarouselPrevious />
-                        <CarouselNext />
+                        <CarouselPrevious className="border border-zinc-400"/>
+                        <CarouselNext className="border border-zinc-400" />
                     </>
                 )}
             </Carousel>
