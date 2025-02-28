@@ -30,7 +30,7 @@ export const ProductImage = ({ product, relatedProducts }: { product: ProductDB,
 
     return (
         <>
-            <div className="flex">
+            <div className="flex md:flex-row flex-col">
                 <div className="md:w-1/2 md:border-r border-r-zinc-200 flex flex-col p-5">
                     <div className="flex justify-around md:gap-6 gap-3 md:mr-3 mr-1">
                         <h1 className="md:text-3xl text-2xl text-zinc-600 font-bold border-l-4 border-l-zinc-800 pl-5">
@@ -66,7 +66,7 @@ export const ProductImage = ({ product, relatedProducts }: { product: ProductDB,
                                 {imgToShow !== img && (
                                     <div
                                         onClick={() => setImg(imgToShow)}
-                                        className="border mx-1 border-zinc-300 rounded-md cursor-pointer hover:border-zinc-700 hover:scale-105 transition-all duration-150 p-1"
+                                        className="border md:mx-1 mx-[1px] border-zinc-300 rounded-md cursor-pointer hover:border-zinc-700 hover:scale-105 transition-all duration-150 p-1"
                                     >
                                         <Image
                                             src={imgToShow}

@@ -35,7 +35,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
     <div className={merriweather_sans.className}>
       <div className="flex md:justify-start justify-center items-center gap-6 mt-2">
         <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
-        <h1 className="md:text-4xl text-3xl font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent text-center">
+        <h1 className="md:text-4xl text-3xl my-5 font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent text-center">
           Detalle de producto
         </h1>
         <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>

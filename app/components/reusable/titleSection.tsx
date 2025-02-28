@@ -21,7 +21,7 @@ export const TitleSection = ({
                 <BsMusicPlayerFill size={20} />
                 <BsMusicNoteBeamed size={20} />
             </div>
-            <h1 className={`text-4xl font-semibold bg-gradient-to-r ${color} bg-clip-text text-transparent`}>
+            <h1 className={`md:text-4xl text-3xl font-semibold bg-gradient-to-r ${color} bg-clip-text text-transparent`}>
                 {title}
             </h1>
             <p className={`${colorDescription}`}>{description}.</p>

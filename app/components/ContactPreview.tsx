@@ -15,11 +15,11 @@ export const ContactPreview = () => {
                         <BsMusicPlayerFill size={20}/>
                         <BsMusicNoteBeamed size={20}/>
                     </div>
-                    <h1 className="text-4xl inline-block font-semibold bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent">Tenes alguna duda?</h1>
-                    <p className="text-zinc-700 mt-3 text-xl">Envianos un mensaje con tu pregunta o duda en cuestion, y nuestro equipo te respondera a la brevedad</p>
+                    <h1 className="md:text-4xl text-3xl inline-block font-semibold bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent">Tenes alguna duda?</h1>
+                    <p className="text-zinc-700 mt-3 md:text-xl text-lg">Envianos un mensaje con tu pregunta o duda en cuestion, y nuestro equipo te respondera a la brevedad</p>
                 </div>
                 <div className="md:w-1/2 text-end">
-                    <Link href='/contact-us' className="text-lg bg-zinc-50 border border-zinc-400 px-7 py-2 rounded-md">
+                    <Link href='/contact-us' className="md:text-lg text-base bg-zinc-50 border border-zinc-400 px-7 py-2 rounded-md">
                         Contactanos
                     </Link>
                 </div>
