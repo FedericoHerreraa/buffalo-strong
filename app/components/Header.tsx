@@ -18,6 +18,7 @@ import { FaUserPlus } from "react-icons/fa6";
 import { VscListSelection } from "react-icons/vsc";
 import { CiLogout } from "react-icons/ci";
 import { FaIdBadge } from "react-icons/fa";
+import { CiLocationOn } from "react-icons/ci";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/app/components/ui/sheet";
 import { SearchBar } from "./SearchBar";
@@ -52,9 +53,9 @@ export const Header = () => {
 
       <div>
         <section
-          className={`flex items-center justify-between md:px-6 md:py-1 py-2 bg-zinc-100 bg-opacity-95 ${merriweather_sans.className}`}
+          className={`flex items-center justify-between md:px-6 md:py-1 py-2 bg-white bg-opacity-95 ${merriweather_sans.className}`}
         >
-          <Link href="/" className="text-xl font-bold w-1/5 flex items-center md:ml-0 ml-5">
+          <Link href="/" className="text-xl font-bold w-fit flex items-center md:ml-0 ml-5">
             <Image
               src={logobuffalo}
               alt="Logo"
@@ -62,16 +63,25 @@ export const Header = () => {
               className={`transition-all duration-250 ease-in-out`}
             />
           </Link>
-          
-          <Suspense>
-            <SearchBar />
-          </Suspense>
 
-          <div className="w-1/5 flex justify-end pr-5">
+          <div className="flex md:flex-row flex-col items-center justify-center gap-5 w-full mx-auto">
+            <Suspense>
+              <SearchBar />
+            </Suspense>
+
+            {!isMobile && (
+              <div className="md:w-1/4 flex items-center md:gap-1">
+                <CiLocationOn size={20}/>
+                <p className="text-zinc-600 md:text-base text-xs">Buenos Aires, Argentina (CABA)</p>
+              </div>
+            )}
+          </div>
+
+          <div className="w-fit flex justify-end pr-5">
             <Cart />
           </div>
         </section>
-        <section className="px-6 py-2 text-sm  text-[#5d3a1f] border-t border-t-zinc-300 font-semibold bg-zinc-200 bg-opacity-95">
+        <section className="px-6 py-2 text-sm  text-[#5d3a1f] font-semibold bg-zinc-100 bg-opacity-95">
           <BreadCrumbs />
         </section>
       </div>

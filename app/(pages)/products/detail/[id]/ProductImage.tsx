@@ -34,12 +34,9 @@ export const ProductImage = ({ product, relatedProducts }: { product: ProductDB,
     };
 
     return (
-        <div className="flex md:flex-row flex-col">
+        <div className="flex md:flex-row flex-col shadow-lg md:p-10 p-3 rounded-md bg-white">
             <div className="md:w-1/2 md:border-r border-r-zinc-200 flex flex-col p-5">
-                <div className="flex justify-around md:gap-6 gap-3 md:mr-3 mr-1">
-                    <h1 className="md:text-3xl text-2xl text-zinc-600 font-bold border-l-4 border-l-zinc-800 pl-5">
-                        {product.title}
-                    </h1>
+                <div className="flex md:gap-6 gap-3 md:mr-3 mr-1">
                     <Select onValueChange={handleColorChange} value={colorOptions.find(opt => opt.color === selectedColor)?.id.toString() || ""}>
                         <SelectTrigger className="w-fit p-2 gap-3 border-zinc-300 text-zinc-500">
                             <SelectValue defaultValue={colorOptions[0].color} />
