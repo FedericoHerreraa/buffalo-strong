@@ -7,9 +7,9 @@ import { useMobileView } from "../context/MobileContext";
 export const StockReference = () => {
     const { isMobile } = useMobileView()
 
-    const classname = 'text-md bg-gradient-to-br text-zinc-800 w-fit px-3 py-3 rounded-full shadow-md'
+    const classname = 'text-md bg-gradient-to-br text-zinc-800 w-fit px-2 py-2 rounded-full shadow-md'
     return (
-        <div className="flex md:flex-row md:w-fit w-full flex-col items-center gap-5 text-zinc-500 border border-zinc-200  md:p-5 p-2 md:rounded-lg rounded-md bg-zinc-50">
+        <div className="flex md:flex-row md:w-fit w-full flex-col items-center gap-5 text-zinc-500 border border-zinc-200  md:p-3 p-2 md:rounded-lg rounded-md bg-zinc-50">
             <div className="flex items-center gap-3">
                 <CiCircleInfo className="text-zinc-700" size={25}/>
                 <h1 className="md:text-xl text-lg text-zinc-700">Stock</h1>

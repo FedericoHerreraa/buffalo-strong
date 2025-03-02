@@ -21,6 +21,7 @@ import { FaIdBadge } from "react-icons/fa";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/app/components/ui/sheet";
 import { SearchBar } from "./SearchBar";
+import { Merriweather_Sans } from "next/font/google";
 
 
 export const Header = () => {
@@ -35,9 +36,9 @@ export const Header = () => {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 flex flex-col bg-white bg-opacity-70">
+    <header className="flex flex-col bg-white bg-opacity-70">
       <nav
-        className={`flex items-center justify-between w-full md:px-6 px-3 py-2 bg-zinc-900 text-zinc-300 ${merriweather.className}`}
+        className={`flex items-center justify-between w-full md:px-6 px-3 py-2 bg-zinc-900 text-zinc-300 ${merriweather_sans.className}`}
       >
         <div className="flex justify-between gap-7 text-md w-full ">
           <div className="flex items-center gap-1 bg-zinc-200 bg-opacity-90 text-sm rounded-full h-fit px-2 py-1 text-zinc-900">
