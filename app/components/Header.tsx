@@ -7,7 +7,7 @@ import { Suspense, useEffect, useState } from "react";
 
 import logobuffalo from "@/app/images/logos/Logobuffalo.png";
 import { BreadCrumbs } from "@/app/components/Breadcrumbs";
-import { merriweather, merriweather_sans } from "@/app/fonts/fonts";
+import { merriweather_sans } from "@/app/fonts/fonts";
 import { useAuth } from "@/app/context/AuthContext";
 import { useMobileView } from "@/app/context/MobileContext";
 import { User } from "@/app/types/types";
@@ -21,7 +21,6 @@ import { FaIdBadge } from "react-icons/fa";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/app/components/ui/sheet";
 import { SearchBar } from "./SearchBar";
-import { Merriweather_Sans } from "next/font/google";
 
 
 export const Header = () => {
