@@ -9,7 +9,11 @@ export const StockReference = () => {
 
     const classname = 'text-md bg-gradient-to-br text-zinc-200 w-fit px-2 py-2 rounded-full shadow-md'
     return (
+<<<<<<< HEAD
         <div className="flex md:w-fit w-full justify-center items-center gap-5 text-zinc-200 border border-zinc-200  md:p-3 p-2 md:rounded-lg rounded-md bg-zinc-800">
+=======
+        <div className="flex md:w-fit w-full items-center gap-5 text-zinc-200 border border-zinc-200  md:p-3 p-2 md:rounded-lg rounded-md bg-zinc-800">
+>>>>>>> b89a5ac (updating geader)
             <div className="flex items-center gap-3">
                 <CiCircleInfo className="text-zinc-200" size={25}/>
                 <h1 className="md:text-xl text-base text-zinc-200">Stock</h1>
