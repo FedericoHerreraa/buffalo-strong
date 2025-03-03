@@ -44,7 +44,7 @@ export const FIltersComponent = () => {
                                         className="w-full h-full object-cover"
                                     />
                                 </div>
-                                <p className="text-sm md:text-base font-semibold text-gray-700">{item.name}</p>
+                                <p className="text-sm md:text-base text-gray-700">{item.name}</p>
                             </div>
                         </CarouselItem>
                     ))}

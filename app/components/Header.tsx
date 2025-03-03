@@ -70,7 +70,7 @@ export const Header = () => {
             </Suspense>
 
             {!isMobile && (
-              <div className="md:w-1/4 flex items-center md:gap-1">
+              <div className="md:w-1/4 flex items-center md:gap-1 bg-zinc-300 px-3 py-2 rounded-full">
                 <CiLocationOn size={20}/>
                 <p className="text-zinc-600 md:text-base text-xs">Buenos Aires, Argentina (CABA)</p>
               </div>

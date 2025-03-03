@@ -23,11 +23,11 @@ export const Footer = () => {
                             className={`transition-all duration-250 ease-in-out`}
                         /> */}
                     </div>
-                    <p className="text-zinc-500">🎵 Tu pasión, nuestra música. En Buffalo{"'"}s Strong, vivimos y respiramos música. Ofrecemos instrumentos, accesorios y equipos de sonido de las mejores marcas para que des rienda suelta a tu creatividad. Ya seas un músico profesional o estés dando tus primeros acordes, aquí encontrarás todo lo que necesitas. Visítanos y deja que la música hable por ti. 🎸🥁🎹</p>
+                    <p className="text-zinc-400">🎵 Tu pasión, nuestra música. En Buffalo{"'"}s Strong, vivimos y respiramos música. Ofrecemos instrumentos, accesorios y equipos de sonido de las mejores marcas para que des rienda suelta a tu creatividad. Ya seas un músico profesional o estés dando tus primeros acordes, aquí encontrarás todo lo que necesitas. Visítanos y deja que la música hable por ti. 🎸🥁🎹</p>
                 </div>
                 <div className="md:w-1/3">
                     <p className="text-2xl mb-4">Segui Navegando</p>
-                    <div className="flex flex-col gap-5 text-zinc-500">
+                    <div className="flex flex-col gap-5 text-zinc-400">
                         {links.map((link, index) => (
                             <Link href={link.url} key={index}>
                                 <p className="text-lg hover:underline">{link.name}</p>
@@ -37,7 +37,7 @@ export const Footer = () => {
                 </div>
                 <div className="md:w-1/3">
                     <p className="text-2xl mb-4">Redes Sociales</p>
-                    <p className="text-zinc-500">Seguinos en nuestras redes sociales asi te mantenes actualizado!</p>
+                    <p className="text-zinc-400">Seguinos en nuestras redes sociales asi te mantenes actualizado!</p>
                     <div className="flex items-center gap-3 mt-5">
                         <FaInstagram size={30} className="text-violet-700"/>
                         <FaWhatsapp size={30} className="text-green-600"/>

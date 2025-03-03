@@ -19,7 +19,7 @@ export const ContactPreview = () => {
                     <p className="text-zinc-700 mt-3 md:text-xl text-lg">Envianos un mensaje con tu pregunta o duda en cuestion, y nuestro equipo te respondera a la brevedad</p>
                 </div>
                 <div className="md:w-1/2 text-end">
-                    <Link href='/contact-us' className="md:text-lg text-base bg-zinc-50 border border-zinc-400 px-7 py-2 rounded-md">
+                    <Link href='/contact-us' className="md:text-lg text-base bg-zinc-50 border border-zinc-400 hover:bg-zinc-500 transition-all duration-150 hover:text-white px-7 py-2 rounded-md">
                         Contactanos
                     </Link>
                 </div>
