@@ -41,7 +41,11 @@ export const Header = () => {
         <nav
           className={`flex items-center transition-all duration-300 transform justify-between w-full md:px-6 px-3 py-2 bg-zinc-900 text-zinc-300 ${merriweather_sans.className}`}
         >
+<<<<<<< HEAD
           <div className="flex justify-between gap-7 text-md  w-[85%] mx-auto">
+=======
+          <div className="flex justify-between gap-7 text-md  md:w-[85%] w-[98%] mx-auto">
+>>>>>>> 15e72f1 (updating geader)
             <div className="flex items-center gap-1 bg-zinc-200 bg-opacity-90 text-sm rounded-full h-fit px-2 py-1 text-zinc-800">
               <FaIdBadge size={18} />
               <p>{user ? user.role : "Invitado"}</p>
@@ -54,7 +58,11 @@ export const Header = () => {
 
         <div className="w-[85%] mx-auto">
           <section
+<<<<<<< HEAD
             className={`flex items-center justify-between md:px-6 md:py-1 py-2 bg-white bg-opacity-95 ${merriweather_sans.className}`}
+=======
+            className={`flex items-center md:w-[85%] w-[98%] mx-auto justify-between md:px-6 md:py-1 py-2  ${merriweather_sans.className}`}
+>>>>>>> 15e72f1 (updating geader)
           >
             <Link href="/" className="text-xl font-bold w-fit flex items-center md:ml-0 ml-5">
               <Image
@@ -82,7 +90,11 @@ export const Header = () => {
               <Cart />
             </div>
           </section>
+<<<<<<< HEAD
           <section className="px-6 py-2 text-sm text-zinc-300 w-[85%] mx-auto">
+=======
+          <section className="px-6 py-2 text-sm text-zinc-300 md:w-[85%] w-[98%] mx-auto">
+>>>>>>> 15e72f1 (updating geader)
             <BreadCrumbs />
           </section>
         </div>
