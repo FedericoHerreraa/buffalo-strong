@@ -36,10 +36,10 @@ export const Header = () => {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 flex flex-col bg-white bg-opacity-70">
-      <div className="bg-white">
+    <header className="bg-white sticky top-0 z-50">
+      <div>
         <nav
-          className={`flex items-center justify-between w-full md:px-6 px-3 py-2 bg-zinc-800 text-zinc-300 ${merriweather_sans.className}`}
+          className={`flex items-center transition-all duration-300 transform justify-between w-full md:px-6 px-3 py-2 bg-zinc-900 text-zinc-300 ${merriweather_sans.className}`}
         >
           <div className="flex justify-between gap-7 text-md  w-[85%] mx-auto">
             <div className="flex items-center gap-1 bg-zinc-200 bg-opacity-90 text-sm rounded-full h-fit px-2 py-1 text-zinc-800">
@@ -52,7 +52,7 @@ export const Header = () => {
           </div>
         </nav>
 
-        <div className="bg-white">
+        <nav className="bg-zinc-800">
           <section
             className={`flex items-center w-[85%] mx-auto justify-between md:px-6 md:py-1 py-2  ${merriweather_sans.className}`}
           >
@@ -72,7 +72,7 @@ export const Header = () => {
 
               {!isMobile && (
                 <div className="md:w-1/4 flex items-center md:gap-1 bg-zinc-200 px-3 py-2 rounded-full">
-                  <CiLocationOn size={20}/>
+                  <CiLocationOn size={20} />
                   <p className="text-zinc-800 md:text-sm text-xs">Buenos Aires, Argentina (CABA)</p>
                 </div>
               )}
@@ -82,10 +82,10 @@ export const Header = () => {
               <Cart />
             </div>
           </section>
-          <section className="px-6 py-2 text-sm text-[#5d3a1f] w-[85%] mx-auto">
+          <section className="px-6 py-2 text-sm text-zinc-300 w-[85%] mx-auto">
             <BreadCrumbs />
           </section>
-        </div>
+        </nav>
       </div>
     </header>
   );
