@@ -37,7 +37,7 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 flex flex-col bg-white bg-opacity-70">
-      <div className="">
+      <div className="bg-white">
         <nav
           className={`flex items-center justify-between w-full md:px-6 px-3 py-2 bg-zinc-800 text-zinc-300 ${merriweather_sans.className}`}
         >
@@ -52,9 +52,9 @@ export const Header = () => {
           </div>
         </nav>
 
-        <div className="w-[85%] mx-auto">
+        <div className="bg-white">
           <section
-            className={`flex items-center justify-between md:px-6 md:py-1 py-2 bg-white bg-opacity-95 ${merriweather_sans.className}`}
+            className={`flex items-center w-[85%] mx-auto justify-between md:px-6 md:py-1 py-2  ${merriweather_sans.className}`}
           >
             <Link href="/" className="text-xl font-bold w-fit flex items-center md:ml-0 ml-5">
               <Image
@@ -73,7 +73,7 @@ export const Header = () => {
               {!isMobile && (
                 <div className="md:w-1/4 flex items-center md:gap-1 bg-zinc-200 px-3 py-2 rounded-full">
                   <CiLocationOn size={20}/>
-                  <p className="text-zinc-800 md:text-[30px] text-xs">Buenos Aires, Argentina (CABA)</p>
+                  <p className="text-zinc-800 md:text-sm text-xs">Buenos Aires, Argentina (CABA)</p>
                 </div>
               )}
             </div>
@@ -82,7 +82,7 @@ export const Header = () => {
               <Cart />
             </div>
           </section>
-          <section className="px-6 py-2 text-sm  text-[#5d3a1f]  bg-opacity-95">
+          <section className="px-6 py-2 text-sm text-[#5d3a1f] w-[85%] mx-auto">
             <BreadCrumbs />
           </section>
         </div>
