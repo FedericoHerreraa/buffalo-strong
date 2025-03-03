@@ -38,13 +38,13 @@ export const ConfirmPurchaseComponent = () => {
     }
 
     return (
-        <div className={`min-h-[80vh] bg-gradient-to-b from-white via-zinc-100 to-white ${merriweather_sans.className}`}>
+        <div className={`min-h-[80vh] ${merriweather_sans.className}`}>
             <div className="flex md:justify-start justify-center items-center gap-4 mt-10">
                 <h1 className="md:text-4xl ml-5 text-3xl font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent text-center">Resumen de Compra</h1>
                 <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
             </div>
 
-            <section className="md:w-[80%] w-[95%] border bg-white border-zinc-100 mx-auto mt-20 p-6 shadow-md rounded-md">
+            <section className="md:w-[80%] w-[95%] mx-auto mt-20 p-6 rounded-md">
                 <div className="w-full pb-4">
                     {cart.map((product, index) => (
                         <div key={index} className="flex items-center justify-between border-b border-b-zinc-300 py-4">
@@ -58,7 +58,8 @@ export const ConfirmPurchaseComponent = () => {
                                 />
                                 <div>
                                     <h3 className="text-lg font-semibold">{product.title}</h3>
-                                    <p className="text-sm text-gray-600">Cantidad: {product.quantity}</p>
+                                    <p className="text-sm text-gray-600">Cantidad:  <span className="font-semibold">x{product.quantity}</span></p>
+                                    <p className="text-sm text-gray-600">Color:  <span className="font-semibold">{product.color}</span></p>
                                 </div>
                             </div>
                             <div className="text-right">
@@ -77,12 +78,12 @@ export const ConfirmPurchaseComponent = () => {
 
             <div className="flex justify-center my-10 items-center md:gap-10 gap-3">
                 <Link href='/'>
-                    <div className="border bg-white border-zinc-300 px-5 py-2 rounded-md">
+                    <div className="border bg-white border-zinc-300 px-5 py-2 rounded-md hover:border-zinc-400">
                         <p>Seguir comprando</p>
                     </div>
                 </Link>
                 <button onClick={confirmPurchase}>
-                    <div className="bg-zinc-100 border w-[180px] text-center flex justify-center border-zinc-400 px-5 py-2 rounded-md">
+                    <div className="bg-zinc-100 border w-[180px] text-center flex justify-center border-zinc-400 px-5 py-2 rounded-md hover:bg-zinc-300 transition-all duration-150">
                         <span>
                             {loading ? (
                                 <Spinner />

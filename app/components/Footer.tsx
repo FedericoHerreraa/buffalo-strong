@@ -1,20 +1,33 @@
+// 'use client'
 
 import Link from "next/link"
+// import Image from "next/image"
 import { FaInstagram } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { merriweather_sans } from "@/app/fonts/fonts";
+// import logobuffalo from "@/app/images/logos/Logobuffalo.png";
+// import { useMobileView } from "@/app/context/MobileContext";
 
 export const Footer = () => {
+    // const { isMobile } = useMobileView();
     return (
-        <div className={`bg-gradient-to-b from-white to-zinc-400 min-h-[50vh] ${merriweather_sans.className}`}>
+        <div className={`bg-zinc-900 text-zinc-300 min-h-[50vh] ${merriweather_sans.className}`}>
             <footer className="flex md:flex-row flex-col gap-24 w-[90%] mx-auto py-20">
                 <div className="md:w-1/3">
-                    <p className="text-2xl mb-4">Buffalo Strong</p>
-                    <p className="text-zinc-600">🎵 Tu pasión, nuestra música. En Buffalo{"'"}s Strong, vivimos y respiramos música. Ofrecemos instrumentos, accesorios y equipos de sonido de las mejores marcas para que des rienda suelta a tu creatividad. Ya seas un músico profesional o estés dando tus primeros acordes, aquí encontrarás todo lo que necesitas. Visítanos y deja que la música hable por ti. 🎸🥁🎹</p>
+                    <div className="flex items-center gap-5">
+                        <p className="text-2xl mb-4">Buffalo Strong</p>
+                        {/* <Image
+                            src={logobuffalo}
+                            alt="Logo"
+                            width={isMobile ? 50 : 70}
+                            className={`transition-all duration-250 ease-in-out`}
+                        /> */}
+                    </div>
+                    <p className="text-zinc-400">🎵 Tu pasión, nuestra música. En Buffalo{"'"}s Strong, vivimos y respiramos música. Ofrecemos instrumentos, accesorios y equipos de sonido de las mejores marcas para que des rienda suelta a tu creatividad. Ya seas un músico profesional o estés dando tus primeros acordes, aquí encontrarás todo lo que necesitas. Visítanos y deja que la música hable por ti. 🎸🥁🎹</p>
                 </div>
                 <div className="md:w-1/3">
                     <p className="text-2xl mb-4">Segui Navegando</p>
-                    <div className="flex flex-col gap-5 text-zinc-600">
+                    <div className="flex flex-col gap-5 text-zinc-400">
                         {links.map((link, index) => (
                             <Link href={link.url} key={index}>
                                 <p className="text-lg hover:underline">{link.name}</p>
@@ -24,7 +37,7 @@ export const Footer = () => {
                 </div>
                 <div className="md:w-1/3">
                     <p className="text-2xl mb-4">Redes Sociales</p>
-                    <p className="text-zinc-600">Seguinos en nuestras redes sociales asi te mantenes actualizado!</p>
+                    <p className="text-zinc-400">Seguinos en nuestras redes sociales asi te mantenes actualizado!</p>
                     <div className="flex items-center gap-3 mt-5">
                         <FaInstagram size={30} className="text-violet-700"/>
                         <FaWhatsapp size={30} className="text-green-600"/>

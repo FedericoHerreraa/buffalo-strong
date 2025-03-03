@@ -17,7 +17,6 @@ export default function Home() {
   return (
     <>
       <CarouselHomePage />
-      <CustomSeparator />
       <FIltersComponent /> 
       <Suspense>
         <Products />

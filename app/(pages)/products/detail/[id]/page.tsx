@@ -32,25 +32,27 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
     .eq("subcategory", product.subcategory);
 
   return (
-    <div className={merriweather_sans.className}>
-      <div className="flex md:justify-start justify-center items-center gap-6 mt-2">
-        <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
-        <h1 className="md:text-4xl text-3xl font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent text-center">
-          Detalle de producto
-        </h1>
-        <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
+    <>
+      <div className={`${merriweather_sans.className} bg-gradient-to-b from-white via-zinc-200 to-white`}>
+        <div className="flex md:justify-start justify-center items-center gap-6 mt-2">
+          <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
+          <h1 className="md:text-4xl text-3xl my-5 font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent text-center">
+            Detalle de producto
+          </h1>
+          <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
+        </div>
+
+        <section className="min-h-[80vh] md:w-[80%] w-[92%] mx-auto md:p-8 mt-2 flex md:flex-row flex-col gap-12">
+          <ProductImage product={product} relatedProducts={relatedProducts || []} />
+        </section>
+
+        <CustomSeparator />
+
+        <section className="mt-2 px-4">
+          <RelatedProducts categoryKey={product.category} />
+        </section>
+
       </div>
-
-      <section className="min-h-[80vh] md:w-[80%] w-[92%] mx-auto md:p-8 mt-2 flex md:flex-row flex-col gap-12">
-        <ProductImage product={product} relatedProducts={relatedProducts || []} />
-      </section>
-
-      <CustomSeparator />
-
-      <section className="mt-2 px-4">
-        <RelatedProducts categoryKey={product.category} />
-      </section>
-
       <CustomSeparator />
 
       <section className="mt-8 px-4">
@@ -60,7 +62,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
       <section className="mt-8 px-4">
         <ContactPreview />
       </section>
-    </div>
+    </>
 
   )
 }
