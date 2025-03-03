@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link"
+import Image from "next/image"
 import { useEffect, useState } from "react"
 import { supabase } from "@/lib/supabaseClient"
 import { merriweather_sans } from "@/app/fonts/fonts";
@@ -11,12 +12,17 @@ import { Product } from "./Product";
 import { ProductDB } from "@/app/types/types";
 import { useSearchParams } from "next/navigation";
 import { Spinner } from "../images/icons/Spinner";
+import { FiltersComponent } from "@/app/components/FiltersComponent";
+import logobuffalo from "@/app/images/logos/Logobuffalo.png";
+import { useMobileView } from "../context/MobileContext"
+
 
 
 export const Products = () => {
     const [prods, setProds] = useState<ProductDB[]>([]);
     const [loading, setLoading] = useState(true);
     const searchParams = useSearchParams()
+    const { isMobile } = useMobileView()
 
     useEffect(() => {
         const filter = searchParams.get("search");
@@ -39,16 +45,39 @@ export const Products = () => {
     if (loading) return <Spinner />
         
     return (
+<<<<<<< HEAD
         <div id="products" className={`min-h-[100vh] ${merriweather_sans.className} md:bg-gradient-to-b from-white via-zinc-200 to-white`}>
             <section className="flex gap-20 md:pt-20 pt-10 pb-20 mb-5 md:w-[85%] w-[93%] mx-auto flex-wrap md:shadow-lg md:p-10 md:border-x bg-white md:border-x-zinc-200 md:rounded-b-lg ">
                 <StockReference />
+=======
+        <div id="products" className={`min-h-[100vh] ${merriweather_sans.className} md:bg-gradient-to-b from-white via-zinc-200 to-white mt-20`}>
+            <section className="flex gap-20 md:p-10 p-1 mb-5 md:w-[85%] w-[93%] mx-auto flex-wrap md:shadow-lg md:border-x bg-white md:border-x-zinc-200 md:rounded-b-lg ">
+                <div className="flex w-full md:flex-row flex-col-reverse items-center md:justify-between justify-start md:gap-20 gap-5">
+                    <div className="md:w-2/3 w-full items-center flex">
+                        <FiltersComponent />
+                    </div>
+                    <div className="md:w-1/3 md:flex hidden w-full items-center md:justify-end justify-center gap-3 md:border-l-2 md:border-l-zinc-300">
+                        <div className="flex flex-col ">
+                            <p className="bg-gradient-to-r md:text-3xl text-xl font-semibold  from-amber-700 to-zinc-700 bg-clip-text text-transparent">Buffalo{"'"}s</p>
+                            <p className="bg-gradient-to-r md:text-3xl text-xl font-semibold  from-amber-700 to-zinc-700 bg-clip-text text-transparent">Strong</p>
+                            <p className="text-zinc-500 md:text-base text-sm">Instrumentos de calidad</p>
+                        </div>
+                        <Image
+                            src={logobuffalo}
+                            width={isMobile ? 70 : 100}
+                            height={isMobile ? 70 : 100}
+                            alt="Buffalo Logo"
+                        />
+                    </div>
+                </div>
+>>>>>>> 369ef66 (some request changes)
                 {categories.map(cat => {
                     const filteredProducts = prods?.filter(prod => prod.category === cat.keyValue).slice(0, 6);
                     return (
                         <div key={cat.keyValue} id={cat.keyValue} className={`mb-6 w-full ${filteredProducts.length === 0 ? 'bg-white' : 'bg-gradient-to-b from-white via-zinc-100 to-white'}`}>
                             <div className="flex md:flex-row flex-col md:gap-5 gap-3 md:items-center mb-10">
                                 <h1
-                                    className={`md:text-4xl text-3xl font-bold md:whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent`}
+                                    className={`md:text-4xl text-3xl font-bold md:whitespace-nowrap bg-gradient-to-r from-amber-700 to-zinc-700 bg-clip-text text-transparent`}
                                     >
                                     {cat.title}
                                 </h1>
@@ -75,6 +104,7 @@ export const Products = () => {
                         </div>
                     );
                 })}
+            <StockReference />
             </section>
         </div>
     )

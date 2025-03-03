@@ -8,7 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import imagen from '@/app/images/carousel/carouselImage2.webp'
 
-import { merriweather } from "@/app/fonts/fonts";
+import { merriweather_sans } from "@/app/fonts/fonts";
 import { ContactFormData, contactSchema } from "@/app/schemas/schemas";
 import { Spinner } from "@/app/images/icons/Spinner";
 
@@ -60,7 +60,7 @@ export const Contact = () => {
                 </div>
                 <div className="w-full md:w-3/5 flex flex-col py-8 px-6 md:px-12">
                     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
-                        <h1 className={`text-3xl md:text-4xl mb-3 text-[#5a4632] ${merriweather.className}`}>
+                        <h1 className={`text-3xl font-semibold md:text-4xl mb-3 bg-gradient-to-r from-amber-700 to-zinc-700 bg-clip-text text-transparent ${merriweather_sans.className}`}>
                             Contactanos Ahora Mismo
                         </h1>
 
