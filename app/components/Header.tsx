@@ -36,7 +36,7 @@ export const Header = () => {
   }, [pathname]);
 
   return (
-    <header className="flex flex-col bg-white bg-opacity-70">
+    <header className="flex flex-col bg-white bg-opacity-70 sticky top-0 z-50">
       <nav
         className={`flex items-center justify-between w-full md:px-6 px-3 py-2 bg-zinc-900 text-zinc-300 ${merriweather_sans.className}`}
       >
