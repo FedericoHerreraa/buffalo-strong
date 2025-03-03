@@ -36,56 +36,54 @@ export const Header = () => {
   }, [pathname]);
 
   return (
-    <header className="bg-white sticky top-0 z-50">
-      <div>
-        <nav
-          className={`flex items-center transition-all duration-300 transform justify-between w-full md:px-6 px-3 py-2 bg-zinc-900 text-zinc-300 ${merriweather_sans.className}`}
-        >
-          <div className="flex justify-between gap-7 text-md  md:w-[85%] w-[98%] mx-auto">
-            <div className="flex items-center gap-1 bg-zinc-200 bg-opacity-90 text-sm rounded-full h-fit px-2 py-1 text-zinc-800">
-              <FaIdBadge size={18} />
-              <p>{user ? user.role : "Invitado"}</p>
-            </div>
-            {isMobile
-              ? mobileTabs({ user, logOut, open, setOpen })
-              : desktopTabs({ user, logOut })}
+    <header className="flex flex-col bg-white bg-opacity-70 sticky top-0 z-50">
+      <nav
+        className={`flex items-center justify-between w-full md:px-6 px-3 py-2 bg-zinc-900 text-zinc-300 ${merriweather_sans.className}`}
+      >
+        <div className="flex justify-between gap-7 text-md w-full ">
+          <div className="flex items-center gap-1 bg-zinc-200 bg-opacity-90 text-sm rounded-full h-fit px-2 py-1 text-zinc-900">
+            <FaIdBadge size={18} />
+            <p>{user ? user?.role : "Invitado"}</p>
           </div>
-        </nav>
+          {isMobile
+            ? mobileTabs({ user, logOut, open, setOpen })
+            : desktopTabs({ user, logOut })}
+        </div>
+      </nav>
 
-        <nav className="bg-zinc-800">
-          <section
-            className={`flex items-center md:w-[85%] w-[98%] mx-auto justify-between md:px-6 md:py-1 py-2  ${merriweather_sans.className}`}
-          >
-            <Link href="/" className="text-xl font-bold w-fit flex items-center md:ml-0 ml-5">
-              <Image
-                src={logobuffalo}
-                alt="Logo"
-                width={isMobile ? 50 : 70}
-                className={`transition-all duration-250 ease-in-out`}
-              />
-            </Link>
+      <div>
+        <section
+          className={`flex items-center justify-between md:px-6 md:py-1 py-2 bg-white bg-opacity-95 ${merriweather_sans.className}`}
+        >
+          <Link href="/" className="text-xl font-bold w-fit flex items-center md:ml-0 ml-5">
+            <Image
+              src={logobuffalo}
+              alt="Logo"
+              width={isMobile ? 50 : 70}
+              className={`transition-all duration-250 ease-in-out`}
+            />
+          </Link>
 
-            <div className="flex md:flex-row flex-col items-center justify-center gap-5 w-full mx-auto">
-              <Suspense>
-                <SearchBar />
-              </Suspense>
+          <div className="flex md:flex-row flex-col items-center justify-center gap-5 w-full mx-auto">
+            <Suspense>
+              <SearchBar />
+            </Suspense>
 
-              {!isMobile && (
-                <div className="md:w-1/4 flex items-center md:gap-1 bg-zinc-200 px-3 py-2 rounded-full">
-                  <CiLocationOn size={20} />
-                  <p className="text-zinc-800 md:text-sm text-xs">Buenos Aires, Argentina (CABA)</p>
-                </div>
-              )}
-            </div>
+            {!isMobile && (
+              <div className="w-fit flex items-center md:gap-1 bg-gradient-to-r from-zinc-600 to-zinc-900 border border-zinc-400 px-3 py-2 rounded-full">
+                <CiLocationOn size={20} className="text-zinc-200"/>
+                <p className="text-zinc-200 md:text-base text-xs">Buenos Aires, Argentina (CABA)</p>
+              </div>
+            )}
+          </div>
 
-            <div className="w-fit flex justify-end pr-5">
-              <Cart />
-            </div>
-          </section>
-          <section className="px-6 py-2 text-sm text-zinc-300 md:w-[85%] w-[98%] mx-auto">
-            <BreadCrumbs />
-          </section>
-        </nav>
+          <div className="w-fit flex justify-end pr-5">
+            <Cart />
+          </div>
+        </section>
+        <section className="px-6 py-2 text-sm  text-[#5d3a1f] font-semibold bg-zinc-100 bg-opacity-95">
+          <BreadCrumbs />
+        </section>
       </div>
     </header>
   );
