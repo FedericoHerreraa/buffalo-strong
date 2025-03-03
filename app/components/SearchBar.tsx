@@ -41,7 +41,7 @@ export const SearchBar = () => {
     };
 
     return (
-        <div className="relative w-3/5 rounded-md">
+        <div className="relative md:w-3/5 w-3/4 rounded-md">
             <input
                 type="text"
                 value={input}

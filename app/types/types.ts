@@ -44,6 +44,7 @@ export interface CartContextType {
     decrementOne: (id: number) => void;
     totalPurchase: () => number;
     cleanCart: () => void;
+    updateStock: (cart: ProductCart[]) => void;
 }
 
 export interface User {

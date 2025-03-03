@@ -47,7 +47,7 @@ export const Cart = () => {
         <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger className={merriweather_sans.className}>
                 <Badge badgeContent={cart.length} color="success">
-                    <FiShoppingCart style={{ fontSize: isMobile ? "23px" : "28px" }} className="text-green-950" />
+                    <FiShoppingCart style={{ fontSize: isMobile ? "23px" : "28px" }} className="text-zinc-800" />
                 </Badge>
             </SheetTrigger>
             <SheetContent className={`bg-white overflow-y-auto md:p-6 p-4 ${merriweather_sans.className}`}>
