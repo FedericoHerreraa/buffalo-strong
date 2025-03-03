@@ -17,7 +17,7 @@ import Image from "next/image"
 import { useMobileView } from "@/app/context/MobileContext"
   
 
-export const FIltersComponent = () => {
+export const FiltersComponent = () => {
     const { isMobile } = useMobileView()
 
     const scrollToSection = (sectionId: string) => {
@@ -27,9 +27,9 @@ export const FIltersComponent = () => {
 
     return (
         <div
-            className={`w-full mx-auto h-48 md:h-56 flex items-center justify-center ${merriweather_sans.className}`}
+            className={`md:w-[90%] w-full h-fit flex items-center justify-center ${merriweather_sans.className}`}
         >                
-            <Carousel className="md:w-[50%] w-[90%] mx-auto" opts={{ loop: true }}>
+            <Carousel className="md:w-[90%] w-full mx-auto" opts={{ loop: true }}>
                 <CarouselContent className="flex items-center gap-3 text-center">
                     {Filters.map((item, index) => (
                         <CarouselItem
@@ -37,14 +37,14 @@ export const FIltersComponent = () => {
                             className="basis-1/3 md:basis-1/4 flex justify-center flex-col"
                         >
                             <div className="flex flex-col items-center gap-2 p-2" onClick={() => scrollToSection(item.key)}>
-                                <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-white p-2 overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
+                                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white p-2 overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
                                     <Image
                                         alt={item.name}
                                         src={item.img}
                                         className="w-full h-full object-cover"
                                     />
                                 </div>
-                                <p className="text-sm md:text-base text-gray-700">{item.name}</p>
+                                <p className="text-sm text-gray-700">{item.name}</p>
                             </div>
                         </CarouselItem>
                     ))}

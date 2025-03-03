@@ -26,12 +26,20 @@ export const AddToCart = ({ prod, color }: { prod: ProductDB, color: string }) =
             </h1>
             <div>
                 <p className="text-zinc-600">{prod.description}</p>
-                <p className="mt-6">Código: {prod.listCode}</p>
-                <p className="mt-4 font-semibold">Marca: {prod.brand}</p>
-                <p className="mt-2 text-lg font-bold">Precio: ${(user ? prod.listPrice : prod.sugestedPrice).toLocaleString('es-AR')}</p>
-                <p className={`mt-2 text-white py-1 px-4 w-fit rounded-full ${prod.stock > 10 ? 'bg-green-600' : prod.stock > 0 ? 'bg-yellow-600' : 'bg-red-700'}`}>
-                    {prod.stock} {prod.stock > 1 ? 'Unidades' : 'Unidad'}
-                </p>
+                <p className="mt-6">Código: <span className="font-semibold">{prod.listCode}</span></p>
+                <p className="mt-4">Marca: <span className="font-semibold">{prod.brand}</span></p>
+                <p className="mt-2 text-lg">Precio: <span className="font-bold">${(user ? prod.listPrice : prod.sugestedPrice).toLocaleString('es-AR')}</span></p>
+                <div className="flex items-center gap-3 mt-2">
+                    <div className={`text-white font-thin py-3 px-3 w-fit rounded-full 
+                        ${prod.stock > 10 
+                            ? 'bg-green-600' 
+                            : prod.stock > 0 
+                                ? 'bg-yellow-600' 
+                                : 'bg-red-700'
+                        }`}>
+                    </div>
+                    <p className="text-zinc-500">Unidades Disponibles</p>
+                </div>
             </div>
             <div className="flex flex-col gap-3 w-[200px] mt-10">
                 <Select onValueChange={(value) => setCount(Number(value))}>
