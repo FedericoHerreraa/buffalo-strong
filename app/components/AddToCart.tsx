@@ -31,10 +31,10 @@ export const AddToCart = ({ prod, color }: { prod: ProductDB, color: string }) =
                 <p className="mt-2 text-lg">Precio: <span className="font-bold">${(user ? prod.listPrice : prod.sugestedPrice).toLocaleString('es-AR')}</span></p>
                 <div className="flex items-center gap-3 mt-2">
                     <div className={`text-white font-thin py-3 px-3 w-fit rounded-full 
-                        ${prod.stock > 10 
-                            ? 'bg-green-600' 
-                            : prod.stock > 0 
-                                ? 'bg-yellow-600' 
+                        ${prod.stock > 10
+                            ? 'bg-green-600'
+                            : prod.stock > 0
+                                ? 'bg-yellow-600'
                                 : 'bg-red-700'
                         }`}>
                     </div>
@@ -42,7 +42,7 @@ export const AddToCart = ({ prod, color }: { prod: ProductDB, color: string }) =
                 </div>
             </div>
             <div className="flex flex-col gap-3 w-[200px] mt-10">
-                <Select onValueChange={(value) => setCount(Number(value))}>
+                <Select value={count.toString()} onValueChange={(value) => setCount(Number(value))}>
                     <SelectTrigger className="p-2 gap-3 border-zinc-300 text-zinc-500 w-[200px]">
                         <SelectValue placeholder="Seleccionar cantidad" />
                     </SelectTrigger>
