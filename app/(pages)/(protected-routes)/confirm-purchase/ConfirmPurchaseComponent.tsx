@@ -10,7 +10,7 @@ import { useAuth } from "@/app/context/AuthContext"
 import { Spinner } from "@/app/images/icons/Spinner"
 
 export const ConfirmPurchaseComponent = () => {
-    const { cart, totalPurchase, cleanCart } = useCart()
+    const { cart, totalPurchase, cleanCart, updateStock } = useCart()
     const { user } = useAuth()
     const [loading, setLoading] = useState(false)
 
@@ -27,6 +27,7 @@ export const ConfirmPurchaseComponent = () => {
                 body: JSON.stringify({ cart, user })
             })
             setLoading(false)
+            updateStock(cart)
             cleanCart()
             redirect('/')
         } catch (error) {
@@ -75,7 +76,8 @@ export const ConfirmPurchaseComponent = () => {
                     <p className="text-lg">Total: <span className="font-bold">${(total + parseFloat((total * 0.21).toFixed(2))).toLocaleString('es-AR')}</span></p>
                 </div>
             </section>
-
+            
+            <p className="text-center md:text-base text-sm mx-10 mt-20 text-zinc-500">Una vez confirmada la compra, se enviara el pedido a Buffalo y te avisaremos como continuar por tu direccion de correo electronico</p>
             <div className="flex justify-center my-10 items-center md:gap-10 gap-3">
                 <Link href='/'>
                     <div className="border bg-white border-zinc-300 px-5 py-2 rounded-md hover:border-zinc-400">

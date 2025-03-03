@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState } from "react";
 import { CartContextType, ProductCart } from "@/app/types/types";
+import { supabase } from "@/lib/supabaseClient";
 
 const CartContext = createContext<CartContextType>({
     cart: [] as ProductCart[],
@@ -12,7 +13,8 @@ const CartContext = createContext<CartContextType>({
     incrementOne: () => {},
     decrementOne: () => {},
     totalPurchase: () => 0,
-    cleanCart: () => {}
+    cleanCart: () => {},
+    updateStock: () => {}
 });
 
 export const CartProvider = ({ children } : { children: React.ReactNode }) => {
@@ -59,8 +61,30 @@ export const CartProvider = ({ children } : { children: React.ReactNode }) => {
         return total;
     }
 
+    const updateStock = (cart: ProductCart[]) => {
+        cart.map(prod => {
+            supabase
+                .from('products')
+                .update({ stock: prod.stock - prod.quantity })
+                .eq('id', prod.id)
+                .then(() => console.log('Stock actualizado'))
+        }) 
+    }
+
     return (
-        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, deleteOne, incrementOne, decrementOne, totalPurchase, cleanCart }}>
+        <CartContext.Provider 
+            value={{ 
+                cart, 
+                setCart, 
+                addToCart, 
+                removeFromCart, 
+                deleteOne, 
+                incrementOne, 
+                decrementOne, 
+                totalPurchase, 
+                cleanCart, 
+                updateStock 
+            }}>
             {children}
         </CartContext.Provider>
     );
