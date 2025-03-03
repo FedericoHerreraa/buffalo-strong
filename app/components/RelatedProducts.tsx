@@ -15,7 +15,7 @@ export const RelatedProducts = async ({ categoryKey } : { categoryKey: string })
                 <h1 className="inline-block md:text-3xl text-xl font-bold bg-gradient-to-r from-amber-700 to-zinc-700 bg-clip-text text-transparent">Productos relacionados</h1>
                 <TbCirclesRelation size={25}/>
             </div>
-            <div className="flex gap-10 mt-10 mb-10 overflow-x-auto whitespace-nowrap pb-5">
+            <div className="flex md:gap-7 gap-1 mt-10 mb-10 overflow-x-auto whitespace-nowrap pb-5">
                 {prods?.map((prod: ProductDB, index) => (
                     <Product key={index} prod={prod} index={index}/>
                 ))}

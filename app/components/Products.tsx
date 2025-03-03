@@ -86,7 +86,7 @@ export const Products = () => {
                                 </div>
                                 <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
                             </div>
-                            <div className="flex gap-4 overflow-x-auto whitespace-nowrap pb-5">
+                            <div className="flex md:gap-4 gap-1 overflow-x-auto whitespace-nowrap pb-5">
                                 {filteredProducts && filteredProducts.length > 0 ? ( 
                                     filteredProducts.map((prod, index) => (
                                         <Product key={index} prod={prod} index={index}/>
