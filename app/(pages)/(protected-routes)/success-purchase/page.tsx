@@ -1,8 +1,11 @@
 
+import { Suspense } from "react";
 import { SuccessPageContent } from "./SuccessPageContent";
 
 export default function SuccessPage() {
     return (
-        <SuccessPageContent />
+        <Suspense>
+            <SuccessPageContent />
+        </Suspense>
     )
 }
