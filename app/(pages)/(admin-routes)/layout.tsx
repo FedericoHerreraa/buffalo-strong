@@ -4,9 +4,9 @@ import { redirect } from 'next/navigation';
 import { useAuth } from '@/app/context/AuthContext';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-    const { user } = useAuth()
+    const { user, loading } = useAuth()
 
-    if (user?.role.toLowerCase() !== 'admin') {
+    if (!loading && user?.role.toLowerCase() !== 'admin') {
         redirect('/register'); 
     }
 

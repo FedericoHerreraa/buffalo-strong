@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true)
         const fetchSession = async () => {
             const { data, error } = await supabase.auth.getSession();
 
@@ -41,12 +42,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 }
 
                 setUser(fullUser)
+                setLoading(false)
             }
-
-            setLoading(false);
         };
 
         fetchSession()
+        
     }, []);
 
     const login = async (email: string, password: string) => {

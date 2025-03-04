@@ -57,6 +57,7 @@ export async function POST(req: NextRequest) {
                 <p>Un usuario realizó una compra en Buffalo's Strong.</p>
                 <p><strong>Nombre:</strong> ${user.name}</p>
                 <p><strong>Email:</strong> ${user.email}</p>
+                <p><strong>Direccion:</strong> ${user.address}</p>
                 <h3>Productos comprados:</h3>
                 <table border="1">
                     <thead>
