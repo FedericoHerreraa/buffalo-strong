@@ -70,7 +70,7 @@ export const BreadCrumbs = () => {
                 </>
               )}
 
-              {["/about-us", "/contact-us", "/news", "/register", "/admin-dashboard", "/confirm-purchase"].includes(pathname) && (
+              {["/about-us", "/contact-us", "/news", "/register", "/admin-dashboard", "/confirm-purchase", "/success-purchase"].includes(pathname) && (
                 <>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
@@ -81,6 +81,7 @@ export const BreadCrumbs = () => {
                             {pathname === "/register" && "Registro"}
                             {pathname === "/admin-dashboard" && "Dashboard"}
                             {pathname === "/confirm-purchase" && "Finalizar Compra"}
+                            {pathname === "/success-purchase" && "Compra Exitosa"}
                         </Link>
                     </BreadcrumbItem>
                 </>

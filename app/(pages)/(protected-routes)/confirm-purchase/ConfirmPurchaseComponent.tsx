@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from "react"
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { useCart } from "@/app/context/CartContext"
 import { merriweather_sans } from "@/app/fonts/fonts"
 import Image from "next/image"
@@ -13,6 +13,7 @@ export const ConfirmPurchaseComponent = () => {
     const { cart, totalPurchase, cleanCart, updateStock } = useCart()
     const { user } = useAuth()
     const [loading, setLoading] = useState(false)
+    const router = useRouter()
 
     const total = useMemo(() => totalPurchase(), [totalPurchase]);
 
@@ -29,12 +30,12 @@ export const ConfirmPurchaseComponent = () => {
             setLoading(false)
             updateStock(cart)
             cleanCart()
-            redirect('/')
+            router.push('/success-purchase?purchase=true')
         } catch (error) {
             console.error('Error al confirmar la compra:', error)
             setLoading(false)
             cleanCart()
-            redirect('/')
+            router.push('/')
         }
     }
 
@@ -77,7 +78,7 @@ export const ConfirmPurchaseComponent = () => {
                 </div>
             </section>
             
-            <p className="text-center md:text-base text-sm mx-10 mt-20 text-zinc-500">Una vez confirmada la compra, se enviara el pedido a Buffalo y te avisaremos como continuar por tu direccion de correo electronico</p>
+            <p className="text-center md:text-base text-sm mx-10 mt-20 text-zinc-500">Una vez confirmada la compra, se enviara el pedido a Buffalo y te avisaremos por tu correo electronico como vamos a continuar</p>
             <div className="flex justify-center my-10 items-center md:gap-10 gap-3">
                 <Link href='/'>
                     <div className="border bg-white border-zinc-300 px-5 py-2 rounded-md hover:border-zinc-400">
