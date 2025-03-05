@@ -36,7 +36,7 @@ export const Header = () => {
   }, [pathname]);
 
   return (
-    <header className="bg-white sticky top-0 z-50">
+    <header className="sticky top-0 z-50">
       <div>
         <nav
           className={`flex items-center transition-all duration-300 transform justify-between w-full md:px-6 px-3 py-2 bg-zinc-900 text-zinc-300 ${merriweather_sans.className}`}
@@ -52,7 +52,7 @@ export const Header = () => {
           </div>
         </nav>
 
-        <nav className="bg-zinc-800">
+        <nav className="bg-gradient-to-b from-zinc-800 to-zinc-600">
           <section
             className={`flex items-center md:w-[85%] w-[98%] mx-auto justify-between md:px-6 md:py-1 py-2  ${merriweather_sans.className}`}
           >
@@ -71,7 +71,7 @@ export const Header = () => {
               </Suspense>
 
               {!isMobile && (
-                <div className="md:w-1/4 flex items-center md:gap-1 bg-zinc-200 px-3 py-2 rounded-full">
+                <div className="md:w-1/4 flex items-center md:gap-1 bg-gradient-to-r from-amber-700 to-zinc-300 px-3 py-2 rounded-full">
                   <CiLocationOn size={20} />
                   <p className="text-zinc-800 md:text-sm text-xs">Buenos Aires, Argentina (CABA)</p>
                 </div>
