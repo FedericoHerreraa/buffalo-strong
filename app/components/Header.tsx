@@ -52,7 +52,7 @@ export const Header = () => {
           </div>
         </nav>
 
-        <nav className="bg-gradient-to-b from-zinc-800 to-zinc-600">
+        <nav className="bg-[linear-gradient(to_bottom,#27272a_70%,#4f4f4f_100%)]">
           <section
             className={`flex items-center md:w-[85%] w-[98%] mx-auto justify-between md:px-6 md:py-1 py-2  ${merriweather_sans.className}`}
           >
