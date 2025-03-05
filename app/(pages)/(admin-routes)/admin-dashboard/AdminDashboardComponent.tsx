@@ -6,28 +6,39 @@ import { useAuth } from "@/app/context/AuthContext";
 import { SearchDbProd } from "./SearchDbProd";
 import { SendUserCredentials } from "@/app/components/SendUserCredentials";
 
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterAdminFormData, registerAdminSchema } from "@/app/schemas/schemas";
 import { Spinner } from "@/app/images/icons/Spinner";
+
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/app/components/ui/select";
 
 export const AdminDashboardComponent = () => {
     const {
         register,
         handleSubmit,
+        control,
         formState: { errors, isSubmitting },
         reset,
     } = useForm<RegisterAdminFormData>({ resolver: zodResolver(registerAdminSchema) });
+    const { createUser } = useAuth()
 
     const [showNext, setShowNext] = useState(false)
     const [formInfo, setFormInfo] = useState<RegisterAdminFormData>()
     const [error, setError] = useState<string | null>(null)
-    const { createUser } = useAuth()
 
     const addUser = async (data: RegisterAdminFormData) => {
         setFormInfo(data)
+        console.log(data.role)
 
-        const res = await createUser(data.email, data.name, data.password, parseInt(data.cuit), data.address)
+        const res = await createUser(data.email, data.name, data.password, parseInt(data.cuit), data.address, data.role)
+
         if (res === 'A user with this email address has already been registered') {
             setError('Ya existe un usuario con este correo electrónico')
             setTimeout(() => setError(null), 4000)
@@ -54,7 +65,7 @@ export const AdminDashboardComponent = () => {
                             {...register("name")}
                             placeholder="nombre completo"
                             type="text"
-                            className="w-full mt-2 bg-zinc-100 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none"
+                            className="w-full mt-2 bg-zinc-100 border border-zinc-300 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none"
                         />
                     </div>
                     {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
@@ -64,7 +75,7 @@ export const AdminDashboardComponent = () => {
                             {...register("email")}
                             placeholder="tu@servicio.com"
                             type="email"
-                            className="w-full mt-2 bg-zinc-100 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none"
+                            className="w-full mt-2 bg-zinc-100 border border-zinc-300 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none"
                         />
                     </div>
                     {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
@@ -74,7 +85,7 @@ export const AdminDashboardComponent = () => {
                             placeholder="clave"
                             {...register("password")}
                             type="text"
-                            className="w-full mt-2 bg-zinc-100 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none"
+                            className="w-full mt-2 bg-zinc-100 border border-zinc-300 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none"
                         />
                     </div>
                     {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
@@ -84,7 +95,7 @@ export const AdminDashboardComponent = () => {
                             placeholder="CUIT"
                             {...register("cuit")}
                             type="number"
-                            className="w-full mt-2 bg-zinc-100 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none"
+                            className="w-full mt-2 bg-zinc-100 border border-zinc-300 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none"
                         />
                     </div>
                     {errors.cuit && <p className="text-red-500 text-sm mt-1">{errors.cuit.message}</p>}
@@ -94,14 +105,37 @@ export const AdminDashboardComponent = () => {
                             placeholder="direccion"
                             {...register("address")}
                             type="text"
-                            className="w-full mt-2 bg-zinc-100 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none"
+                            className="w-full mt-2 bg-zinc-100 border border-zinc-300 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none"
                         />
                     </div>
                     {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address.message}</p>}
+                    <div className="md:w-[400px]">
+                        <label className="text-zinc-700 ml-1 mb-2">Rol de usuario</label>    
+                        <Controller
+                            name="role"
+                            control={control}
+                            defaultValue="Cliente"
+                            render={({ field }) => (
+                                <Select onValueChange={field.onChange} value={field.value}>
+                                    <SelectTrigger className="w-fit p-2 gap-3 border-zinc-300 text-zinc-500">
+                                        <SelectValue placeholder="Seleccione un rol" />
+                                    </SelectTrigger>
+                                    <SelectContent className="p-2 border-zinc-300 bg-white text-zinc-600">
+                                        <SelectItem value="Cliente" className="border-none cursor-pointer">
+                                            Cliente
+                                        </SelectItem>
+                                        <SelectItem value="Admin" className="border-none cursor-pointer">
+                                            Administrador
+                                        </SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            )}
+                        />
+                    </div>
                     {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
                     <button
                         type="submit"
-                        className="bg-zinc-700 w-[200px] hover:text-white py-2 rounded-lg text-zinc-200"
+                        className="bg-zinc-700 w-[200px] hover:text-white flex justify-center py-2 rounded-lg text-zinc-200"
                     >
                         {isSubmitting ? <Spinner /> : 'Agregar usuario'}
                     </button>
@@ -115,8 +149,6 @@ export const AdminDashboardComponent = () => {
                     <div className="w-1/3"></div>
                 )}
             </section>
-
-            {/* <CustomSeparator /> */}
 
             <section className="my-20">
                 <SearchDbProd />

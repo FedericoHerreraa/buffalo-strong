@@ -9,7 +9,7 @@ const supabase = createClient(
 );
 
 export async function POST(req: NextRequest) {
-    const { email, name, password, cuit, address } = await req.json();
+    const { email, name, password, cuit, address, role } = await req.json();
 
     const { data, error } = await supabase.auth.admin.createUser({
         email,
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     const { error: profileError } = await supabase.from('profiles').insert({
         id: user.id,
         email: user.email,
-        role: 'Cliente',
+        role,
         cuit,
         name,
         address

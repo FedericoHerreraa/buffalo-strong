@@ -29,8 +29,8 @@ export const ConfirmPurchaseComponent = () => {
             })
             setLoading(false)
             updateStock(cart)
-            cleanCart()
             router.push('/success-purchase?purchase=true')
+            cleanCart()
         } catch (error) {
             console.error('Error al confirmar la compra:', error)
             setLoading(false)

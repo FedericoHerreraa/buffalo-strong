@@ -37,6 +37,7 @@ export const registerAdminSchema = z.object({
   password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
   address: z.string().min(5, "La direccion debe tener al menos 5 caracteres"),
   cuit: z.string().min(11, "El mensaje debe tener al menos 11 caracteres"),
+  role: z.string().min(4, "El rol debe tener al menos 4 caracteres"),
 });
 
 export type RegisterAdminFormData = z.infer<typeof registerAdminSchema>;

@@ -83,13 +83,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         name: string,
         password: string,
         cuit: number,
-        address: string
+        address: string,
+        role: string
     ): Promise<string | undefined> => {
         try {
             const response = await fetch('/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, name, password, cuit, address }),
+                body: JSON.stringify({ email, name, password, cuit, address, role }),
             });
 
             const result = await response.json();
