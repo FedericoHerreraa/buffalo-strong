@@ -13,6 +13,7 @@ export const LoginController = () => {
     const { login } = useAuth()
     const { isMobile } = useMobileView()
 
+    const [isVisible, setIsVisible] = useState<boolean>(false)
     const [error, setError] = useState<string | null>(null)
 
     const {
@@ -43,6 +44,8 @@ export const LoginController = () => {
             isSubmitting={isSubmitting}
             loginUser={loginUser}
             isMobile={isMobile}
+            setIsVisible={setIsVisible}
+            isVisible={isVisible}
         />
     )
 }

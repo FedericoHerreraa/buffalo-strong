@@ -60,7 +60,7 @@ export const BreadCrumbs = () => {
         <Breadcrumb>
           <BreadcrumbList>
               <BreadcrumbItem>
-                <Link href='/' className="hover:underline">Home</Link>
+                <Link href='/' className="hover:underline">Inicio</Link>
               </BreadcrumbItem>
 
               {pathname === "/" && (

@@ -113,4 +113,6 @@ export interface LoginViewProps {
     isSubmitting: boolean;
     loginUser: (data: LoginFormData) => void;
     isMobile: boolean;
+    isVisible: boolean;
+    setIsVisible: (isVisible: boolean) => void;
 }

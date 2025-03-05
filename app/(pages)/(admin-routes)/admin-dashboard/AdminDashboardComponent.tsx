@@ -73,7 +73,7 @@ export const AdminDashboardComponent = () => {
                         <input
                             placeholder="clave"
                             {...register("password")}
-                            type="password"
+                            type="text"
                             className="w-full mt-2 bg-zinc-100 px-4 py-2 rounded-lg text-zinc-800 focus:outline-none"
                         />
                     </div>
