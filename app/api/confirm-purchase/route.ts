@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
             'fede.juan.herrera@gmail.com',
             'Se realizó una compra en Buffalo Strong',
             `
-                <p>Un usuario realizó una compra en Buffalo's Strong.</p>
+                <h2>Un usuario realizó una compra en Buffalo's Strong.</h2>
                 <p><strong>Nombre:</strong> ${user.name}</p>
                 <p><strong>Email:</strong> ${user.email}</p>
                 <p><strong>Direccion:</strong> ${user.address}</p>
@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
             user.email,
             '¡Gracias por tu compra en Buffalo Strong!',
             `
-                <h1>Hola ${user.name},</h1>
+                <h3>Hola ${user.name},</h3>
                 <p>Recibimos tu compra en Buffalo's Strong. Nuestro equipo te contactará a la brevedad.</p>
             `
         );
