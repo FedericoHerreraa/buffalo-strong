@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
         const sendEmail = async (to: string, subject: string, html: string) => {
             try {
                 const { data, error } = await resend.emails.send({
-                    from: 'autenticacion@sbmusic.ar',
+                    from: 'autenticación@sbmusic.ar',
                     to,
                     subject,
                     html,
@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
             'fede.juan.herrera@gmail.com',
             'Registro en Buffalo Strong',
             `
-                <p>Un nuevo usuario quiere ingresar a Buffalo's.</p>
+                <h3>Un nuevo usuario quiere ingresar a Buffalo's.</h3>
                 <p>Nombre: ${name}</p>
                 <p>Apellido: ${lastName}</p>
                 <p>Email: ${email}</p>
@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
             email,
             'Registro en Buffalo Strong',
             `
-                <h1>¡Hola ${name}!</h1>
+                <h3>¡Hola ${name}!</h3>
                 <p>Te registraste en Buffalo's Strong, nuestro equipo procesará la solicitud y te enviará las credenciales a la brevedad.</p>
             `
         );

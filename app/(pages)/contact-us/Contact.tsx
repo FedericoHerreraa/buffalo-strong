@@ -65,7 +65,7 @@ export const Contact = () => {
                         </h1>
 
                         <div>
-                            <label className="block text-sm font-medium text-[#5a4632]">Nombre</label>
+                            <label className="block text-sm font-medium text-[#5a4632]">Nombre completo</label>
                             <input
                                 type="text"
                                 {...register("name")}
@@ -107,7 +107,7 @@ export const Contact = () => {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="bg-[#5a4632] text-white py-3 px-6 rounded-md hover:bg-[#4a3928] disabled:bg-gray-400 transition-all"
+                            className="bg-[#5a4632] text-white py-3 px-6 flex justify-center rounded-md hover:bg-[#4a3928] disabled:bg-gray-400 transition-all"
                         >
                             {isSubmitting ? <Spinner /> : "Enviar"}
                         </button>
