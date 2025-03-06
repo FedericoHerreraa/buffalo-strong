@@ -39,6 +39,7 @@ export const RegisterController = () => {
         setTimeout(() => setError(null), 4000)
       } else {
         console.log("Correo enviado con éxito:", result.data);
+        alert('Registro exitoso, revise su correo electronico');
       }
       reset()
     } catch (error) {
