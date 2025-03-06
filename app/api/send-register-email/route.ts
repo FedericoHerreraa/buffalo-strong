@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
         const sendEmail = async (to: string, subject: string, html: string) => {
             try {
                 const { data, error } = await resend.emails.send({
-                    from: 'autenticación@sbmusic.ar',
+                    from: 'autenticacion@sbmusic.ar',
                     to,
                     subject,
                     html,
@@ -44,11 +44,11 @@ export async function POST(req: NextRequest) {
             'Registro en Buffalo Strong',
             `
                 <h3>Un nuevo usuario quiere ingresar a Buffalo's.</h3>
-                <p>Nombre: ${name}</p>
-                <p>Apellido: ${lastName}</p>
-                <p>Email: ${email}</p>
-                <p>Dirección: ${address}</p>
-                <p>Clave Fiscal: ${cuit}</p>
+                <p>Nombre: <strong>${name}</strong></p>
+                <p>Apellido: <strong>${lastName}</strong></p>
+                <p>Email: <strong>${email}</strong></p>
+                <p>Dirección: <strong>${address}</strong></p>
+                <p>Clave Fiscal: <strong>${cuit}</strong></p>
             `
         );
         
