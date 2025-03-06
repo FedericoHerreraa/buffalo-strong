@@ -4,6 +4,7 @@ import { useState } from "react"
 import { supabase } from "@/lib/supabaseClient"
 import { ProductDB } from "@/app/types/types"
 import { merriweather_sans } from "@/app/fonts/fonts"
+import { toast } from 'sonner';
 
 export const SearchDbProd = () => {
     const [listCode, setListCode] = useState<string | null>(null)
@@ -39,7 +40,11 @@ export const SearchDbProd = () => {
             return
         }
 
-        alert('Stock actualizado')
+        toast.custom((t) => {
+            setTimeout(() => toast.dismiss(t), 5000); 
+            return <div className="p-3 bg-zinc-900 border border-zinc-600 text-white rounded-md">Stock actualizado con exito!</div>;
+        });
+
         setProd(undefined)
         setListCode(null)
         setStock(null)

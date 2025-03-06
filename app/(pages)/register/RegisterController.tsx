@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterFormData, registerSchema } from "@/app/schemas/schemas";
 import { useState } from "react";
-
+import { toast } from 'sonner';
 
 export const RegisterController = () => {
   const {
@@ -39,7 +39,12 @@ export const RegisterController = () => {
         setTimeout(() => setError(null), 4000)
       } else {
         console.log("Correo enviado con éxito:", result.data);
-        alert('Registro exitoso, revise su correo electronico');
+
+        toast.custom((t) => {
+          setTimeout(() => toast.dismiss(t), 5000); 
+          return <div className="p-3 bg-zinc-900 border border-zinc-600 text-white rounded-md">Registro existoso, revise su correo electronico!</div>;
+        });
+        
       }
       reset()
     } catch (error) {
