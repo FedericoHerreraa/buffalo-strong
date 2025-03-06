@@ -127,7 +127,7 @@ export const SendUserCredentials = ({
                 {errors.body && <p className="text-red-500 text-sm mt-1">{errors.body.message}</p>}
                 <button
                     type="submit"
-                    className="bg-zinc-700 w-[200px] hover:text-white py-2 rounded-lg text-zinc-200"
+                    className="bg-zinc-700 w-[200px] flex justify-center hover:text-white py-2 rounded-lg text-zinc-200"
                 >
                     {isSubmitting ? <Spinner /> : 'Enviar email'}
                 </button>
