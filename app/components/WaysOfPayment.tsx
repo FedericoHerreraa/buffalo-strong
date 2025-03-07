@@ -1,4 +1,4 @@
-import { merriweather_sans } from "@/app/fonts/fonts";
+import { open_sans } from "@/app/fonts/fonts";
 
 import { CiCreditCard1 } from "react-icons/ci";
 import { BsCash } from "react-icons/bs";
@@ -10,7 +10,7 @@ import { TitleSection } from "./reusable/titleSection";
 
 export const WaysOfPayment = () => {
     return (
-        <div className={`min-h-[50vh] my-20 ${merriweather_sans.className}`}>
+        <div className={`min-h-[50vh] my-20 ${open_sans.className}`}>
             <TitleSection title="Formas de Pago" description="Aceptamos las siguientes formas de pago" color="from-amber-700 to-zinc-700" colorDescription="text-zinc-600"/>
             <section className="w-[90%] md:w-[60%] shadow-lg border border-zinc-100 mt-10 p-6 md:p-10 rounded-lg mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-20 text-zinc-700">
                 <div className="flex flex-col items-center text-center">

@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { supabase } from "@/lib/supabaseClient"
-import { merriweather_sans } from "@/app/fonts/fonts";
+import { open_sans } from "@/app/fonts/fonts";
 import { StockReference } from "./StockReference";
 import { categories } from "@/app/info/info";
 import { IoIosArrowRoundForward } from "react-icons/io";
@@ -45,7 +45,7 @@ export const Products = () => {
     if (loading) return <Spinner />
         
     return (
-        <div id="products" className={`min-h-[100vh] ${merriweather_sans.className} md:bg-gradient-to-b from-white via-zinc-200 to-white mt-20`}>
+        <div id="products" className={`min-h-[100vh] ${open_sans.className} md:bg-gradient-to-b from-white via-zinc-200 to-white mt-20`}>
             <section className="flex gap-20 md:p-10 p-1 mb-5 md:w-[85%] w-[93%] mx-auto flex-wrap md:shadow-lg md:border-x bg-white md:border-x-zinc-200 md:rounded-b-lg ">
                 <div className="flex w-full md:flex-row flex-col-reverse items-center md:justify-between justify-start md:gap-20 gap-5">
                     <div className="md:w-2/3 w-full items-center flex">

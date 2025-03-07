@@ -1,6 +1,6 @@
 'use client'
 
-import { merriweather_sans } from "@/app/fonts/fonts"
+import { open_sans } from "@/app/fonts/fonts"
 import {
     Carousel,
     CarouselContent,
@@ -27,7 +27,7 @@ export const FiltersComponent = () => {
 
     return (
         <div
-            className={`md:w-[90%] w-full h-fit flex items-center justify-center ${merriweather_sans.className}`}
+            className={`md:w-[90%] w-full h-fit flex items-center justify-center ${open_sans.className}`}
         >                
             <Carousel className="md:w-[90%] w-full mx-auto" opts={{ loop: true }}>
                 <CarouselContent className="flex items-center gap-3 text-center">

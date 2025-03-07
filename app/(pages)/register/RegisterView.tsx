@@ -1,5 +1,5 @@
 import { RegisterViewProps } from "@/app/types/types";
-import { merriweather_sans } from "@/app/fonts/fonts";
+import { open_sans } from "@/app/fonts/fonts";
 import { Spinner } from "@/app/images/icons/Spinner";
 
 export const RegisterView: React.FC<RegisterViewProps> = ({
@@ -11,7 +11,7 @@ export const RegisterView: React.FC<RegisterViewProps> = ({
     isSubmitting
 }) => {
     return (
-        <div className={`md:w-[80%] w-[90%] min-h-[80vh] mx-auto mt-20 ${merriweather_sans.className}`}>
+        <div className={`md:w-[80%] w-[90%] min-h-[80vh] mx-auto mt-20 ${open_sans.className}`}>
             <h1 className="md:text-4xl text-3xl">Registra tu nueva cuenta</h1>
             <p className="text-zinc-400 md:text-base text-sm">En esta seccion vas poder registrar su nueva cuenta como mayorista, ingresando los siguientes datos:</p>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-20 w-full mt-10 py-10">

@@ -4,14 +4,14 @@ import Link from "next/link"
 // import Image from "next/image"
 import { FaInstagram } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
-import { merriweather_sans } from "@/app/fonts/fonts";
+import { open_sans } from "@/app/fonts/fonts";
 // import logobuffalo from "@/app/images/logos/Logobuffalo.png";
 // import { useMobileView } from "@/app/context/MobileContext";
 
 export const Footer = () => {
     // const { isMobile } = useMobileView();
     return (
-        <div className={`bg-zinc-900 text-zinc-300 min-h-[50vh] ${merriweather_sans.className}`}>
+        <div className={`bg-zinc-900 text-zinc-300 min-h-[50vh] ${open_sans.className}`}>
             <footer className="flex md:flex-row flex-col gap-24 w-[90%] mx-auto py-20">
                 <div className="md:w-1/3">
                     <div className="flex items-center gap-5">
