@@ -41,13 +41,13 @@ export const SearchBar = () => {
     };
 
     return (
-        <div className="relative md:w-3/5 w-3/4 rounded-md">
+        <div className="relative md:w-3/5 w-3/4 rounded-sm">
             <input
                 type="text"
                 value={input}
                 onChange={handleInputChange}
                 placeholder={isMobile ? 'Buscar productos' : 'Buscá tu producto por nombre aquí...'}
-                className="w-full bg-white md:px-4 px-2 md:py-2 py-1 border-r border-r-zinc-300 md:text-base text-sm md:rounded-md rounded-md placeholder:text-[#5d3a1f] focus:outline-none border border-zinc-300"
+                className="w-full bg-white md:px-4 px-2 md:py-2 py-1 border-r border-r-zinc-300 md:text-base text-sm rounded-sm placeholder:text-[#5d3a1f] focus:outline-none border border-zinc-300"
             />
             <TfiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#8d572f] cursor-pointer md:size-5 size-3" />
         </div>
