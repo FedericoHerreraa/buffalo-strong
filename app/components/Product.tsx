@@ -15,13 +15,15 @@ export const Product = ({ prod, index }: { prod: ProductDB, index: number }) => 
       key={index}
       className="md:min-w-[250px] md:max-w-[250px] min-w-[150px] max-w-[150px] md:min-h-[450px] min-h-[200px] border border-zinc-200 bg-white rounded-md md:hover:shadow-lg transition-all duration-200 cursor-pointer"
     >
-      <Image
-        src={prod.img[0]}
-        alt="Alt de la imagen"
-        width={250}
-        height={250}
-        className="p-4 border-b border-b-zinc-200 w-full"
-      />
+      <div className="h-1/2 border-b border-b-zinc-200">
+        <Image
+          src={prod.img[0]}
+          alt="Alt de la imagen"
+          width={250}
+          height={250}
+          className="p-4 w-full"
+        />
+      </div>
       <div>
         <ProdPrice prod={prod} />
         <div className="flex justify-between gap-3 items-center p-3">
