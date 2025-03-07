@@ -1,6 +1,6 @@
 import { CustomSeparator } from "@/app/components/CustomSeparator";
 import { RelatedProducts } from "@/app/components/RelatedProducts";
-import { merriweather_sans } from "@/app/fonts/fonts";
+import { open_sans } from "@/app/fonts/fonts";
 import { supabase } from "@/lib/supabaseClient";
 import { ProductImage } from "./ProductImage";
 import { WaysOfPayment } from "@/app/components/WaysOfPayment";
@@ -33,7 +33,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
   return (
     <>
-      <div className={`${merriweather_sans.className} bg-gradient-to-b from-white via-zinc-200 to-white`}>
+      <div className={`${open_sans.className} bg-gradient-to-b from-white via-zinc-200 to-white`}>
         <div className="flex md:justify-start justify-center items-center gap-6 mt-2">
           <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
           <h1 className="md:text-4xl text-3xl my-5 font-bold whitespace-nowrap bg-gradient-to-r from-amber-700 to-zinc-700 bg-clip-text text-transparent text-center">

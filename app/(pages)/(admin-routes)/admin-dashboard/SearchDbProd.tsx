@@ -3,7 +3,7 @@ import Image from "next/image"
 import { useState } from "react"
 import { supabase } from "@/lib/supabaseClient"
 import { ProductDB } from "@/app/types/types"
-import { merriweather_sans } from "@/app/fonts/fonts"
+import { open_sans } from "@/app/fonts/fonts"
 import { toast } from 'sonner';
 
 export const SearchDbProd = () => {
@@ -52,7 +52,7 @@ export const SearchDbProd = () => {
 
     return (
         <div className="md:w-[80%] w-[95%] mx-auto min-h-[60vh] shadow-lg border border-zinc-200 p-10 rounded-md">
-            <h1 className={`text-center text-[#301803] md:text-3xl text-2xl ${merriweather_sans.className}`}>Modificar stock de producto</h1>
+            <h1 className={`text-center md:text-3xl text-2xl font-semibold ${open_sans.className}`}>Modificar stock de producto</h1>
             <section className="flex md:flex-row flex-col gap-24 mt-20 justify-center text-[#301803]">    
                 <div>
                     <label className="flex flex-col gap-3 text-lg text-[#301803]">

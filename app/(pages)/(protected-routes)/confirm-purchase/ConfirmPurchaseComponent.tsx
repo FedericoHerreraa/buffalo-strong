@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 import { useCart } from "@/app/context/CartContext"
-import { merriweather_sans } from "@/app/fonts/fonts"
+import { open_sans } from "@/app/fonts/fonts"
 import Image from "next/image"
 import Link from "next/link"
 import { useAuth } from "@/app/context/AuthContext"
@@ -40,7 +40,7 @@ export const ConfirmPurchaseComponent = () => {
     }
 
     return (
-        <div className={`min-h-[80vh] ${merriweather_sans.className}`}>
+        <div className={`min-h-[80vh] ${open_sans.className}`}>
             <div className="flex md:justify-start justify-center items-center gap-4 mt-10">
                 <h1 className="md:text-4xl ml-5 text-3xl font-bold whitespace-nowrap bg-gradient-to-r from-[#8B5E3B] via-[#6F4E37] to-[#472913] bg-clip-text text-transparent text-center">Resumen de Compra</h1>
                 <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>

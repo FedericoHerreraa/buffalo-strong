@@ -16,7 +16,7 @@ import {
     SheetTrigger,
 } from "@/app/components/ui/sheet"
 
-import { merriweather_sans } from "@/app/fonts/fonts";
+import { open_sans } from "@/app/fonts/fonts";
 
 import { FiShoppingCart } from "react-icons/fi";
 import { Badge } from '@mui/material';
@@ -45,12 +45,12 @@ export const Cart = () => {
 
     return (
         <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger className={merriweather_sans.className}>
+            <SheetTrigger className={open_sans.className}>
                 <Badge badgeContent={cart.length} color="success">
                     <FiShoppingCart style={{ fontSize: isMobile ? "23px" : "28px" }} className="text-zinc-800" />
                 </Badge>
             </SheetTrigger>
-            <SheetContent className={`bg-white overflow-y-auto md:p-6 p-4 ${merriweather_sans.className}`}>
+            <SheetContent className={`bg-white overflow-y-auto md:p-6 p-4 ${open_sans.className}`}>
                 <SheetHeader>
                     <SheetTitle>Carrito de compras</SheetTitle>
                     <SheetDescription>
