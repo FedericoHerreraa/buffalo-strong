@@ -22,6 +22,7 @@ import { CiLocationOn } from "react-icons/ci";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/app/components/ui/sheet";
 import { SearchBar } from "./SearchBar";
+import { ProfileView } from "./ProfileView";
 
 
 export const Header = () => {
@@ -78,7 +79,8 @@ export const Header = () => {
               )}
             </div>
 
-            <div className="w-fit flex justify-end pr-5">
+            <div className="w-fit flex gap-5 justify-end pr-5">
+              { user && <ProfileView /> }
               <Cart />
             </div>
           </section>

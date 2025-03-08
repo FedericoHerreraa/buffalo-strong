@@ -12,7 +12,7 @@ export const Footer = () => {
     // const { isMobile } = useMobileView();
     return (
         <div className={`bg-zinc-900 text-zinc-300 min-h-[50vh] ${open_sans.className}`}>
-            <footer className="flex md:flex-row flex-col gap-24 w-[90%] mx-auto py-20">
+            <footer className="flex md:flex-row flex-col gap-24 w-[80%] mx-auto py-20">
                 <div className="md:w-1/3">
                     <div className="flex items-center gap-5">
                         <p className="text-2xl mb-4">Buffalo Strong</p>
