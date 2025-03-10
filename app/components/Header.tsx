@@ -79,7 +79,7 @@ export const Header = () => {
               )}
             </div>
 
-            <div className="w-fit flex gap-5 justify-end pr-5">
+            <div className="w-fit flex md:gap-5 gap-2 justify-end pr-5">
               { user && <ProfileView /> }
               <Cart />
             </div>
