@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
-import logobuffalo from "@/app/images/logos/Logobuffalo.png";
+import logobuffalo from "@/app/images/logos/logoBlanco.png";
 import { BreadCrumbs } from "@/app/components/Breadcrumbs";
 import { open_sans } from "@/app/fonts/fonts";
 import { useAuth } from "@/app/context/AuthContext";
