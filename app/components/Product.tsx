@@ -39,8 +39,8 @@ export const Product = ({ prod, index }: { prod: ProductDB, index: number }) => 
               }`}
           ></p>
         </div>
-        <p className="text-zinc-600 text-sm p-3 md:pb-10 pb-3 whitespace-normal">
-          {prod.description.slice(0, isMobile ? 40 : 80)}...
+        <p className="text-zinc-600 text-sm p-1 md:pb-10 pb-3 whitespace-normal">
+          {prod.description.slice(0, isMobile ? 20 : 80)}...
         </p>
       </div>
     </Link>
