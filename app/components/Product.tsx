@@ -15,7 +15,7 @@ export const Product = ({ prod, index }: { prod: ProductDB, index: number }) => 
       key={index}
       className="md:min-w-[250px] md:max-w-[250px] min-w-[170px] max-w-[180px] md:min-h-[450px] min-h-[200px] border border-zinc-200 bg-white rounded-md md:hover:shadow-lg transition-all duration-200 cursor-pointer"
     >
-      <div className="h-1/2 border-b border-b-zinc-200">
+      <div className="h-1/2 p-1 border-b border-b-zinc-200">
         <Image
           src={prod.img[0]}
           alt="Alt de la imagen"
@@ -24,10 +24,10 @@ export const Product = ({ prod, index }: { prod: ProductDB, index: number }) => 
           className="p-4 w-full"
         />
       </div>
-      <div>
+      <div className="md:p-2 p-1">
         <ProdPrice prod={prod} />
         <div className="flex justify-between gap-1 items-center p-2">
-          <h3 className="whitespace-normal">{prod.title}</h3>
+          <h3 className="whitespace-normal">{isMobile ? prod.title.slice(0, 10) : prod.title}...</h3>
           <p
             className={`text-md bg-gradient-to-br text-zinc-800 w-fit px-2 py-2 rounded-full shadow-md 
               ${
