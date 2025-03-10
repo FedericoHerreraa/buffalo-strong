@@ -36,7 +36,7 @@ export const ProfileView = () => {
                     <p>Direccion: <span className="font-semibold text-zinc-200">{user?.address}</span></p>
                     <p>CUIT: <span className="font-semibold text-zinc-200">{user?.cuit}</span></p>
 
-                    <div className="flex items-center cursor-pointer border hover:border-white transition-all duration-150 border-zinc-300 text-zinc-300 gap-2 rounded-md px-2 py-1 mt-10" onClick={() => logOut()}>
+                    <div className="flex items-center cursor-pointer border hover:border-white transition-all duration-150 border-zinc-500 text-zinc-300 gap-2 rounded-md px-2 py-1 mt-10" onClick={() => logOut()}>
                         <p>Cerrar sesion</p>
                         <CiLogout
                             size={20}
