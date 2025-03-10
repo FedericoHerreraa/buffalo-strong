@@ -27,8 +27,11 @@ export const AddToCart = ({ prod, color }: { prod: ProductDB, color: string }) =
             <div>
                 <p className="text-zinc-600">{prod.description}</p>
                 <p className="mt-6">Código: <span className="font-semibold">{prod.listCode}</span></p>
-                <p className="mt-4">Marca: <span className="font-semibold">{prod.brand}</span></p>
-                <p className="mt-2 text-lg">Precio: <span className="font-bold">${(user ? prod.listPrice : prod.sugestedPrice).toLocaleString('es-AR')}</span></p>
+                <p className="mt-2">Marca: <span className="font-semibold">{prod.brand}</span></p>
+                <div className="border-y border-y-zinc-200 py-3 my-5 w-fit">
+                    <p className="text-xl font-bold">${prod.listPrice.toLocaleString('es-AR')}</p>
+                    <p className="">Precio sugerido al publico: <span className="font-bold">${prod.sugestedPrice.toLocaleString('es-AR')}</span></p>
+                </div>
                 <div className="flex items-center gap-3 mt-2">
                     <div className={`text-white font-thin py-3 px-3 w-fit rounded-full 
                         ${prod.stock > 10
