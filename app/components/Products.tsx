@@ -42,7 +42,13 @@ export const Products = () => {
         fetchProducts()
     }, [searchParams]);
 
-    if (loading) return <Spinner />
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center">
+                <Spinner />
+            </div>
+        )
+    }
         
     return (
         <div id="products" className={`min-h-[100vh] ${open_sans.className} md:bg-gradient-to-b from-white via-zinc-200 to-white mt-20`}>
