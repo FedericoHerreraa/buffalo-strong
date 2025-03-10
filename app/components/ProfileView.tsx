@@ -9,12 +9,14 @@ import {
     DrawerTrigger,
 } from "@/app/components/ui/drawer"
 
+import { CiLogout } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
+
 import { useAuth } from '@/app/context/AuthContext'
 import { useMobileView } from "@/app/context/MobileContext";
 
 export const ProfileView = () => {
-    const { user } = useAuth()
+    const { user, logOut } = useAuth()
     const { isMobile } = useMobileView()
 
     return (
@@ -33,6 +35,14 @@ export const ProfileView = () => {
                     <p>Email: <span className="font-semibold text-zinc-200">{user?.email}</span></p>
                     <p>Direccion: <span className="font-semibold text-zinc-200">{user?.address}</span></p>
                     <p>CUIT: <span className="font-semibold text-zinc-200">{user?.cuit}</span></p>
+
+                    <div className="flex items-center cursor-pointer border hover:border-white transition-all duration-150 border-zinc-300 text-zinc-300 gap-2 rounded-md px-2 py-1 mt-10" onClick={() => logOut()}>
+                        <p>Cerrar sesion</p>
+                        <CiLogout
+                            size={20}
+                            className="cursor-pointer"
+                        />
+                    </div>
                 </div>
                 <DrawerFooter className="flex items-center">
                     <DrawerClose className="bg-gray-800 hover:scale-105 transition rounded-md px-4 py-2 w-fit mx-auto">
