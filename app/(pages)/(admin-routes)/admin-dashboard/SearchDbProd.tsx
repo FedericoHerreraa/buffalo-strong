@@ -51,7 +51,7 @@ export const SearchDbProd = () => {
     }
 
     return (
-        <div className="md:w-[80%] w-[95%] mx-auto min-h-[60vh] shadow-lg border border-zinc-200 p-10 rounded-md">
+        <div className="md:w-[80%] w-[95%] mx-auto min-h-[60vh] shadow-lg border border-zinc-200 md:p-10 p-5 rounded-md">
             <h1 className={`text-center md:text-3xl text-2xl font-semibold ${open_sans.className}`}>Modificar stock de producto</h1>
             <section className="flex md:flex-row flex-col gap-24 mt-20 justify-center text-[#301803]">    
                 <div>
@@ -61,7 +61,7 @@ export const SearchDbProd = () => {
                             placeholder="Codigo de producto"
                             value={listCode || ''}
                             onChange={(e) => setListCode(e.target.value)}
-                            className="border border-zinc-300 p-2 rounded-lg w-[350px]"
+                            className="border border-zinc-300 p-2 rounded-lg md:w-[350px] w-[200px]"
                             type="text" 
                         />
                     </label>
@@ -74,8 +74,8 @@ export const SearchDbProd = () => {
                 </div>
                 {prod && (
                     <div className="flex flex-col gap-5 bg-[#dddddd] rounded-md p-6">
-                        <div className="flex gap-5 w-full justify-between">
-                            <h3 className="w-40" >Producto: <span className="font-bold text-[#2e1702f7]"> {prod.title}</span></h3> 
+                        <div className="flex md:flex-row flex-col gap-5 w-full justify-between">
+                            <h3 className="md:w-40" >Producto: <span className="font-bold text-[#2e1702f7]"> {prod.title}</span></h3> 
                             <Image alt="img" className="rounded-md" src={prod.img[0]} width={200} height={200}/>
                         </div>
 
