@@ -31,7 +31,7 @@ export interface ProductDB {
     img: string[];
     listCode: number;
     color: string;
-    subcategory: string;
+    group: string;
 }
 
 export interface CartContextType {

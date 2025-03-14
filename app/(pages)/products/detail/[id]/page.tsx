@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   const { data: relatedProducts } = await supabase
     .from("products")
     .select("*")
-    .eq("subcategory", product.subcategory);
+    .eq("group", product.group);
 
   return (
     <>
