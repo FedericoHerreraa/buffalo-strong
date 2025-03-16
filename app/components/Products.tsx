@@ -10,12 +10,14 @@ import { categories } from "@/app/info/info";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Product } from "./Product";
 import { ProductDB } from "@/app/types/types";
-import { useSearchParams } from "next/navigation";
 import { Spinner } from "../images/icons/Spinner";
 import { FiltersComponent } from "@/app/components/FiltersComponent";
 import logobuffalo from "@/app/images/logos/Logobuffalo.png";
 import { useMobileView } from "../context/MobileContext"
 import { Tabs, TabsList, TabsTrigger } from "@/app/components/ui/tabs"
+import { useDebouncedCallback } from "use-debounce";
+import { useSearchParams, useRouter } from "next/navigation";
+
 
 
 export const Products = () => {
@@ -23,24 +25,38 @@ export const Products = () => {
     const [loading, setLoading] = useState(true);
     const searchParams = useSearchParams()
     const { isMobile } = useMobileView()
+    const router = useRouter()
+    
 
     useEffect(() => {
         const filter = searchParams.get("search");
+        const category = searchParams.get("category");
+    
         const fetchProducts = async () => {
-            const { data, error } = await supabase.from("products").select("*");
+            let query = supabase.from("products").select("*");
+    
+            if (category) {
+                query = query.eq("category", category);
+            }
+    
+            const { data, error } = await query;
+    
             if (!error) {
                 if (filter) {
-                    const filteredData = data?.filter(prod => prod.title.toLowerCase().includes(filter.toLowerCase()));
+                    const filteredData = data?.filter(prod => 
+                        prod.title.toLowerCase().includes(filter.toLowerCase())
+                    );
                     setProds(filteredData || []);
                 } else {
                     setProds(data || []);
                 }
             }
             setLoading(false);
-        }
-
-        fetchProducts()
+        };
+    
+        fetchProducts();
     }, [searchParams]);
+    
 
     if (loading) {
         return (
@@ -49,6 +65,16 @@ export const Products = () => {
             </div>
         )
     }
+
+    const handleTabChange = (input: string) => {
+        const params = new URLSearchParams(searchParams);
+        if (input) {
+            params.set("category", input);
+        } else {
+            params.delete("category");
+        }
+        router.push(`?${params.toString()}`, { scroll: false });
+    };
 
     return (
         <div id="products" className={`min-h-[100vh] ${open_sans.className} md:bg-gradient-to-b from-white via-zinc-200 to-white mt-20`}>
@@ -72,7 +98,7 @@ export const Products = () => {
                     </div>
                 </div>
                 {categories.map(cat => {
-                    const filteredProducts = prods?.filter(prod => prod.category === cat.keyValue).slice(0, 6);
+                    const filteredProducts = prods?.filter(prod => prod.category === cat.keyValue);
                     return (
                         <div key={cat.keyValue} id={cat.keyValue} className={`mb-6 w-full ${filteredProducts.length === 0 ? 'bg-white' : 'bg-gradient-to-b from-white via-zinc-100 to-white'}`}>
                             <div className="flex md:flex-row flex-col md:gap-5 gap-3 md:items-center mb-5">
@@ -93,12 +119,12 @@ export const Products = () => {
                                 <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
                             </div>
                             {cat.keyValue === "Electricas" && (
-                                <Tabs defaultValue="Categoria 1" className="w-[400px] mb-5">
+                                <Tabs defaultValue="Categoria 1" onValueChange={handleTabChange} className="w-[400px] mb-5">
                                     <TabsList className="border border-zinc-300 gap-1">
-                                        <TabsTrigger className="" value="">Categoria 1</TabsTrigger>
-                                        <TabsTrigger className="" value="">Categoria 1</TabsTrigger>
-                                        <TabsTrigger className="" value="">Categoria 1</TabsTrigger>
-                                        <TabsTrigger className="" value="">Categoria 1</TabsTrigger>
+                                        <TabsTrigger className="" value="1">Categoria 1</TabsTrigger>
+                                        <TabsTrigger className="" value="2">Categoria 2</TabsTrigger>
+                                        <TabsTrigger className="" value="3">Categoria 3</TabsTrigger>
+                                        <TabsTrigger className="" value="4">Categoria 4</TabsTrigger>
                                     </TabsList>
                                 </Tabs>
                             )}
