@@ -13,7 +13,7 @@ export const Product = ({ prod, index }: { prod: ProductDB, index: number }) => 
     <Link
       href={`/products/detail/${prod.id}`}
       key={index}
-      className="md:min-w-[250px] md:max-w-[250px] min-w-[180px] max-w-[180px] md:min-h-[450px] min-h-[200px] border border-zinc-200 bg-white rounded-md md:hover:shadow-lg transition-all duration-200 cursor-pointer"
+      className="md:min-w-[250px] md:max-w-[250px] min-w-[150px] max-w-[150px] md:min-h-[450px] min-h-[220px] border border-zinc-200 bg-white rounded-md md:hover:shadow-lg transition-all duration-200 cursor-pointer"
     >
       <div className="h-1/2 p-1 border-b border-b-zinc-200">
         <Image
