@@ -14,11 +14,7 @@ import { Spinner } from "../images/icons/Spinner";
 import { FiltersComponent } from "@/app/components/FiltersComponent";
 import logobuffalo from "@/app/images/logos/Logobuffalo.png";
 import { useMobileView } from "../context/MobileContext"
-import { Tabs, TabsList, TabsTrigger } from "@/app/components/ui/tabs"
-import { useDebouncedCallback } from "use-debounce";
 import { useSearchParams, useRouter } from "next/navigation";
-
-
 
 export const Products = () => {
     const [prods, setProds] = useState<ProductDB[]>([]);
@@ -26,35 +22,24 @@ export const Products = () => {
     const searchParams = useSearchParams()
     const { isMobile } = useMobileView()
     const router = useRouter()
+    const [subcategory, setSubcategory] = useState<string>("");
     
-
     useEffect(() => {
         const filter = searchParams.get("search");
-        const category = searchParams.get("category");
-    
         const fetchProducts = async () => {
-            let query = supabase.from("products").select("*");
-    
-            if (category) {
-                query = query.eq("category", category);
-            }
-    
-            const { data, error } = await query;
-    
+            const { data, error } = await supabase.from("products").select("*");
             if (!error) {
                 if (filter) {
-                    const filteredData = data?.filter(prod => 
-                        prod.title.toLowerCase().includes(filter.toLowerCase())
-                    );
+                    const filteredData = data?.filter(prod => prod.title.toLowerCase().includes(filter.toLowerCase()));
                     setProds(filteredData || []);
                 } else {
                     setProds(data || []);
                 }
             }
             setLoading(false);
-        };
-    
-        fetchProducts();
+        }
+
+        fetchProducts()
     }, [searchParams]);
     
 
@@ -66,7 +51,15 @@ export const Products = () => {
         )
     }
 
+    const filterBySubcategory = (subcat: string) => {
+        if (!subcat) {
+            return prods?.filter(prod => prod.category === "Electricas"); 
+        }
+        return prods?.filter(prod => prod.subcategory === subcat);
+    };
+
     const handleTabChange = (input: string) => {
+        setSubcategory(input);
         const params = new URLSearchParams(searchParams);
         if (input) {
             params.set("category", input);
@@ -119,22 +112,41 @@ export const Products = () => {
                                 <div className="md:w-full w-0 md:h-[1px] h-0 bg-zinc-300"></div>
                             </div>
                             {cat.keyValue === "Electricas" && (
-                                <Tabs defaultValue="Categoria 1" onValueChange={handleTabChange} className="w-[400px] mb-5">
-                                    <TabsList className="border border-zinc-300 gap-1">
-                                        <TabsTrigger className="" value="1">Categoria 1</TabsTrigger>
-                                        <TabsTrigger className="" value="2">Categoria 2</TabsTrigger>
-                                        <TabsTrigger className="" value="3">Categoria 3</TabsTrigger>
-                                        <TabsTrigger className="" value="4">Categoria 4</TabsTrigger>
-                                    </TabsList>
-                                </Tabs>
+                                <div className="w-fit mb-5 flex gap-2 border border-zinc-300 p-1 rounded-md">
+                                    {["telecaster", "lespaul", "stratocaster", "semihuecas"].map((subcat) => (
+                                        <button
+                                            key={subcat}
+                                            className={`px-2 py-1 text-sm rounded-sm transition-all duration-150 ${
+                                                subcategory === subcat ? "bg-zinc-500 text-white" : ""
+                                            }`}
+                                            onClick={() => handleTabChange(subcat)}
+                                        >
+                                            {subcat.charAt(0).toUpperCase() + subcat.slice(1)}
+                                        </button>
+                                    ))}
+                                </div>
                             )}
                             <div className="flex md:gap-4 gap-1 overflow-x-auto whitespace-nowrap pb-5">
-                                {filteredProducts && filteredProducts.length > 0 ? (
-                                    filteredProducts.map((prod, index) => (
-                                        <Product key={index} prod={prod} index={index} />
-                                    ))
+                                {cat.keyValue === "Electricas" ? (
+                                    <>
+                                        {filterBySubcategory(subcategory) && filterBySubcategory(subcategory).length > 0 ? (
+                                            filterBySubcategory(subcategory).map((prod, index) => (
+                                                <Product key={index} prod={prod} index={index} />
+                                            ))
+                                        ) : (
+                                            <p className="text-gray-700 text-xl font-semibold">No se encontraron productos en esta categoría.</p>
+                                        )}
+                                    </>
                                 ) : (
-                                    <p className="text-gray-700 text-xl font-semibold">No se encontraron productos en esta categoría.</p>
+                                    <>
+                                        {filteredProducts && filteredProducts.length > 0 ? (
+                                            filteredProducts.map((prod, index) => (
+                                                <Product key={index} prod={prod} index={index} />
+                                            ))
+                                        ) : (
+                                            <p className="text-gray-700 text-xl font-semibold">No se encontraron productos en esta categoría.</p>
+                                        )}
+                                    </>
                                 )}
                             </div>
                         </div>
