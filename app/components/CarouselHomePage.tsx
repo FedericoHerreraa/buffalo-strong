@@ -27,7 +27,7 @@ export const CarouselHomePage = () => {
                 }),
             ]}
           >
-            <CarouselContent className="md:h-[45vh]">
+            <CarouselContent className="md:h-[55vh]">
                 <CarouselItem>
                     <Image
                         src={image2}
