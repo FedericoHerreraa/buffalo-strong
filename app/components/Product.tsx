@@ -25,7 +25,7 @@ export const Product = ({ prod, index }: { prod: ProductDB, index: number }) => 
         />
       </div>
 
-      <div className="flex flex-col flex-grow p-1 md:p-2">
+      <div className="flex flex-col flex-grow p-2 md:p-3">
         <ProdPrice prod={prod} />
 
         <div className="flex justify-between items-center py-2">
