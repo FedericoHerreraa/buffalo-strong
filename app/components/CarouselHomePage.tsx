@@ -10,23 +10,27 @@ import Autoplay from "embla-carousel-autoplay"
 
 import Image from "next/image"
 
-// import carouselImage from '@/app/images/carousel/carouselImage.webp'
-import carouselImage2 from '@/app/images/carousel/carouselImage2.webp'
+import image2 from '@/app/images/carousel/carouselImage2.webp'
+import image3 from '@/app/images/carousel/carouselImage3.jpg'
+import image4 from '@/app/images/carousel/carouselImage4.jpg'
 
 export const CarouselHomePage = () => {
     return (
       <div>
         <Carousel
+            opts={{
+                loop: true,
+            }}
             plugins={[
                 Autoplay({
                     delay: 3000,
                 }),
             ]}
           >
-            <CarouselContent>
+            <CarouselContent className="md:h-[45vh]">
                 <CarouselItem>
                     <Image
-                        src={carouselImage2}
+                        src={image2}
                         alt="Carousel Image"
                         width={1920}
                         height={1080}
@@ -34,7 +38,15 @@ export const CarouselHomePage = () => {
                 </CarouselItem>
                 <CarouselItem>
                     <Image
-                        src={carouselImage2}
+                        src={image3}
+                        alt="Carousel Image"
+                        width={1920}
+                        height={1080}
+                    />
+                </CarouselItem>
+                <CarouselItem>
+                    <Image
+                        src={image4}
                         alt="Carousel Image"
                         width={1920}
                         height={1080}
