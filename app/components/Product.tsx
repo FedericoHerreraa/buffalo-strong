@@ -14,10 +14,9 @@ export const Product = ({ prod, index }: { prod: ProductDB, index: number }) => 
       href={`/products/detail/${prod.id}`}
       key={index}
       className="flex flex-col border border-zinc-200 bg-white rounded-md md:hover:shadow-lg transition-all duration-200 cursor-pointer
-                 w-[150px] md:w-[250px] h-[300px] md:h-[450px]"
+                 w-[150px] md:w-[250px] min-h-[300px] md:h-[450px]"
     >
-      {/* Imagen del producto */}
-      <div className="relative w-full h-[150px] md:h-[250px] overflow-hidden border-b border-b-zinc-200">
+      <div className="relative w-full min-h-[150px] md:h-[250px] overflow-hidden border-b border-b-zinc-200">
         <Image
           src={prod.img[0]}
           alt="Alt de la imagen"
@@ -26,7 +25,6 @@ export const Product = ({ prod, index }: { prod: ProductDB, index: number }) => 
         />
       </div>
 
-      {/* Información del producto */}
       <div className="flex flex-col flex-grow p-2 md:p-3">
         <ProdPrice prod={prod} />
 
