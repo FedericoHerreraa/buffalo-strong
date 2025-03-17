@@ -32,6 +32,7 @@ export interface ProductDB {
     listCode: number;
     color: string;
     group: string;
+    subcategory: string;
 }
 
 export interface CartContextType {
