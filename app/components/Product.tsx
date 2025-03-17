@@ -13,7 +13,7 @@ export const Product = ({ prod, index }: { prod: ProductDB, index: number }) => 
     <Link
       href={`/products/detail/${prod.id}`}
       key={index}
-      className="md:min-w-[250px] md:max-w-[250px] min-w-[150px] max-w-[150px] md:min-h-[450px] min-h-[220px] border border-zinc-200 bg-white rounded-md md:hover:shadow-lg transition-all duration-200 cursor-pointer"
+      className="md:min-w-[250px] md:max-w-[250px] min-w-[150px] max-w-[150px] md:min-h-[450px] min-h-[250px] border border-zinc-200 bg-white rounded-md md:hover:shadow-lg transition-all duration-200 cursor-pointer"
     >
       <div className="h-1/2 p-1 border-b border-b-zinc-200">
         <Image
@@ -27,7 +27,7 @@ export const Product = ({ prod, index }: { prod: ProductDB, index: number }) => 
       <div className="md:p-1">
         <ProdPrice prod={prod} />
         <div className="flex justify-between md:gap-3 gap-1 items-center p-3">
-          <h3 className="whitespace-normal">{prod.title.slice(0, 15)}...</h3>
+          <h3 className="whitespace-normal md:text-lg text-sm">{prod.title.slice(0, 15)}...</h3>
           <p
             className={`text-md bg-gradient-to-br text-zinc-800 w-fit px-2 py-2 rounded-full shadow-md 
               ${

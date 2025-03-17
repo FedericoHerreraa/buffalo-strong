@@ -116,7 +116,7 @@ export const Products = () => {
                                     {["telecaster", "lespaul", "stratocaster", "semihuecas"].map((subcat) => (
                                         <button
                                             key={subcat}
-                                            className={`md:px-2 md:py-1 md:text-sm text-xs rounded-sm transition-all duration-150 ${
+                                            className={`md:px-2 py-1 px-1 md:text-sm text-xs rounded-sm transition-all duration-150 ${
                                                 subcategory === subcat ? "bg-zinc-500 text-white" : ""
                                             }`}
                                             onClick={() => handleTabChange(subcat)}
