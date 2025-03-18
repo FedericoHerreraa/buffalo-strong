@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
             to: to,
             subject: subject,
             html: `
-                <p>Buffalo's ya proceso tu solicitud y te envia las credenciales.</p>
+                <p>buffalo ya proceso tu solicitud y te envia las credenciales.</p>
                 <div>${body}</div>
             `,
         });

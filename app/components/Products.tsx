@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import { supabase } from "@/lib/supabaseClient"
 import { open_sans } from "@/app/fonts/fonts";
 import { StockReference } from "./StockReference";
-import { categories } from "@/app/info/info";
+import { categories, subcategories } from "@/app/info/info";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Product } from "./Product";
 import { ProductDB } from "@/app/types/types";
@@ -78,7 +78,7 @@ export const Products = () => {
                     </div>
                     <div className="md:w-1/3 md:flex hidden w-full items-center md:justify-end justify-center gap-3 md:border-l-2 md:border-l-zinc-300">
                         <div className="flex flex-col ">
-                            <p className="bg-gradient-to-r md:text-3xl text-xl font-semibold  from-amber-700 to-zinc-700 bg-clip-text text-transparent">Buffalo{"'"}s</p>
+                            <p className="bg-gradient-to-r md:text-3xl text-xl font-semibold  from-amber-700 to-zinc-700 bg-clip-text text-transparent">Buffalo</p>
                             <p className="bg-gradient-to-r md:text-3xl text-xl font-semibold  from-amber-700 to-zinc-700 bg-clip-text text-transparent">Strong</p>
                             <p className="text-zinc-500 md:text-base text-sm">Instrumentos de calidad</p>
                         </div>
@@ -113,15 +113,15 @@ export const Products = () => {
                             </div>
                             {cat.keyValue === "Electricas" && (
                                 <div className="w-fit mb-5 flex gap-2 border border-zinc-300 p-1 rounded-md">
-                                    {["telecaster", "lespaul", "stratocaster", "semihuecas"].map((subcat) => (
+                                    {subcategories.map((subcat) => (
                                         <button
-                                            key={subcat}
+                                            key={subcat.id}
                                             className={`md:px-2 py-1 px-1 md:text-sm text-xs rounded-sm transition-all duration-150 ${
-                                                subcategory === subcat ? "bg-zinc-500 text-white" : ""
+                                                subcategory === subcat.keyValue ? "bg-zinc-500 text-white" : ""
                                             }`}
-                                            onClick={() => handleTabChange(subcat)}
+                                            onClick={() => handleTabChange(subcat.keyValue)}
                                         >
-                                            {subcat.charAt(0).toUpperCase() + subcat.slice(1)}
+                                            {subcat.title.charAt(0).toUpperCase() + subcat.title.slice(1)}
                                         </button>
                                     ))}
                                 </div>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { Product } from "@/app/components/Product";
 import { ProductDB } from "@/app/types/types";
 import { useSearchParams, useRouter } from 'next/navigation';
+import { subcategories } from "@/app/info/info";
 
 
 export const ProductsShown = ({ products }: { products: ProductDB[] }) => {
@@ -48,14 +49,14 @@ export const ProductsShown = ({ products }: { products: ProductDB[] }) => {
             {prods[0].category === "Electricas" ? (
                 <div className='flex flex-col items-center gap-10'>
                     <div className="w-fit mb-5 gap-2 border border-zinc-300 p-1 rounded-md">
-                        {["telecaster", "lespaul", "stratocaster", "semihuecas"].map((subcat) => (
+                        {subcategories.map((subcat) => (
                             <button
-                                key={subcat}
-                                className={`px-2 py-1 text-sm rounded-sm transition-all duration-150 ${subcategory === subcat ? "bg-zinc-500 text-white" : ""
+                                key={subcat.id}
+                                className={`px-2 py-1 text-sm rounded-sm transition-all duration-150 ${subcategory === subcat.keyValue ? "bg-zinc-500 text-white" : ""
                                     }`}
-                                onClick={() => handleTabChange(subcat)}
+                                onClick={() => handleTabChange(subcat.keyValue)}
                             >
-                                {subcat.charAt(0).toUpperCase() + subcat.slice(1)}
+                                {subcat.title.charAt(0).toUpperCase() + subcat.title.slice(1)}
                             </button>
                         ))}
                     </div>

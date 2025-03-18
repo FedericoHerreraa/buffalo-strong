@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
             'fede.juan.herrera@gmail.com',
             subject,
             `
-                <h3>Un usuario quiere contactarse con Buffalo's.</h3>
+                <h3>Un usuario quiere contactarse con buffalo.</h3>
                 <p>Nombre: ${name}</p>
                 <p>Email: ${email}</p>
                 <strong>"${message}"</strong>
@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
             'Contacto con Buffalo Strong',
             `
                 <h3>¡Hola ${name}!</h3>
-                <p>Enviaste un mensaje a Buffalo's Strong, nuestro equipo te contestara a la brevedad.</p>
+                <p>Enviaste un mensaje a buffalo Strong, nuestro equipo te contestara a la brevedad.</p>
             `
         );
         

@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
             'fede.juan.herrera@gmail.com',
             'Registro en Buffalo Strong',
             `
-                <h3>Un nuevo usuario quiere ingresar a Buffalo's.</h3>
+                <h3>Un nuevo usuario quiere ingresar a buffalo.</h3>
                 <p>Nombre: <strong>${name}</strong></p>
                 <p>Apellido: <strong>${lastName}</strong></p>
                 <p>Email: <strong>${email}</strong></p>
@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
             'Registro en Buffalo Strong',
             `
                 <h3>¡Hola ${name}!</h3>
-                <p>Te registraste en Buffalo's Strong, nuestro equipo procesará la solicitud y te enviará las credenciales a la brevedad.</p>
+                <p>Te registraste en buffalo Strong, nuestro equipo procesará la solicitud y te enviará las credenciales a la brevedad.</p>
             `
         );
         

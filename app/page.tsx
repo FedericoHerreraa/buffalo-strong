@@ -8,8 +8,8 @@ import { Suspense }  from 'react'
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: `Buffalo's Strong | Instrumentos Musicales al Mejor Precio`,
-  description: `Descubre una amplia selección de instrumentos musicales en Buffalo's Strong. Guitarras, bajos, baterías, teclados y más. Compra con confianza y las mejores opciones de pago. 🎸🥁🎹`,
+  title: `Buffalo Strong | Instrumentos Musicales al Mejor Precio`,
+  description: `Descubre una amplia selección de instrumentos musicales en Buffalo Strong. Guitarras, bajos, baterías, teclados y más. Compra con confianza y las mejores opciones de pago. 🎸🥁🎹`,
 }
 
 export default function Home() {

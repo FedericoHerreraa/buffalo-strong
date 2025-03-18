@@ -22,3 +22,26 @@ export const categories = [
         title: 'Electroacústicas alta gama'
     }
 ]
+
+export const subcategories = [
+    {
+        id: 1,
+        keyValue: 'telecaster',
+        title: 'Telecaster',
+    },
+    {
+        id: 2,
+        keyValue: 'lespaul',
+        title: 'Les Paul',
+    },
+    {
+        id: 3,
+        keyValue: 'stratocaster',
+        title: 'Stratocaster',
+    },
+    {
+        id: 4,
+        keyValue: 'semihuecas',
+        title: 'Semi huecas',
+    }
+]

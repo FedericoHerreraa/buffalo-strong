@@ -1,7 +1,7 @@
 
 import Image from 'next/image';
-import ekoImage from '@/app/images/carousel/carouselImage.webp'
-import otherImage from '@/app/images/carousel/carouselImage2.webp'
+import image1 from '@/app/images/carousel/carouselImage3.jpg'
+import image2 from '@/app/images/carousel/carouselImage2.webp'
 import { open_sans } from '@/app/fonts/fonts';
 
 export const ImagesSection = () => {
@@ -11,7 +11,7 @@ export const ImagesSection = () => {
                 <div className="flex md:flex-row flex-col gap-3"> 
                     <div className="md:w-1/2 h-[300px] rounded-lg transition-all duration-200 shadow-lg border border-zinc-200 overflow-hidden">
                         <Image
-                            src={ekoImage}
+                            src={image1}
                             alt="Imagen 1"
                             width={800}
                             height={600}
@@ -20,7 +20,7 @@ export const ImagesSection = () => {
                     </div>
                     <div className="md:w-1/2 h-[300px] rounded-lg transition-all duration-200 shadow-lg border border-zinc-200 overflow-hidden">
                         <Image
-                            src={otherImage}
+                            src={image2}
                             alt="Imagen 2"
                             width={800}
                             height={600}
