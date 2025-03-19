@@ -40,7 +40,7 @@ export const RegisterView: React.FC<RegisterViewProps> = ({
                         </label>
                         {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName.message}</p>}
                         <label className="flex flex-col gap-1 text-zinc-600">
-                            Ingrese su correo electronico
+                            Ingrese su correo electrónico
                             <input 
                                 type="email" 
                                 required
@@ -53,7 +53,7 @@ export const RegisterView: React.FC<RegisterViewProps> = ({
                     </div>
                     <div className="flex flex-col gap-5 w-[350px]">
                         <label className="flex flex-col gap-1 text-zinc-600">
-                            Ingrese la direccion
+                            Ingrese la dirección
                             <input 
                                 type="text" 
                                 required
@@ -89,7 +89,7 @@ export const RegisterView: React.FC<RegisterViewProps> = ({
                 </div>
                 {error && <p className="text-red-500 text-sm">{error}</p>}
                 <div>
-                    <p className="text-zinc-500 mb-2 md:mr-40">Una vez registrado, nuestro equipo procesara la solicitud y te enviara tus credenciales a la direccion de email ingresada previamente. Maximo estimado para el envio de credenciales de 48hs</p>
+                    <p className="text-zinc-500 mb-2 md:mr-40">Una vez registrado, nuestro equipo procesara la solicitud y te enviará tus credenciales a la dirección de email ingresada previamente. Máximo estimado para el envío de credenciales de 48hs</p>
                     <button type="submit" className="bg-gray-500 px-5 py-2 rounded-md w-fit flex justify-center text-zinc-200 hover:scale-105 hover:text-white transition-all duration-200">
                         <p className="">{isSubmitting ? <Spinner /> : 'Registrarse'}</p>
                     </button>
