@@ -28,12 +28,12 @@ export const Timeline = () => {
 const content = [
   {
     id: 1,
-    text: "Buffalo Strong nació con la pasión por la música y el deseo de acercar instrumentos de alta calidad a artistas de todo el mundo. Desde nuestros inicios, nos especializamos en la importación de instrumentos musicales únicos, seleccionados por su sonido y durabilidad. Trabajamos con marcas reconocidas y luthiers independientes para ofrecer una colección exclusiva a nuestros clientes.",
+    text: "Strong Buffalo Music nació con la pasión por la música y el deseo de acercar instrumentos de alta calidad a artistas de todo el mundo. Desde nuestros inicios, nos especializamos en la importación de instrumentos musicales únicos, seleccionados por su sonido y durabilidad. Trabajamos con marcas reconocidas y luthiers independientes para ofrecer una colección exclusiva a nuestros clientes.",
     image: guitarra,
   },
   {
     id: 2,
-    text: "Nuestra comunidad de músicos crece día a día, brindando asesoramiento y soporte personalizado a cada cliente. Hoy, Buffalo Strong es sinónimo de calidad, pasión y compromiso con la música, y seguimos ampliando nuestro catálogo para vos.",
+    text: "Nuestra comunidad de músicos crece día a día, brindando asesoramiento y soporte personalizado a cada cliente. Hoy, Strong Buffalo Music es sinónimo de calidad, pasión y compromiso con la música, y seguimos ampliando nuestro catálogo para vos.",
     image: instrumento,
   },
 ];

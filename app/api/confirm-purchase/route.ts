@@ -51,10 +51,10 @@ export async function POST(req: NextRequest) {
     try {
         
         const emailBuffalo = await sendEmail(
-            'fede.juan.herrera@gmail.com',
-            'Se realizó una compra en Buffalo Strong',
+            'ventas@sbmusic.ar',
+            'Se realizó una compra en Strong Buffalo Music',
             `
-                <h2>Un usuario realizó una compra en buffalo Strong.</h2>
+                <h2>Un usuario realizó una compra en Strong Buffalo Music.</h2>
                 <p><strong>Nombre:</strong> ${user.name}</p>
                 <p><strong>Email:</strong> ${user.email}</p>
                 <p><strong>Direccion:</strong> ${user.address}</p>
@@ -78,10 +78,10 @@ export async function POST(req: NextRequest) {
 
         const emailCliente = await sendEmail(
             user.email,
-            '¡Gracias por tu compra en Buffalo Strong!',
+            '¡Gracias por tu compra en Strong Buffalo Music!',
             `
                 <h3>Hola ${user.name},</h3>
-                <p>Recibimos tu compra en buffalo Strong. Nuestro equipo te contactará a la brevedad.</p>
+                <p>Recibimos tu compra en Strong Buffalo Music. Nuestro equipo te contactará a la brevedad.</p>
             `
         );
         

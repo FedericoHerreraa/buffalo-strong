@@ -8,8 +8,8 @@ import { ContactPreview } from "@/app/components/ContactPreview";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: `Detalle de Producto | buffalo Strong`,
-  description: `Explora las características y detalles de este increíble instrumento en buffalo Strong. Encuentra el equipo perfecto para tu música.`,
+  title: `Detalle de Producto | Strong Buffalo Music`,
+  description: `Explora las características y detalles de este increíble instrumento en Strong Buffalo Music. Encuentra el equipo perfecto para tu música.`,
 };
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {

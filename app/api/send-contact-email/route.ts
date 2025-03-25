@@ -51,10 +51,10 @@ export async function POST(req: NextRequest) {
         
         const emailCliente = await sendEmail(
             email,
-            'Contacto con Buffalo Strong',
+            'Contacto con Strong Buffalo Music',
             `
                 <h3>¡Hola ${name}!</h3>
-                <p>Enviaste un mensaje a buffalo Strong, nuestro equipo te contestara a la brevedad.</p>
+                <p>Enviaste un mensaje a Strong Buffalo Music, nuestro equipo te contestara a la brevedad.</p>
             `
         );
         

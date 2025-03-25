@@ -9,8 +9,8 @@ import { ProductsShown } from "./ProductsShown";
 import { ProductDB } from "@/app/types/types";
 
 export const metadata: Metadata = {
-    title: `Explora las categorias | buffalo Strong`,
-    description: `Descubre nuestra selección de categorias en buffalo Strong. Encuentra instrumentos de calidad al mejor precio y mejora tu música.`,
+    title: `Explora las categorias | Strong Buffalo Music`,
+    description: `Descubre nuestra selección de categorias en Strong Buffalo Music. Encuentra instrumentos de calidad al mejor precio y mejora tu música.`,
 };
 
 export default async function CategoryDetail({ params } : { params: Promise<{ category: string }> }) {

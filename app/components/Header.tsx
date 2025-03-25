@@ -170,7 +170,7 @@ const mobileTabs = ({
                 <AlertDialogHeader>
                   <AlertDialogTitle>Proximamente!</AlertDialogTitle>
                   <AlertDialogDescription>
-                    En esta sección podrás encontrar todas las novedades de Buffalo Strong mas promociones.
+                    En esta sección podrás encontrar todas las novedades de Strong Buffalo Music mas promociones.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
@@ -254,7 +254,7 @@ const desktopTabs = ({
             <AlertDialogHeader>
               <AlertDialogTitle>Proximamente!</AlertDialogTitle>
               <AlertDialogDescription>
-                En esta sección podrás encontrar todas las novedades de Buffalo Strong mas promociones.
+                En esta sección podrás encontrar todas las novedades de Strong Buffalo Music mas promociones.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

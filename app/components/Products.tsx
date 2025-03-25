@@ -78,8 +78,8 @@ export const Products = () => {
                     </div>
                     <div className="md:w-1/3 md:flex hidden w-full items-center md:justify-end justify-center gap-3 md:border-l-2 md:border-l-zinc-300">
                         <div className="flex flex-col ">
-                            <p className="bg-gradient-to-r md:text-3xl text-xl font-semibold  from-amber-700 to-zinc-700 bg-clip-text text-transparent">Buffalo</p>
                             <p className="bg-gradient-to-r md:text-3xl text-xl font-semibold  from-amber-700 to-zinc-700 bg-clip-text text-transparent">Strong</p>
+                            <p className="bg-gradient-to-r md:text-3xl text-xl font-semibold  from-amber-700 to-zinc-700 bg-clip-text text-transparent">Buffalo Music</p>
                             <p className="text-zinc-500 md:text-base text-sm">Instrumentos de calidad</p>
                         </div>
                         <Image
