@@ -5,8 +5,8 @@ import { ContactPreview } from "@/app/components/ContactPreview";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: `Contacto | buffalo Strong`,
-  description: `¿Tienes preguntas? Contáctanos en buffalo Strong. Estamos aquí para ayudarte con cualquier consulta sobre nuestros instrumentos musicales y servicios.`,
+  title: `Contacto | Strong Buffalo Music`,
+  description: `¿Tienes preguntas? Contáctanos en Strong Buffalo Music. Estamos aquí para ayudarte con cualquier consulta sobre nuestros instrumentos musicales y servicios.`,
 };
 
 export default function ContactUs() {

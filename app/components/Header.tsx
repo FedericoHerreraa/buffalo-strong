@@ -24,6 +24,17 @@ import { Sheet, SheetContent, SheetTrigger } from "@/app/components/ui/sheet";
 import { SearchBar } from "./SearchBar";
 import { ProfileView } from "./ProfileView";
 
+import {
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/app/components/ui/alert-dialog"
+
 
 export const Header = () => {
   const { user, logOut } = useAuth();
@@ -80,7 +91,7 @@ export const Header = () => {
             </div>
 
             <div className="w-fit flex md:gap-5 gap-2 justify-end pr-5">
-              { user && <ProfileView /> }
+              {user && <ProfileView />}
               <Cart />
             </div>
           </section>
@@ -147,9 +158,26 @@ const mobileTabs = ({
             <Link href="/contact-us" className="cursor-pointer">
               Contáctanos
             </Link>
-            <Link href="/news" className="cursor-pointer">
-              Novedades
-            </Link>
+            <AlertDialog>
+              <AlertDialogTrigger>
+                <p
+                  className="cursor-pointer text-left"
+                >
+                  Novedades
+                </p>
+              </AlertDialogTrigger>
+              <AlertDialogContent className="bg-white w-[90%] rounded-lg">
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Proximamente!</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    En esta sección podrás encontrar todas las novedades de Strong Buffalo Music mas promociones.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
             {user?.role === "Admin" && (
               <Link href="/admin-dashboard" className="cursor-pointer">
                 Dashboard
@@ -214,12 +242,27 @@ const desktopTabs = ({
         >
           Contáctanos
         </Link>
-        <Link
-          href="/news"
-          className="hover:text-[#8d572f] hover:scale-110 transition-all duration-150 cursor-pointer"
-        >
-          Novedades
-        </Link>
+        <AlertDialog>
+          <AlertDialogTrigger>
+            <p
+              className="hover:text-[#8d572f] hover:scale-110 transition-all duration-150 cursor-pointer"
+            >
+              Novedades
+            </p>
+          </AlertDialogTrigger>
+          <AlertDialogContent className="bg-white">
+            <AlertDialogHeader>
+              <AlertDialogTitle>Proximamente!</AlertDialogTitle>
+              <AlertDialogDescription>
+                En esta sección podrás encontrar todas las novedades de Strong Buffalo Music mas promociones.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+
         {user?.role === "Admin" && (
           <Link
             href="/admin-dashboard"

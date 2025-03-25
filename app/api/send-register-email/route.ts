@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
         // Enviar email a Buffalo
         const emailBuffalo = await sendEmail(
             'fede.juan.herrera@gmail.com',
-            'Registro en Buffalo Strong',
+            'Registro en Strong Buffalo Music',
             `
                 <h3>Un nuevo usuario quiere ingresar a buffalo.</h3>
                 <p>Nombre: <strong>${name}</strong></p>
@@ -55,10 +55,10 @@ export async function POST(req: NextRequest) {
         // Enviar email al cliente
         const emailCliente = await sendEmail(
             email,
-            'Registro en Buffalo Strong',
+            'Registro en Strong Buffalo Music',
             `
                 <h3>¡Hola ${name}!</h3>
-                <p>Te registraste en buffalo Strong, nuestro equipo procesará la solicitud y te enviará las credenciales a la brevedad.</p>
+                <p>Te registraste en Strong Buffalo Music, nuestro equipo procesará la solicitud y te enviará las credenciales a la brevedad.</p>
             `
         );
         

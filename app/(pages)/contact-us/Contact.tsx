@@ -112,7 +112,7 @@ export const Contact = () => {
                             {isSubmitting ? <Spinner /> : "Enviar"}
                         </button>
                     </form>
-                    <p className="text-zinc-600 mt-4">** Este mensaje se enviará al Mail de Buffalo Strong. Atención al cliente</p>
+                    <p className="text-zinc-600 mt-4">** Este mensaje se enviará al Mail de Strong Buffalo Music. Atención al cliente</p>
                 </div>
             </section>
         </div>
