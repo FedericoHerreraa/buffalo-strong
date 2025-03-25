@@ -12,8 +12,8 @@ export const RegisterView: React.FC<RegisterViewProps> = ({
 }) => {
     return (
         <div className={`md:w-[80%] w-[90%] min-h-[80vh] mx-auto mt-20 ${open_sans.className}`}>
-            <h1 className="md:text-4xl text-3xl">Registra tu nueva cuenta</h1>
-            <p className="text-zinc-400 md:text-base text-sm">En esta seccion vas poder registrar su nueva cuenta como mayorista, ingresando los siguientes datos:</p>
+            <h1 className="md:text-4xl text-3xl">Registrá tu nueva cuenta</h1>
+            <p className="text-zinc-400 md:text-base text-sm">En esta sección vas a poder registrar su cuenta como mayorista, ingresando los siguientes datos:</p>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-20 w-full mt-10 py-10">
                 <div className="flex md:flex-row flex-col gap-20">
                     <div className="flex flex-col gap-5 w-[350px]">

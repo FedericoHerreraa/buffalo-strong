@@ -105,7 +105,7 @@ export const Products = () => {
                                         href={`/products/${cat.keyValue}`}
                                         className="w-fit whitespace-nowrap flex-shrink-0 min-w-max text-zinc-400 cursor-pointer hover:text-zinc-600 transition-all duration-150"
                                     >
-                                        Ver mas sobre esta categoria
+                                        Ver más sobre esta categoria
                                     </Link>
                                     <IoIosArrowRoundForward size={25} />
                                 </div>

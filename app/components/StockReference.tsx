@@ -18,7 +18,7 @@ export const StockReference = () => {
             <div className="flex items-center gap-5 md:text-base text-xs">
                 <div className="flex md:flex-row flex-col items-center gap-3">
                     <p className={`${classname} from-green-300 to-green-600`}></p>
-                    <p>30 o mas</p>
+                    <p>30 o más</p>
                 </div>
                 <div className="flex md:flex-row flex-col items-center gap-3 border-x border-x-zinc-300 px-5">
                     <p className={`${classname} from-yellow-300 to-yellow-600`}></p>

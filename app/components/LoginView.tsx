@@ -32,15 +32,15 @@ export const LoginView = ({
       <DrawerTrigger>
         <div className={`flex items-center gap-2 cursor-pointer ${isMobile ? 'text-zinc-900' : 'text-zinc-300'}`}>
           <MdOutlineLogin />
-          <p>Ingresa a tu cuenta</p>
+          <p>Ingresá a tu cuenta</p>
         </div>
       </DrawerTrigger>
       <DrawerContent className="border-t border-t-zinc-600 rounded-none border-x-zinc-800 border-b-zinc-800 h-[90vh] bg-zinc-900 opacity-100">
         <DrawerHeader>
-          <DrawerTitle className="text-zinc-300 text-center text-3xl">Ingresa a tu cuenta</DrawerTitle>
-          <DrawerDescription className="text-zinc-400 text-center">Ingresa a tu cuenta ya creada.</DrawerDescription>
+          <DrawerTitle className="text-zinc-300 text-center text-3xl">Ingresá a tu cuenta</DrawerTitle>
+          <DrawerDescription className="text-zinc-400 text-center">Ingresá a tu cuenta ya creada.</DrawerDescription>
         </DrawerHeader>
-        <form onSubmit={handleSubmit(loginUser)} className="md:w-[20%] w-[60%] mx-auto mt-20 flex flex-col gap-10 items-center">
+        <form onSubmit={handleSubmit(loginUser)} className="md:w-[300px] w-[60%] mx-auto mt-20 flex flex-col gap-10 items-center justify-center">
           <div>
             <label htmlFor="email" className="text-zinc-300 ml-1">Ingrese su correo electrónico</label>
             <input

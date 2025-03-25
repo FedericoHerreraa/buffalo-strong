@@ -54,7 +54,7 @@ export const Cart = () => {
                 <SheetHeader>
                     <SheetTitle>Carrito de compras</SheetTitle>
                     <SheetDescription>
-                        Una vez que se confirme el carrito, sera redireccionado hacia el formulario de compra para luego finalizar el pedido.
+                        Una vez que se confirme el carrito, será redireccionado hacia el formulario de compra para luego finalizar el pedido.
                     </SheetDescription>
                 </SheetHeader>
                 <section className="mt-10 flex flex-col gap-5">
