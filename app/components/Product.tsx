@@ -5,9 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ProdPrice } from "./ProdPrice";
 import { useMobileView } from "@/app/context/MobileContext";
+// import { useAuth } from "@/app/context/AuthContext";
 
 export const Product = ({ prod, index }: { prod: ProductDB, index: number }) => {
   const { isMobile } = useMobileView();
+  // const { user } = useAuth()
 
   return (
     <Link
