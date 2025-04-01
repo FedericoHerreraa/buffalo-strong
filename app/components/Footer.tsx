@@ -45,6 +45,9 @@ export const Footer = () => {
                     </div>
                 </div>
             </footer>
+            <p className="md:text-sm text-xs text-zinc-400 text-center pb-3">
+                Desarrollado por <a href="https://asneedsolutions.com" target="_blank" className="hover:underline text-zinc-300 font-semibold">AsNeed</a>
+            </p>
         </div>
     )
 }
