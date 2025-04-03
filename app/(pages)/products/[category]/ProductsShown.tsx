@@ -44,6 +44,14 @@ export const ProductsShown = ({ products }: { products: ProductDB[] }) => {
         router.push(`?${params.toString()}`, { scroll: false });
     };
 
+    if (prods.length === 0) {
+        return (
+            <div className="flex flex-col items-center  h-screen">
+                <h1 className="text-2xl font-bold text-gray-700">No se encontraron productos.</h1>
+            </div>
+        )
+    }
+
     return (
         <>
             {prods[0].category === "Electricas" ? (
