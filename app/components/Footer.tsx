@@ -7,6 +7,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { open_sans } from "@/app/fonts/fonts";
 import logobuffalo from "@/app/images/logos/logoBlanco.png";
 import { useMobileView } from "@/app/context/MobileContext";
+import asneedLogo from '@/app/images/logos/asneedLogo.png'
 
 export const Footer = () => {
     const { isMobile } = useMobileView();
@@ -40,14 +41,22 @@ export const Footer = () => {
                     <p className="text-2xl mb-4">Redes Sociales</p>
                     <p className="text-zinc-400">¡Seguinos en nuestras redes sociales así te mantenés actualizado!</p>
                     <div className="flex items-center gap-3 mt-5">
-                        <FaInstagram size={30} className="text-violet-700"/>
-                        <FaWhatsapp size={30} className="text-green-600"/>
+                        <FaInstagram size={30} className="text-violet-700" />
+                        <FaWhatsapp size={30} className="text-green-600" />
                     </div>
                 </div>
             </footer>
-            <p className="md:text-sm text-xs text-zinc-400 text-center pb-3">
-                Desarrollado por <a href="https://asneedsolutions.com" target="_blank" className="hover:underline text-zinc-300 font-semibold">AsNeed</a>
-            </p>
+            <div className="flex items-center justify-center pb-5">
+                <p className="md:text-sm text-xs text-zinc-400 text-center">
+                    Desarrollado por <a href="https://asneedsolutions.com" target="_blank" className="hover:underline text-zinc-300 font-semibold">AsNeed</a>
+                </p>
+                <Image
+                    src={asneedLogo}
+                    alt="Logo"
+                    width={isMobile ? 30 : 40}
+                    className={`transition-all duration-250 ease-in-out inline-block ml-1`}
+                />
+            </div>
         </div>
     )
 }
