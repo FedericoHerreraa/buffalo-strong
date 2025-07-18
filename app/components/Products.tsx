@@ -10,11 +10,12 @@ import { categories, subcategories } from "@/app/info/info";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Product } from "./Product";
 import { ProductDB } from "@/app/types/types";
-import { Spinner } from "../images/icons/Spinner";
 import { FiltersComponent } from "@/app/components/FiltersComponent";
 import logobuffalo from "@/app/images/logos/Logobuffalo.png";
 import { useMobileView } from "../context/MobileContext"
 import { useSearchParams, useRouter } from "next/navigation";
+import { ProductsSkeleton } from "./skeletons/ProductSkeletons";
+
 
 export const Products = () => {
     const [prods, setProds] = useState<ProductDB[]>([]);
@@ -44,11 +45,7 @@ export const Products = () => {
     
 
     if (loading) {
-        return (
-            <div className="flex justify-center items-center">
-                <Spinner />
-            </div>
-        )
+        return <ProductsSkeleton />
     }
 
     const filterBySubcategory = (subcat: string) => {

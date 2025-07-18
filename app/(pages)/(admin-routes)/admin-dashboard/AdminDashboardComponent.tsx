@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react"
-import { FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { useAuth } from "@/app/context/AuthContext";
 import { SearchDbProd } from "./SearchDbProd";
 import { SendUserCredentials } from "@/app/components/SendUserCredentials";
@@ -18,6 +18,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/app/components/ui/select";
+import Link from "next/link";
 
 export const AdminDashboardComponent = () => {
     const {
@@ -51,8 +52,14 @@ export const AdminDashboardComponent = () => {
 
     return (
         <div className="min-h-[100vh]">
-            <div className="flex justify-center mt-10">
-                <h1 className="md:text-4xl text-3xl font-bold mb-3 bg-gradient-to-r from-amber-700 to-zinc-700 text-transparent bg-clip-text drop-shadow-md">
+            <div className="absolute md:top-5 md:left-5 top-3 left-3 flex items-center gap-2">
+                <Link href="/" className="flex items-center gap-2">
+                    <FaArrowLeftLong size={20} className="text-zinc-700 hover:text-zinc-900" />
+                    <p className="text-zinc-700 hover:text-zinc-900">Volver a la página principal</p>
+                </Link>
+            </div>
+            <div className="flex justify-center mt-14">
+                <h1 className="md:text-4xl text-2xl font-bold mb-3 bg-gradient-to-r from-amber-700 to-zinc-700 text-transparent bg-clip-text drop-shadow-md">
                     Administrador de Buffalo&apos;s
                 </h1>
             </div>

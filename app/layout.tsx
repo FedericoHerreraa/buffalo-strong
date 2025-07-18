@@ -1,11 +1,8 @@
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
+
 import "./globals.css";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
-import { BackToTop } from "./components/BackToTop";
 import { MobileViewProvider } from "./context/MobileContext";
-import { Toaster } from "@/app/components/ui/sonner"
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
@@ -17,11 +14,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <CartProvider>
           <AuthProvider>
             <MobileViewProvider>
-              <Header />
               {children}
-              <Footer />
-              <BackToTop />
-              <Toaster />
             </MobileViewProvider>
           </AuthProvider>
         </CartProvider>

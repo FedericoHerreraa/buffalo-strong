@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { useAuth } from '@/app/context/AuthContext';
+import { Toaster } from '@/app/components/ui/sonner';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const { user, loading } = useAuth()
@@ -13,6 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <div className="layout">
             <main className="main">{children}</main>
+            <Toaster />
         </div>
     );
 }

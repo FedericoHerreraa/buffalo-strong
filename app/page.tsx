@@ -6,6 +6,7 @@ import { ContactPreview } from "./components/ContactPreview";
 import { ImagesSection } from "./components/ImagesSection";
 import { Suspense }  from 'react'
 import { Metadata } from "next";
+import MainLayout from "./components/MainLayout";
 
 export const metadata: Metadata = {
   title: `Strong Buffalo Music | Instrumentos Musicales al Mejor Precio`,
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
+    <MainLayout>
       <CarouselHomePage />
       <Suspense>
         <Products />
@@ -23,7 +24,7 @@ export default function Home() {
       <CustomSeparator />
       <WaysOfPayment />
       <ContactPreview />
-    </>
+    </MainLayout>
   );
 }
 
