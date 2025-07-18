@@ -12,6 +12,7 @@ import {
 import { useAuth } from "@/app/context/AuthContext";
 import { SearchDbProd } from "./SearchDbProd";
 import { SendUserCredentials } from "@/app/components/SendUserCredentials";
+import { AddProduct } from "./AddProduct";
 
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -446,17 +447,8 @@ export const AdminDashboardComponent = () => {
         )}
 
         {activeSection === "add-product" && (
-          <section className="bg-white p-8 rounded-lg shadow-md border border-zinc-200">
-            <h2 className="text-2xl font-semibold mb-6">
-              Agregar Nuevo Producto
-            </h2>
-            <div className="text-center py-12 text-zinc-500">
-              <FaPlus size={48} className="mx-auto mb-4 text-zinc-400" />
-              <p className="text-lg">Componente para agregar productos</p>
-              <p className="text-sm mt-2">
-                Este componente se implementará próximamente
-              </p>
-            </div>
+          <section>
+            <AddProduct />
           </section>
         )}
       </main>
