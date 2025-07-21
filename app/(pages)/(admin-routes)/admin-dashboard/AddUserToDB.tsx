@@ -44,7 +44,6 @@ export const AddUserToDB = () => {
 
     const addUser = async (data: RegisterAdminFormData) => {
         setFormInfo(data);
-        console.log(data.role);
 
         const res = await createUser(
             data.email,
