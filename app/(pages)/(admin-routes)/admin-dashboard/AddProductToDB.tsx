@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { FaImage, FaTrash } from "react-icons/fa6"
 import Image from "next/image";
-
-
 import {
     Select,
     SelectContent,
@@ -12,21 +10,6 @@ import {
 } from "@/app/components/ui/select";
 
 
-// interface FormState {
-//     title: string;
-//     description: string;
-//     sugestedPrice: number;
-//     listPrice: number;
-//     brand: string;
-//     img: string;
-//     listCode: string;
-//     category: string;
-//     color: string;
-//     stock: number;
-//     group: string;
-//     subcategory: string;
-// }
-
 export const AddProductToDB = () => {
     const [selectedImages, setSelectedImages] = useState<File[]>([]);
     const [imagePreviews, setImagePreviews] = useState<string[]>([]);
@@ -35,7 +18,6 @@ export const AddProductToDB = () => {
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = Array.from(e.target.files || []);
         
-        // Limitar a máximo 5 imágenes
         if (files.length > 5) {
             alert('Máximo 5 imágenes permitidas');
             return;
@@ -43,7 +25,6 @@ export const AddProductToDB = () => {
 
         setSelectedImages(files);
         
-        // Crear previews
         const previews = files.map(file => URL.createObjectURL(file));
         setImagePreviews(previews);
     };
@@ -195,7 +176,6 @@ export const AddProductToDB = () => {
                         </Select>
                     </div>
                     
-                    {/* Solo mostrar subcategoría si la categoría es "Electricas" */}
                     {selectedCategory === "Electricas" && (
                         <div className="md:col-span-2">
                             <label className="block text-sm font-medium text-zinc-700 mb-2">
