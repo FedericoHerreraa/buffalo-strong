@@ -118,18 +118,3 @@ export interface LoginViewProps {
     setIsVisible: (isVisible: boolean) => void;
 }
 
-
-export interface FormState {
-    title: string;
-    description: string;
-    sugestedPrice: number;
-    listPrice: number;
-    brand: string;
-    img: string;
-    listCode: string;
-    category: string;
-    color: string;
-    stock: number;
-    group: string;
-    subcategory: string;
-}

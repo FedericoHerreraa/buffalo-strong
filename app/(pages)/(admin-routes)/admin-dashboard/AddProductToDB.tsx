@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { FaImage, FaTrash } from "react-icons/fa6"
 import Image from "next/image";
+
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { CreateProductFormData, createProductFormSchema } from "@/app/schemas/schemas";
+
 import {
     Select,
     SelectContent,
@@ -11,20 +16,50 @@ import {
 
 
 export const AddProductToDB = () => {
+    const {
+        register,
+        handleSubmit,
+        control,
+        formState: { errors, isSubmitting },
+        reset,
+    } = useForm<CreateProductFormData>({
+        resolver: zodResolver(createProductFormSchema),
+    });
+
     const [selectedImages, setSelectedImages] = useState<File[]>([]);
     const [imagePreviews, setImagePreviews] = useState<string[]>([]);
     const [selectedCategory, setSelectedCategory] = useState<string>('');
 
+    const addProduct = (data: CreateProductFormData) => {
+        if (selectedImages.length === 0) {
+            alert('Debe seleccionar al menos una imagen');
+            return;
+        }
+
+        console.log('Form data:', data);
+        console.log('Selected images:', selectedImages);
+
+        // Aquí procesarías las imágenes y crearías el producto
+        // 1. Subir imágenes a Supabase Storage
+        // 2. Obtener URLs de las imágenes
+        // 3. Crear producto en la base de datos con las URLs
+
+        reset();
+        setSelectedImages([]);
+        setImagePreviews([]);
+        setSelectedCategory('');
+    };
+
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = Array.from(e.target.files || []);
-        
+
         if (files.length > 5) {
             alert('Máximo 5 imágenes permitidas');
             return;
         }
 
         setSelectedImages(files);
-        
+
         const previews = files.map(file => URL.createObjectURL(file));
         setImagePreviews(previews);
     };
@@ -32,7 +67,7 @@ export const AddProductToDB = () => {
     const removeImage = (index: number) => {
         const newImages = selectedImages.filter((_, i) => i !== index);
         const newPreviews = imagePreviews.filter((_, i) => i !== index);
-        
+
         setSelectedImages(newImages);
         setImagePreviews(newPreviews);
     };
@@ -44,18 +79,24 @@ export const AddProductToDB = () => {
                     Agregar Nuevo Producto
                 </h2>
             </div>
-            <form className="p-6">
+            <form onSubmit={handleSubmit(addProduct)} className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="md:col-span-2">
                         <label className="block text-sm font-medium text-zinc-700 mb-2">
                             Titulo *
                         </label>
                         <input
+                            {...register("title")}
                             placeholder="Ingrese el titulo"
                             required
                             type="text"
                             className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
                         />
+                        {errors.title && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.title.message}
+                            </p>
+                        )}
                     </div>
 
                     <div className="md:col-span-2">
@@ -63,11 +104,17 @@ export const AddProductToDB = () => {
                             Descripcion *
                         </label>
                         <input
+                            {...register("description")}
                             placeholder="Descripcion del producto"
                             required
                             type="text"
                             className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
                         />
+                        {errors.description && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.description.message}
+                            </p>
+                        )}
                     </div>
 
                     <div>
@@ -75,11 +122,17 @@ export const AddProductToDB = () => {
                             Precio Sugerido *
                         </label>
                         <input
+                            {...register("sugestedPrice", { valueAsNumber: true })}
                             placeholder="Ingrese el precio sugerido"
                             required
                             type="number"
                             className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
                         />
+                        {errors.sugestedPrice && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.sugestedPrice.message}
+                            </p>
+                        )}
                     </div>
 
                     <div>
@@ -87,11 +140,17 @@ export const AddProductToDB = () => {
                             Precio Lista *
                         </label>
                         <input
+                            {...register("listPrice", { valueAsNumber: true })}
                             placeholder="Ingrese el precio lista"
                             required
                             type="number"
                             className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
                         />
+                        {errors.listPrice && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.listPrice.message}
+                            </p>
+                        )}
                     </div>
 
                     <div>
@@ -99,117 +158,180 @@ export const AddProductToDB = () => {
                             Marca *
                         </label>
                         <input
+                            {...register("brand")}
                             placeholder="Ingrese la marca"
                             required
                             type="text"
                             className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
                         />
+                        {errors.brand && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.brand.message}
+                            </p>
+                        )}
                     </div>
 
-                    
+
 
                     <div>
                         <label className="block text-sm font-medium text-zinc-700 mb-2">
                             Codigo de lista *
                         </label>
                         <input
+                            {...register("listCode", { valueAsNumber: true })}
                             placeholder="Ingrese el codigo de lista"
                             required
                             type="number"
                             className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
                         />
+                        {errors.listCode && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.listCode.message}
+                            </p>
+                        )}
                     </div>
 
                     <div>
                         <label className="block text-sm font-medium text-zinc-700 mb-2">
                             Color *
                         </label>
-                        <Select>
-                            <SelectTrigger className="w-full px-4 py-6 border border-zinc-300 rounded-lg bg-zinc-50 focus:bg-white">
-                                <SelectValue placeholder="Seleccione un color" />
-                            </SelectTrigger>
-                            <SelectContent className="border-zinc-300 bg-white">
-                                {colorsSelect.map((color) => (
-                                    <SelectItem
-                                        key={color}
-                                        value={color}
-                                        className="cursor-pointer hover:bg-zinc-50"
-                                    >
-                                        {color}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    </div>     
+                        <Controller
+                            name="color"
+                            control={control}
+                            render={({ field }) => (
+                                <Select onValueChange={field.onChange} value={field.value}>
+                                    <SelectTrigger className="w-full px-4 py-6 border border-zinc-300 rounded-lg bg-zinc-50 focus:bg-white">
+                                        <SelectValue placeholder="Seleccione un color" />
+                                    </SelectTrigger>
+                                    <SelectContent className="border-zinc-300 bg-white">
+                                        {colorsSelect.map((color) => (
+                                            <SelectItem
+                                                key={color}
+                                                value={color}
+                                                className="cursor-pointer hover:bg-zinc-50"
+                                            >
+                                                {color}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            )}
+                        />
+                        {errors.color && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.color.message}
+                            </p>
+                        )}
+                    </div>
 
                     <div>
                         <label className="block text-sm font-medium text-zinc-700 mb-2">
                             Stock *
                         </label>
                         <input
+                            {...register("stock", { valueAsNumber: true })}
                             placeholder="Ingrese el stock"
                             required
                             type="number"
                             className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
                         />
+                        {errors.stock && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.stock.message}
+                            </p>
+                        )}
                     </div>
 
                     <div className="md:col-span-2">
                         <label className="block text-sm font-medium text-zinc-700 mb-2">
                             Categoria *
                         </label>
-                        <Select onValueChange={setSelectedCategory} value={selectedCategory}>
-                            <SelectTrigger className="w-full px-4 py-6 border border-zinc-300 rounded-lg bg-zinc-50 focus:bg-white">
-                                <SelectValue placeholder="Seleccione una categoría" />
-                            </SelectTrigger>
-                            <SelectContent className="border-zinc-300 bg-white">
-                                {categoriesSelect.map((category) => (
-                                    <SelectItem
-                                        key={category}
-                                        value={category}
-                                        className="cursor-pointer hover:bg-zinc-50"
-                                    >
-                                        {category}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
+                        <Controller
+                            name="category"
+                            control={control}
+                            render={({ field }) => (
+                                <Select
+                                    onValueChange={(value) => {
+                                        field.onChange(value);
+                                        setSelectedCategory(value);
+                                    }}
+                                    value={field.value}
+                                >
+                                    <SelectTrigger className="w-full px-4 py-6 border border-zinc-300 rounded-lg bg-zinc-50 focus:bg-white">
+                                        <SelectValue placeholder="Seleccione una categoría" />
+                                    </SelectTrigger>
+                                    <SelectContent className="border-zinc-300 bg-white">
+                                        {categoriesSelect.map((category) => (
+                                            <SelectItem
+                                                key={category}
+                                                value={category}
+                                                className="cursor-pointer hover:bg-zinc-50"
+                                            >
+                                                {category}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            )}
+                        />
+                        {errors.category && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.category.message}
+                            </p>
+                        )}
                     </div>
-                    
+
                     {selectedCategory === "Electricas" && (
                         <div className="md:col-span-2">
                             <label className="block text-sm font-medium text-zinc-700 mb-2">
                                 Subcategoria
                             </label>
-                            <Select>
-                                <SelectTrigger className="w-full px-4 py-6 border border-zinc-300 rounded-lg bg-zinc-50 focus:bg-white">
-                                    <SelectValue placeholder="Seleccione una subcategoría" />
-                                </SelectTrigger>
-                                <SelectContent className="border-zinc-300 bg-white">
-                                    {subcategoriesSelect.map((subcategory) => (
-                                        <SelectItem
-                                            key={subcategory}
-                                            value={subcategory}
-                                            className="cursor-pointer hover:bg-zinc-50"
-                                        >
-                                            {subcategory}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
+                            <Controller
+                                name="subcategory"
+                                control={control}
+                                render={({ field }) => (
+                                    <Select onValueChange={field.onChange} value={field.value}>
+                                        <SelectTrigger className="w-full px-4 py-6 border border-zinc-300 rounded-lg bg-zinc-50 focus:bg-white">
+                                            <SelectValue placeholder="Seleccione una subcategoría" />
+                                        </SelectTrigger>
+                                        <SelectContent className="border-zinc-300 bg-white">
+                                            {subcategoriesSelect.map((subcategory) => (
+                                                <SelectItem
+                                                    key={subcategory}
+                                                    value={subcategory}
+                                                    className="cursor-pointer hover:bg-zinc-50"
+                                                >
+                                                    {subcategory}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                )}
+                            />
+                            {errors.subcategory && (
+                                <p className="text-red-500 text-sm mt-1">
+                                    {errors.subcategory.message}
+                                </p>
+                            )}
                         </div>
-                    )}   
+                    )}
 
                     <div className="md:col-span-2">
                         <label className="block text-sm font-medium text-zinc-700 mb-2">
                             Grupo *
                         </label>
                         <input
+                            {...register("group")}
                             placeholder="Ingrese solo el nombre. Ej: CS5 Traveler Red -> CS5 Traveler"
                             required
                             type="text"
                             className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
                         />
+                        {errors.group && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.group.message}
+                            </p>
+                        )}
                     </div>
 
                     <div className="md:col-span-2">
@@ -223,7 +345,7 @@ export const AddProductToDB = () => {
                             onChange={handleImageChange}
                             className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
                         />
-                        
+
                         {imagePreviews.length > 0 && (
                             <div className="mt-4">
                                 <h4 className="text-sm font-medium text-zinc-700 mb-2">
@@ -260,7 +382,8 @@ export const AddProductToDB = () => {
                                 )}
                             </div>
                         )}
-                    </div>      
+
+                    </div>
                 </div>
 
                 <div className="mt-8 flex justify-end">
@@ -268,7 +391,7 @@ export const AddProductToDB = () => {
                         type="submit"
                         className="bg-zinc-700 hover:bg-zinc-800 disabled:bg-zinc-400 disabled:cursor-not-allowed text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 min-w-[160px] justify-center"
                     >
-                        <span>Crear Producto</span>
+                        <span>{isSubmitting ? "Creando..." : "Crear Producto"}</span>
                     </button>
                 </div>
             </form>

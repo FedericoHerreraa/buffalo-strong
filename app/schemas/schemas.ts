@@ -50,3 +50,37 @@ export const sendRegisterEmailSchema = z.object({
 });
 
 export type SendRegisterEmailData = z.infer<typeof sendRegisterEmailSchema>;
+
+export const createProductFormSchema = z.object({
+  title: z.string().min(5, "El nombre debe tener al menos 5 caracteres"),
+  description: z.string().min(10, "La descripción debe tener al menos 10 caracteres"),
+  sugestedPrice: z.number().min(0, "El precio sugerido debe ser mayor a 0"),
+  listPrice: z.number().min(0, "El precio de lista debe ser mayor a 0"),
+  brand: z.string().min(3, "La marca debe tener al menos 3 caracteres"),
+  img: z.any().optional(), 
+  listCode: z.number().min(1, "El código de lista debe ser mayor a 0"),
+  category: z.string().min(3, "La categoría debe tener al menos 3 caracteres"),
+  color: z.string().min(3, "El color debe tener al menos 3 caracteres"),
+  stock: z.number().min(0, "El stock debe ser mayor a 0"),
+  group: z.string().min(3, "El grupo debe tener al menos 3 caracteres"),
+  subcategory: z.string().optional(), 
+});
+
+export type CreateProductFormData = z.infer<typeof createProductFormSchema>;
+
+export const createProductDBSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  sugestedPrice: z.number(),
+  listPrice: z.number(),
+  brand: z.string(),
+  img: z.array(z.string()), 
+  listCode: z.number(),
+  category: z.string(),
+  color: z.string(),
+  stock: z.number(),
+  group: z.string(),
+  subcategory: z.string().optional(),
+});
+
+export type CreateProductDBData = z.infer<typeof createProductDBSchema>;
