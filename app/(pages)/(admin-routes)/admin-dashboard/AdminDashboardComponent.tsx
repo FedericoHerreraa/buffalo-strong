@@ -9,6 +9,8 @@ import {
   FaMagnifyingGlass,
   FaPlus,
   FaGauge,
+  FaBars,
+  FaXmark,
 } from "react-icons/fa6";
 
 import { SearchDbProd } from "./SearchDbProd";
@@ -17,12 +19,31 @@ import { AddProductController } from "./add-prod-to-db/AddProductController";
 
 export const AdminDashboardComponent = () => {
   const [activeSection, setActiveSection] = useState<"dashboard" | "users" | "search" | "add-product">("dashboard");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-[100vh] flex">
-      <aside className="w-64 bg-zinc-800 text-white min-h-screen fixed left-0 top-0 z-10">
+      <button
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        className="lg:hidden fixed top-4 left-4 z-30 bg-zinc-800 text-white p-2 rounded-md shadow-lg"
+      >
+        {isMobileMenuOpen ? <FaXmark size={20} /> : <FaBars size={20} />}
+      </button>
+
+      {isMobileMenuOpen && (
+        <div
+          className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-10"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
+      <aside className={`
+        w-64 bg-zinc-800 text-white min-h-screen fixed left-0 top-0 z-20 transform transition-transform duration-300 ease-in-out
+        lg:translate-x-0 lg:static lg:z-auto
+        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
+      `}>
         <div className="p-6">
-          <h2 className="text-xl font-bold mb-8 bg-gradient-to-r from-amber-400 to-zinc-200 text-transparent bg-clip-text">
+          <h2 className="text-xl font-bold mb-8 md:mt-0 mt-10 bg-gradient-to-r from-amber-400 to-zinc-200 text-transparent bg-clip-text">
             Admin Panel
           </h2>
           <nav className="space-y-4">
@@ -31,10 +52,13 @@ export const AdminDashboardComponent = () => {
               return (
                 <button
                   key={item.id}
-                  onClick={() => setActiveSection(item.id)}
+                  onClick={() => {
+                    setActiveSection(item.id);
+                    setIsMobileMenuOpen(false);
+                  }}
                   className={`w-full flex items-center gap-3 p-3 rounded-lg transition-colors ${activeSection === item.id
-                      ? "bg-zinc-700 text-amber-400"
-                      : "text-zinc-300 hover:bg-zinc-700 hover:text-white"
+                    ? "bg-zinc-700 text-amber-400"
+                    : "text-zinc-300 hover:bg-zinc-700 hover:text-white"
                     }`}
                 >
                   <IconComponent size={18} />
@@ -55,9 +79,9 @@ export const AdminDashboardComponent = () => {
         </div>
       </aside>
 
-      <main className="flex-1 ml-64 p-6">
+      <main className="flex-1 p-6 pt-16 lg:pt-6">
         <header className="mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-amber-700 to-zinc-700 text-transparent bg-clip-text drop-shadow-md">
+          <h1 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-amber-700 to-zinc-700 text-transparent bg-clip-text drop-shadow-md">
             {navItems.find((item) => item.id === activeSection)?.title}
           </h1>
         </header>

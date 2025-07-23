@@ -5,6 +5,8 @@ import Image from "next/image";
 import { Controller, UseFormRegister, Control, FieldErrors, UseFormHandleSubmit } from "react-hook-form";
 import { CreateProductFormData } from "@/app/schemas/schemas";
 
+import { Spinner } from "@/app/images/icons/Spinner";
+
 import {
   Select,
   SelectContent,
@@ -334,7 +336,7 @@ export const AddProductView = ({
             type="submit"
             className="bg-zinc-700 hover:bg-zinc-800 disabled:bg-zinc-400 disabled:cursor-not-allowed text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 min-w-[160px] justify-center"
           >
-            <span>{isSubmitting ? "Creando..." : "Crear Producto"}</span>
+            <span>{isSubmitting ? <Spinner /> : "Crear Producto"}</span>
           </button>
         </div>
       </form>

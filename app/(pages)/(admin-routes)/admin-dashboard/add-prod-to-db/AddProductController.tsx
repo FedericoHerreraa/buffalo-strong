@@ -5,6 +5,9 @@ import { supabase } from "@/lib/supabaseClient";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { toast } from "sonner";
+
+
 import {
     CreateProductDBData,
     CreateProductFormData,
@@ -34,18 +37,19 @@ export const AddProductController = () => {
             return;
         }
 
-        // Crear el campo de group
+        // Crear el campo de group manteniendo el formato original
         let group = "";
         if (data.title.toLowerCase().includes(data.color.toLowerCase())) {
-            group = data.title.replace(data.color, "").trim();
+            const colorRegex = new RegExp(data.color, 'gi');
+            group = data.title.replace(colorRegex, "").trim();
         } else {
-            group = data.title
+            group = data.title;
         }
 
         // Procesar imagenes y conseguir sus URLs
         const imageUrls: string[] = [];
         for (const image of selectedImages) {
-            const imageUrl = await uploadImage(image, data.category.toLowerCase());
+            const imageUrl = await uploadImage(image, data.category.toLowerCase(), data.title, data.color);
             if (imageUrl) {
                 imageUrls.push(imageUrl);
             }
@@ -72,11 +76,11 @@ export const AddProductController = () => {
             .insert(newProduct)
 
         if (productError) {
-            console.error("Error creating product:", productError);
+            toast.error("Error creando producto")
             return;
         }
 
-        alert("Producto creado correctamente")
+        toast.success("Producto creado correctamente")
 
         reset();
         setSelectedImages([]);
@@ -84,9 +88,9 @@ export const AddProductController = () => {
         setSelectedCategory("");
     };
 
-    const uploadImage = async (image: File, folder: string) => {
+    const uploadImage = async (image: File, folder: string, title: string, color: string) => {
         const fileExtension = image.name.split('.').pop();
-        const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExtension}`;
+        const fileName = `${title}-${color}.${fileExtension}`;
         const filePath = `${folder}/${fileName}`;
 
         const { error } = await supabase.storage
@@ -108,8 +112,6 @@ export const AddProductController = () => {
             return null;
         }
 
-        console.log("Signed URL (5 years):", signedUrlData.signedUrl);
-
         return signedUrlData.signedUrl;
     };
 
@@ -117,7 +119,7 @@ export const AddProductController = () => {
         const files = Array.from(e.target.files || []);
 
         if (selectedImages.length + files.length > 5) {
-            alert(
+            toast.error(
                 `Máximo 5 imágenes permitidas. Actualmente tienes ${selectedImages.length} imágenes.`
             );
             return;
