@@ -1,13 +1,9 @@
-import { useState } from "react";
+
 import { FaImage, FaTrash } from "react-icons/fa6";
 import Image from "next/image";
 
-import { useForm, Controller } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  CreateProductFormData,
-  createProductFormSchema,
-} from "@/app/schemas/schemas";
+import { Controller, UseFormRegister, Control, FieldErrors, UseFormHandleSubmit } from "react-hook-form";
+import { CreateProductFormData } from "@/app/schemas/schemas";
 
 import {
   Select,
@@ -17,69 +13,32 @@ import {
   SelectValue,
 } from "@/app/components/ui/select";
 
-export const AddProductToDB = () => {
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors, isSubmitting },
-    reset,
-  } = useForm<CreateProductFormData>({
-    resolver: zodResolver(createProductFormSchema),
-  });
 
-  const [selectedImages, setSelectedImages] = useState<File[]>([]);
-  const [imagePreviews, setImagePreviews] = useState<string[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
-
-  const addProduct = (data: CreateProductFormData) => {
-    if (selectedImages.length === 0) {
-      alert("Debe seleccionar al menos una imagen");
-      return;
-    }
-
-    console.log("Form data:", data);
-    console.log("Selected images:", selectedImages);
-
-    // Aquí procesarías las imágenes y crearías el producto
-    // 1. Subir imágenes a Supabase Storage
-    // 2. Obtener URLs de las imágenes
-    // 3. Crear producto en la base de datos con las URLs
-
-    reset();
-    setSelectedImages([]);
-    setImagePreviews([]);
-    setSelectedCategory("");
-  };
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || []);
-
-    // Verificar que no se excedan las 5 imágenes totales
-    if (selectedImages.length + files.length > 5) {
-      alert(
-        `Máximo 5 imágenes permitidas. Actualmente tienes ${selectedImages.length} imágenes.`
-      );
-      return;
-    }
-
-    // Agregar las nuevas imágenes al array existente
-    const newImages = [...selectedImages, ...files];
-    setSelectedImages(newImages);
-
-    // Crear previews para las nuevas imágenes y agregarlas a las existentes
-    const newPreviews = files.map((file) => URL.createObjectURL(file));
-    setImagePreviews((prev) => [...prev, ...newPreviews]);
-  };
-
-  const removeImage = (index: number) => {
-    const newImages = selectedImages.filter((_, i) => i !== index);
-    const newPreviews = imagePreviews.filter((_, i) => i !== index);
-
-    setSelectedImages(newImages);
-    setImagePreviews(newPreviews);
-  };
-
+export const AddProductView = ({
+  handleSubmit,
+  register,
+  errors,
+  control,
+  isSubmitting,
+  addProduct,
+  setSelectedCategory,
+  imagePreviews,
+  handleImageChange,
+  removeImage,
+  selectedCategory,
+}: {
+  handleSubmit: UseFormHandleSubmit<CreateProductFormData>;
+  register: UseFormRegister<CreateProductFormData>;
+  errors: FieldErrors<CreateProductFormData>;
+  control: Control<CreateProductFormData>;
+  isSubmitting: boolean;
+  addProduct: (data: CreateProductFormData) => void;
+  setSelectedCategory: (category: string) => void;
+  imagePreviews: string[];
+  handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  removeImage: (index: number) => void;
+  selectedCategory: string;
+}) => {
   return (
     <section className="bg-white rounded-lg shadow-md border border-zinc-200">
       <div className="bg-gradient-to-r from-zinc-50 to-zinc-100 px-6 py-4 border-b border-zinc-200">
@@ -319,24 +278,6 @@ export const AddProductToDB = () => {
               )}
             </div>
           )}
-
-          <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-zinc-700 mb-2">
-              Grupo *
-            </label>
-            <input
-              {...register("group")}
-              placeholder="Ingrese solo el nombre. Ej: CS5 Traveler Red -> CS5 Traveler"
-              required
-              type="text"
-              className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
-            />
-            {errors.group && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.group.message}
-              </p>
-            )}
-          </div>
 
           <div className="md:col-span-2">
             <label className="block text-sm font-medium text-zinc-700 mb-2">

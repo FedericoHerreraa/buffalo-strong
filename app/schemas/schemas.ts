@@ -62,7 +62,6 @@ export const createProductFormSchema = z.object({
   category: z.string().min(3, "La categoría debe tener al menos 3 caracteres"),
   color: z.string().min(3, "El color debe tener al menos 3 caracteres"),
   stock: z.number().min(0, "El stock debe ser mayor a 0"),
-  group: z.string().min(3, "El grupo debe tener al menos 3 caracteres"),
   subcategory: z.string().optional(), 
 });
 

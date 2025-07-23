@@ -13,7 +13,7 @@ import {
 
 import { SearchDbProd } from "./SearchDbProd";
 import { AddUserToDB } from "./AddUserToDB";
-import { AddProductToDB } from "./AddProductToDB";
+import { AddProductController } from "./add-prod-to-db/AddProductController";
 
 export const AdminDashboardComponent = () => {
   const [activeSection, setActiveSection] = useState<"dashboard" | "users" | "search" | "add-product">("dashboard");
@@ -93,7 +93,7 @@ export const AdminDashboardComponent = () => {
         )}
 
         {activeSection === "add-product" && (
-          <AddProductToDB />
+          <AddProductController />
         )}
       </main>
     </div>
