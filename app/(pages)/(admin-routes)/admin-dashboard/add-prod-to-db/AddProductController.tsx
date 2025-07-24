@@ -33,7 +33,7 @@ export const AddProductController = () => {
             listPrice: 0,
             brand: "",
             listCode: 0,
-            color: "",
+            color: "", 
             stock: 0,
             category: "",
             subcategory: ""

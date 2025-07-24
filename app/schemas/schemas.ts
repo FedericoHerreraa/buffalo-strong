@@ -54,14 +54,26 @@ export type SendRegisterEmailData = z.infer<typeof sendRegisterEmailSchema>;
 export const createProductFormSchema = z.object({
   title: z.string().min(5, "El nombre debe tener al menos 5 caracteres"),
   description: z.string().min(10, "La descripción debe tener al menos 10 caracteres"),
-  sugestedPrice: z.number().min(0, "El precio sugerido debe ser mayor a 0"),
-  listPrice: z.number().min(0, "El precio de lista debe ser mayor a 0"),
+  sugestedPrice: z.string()
+    .min(1, "El precio sugerido es requerido")
+    .transform((val) => parseFloat(val))
+    .refine((val) => !isNaN(val) && val > 0, "Debe ser un número mayor a 0"),
+  listPrice: z.string()
+    .min(1, "El precio de lista es requerido")
+    .transform((val) => parseFloat(val))
+    .refine((val) => !isNaN(val) && val > 0, "Debe ser un número mayor a 0"),
   brand: z.string().min(3, "La marca debe tener al menos 3 caracteres"),
   img: z.any().optional(), 
-  listCode: z.number().min(1, "El código de lista debe ser mayor a 0"),
+  listCode: z.string()
+    .min(1, "El código de lista es requerido")
+    .transform((val) => parseFloat(val))
+    .refine((val) => !isNaN(val) && val > 0, "Debe ser un número mayor a 0"),
   category: z.string().min(3, "La categoría debe tener al menos 3 caracteres"),
   color: z.string().min(3, "El color debe tener al menos 3 caracteres"),
-  stock: z.number().min(0, "El stock debe ser mayor a 0"),
+  stock: z.string()
+    .min(1, "El stock es requerido")
+    .transform((val) => parseFloat(val))
+    .refine((val) => !isNaN(val) && val >= 0, "Debe ser un número mayor o igual a 0"),
   subcategory: z.string().optional(), 
 });
 

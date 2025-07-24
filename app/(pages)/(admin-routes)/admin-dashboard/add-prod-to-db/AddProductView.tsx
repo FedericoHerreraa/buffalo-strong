@@ -87,10 +87,10 @@ export const AddProductView = ({
               Precio Sugerido *
             </label>
             <input
-              {...register("sugestedPrice", { valueAsNumber: true })}
+              {...register("sugestedPrice")}
               placeholder="Ingrese el precio sugerido"
               required
-              type="number"
+              type="text"
               className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
             />
             {errors.sugestedPrice && (
@@ -105,10 +105,10 @@ export const AddProductView = ({
               Precio Lista *
             </label>
             <input
-              {...register("listPrice", { valueAsNumber: true })}
+              {...register("listPrice")}
               placeholder="Ingrese el precio lista"
               required
-              type="number"
+              type="text"
               className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
             />
             {errors.listPrice && (
@@ -141,10 +141,10 @@ export const AddProductView = ({
               Codigo de lista *
             </label>
             <input
-              {...register("listCode", { valueAsNumber: true })}
+              {...register("listCode")}
               placeholder="Ingrese el codigo de lista"
               required
-              type="number"
+              type="text"
               className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
             />
             {errors.listCode && (
@@ -192,10 +192,10 @@ export const AddProductView = ({
               Stock *
             </label>
             <input
-              {...register("stock", { valueAsNumber: true })}
+              {...register("stock")}
               placeholder="Ingrese el stock"
               required
-              type="number"
+              type="text"
               className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
             />
             {errors.stock && (
