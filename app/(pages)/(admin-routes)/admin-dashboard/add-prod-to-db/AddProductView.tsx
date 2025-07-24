@@ -23,11 +23,10 @@ export const AddProductView = ({
   control,
   isSubmitting,
   addProduct,
-  setSelectedCategory,
   imagePreviews,
   handleImageChange,
   removeImage,
-  selectedCategory,
+  watchedCategory,
 }: {
   handleSubmit: UseFormHandleSubmit<CreateProductFormData>;
   register: UseFormRegister<CreateProductFormData>;
@@ -35,11 +34,10 @@ export const AddProductView = ({
   control: Control<CreateProductFormData>;
   isSubmitting: boolean;
   addProduct: (data: CreateProductFormData) => void;
-  setSelectedCategory: (category: string) => void;
   imagePreviews: string[];
   handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   removeImage: (index: number) => void;
-  selectedCategory: string;
+  watchedCategory: string;
 }) => {
   return (
     <section className="bg-white rounded-lg shadow-md border border-zinc-200">
@@ -216,10 +214,7 @@ export const AddProductView = ({
               control={control}
               render={({ field }) => (
                 <Select
-                  onValueChange={(value) => {
-                    field.onChange(value);
-                    setSelectedCategory(value);
-                  }}
+                  onValueChange={field.onChange}
                   value={field.value}
                 >
                   <SelectTrigger className="w-full px-4 py-6 border border-zinc-300 rounded-lg bg-zinc-50 focus:bg-white">
@@ -246,7 +241,7 @@ export const AddProductView = ({
             )}
           </div>
 
-          {selectedCategory === "Electricas" && (
+          {watchedCategory === "Electricas" && (
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-zinc-700 mb-2">
                 Subcategoria

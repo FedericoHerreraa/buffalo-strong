@@ -21,15 +21,30 @@ export const AddProductController = () => {
         register,
         handleSubmit,
         control,
+        watch,
         formState: { errors, isSubmitting },
         reset,
     } = useForm<CreateProductFormData>({
         resolver: zodResolver(createProductFormSchema),
+        defaultValues: {
+            title: "",
+            description: "",
+            sugestedPrice: 0,
+            listPrice: 0,
+            brand: "",
+            listCode: 0,
+            color: "",
+            stock: 0,
+            category: "",
+            subcategory: ""
+        }
     });
 
     const [selectedImages, setSelectedImages] = useState<File[]>([]);
     const [imagePreviews, setImagePreviews] = useState<string[]>([]);
-    const [selectedCategory, setSelectedCategory] = useState<string>("");
+    
+    // Observar el valor de categoría desde el formulario
+    const watchedCategory = watch("category");
 
     const addProduct = async (data: CreateProductFormData) => {
         if (selectedImages.length === 0) {
@@ -85,7 +100,6 @@ export const AddProductController = () => {
         reset();
         setSelectedImages([]);
         setImagePreviews([]);
-        setSelectedCategory("");
     };
 
     const uploadImage = async (image: File, folder: string, title: string, color: string) => {
@@ -154,11 +168,10 @@ export const AddProductController = () => {
             control={control}
             isSubmitting={isSubmitting}
             addProduct={addProduct}
-            setSelectedCategory={setSelectedCategory}
             imagePreviews={imagePreviews}
             handleImageChange={handleImageChange}
             removeImage={removeImage}
-            selectedCategory={selectedCategory}
+            watchedCategory={watchedCategory}
         />  
     )
 }
