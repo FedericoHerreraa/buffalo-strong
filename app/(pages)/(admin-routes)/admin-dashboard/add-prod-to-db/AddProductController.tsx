@@ -90,7 +90,13 @@ export const AddProductController = () => {
 
     const uploadImage = async (image: File, folder: string, title: string, color: string) => {
         const fileExtension = image.name.split('.').pop();
-        const fileName = `${title}-${color}.${fileExtension}`;
+        const timestamp = Date.now();
+        const randomId = Math.random().toString(36).substring(2, 8);
+        
+        const cleanTitle = title.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+        const cleanColor = color.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+        
+        const fileName = `${cleanTitle}-${cleanColor}-${timestamp}-${randomId}.${fileExtension}`;
         const filePath = `${folder}/${fileName}`;
 
         const { error } = await supabase.storage
