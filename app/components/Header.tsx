@@ -226,26 +226,26 @@ const desktopTabs = ({
       <div className={`flex gap-6 text-md text-zinc-300`}>
         <Link
           href="/"
-          className="hover:text-[#8d572f] hover:scale-110 transition-all duration-150 cursor-pointer"
+          className="hover:text-[#cb8b5a] hover:scale-110 transition-all duration-150 cursor-pointer"
         >
           Inicio
         </Link>
         <Link
           href="/about-us"
-          className="hover:text-[#8d572f] hover:scale-110 transition-all duration-150 cursor-pointer"
+          className="hover:text-[#cb8b5a] hover:scale-110 transition-all duration-150 cursor-pointer"
         >
           Nosotros
         </Link>
         <Link
           href="/contact-us"
-          className="hover:text-[#8d572f] hover:scale-110 transition-all duration-150 cursor-pointer"
+          className="hover:text-[#cb8b5a] hover:scale-110 transition-all duration-150 cursor-pointer"
         >
           Contáctanos
         </Link>
         <AlertDialog>
           <AlertDialogTrigger>
             <p
-              className="hover:text-[#8d572f] hover:scale-110 transition-all duration-150 cursor-pointer"
+              className="hover:text-[#cb8b5a] hover:scale-110 transition-all duration-150 cursor-pointer"
             >
               Novedades
             </p>
@@ -266,7 +266,7 @@ const desktopTabs = ({
         {user?.role === "Admin" && (
           <Link
             href="/admin-dashboard"
-            className="hover:text-[#8d572f] hover:scale-110 transition-all duration-150 cursor-pointer"
+            className="hover:text-[#cb8b5a] hover:scale-110 transition-all duration-150 cursor-pointer"
           >
             Dashboard
           </Link>

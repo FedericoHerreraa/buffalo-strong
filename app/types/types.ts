@@ -117,3 +117,4 @@ export interface LoginViewProps {
     isVisible: boolean;
     setIsVisible: (isVisible: boolean) => void;
 }
+
