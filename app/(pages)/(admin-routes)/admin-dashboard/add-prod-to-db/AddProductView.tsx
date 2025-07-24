@@ -87,10 +87,10 @@ export const AddProductView = ({
               Precio Sugerido *
             </label>
             <input
-              {...register("sugestedPrice")}
+              {...register("sugestedPrice", { valueAsNumber: true })}
               placeholder="Ingrese el precio sugerido"
               required
-              type="text"
+              type="number"
               className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
             />
             {errors.sugestedPrice && (
@@ -105,10 +105,10 @@ export const AddProductView = ({
               Precio Lista *
             </label>
             <input
-              {...register("listPrice")}
+              {...register("listPrice", { valueAsNumber: true })}
               placeholder="Ingrese el precio lista"
               required
-              type="text"
+              type="number"
               className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
             />
             {errors.listPrice && (
@@ -141,10 +141,10 @@ export const AddProductView = ({
               Codigo de lista *
             </label>
             <input
-              {...register("listCode")}
+              {...register("listCode", { valueAsNumber: true })}
               placeholder="Ingrese el codigo de lista"
               required
-              type="text"
+              type="number"
               className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
             />
             {errors.listCode && (
@@ -192,10 +192,10 @@ export const AddProductView = ({
               Stock *
             </label>
             <input
-              {...register("stock")}
+              {...register("stock", { valueAsNumber: true })}
               placeholder="Ingrese el stock"
               required
-              type="text"
+              type="number"
               className="w-full px-4 py-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all bg-zinc-50 focus:bg-white"
             />
             {errors.stock && (
