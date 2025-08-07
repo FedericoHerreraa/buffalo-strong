@@ -57,7 +57,6 @@ export const SearchDbProd = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto bg-white rounded-lg shadow-lg border border-zinc-200 overflow-hidden">
-      {/* Header */}
       <div className="bg-gradient-to-r from-zinc-50 to-zinc-100 px-6 py-4 border-b border-zinc-200">
         <h1
           className={`text-2xl font-semibold text-zinc-800 ${open_sans.className}`}
@@ -67,9 +66,7 @@ export const SearchDbProd = () => {
       </div>
 
       <div className="p-6">
-        {/* Search Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Input Section */}
           <div className="lg:col-span-1">
             <div className="bg-zinc-50 rounded-lg p-4 border border-zinc-200">
               <h3 className="text-lg font-medium text-zinc-700 mb-4">
@@ -103,7 +100,6 @@ export const SearchDbProd = () => {
             </div>
           </div>
 
-          {/* Product Info Section */}
           {prod ? (
             <div className="lg:col-span-2">
               <div className="bg-gradient-to-br from-amber-50 to-zinc-50 rounded-lg border border-amber-200 overflow-hidden">
@@ -116,7 +112,6 @@ export const SearchDbProd = () => {
 
                 <div className="p-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Product Details */}
                     <div className="space-y-3">
                       <div>
                         <p className="text-sm text-zinc-600">
@@ -140,7 +135,6 @@ export const SearchDbProd = () => {
                       </div>
                     </div>
 
-                    {/* Product Image */}
                     <div className="flex justify-center md:justify-end">
                       <div className="relative">
                         <Image
@@ -155,7 +149,6 @@ export const SearchDbProd = () => {
                     </div>
                   </div>
 
-                  {/* Stock Update Section */}
                   <div className="mt-6 pt-4 border-t border-amber-200">
                     <h4 className="text-lg font-medium text-zinc-800 mb-3">
                       Actualizar Stock
@@ -167,7 +160,7 @@ export const SearchDbProd = () => {
                         </label>
                         <input
                           type="number"
-                          value={stock || ""}
+                          value={stock ?? ""}
                           onChange={(e) => setStock(parseInt(e.target.value))}
                           placeholder="Ingrese cantidad"
                           className="w-full border border-zinc-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
@@ -175,7 +168,7 @@ export const SearchDbProd = () => {
                       </div>
                       <button
                         onClick={updateProd}
-                        disabled={!stock}
+                        disabled={stock === null}
                         className="bg-amber-600 hover:bg-amber-700 disabled:bg-zinc-400 disabled:cursor-not-allowed text-white py-2.5 px-6 rounded-lg transition-colors font-medium whitespace-nowrap"
                       >
                         Actualizar Stock
