@@ -122,17 +122,16 @@ export const AddProductController = () => {
             return null;
         }
 
-        const { data: signedUrlData, error: urlError } = await supabase.storage
+        const { data: publicUrlData } = supabase.storage
             .from("Images")
-            .createSignedUrl(filePath, 157788000);
+            .getPublicUrl(filePath);
 
-        if (urlError) {
-            console.error("Error creating signed URL:", urlError);
-            alert(`Error generando URL: ${urlError.message}`);
+        if (!publicUrlData || !publicUrlData.publicUrl) {
+            alert("No se pudo obtener la URL pública de la imagen");
             return null;
         }
 
-        return signedUrlData.signedUrl;
+        return publicUrlData.publicUrl;
     };
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {

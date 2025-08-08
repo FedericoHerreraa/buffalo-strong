@@ -8,7 +8,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="https://zbixbwkzoftoplldzjya.supabase.co/storage/v1/object/sign/Images/logos/logoBlanco.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvbG9nb3MvbG9nb0JsYW5jby5wbmciLCJpYXQiOjE3NDE3MjQ5MDQsImV4cCI6MTg5OTQwNDkwNH0.WBZ2EFqX6Tl_2RWuRgOounzN7xkLCvXTSKI-HrE-SKo"/>
+        <link rel="icon" href="https://zbixbwkzoftoplldzjya.supabase.co/storage/v1/object/public/Images/logos/logoBlanco.png"/>
       </head>
       <body>
         <CartProvider>
