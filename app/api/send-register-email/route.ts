@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
         
         // Enviar email a Buffalo
         const emailBuffalo = await sendEmail(
-            'fede.juan.herrera@gmail.com',
+            'info@sbmusic.ar',
             'Registro en Strong Buffalo Music',
             `
                 <h3>Un nuevo usuario quiere ingresar a buffalo.</h3>

@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
         };
         
         const emailBuffalo = await sendEmail(
-            'fede.juan.herrera@gmail.com',
+            'info@sbmusic.ar',
             subject,
             `
                 <h3>Un usuario quiere contactarse con buffalo.</h3>
