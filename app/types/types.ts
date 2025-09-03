@@ -33,6 +33,7 @@ export interface ProductDB {
     color: string;
     group: string;
     subcategory: string;
+    consult: boolean;
 }
 
 export interface CartContextType {
