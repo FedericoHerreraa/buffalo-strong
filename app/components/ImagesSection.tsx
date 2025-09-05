@@ -1,7 +1,8 @@
 
 import Image from 'next/image';
-import image1 from '@/app/images/carousel/carouselImage3.jpg'
-import image2 from '@/app/images/carousel/carouselImage2.webp'
+
+import image1 from '@/app/images/carousel/5.jpg'
+import image2 from '@/app/images/carousel/7.jpg'
 import { open_sans } from '@/app/fonts/fonts';
 
 export const ImagesSection = () => {
