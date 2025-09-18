@@ -17,6 +17,8 @@ export default async function CategoryDetail({ params } : { params: Promise<{ ca
     const parameters = await params;
     const { data: products } = await supabase.from("products").select("*").eq("category", parameters.category) as { data: ProductDB[] };
 
+    products.sort((a, b) => a.sugestedPrice - b.sugestedPrice);
+
     const categoryTitle = categories.find(cat => cat.keyValue === parameters.category)?.title;
 
     return (

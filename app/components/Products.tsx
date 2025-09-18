@@ -89,6 +89,7 @@ export const Products = () => {
                 </div>
                 {categories.map(cat => {
                     const filteredProducts = prods?.filter(prod => prod.category === cat.keyValue).slice(0,7);
+                    filteredProducts.sort((a, b) => a.sugestedPrice - b.sugestedPrice);
                     return (
                         <div key={cat.keyValue} id={cat.keyValue} className={`mb-6 w-full ${filteredProducts.length === 0 ? 'bg-white' : 'bg-gradient-to-b from-white via-zinc-100 to-white'}`}>
                             <div className="flex md:flex-row flex-col md:gap-5 gap-3 md:items-center mb-5">

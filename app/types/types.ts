@@ -34,6 +34,7 @@ export interface ProductDB {
     group: string;
     subcategory: string;
     consult: boolean;
+    new: boolean;
 }
 
 export interface CartContextType {

@@ -40,7 +40,13 @@ export const Product = ({
         key={index}
         className="flex flex-col flex-grow"
       >
+        
         <div className="relative w-full min-h-[150px] md:h-[250px] overflow-hidden border-b border-b-zinc-200">
+          {prod.new && (
+            <div className="absolute top-2 right-2 bg-gradient-to-r from-red-500 to-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg z-10">
+              NEW
+            </div>
+          )}
           <Image
             src={prod.img[0]}
             alt="Alt de la imagen"
