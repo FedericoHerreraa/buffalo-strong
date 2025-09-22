@@ -20,17 +20,12 @@ export const categories = [
         id: 4,
         keyValue: 'ElectroacusticasAltaGama',
         title: 'Electroacústicas alta gama'
+    },
+    {
+        id: 5,
+        keyValue: 'Bajos',
+        title: 'Bajos'
     }
-    // {
-    //     id: 5,
-    //     keyValue: 'Bajos',
-    //     title: 'Bajos'
-    // },
-    // {
-    //     id: 6,
-    //     keyValue: 'Clasica',
-    //     title: 'Clásica'
-    // }
 ]
 
 export const subcategories = [
