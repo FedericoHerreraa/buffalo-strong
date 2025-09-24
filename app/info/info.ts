@@ -28,6 +28,7 @@ export const categories = [
     }
 ]
 
+
 export const subcategories = [
     {
         id: 1,
